@@ -1,0 +1,22 @@
+import { combineReducers } from 'redux';
+import productReducer from './product.reducer';
+import orderReducer from './order.reducer';
+import userReducer from './user.reducer';
+import categoryReducer from './category.reducer';
+import amountReducer from './amount.reducer'
+import productsOnOrderReducer from './productsOnOrder.reducer'
+import navReducer from './nav.reducer'
+// Combine with other reducers we may add in the future
+
+const AppReducers = combineReducers({
+  productReducer: productReducer,
+  orderReducer: orderReducer,
+  userReducer: userReducer,
+  categoryReducer: categoryReducer,
+  amountReducer: amountReducer,
+  productsOnOrderReducer: productsOnOrderReducer,
+  nav: navReducer,
+});
+
+
+export default AppReducers;
