@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Formik, Field, Select, Form } from 'formik';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
+import MultipleSelect from '../MultipleSelect';
 // import { Form } from 'react-bootstrap';
 import '../../App.css'
 import $ from 'jquery'
@@ -9,14 +10,16 @@ import { Checkbox } from '@mui/material';
 import Login from '../Firebase/Login';
 import { values } from 'lodash';
 import { display } from '@mui/system';
+
+
+
+
+
 export function NewProduct(props) {
     const [picture, setPicture] = useState(null);
     const [imgData, setImgData] = useState(null);
     const [prices, setPrices] = useState([]);
     // const [names, setNames] = useState([]);
-
-
-
     const [show, setShow] = useState(false);
     // const [checked, setChecked] = useState(true);
     const { categories } = props
@@ -124,7 +127,10 @@ export function NewProduct(props) {
 
         // setShow(true);
     };
+
+
     useEffect(() => {
+
         if ($) {
             // $(".saveProduct").on("click", function () {
             //     console.log("save");
@@ -175,6 +181,7 @@ export function NewProduct(props) {
                         <lable>available:</lable>
                         <Field id="newAvailable" className="form-control" type="text" name="available" />
                     </div> */}
+
                     <div className="form-group">
                         <lable>Category:</lable>
                         <Field as="select" name="category" className="form-control" id="newCategory"
@@ -220,6 +227,8 @@ export function NewProduct(props) {
                         onChange={handleChange}
                         inputProps={{ 'aria-label': 'controlled' }}
                     /> */}
+
+                    <MultipleSelect list={categories} />
 
                     <div className="form-group">
                         <button className="btn btn-primary saveProduct" type="submit">Create Product</button>
