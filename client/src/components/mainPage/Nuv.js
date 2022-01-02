@@ -18,27 +18,27 @@ export function Nuv() {
                     style={{ maxHeight: '100px', paddingLeft: '60%' }}
                     navbarScroll
                 >
-                    <Nav.Link className="active hoverLink" href="home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
-                    <Nav.Link className="active hoverLink" href="home/orders">הזמנות</Nav.Link>
+                    <Nav.Link className="active hoverLink" href="/home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
+                    <Nav.Link className="active hoverLink" href="/home/orders">הזמנות</Nav.Link>
 
-                    <Nav.Link className="active hoverLink" href="home/recommend">ממליצים</Nav.Link>
+                    <Nav.Link className="active hoverLink" href="/home/recommend">ממליצים</Nav.Link>
                     <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
 
-                        <NavDropdown.Item href="home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
-                        <NavDropdown.Item href="home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
-                        <NavDropdown.Item href="home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
-                        <NavDropdown.Item href="home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
+                        <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
+                        <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
+                        <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
+                        <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
                     </NavDropdown>
-                    <Nav.Link className="active hoverLink" href="home/events" >
+                    <Nav.Link className="active hoverLink" href="/home/events" >
                         אירועים
                     </Nav.Link>
 
 
                     <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
-                        <NavDropdown.Item href="home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
-                        <NavDropdown.Item href="home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
-                        <NavDropdown.Item href="home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
-                        <NavDropdown.Item href="home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
+                        <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
+                        <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
+                        <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
+                        <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
                     </NavDropdown>
                 </Nav>
 

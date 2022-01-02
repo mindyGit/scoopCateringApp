@@ -32,10 +32,10 @@ function App(props) {
 
     <Router>
       <div className="App" >
-        {/* jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj */}
+
         {/* <NavBar /> */}
         {/* <OrderSummary /> */}
-        <ProductList />
+        {/* <ProductList /> */}
         {/* <Try /> */}
         {/* <Sort /> */}
         {/* <AppFirebase /> */}
@@ -56,8 +56,8 @@ function App(props) {
           <Route exact path="home/about" component={About} />
           <Route exact path="home/contact" component={ContactUs} />
           <Route exact path="home/menu" component={Menu} />
-          <Route exact path="home/ourPeeks" component={OurPeeks} />
-          <Route exact path="home/ourCustomers" component={OurCustomers} />
+          <Route exact path="/home/ourPeeks" component={OurPeeks} />
+          <Route exact path="/home/ourCustomers" component={OurCustomers} />
         </Switch>
 
 
