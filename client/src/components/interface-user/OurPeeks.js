@@ -41,7 +41,7 @@ export function OurPeeks(props) {
                     zIndex: 99999,
                     borderRadius: '0px 50px 50px 0px',
                     left: '0px',
-                    top: '0px',
+                    top: '32px',
                     padding: '12px'
 
 
@@ -58,9 +58,7 @@ export function OurPeeks(props) {
 
             <section className="" style={{ height: '100%' }}>
 
-                <div id="mySidenav" class="sidenav">
 
-                </div>
                 <div class="OurPeekscontent flex-column ">
                     <div className="routing"> דף הבית &gt; סקופ קייטרינג &gt; הצוות שלנו</div>
                     <hr className="hrStyle hrUnderRouting " />

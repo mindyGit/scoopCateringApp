@@ -123,9 +123,9 @@ export function Section() {
                     left: '1.5%',
                     position: 'absolute'
                 }}>
-                    <button className="bc-white p-2 border-top outSvgSize " id="btnOne"><YourSvg className="svgSize" /></button>
+                    {/* <button className="bc-white p-2 border-top outSvgSize " id="btnOne"><YourSvg className="svgSize" /></button>
                     <button className="bc-white p-2 border-top outSvgSize" id="btnTwo"><YourSvg1 className="svgSize" /></button>
-                    <button className="bc-white p-2 border-top outSvgSize" id="btnThree"><YourSvg2 className="svgSize" /></button>
+                    <button className="bc-white p-2 border-top outSvgSize" id="btnThree"><YourSvg2 className="svgSize" /></button> */}
 
                 </div>
             </div>

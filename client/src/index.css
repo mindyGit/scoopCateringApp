@@ -78,6 +78,10 @@ padding: 3%;
 .footer .nav-link {
   display: inline;
 }
+.offcanvas-body .navbar-nav .nav-link{
+color: black !important;
+}
+
 
 .footer.footer-big {
   padding: 30px 0;
@@ -412,4 +416,141 @@ line-height: 1;
 }
 .customPlacholderInList{
   margin-top:5.5%;
+}
+.opImag{
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(./data/imges/galeryImag.png);
+}
+.parent {
+  width: 700px; 
+  height: 300px;
+}
+
+.child {
+  width: 100%;
+  height: 100%;
+  background-color: black; /* fallback color */
+  background-image: url("./data/imges/foodExample.png");
+  background-position: center;
+  background-size: cover;
+}
+.AddToCart{
+  height: 42px;
+  width: 91%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  bottom: 0px;
+  z-index: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #FFFFFF;
+
+}
+/* home page slider */
+
+
+.slider{
+  background: transparent;
+  height: 80px;
+
+  border-radius: 40px;
+  padding: 0 5px;
+}
+
+.field{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.field input{
+  -webkit-appearance: none;
+  height: 13px;
+  width: 100%;
+  border-radius: 7px;
+  outline: none;
+  border: none;
+}
+.field input::-webkit-slider-thumb{
+  -webkit-appearance: none;
+  border: none;
+  height: 30px;
+  width: 30px;
+  border: 3px solid white;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+.field input::-moz-range-thumb{
+  -moz-appearance: none;
+  border: none;
+  height: 30px;
+  width: 30px;
+  border: 3px solid white;
+  background: #FFFFFF;
+  border-radius: 50%;
+}
+
+.second span.show{
+  transform: translateX(-50%) scale(1);
+}
+.second span::after{
+  background: #FFFFFF;
+  
+}
+
+.second input{
+  /* background: transparent linear-gradient(90deg, #A38047 0%, #FFFFFF 100%) 0% 0% no-repeat padding-box; */
+background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FFFFFF 100%);
+
+}
+.second input::-webkit-slider-thumb{
+  background: #FFFFFF;
+ 
+}
+.second input::-moz-range-thumb{
+  background: #FFFFFF;
+ 
+}
+ /* end home page slider */
+
+.sectionFour{
+  width:100vw;
+  height: 550px;
+  
+  /* border:1px solid #FFFFFF */
+
+}
+.childD {
+  width: 80%;
+  height: 100%;
+  background-color: black; /* fallback color */
+  background-image: url("./data/imges/img1.png");
+  /* background-position: top; */
+  background-size: cover;
+  margin-left: 10%;
+ 
+ 
+ 
+}
+.offcanvas-top{
+  height: 100vh !important;
+  text-align: center;
+}
+.navbar .navbar-toggler:focus{
+ 
+  box-shadow: none !important
+}
+.dropdown-menu{
+  border: none !important;
+}
+.dropdown-item:hover{
+  background: none !important;
+  font-weight: bold !important;
+}
+.pageNuv{
+  position: sticky;
+  top: 0px;
+  z-index: 1020;
+  height: 5vh;
 }

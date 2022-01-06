@@ -3,19 +3,28 @@ import React from 'react';
 import './../../App.css'
 
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
+import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
+
+
 import Navbar from 'react-bootstrap/Navbar'
 export function Nuv() {
     return (
 
 
-        <Navbar variant="dark" expand="lg">
-
+        <Navbar variant="dark" expand="lg" style={{ height: '8vh' }}>
+            <YourSvg className="svgSize " style={{
+                position: 'absolute',
+                left: '12%'
+            }} />
             <Navbar.Brand href="#"></Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
                 <Nav
-                    className="me-auto my-2 my-lg-0 linksNuv"
-                    style={{ maxHeight: '100px', paddingLeft: '60%' }}
+                    className="me-auto my-2 my-lg-0 linksNuv pt-2 pb-2"
+                    style={{
+                        maxHeight: 'fit-content', right: '3%',
+                        position: 'absolute'
+                    }}
                     navbarScroll
                 >
                     <Nav.Link className="active hoverLink" href="/home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
@@ -29,6 +38,9 @@ export function Nuv() {
                         <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
                         <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
                     </NavDropdown>
+                    <Nav.Link className="active hoverLink" href="/home/shop" >
+                        חנות
+                    </Nav.Link>
                     <Nav.Link className="active hoverLink" href="/home/events" >
                         אירועים
                     </Nav.Link>
@@ -40,6 +52,7 @@ export function Nuv() {
                         <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
                         <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
                     </NavDropdown>
+
                 </Nav>
 
 

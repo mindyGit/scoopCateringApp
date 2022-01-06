@@ -1,0 +1,40 @@
+.ourStoryPage{
+/* height: 100vh; */
+width:100vw
+}
+
+.pageHeader{
+   
+    color: white;
+    height:40vh;
+    width:100vw;
+    /* background-image: url(../../../data/imges/headerBgImag.png); */
+}
+.pageHeader label{
+font-size:5vh;
+
+top: 25%;
+left:50%;
+z-index: 1020;
+position: absolute;
+}
+.theContent{
+    width:65vw
+}
+.theContent .Title{
+    color: #C39957;
+  
+}
+.role{
+width: 80%;
+}
+/* .PageContent{
+ 
+height: 150vh;
+    
+ 
+}  */
+
+.goldBorder{
+    border: 2px solid #C39957;
+}

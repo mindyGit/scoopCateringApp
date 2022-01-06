@@ -47,7 +47,7 @@ export function OurCustomers(props) {
                     zIndex: 99999,
                     borderRadius: '0px 50px 50px 0px',
                     left: '0px',
-                    top: '0px',
+                    top: '32px',
                     padding: '12px'
 
 
@@ -65,9 +65,7 @@ export function OurCustomers(props) {
 
             <section className="" style={{ height: '100%' }}>
 
-                <div class="short-sideNuv">
 
-                </div>
                 <div class="OurPeekscontent flex-column ">
                     <div className="routing"> דף הבית &gt; סקופ קייטרינג &gt;לקוחותינו</div>
                     <hr className="hrStyle hrUnderRouting " />
