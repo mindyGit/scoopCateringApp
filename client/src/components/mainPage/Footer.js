@@ -163,7 +163,7 @@ export function Footer() {
                                     </li>
                                     <li>
                                         <a href="#pablo" class="text-muted subTitleB">
-                                            חניות הרשת
+                                            חנויות הרשת
                                         </a>
                                     </li>
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import '../../App.css';
 import { connect } from 'react-redux';
@@ -24,7 +24,7 @@ import shabat from '../../data/imges/foodCategories/shabat.png'
 import desserts from '../../data/imges/foodCategories/desserts.png'
 import mainCourses from '../../data/imges/foodCategories/mainCourses.png'
 import products_ from '../../data/imges/foodCategories/products.png'
-
+import $ from 'jquery'
 
 
 
@@ -35,7 +35,18 @@ export function Shop(props) {
     const isTablet = useMediaQuery(1024);
 
     const products = Store.getState().productReducer.products
+    useEffect(() => {
+        if ($) {
+            $(".categoryHover").mouseover(function () {
+                $(this).find('.categoryTitle').removeClass("d-none")
 
+            });
+            $(".categoryHover").mouseout(function () {
+                $(this).find('.categoryTitle').addClass("d-none")
+
+            });
+        }
+    }, [$])
     return (
         <>
             {/* <Search details={products} /> */}
@@ -67,7 +78,7 @@ export function Shop(props) {
                                             <Nav.Link className=" hoverLink" href="/home/orders">הזמנות</Nav.Link>
 
                                             <Nav.Link className=" hoverLink" href="/home/recommend">ממליצים</Nav.Link>
-                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
 
                                                 <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
@@ -82,7 +93,7 @@ export function Shop(props) {
                                             </Nav.Link>
 
 
-                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
                                                 <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
@@ -128,34 +139,69 @@ export function Shop(props) {
 
             </div>
 
+
             <div className="page_content justify-content-center pt-4">
                 <h2> קטגוריות אוכל מוכן </h2>
                 <hr className="m-auto mb-3 goldColor" style={{ width: '4%', height: '3px', opacity: '1' }} ></hr>
                 <h6>בואו לטעום ממאכלי השבת</h6>
                 <div className="foodCategories">
-                    <div className="row mb-3 d-flex justify-content-center">
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={fish} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={salads} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={shabat} /></div>
+
+
+                    <div className="row mb-3 d-flex justify-content-center wrapper">
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">מנות ראשונות</div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={fish} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">סלטים </div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={salads} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">שבת וחגים </div> <div>מוצרים 36</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={shabat} /></div>
+
+
 
                     </div>
                     <div className="row mb-3 d-flex justify-content-center">
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={desserts} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={mainCourses} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={Extras} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">קינוחים </div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={desserts} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">מנות עקריות</div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={mainCourses} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold"> תוספות</div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={Extras} /></div>
+
 
                     </div>
                     <div className="row mb-3 d-flex justify-content-center">
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={fish} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={mainCourses} /></div>
-                        <div className="  mr-3 p-0" style={{ width: '20%', height: '100%' }}><img className="h-100 w-100" src={Extras} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">מנות ראשונות </div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={fish} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold">מנות עקריות</div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={mainCourses} /></div>
+                        <div class="categoryItem mr-3 p-0" style={{ width: '20%' }}><div class="categoryHover">
+                            <div className=" categoryTitle d-none  p-3"><div className=" font-weight-bold"> תוספות</div> <div>מוצרים 20</div></div>
+                        </div>
+                            <img className="h-100 w-100" src={Extras} /></div>
+
 
                     </div>
                 </div>
             </div>
 
             {/* <button className="bg-black text-white p-2 mt-4">לכל המוצרים</button> */}
-            <button className="m-auto p-0 mt-4" style={{ width: '135px', height: '37px' }}><img className="p-2 h-100 w-100 bg-black" src={products_} /></button>
+            {/* <button className="m-auto p-0 mt-4" style={{ width: '135px', height: '37px' }}><img className="p-2 h-100 w-100 bg-black" src={products_} /></button> */}
+            <button className='bg-black text-white border mb-5 p-2 mt-5'> <i class="fas fa-long-arrow-alt-left  " style={{ height: 'fit-content' }} ></i> לכל המוצרים</button>
             <div className="PageFooter mt-5">
                 <Footer />
                 <UnderFooter />

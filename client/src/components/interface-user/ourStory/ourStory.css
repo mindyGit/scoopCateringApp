@@ -15,7 +15,7 @@ font-size:5vh;
 
 top: 25%;
 left:50%;
-z-index: 1020;
+/* z-index: 1020; */
 position: absolute;
 }
 .theContent{

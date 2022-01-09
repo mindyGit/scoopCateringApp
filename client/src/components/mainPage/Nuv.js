@@ -1,7 +1,8 @@
 
 import React from 'react';
 import './../../App.css'
-
+import foodExample from '../../data/imges/foodExample.png'
+import img1 from '../../data/imges/galeryImag.png'
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
 import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
 
@@ -31,12 +32,22 @@ export function Nuv() {
                     <Nav.Link className="active hoverLink" href="/home/orders">הזמנות</Nav.Link>
 
                     <Nav.Link className="active hoverLink" href="/home/recommend">ממליצים</Nav.Link>
-                    <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                    <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
 
-                        <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
-                        <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
-                        <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
-                        <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
+                        <div className='row d-flex align-item-center '>
+                            <div className='col-md-6 mt-4 pr-5  '>
+
+                                <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2' > בייקרי</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'>סקופ אמצ"ש</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'> מתחם חגים  </NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'> סלטים</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                            </div>
+                            <div className='col-md-6 mt-4  customerItem p-0'><img className='h-100 w-100' src={foodExample} /></div>
+                        </div>
                     </NavDropdown>
                     <Nav.Link className="active hoverLink" href="/home/shop" >
                         חנות
@@ -46,11 +57,21 @@ export function Nuv() {
                     </Nav.Link>
 
 
-                    <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
-                        <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
-                        <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
-                        <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
-                        <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
+                    <NavDropdown id="scoopButton" className=" hoverLink " title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
+                        <div className='row d-flex align-item-center '>
+                            <div className='col-md-6 mt-4 pr-5  '>
+
+                                <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2' >הסיפור שלנו</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'>לקוחותינו</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'> הצוות שלנו </NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                                <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2'>צור קשר</NavDropdown.Item>
+                                <hr className="hr_Style m-0 mb-2" />
+                            </div>
+                            <div className='col-md-6 mt-4  customerItem p-0'> <img className='h-100 w-100' src={img1} /></div>
+                        </div>
                     </NavDropdown>
 
                 </Nav>

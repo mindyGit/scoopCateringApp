@@ -11,55 +11,125 @@ import Footer from '../mainPage/Footer';
 import UnderFooter from '../mainPage/UnderFooter'
 import underLogo from '../../data/imges/underLogo.png'
 import logo from '../../data/imges/logo.png'
-import { Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap";
+
 import bgImagOurPeeks from '../../data/imges/bgImagOurPeeks.png'
 import bneiAkivaImage from '../../data/imges/bneiAkivaImage.png'
 import taglitImage from '../../data/imges/taglitImage.png'
 import teamImages from '../../data/imges/teamImages.png'
 import profile from '../../data/imges/profile.png'
+import { Form, FormControl, Nav, Button, NavDropdown, Image, Container, Dropdown, DropdownButton, ButtonGroup } from "react-bootstrap";
 
+
+import headerBgImag from '../../data/imges/headerBgImag.png'
+import useMediaQuery from "../../hooks/useMediaQuery";
+
+import Navbar from 'react-bootstrap/Navbar'
+import Offcanvas from 'react-bootstrap/Offcanvas'
 
 
 export function OurCustomers(props) {
-
+    const isMobile = useMediaQuery(768);
+    const isTablet = useMediaQuery(1024);
 
     return (
 
         <div style={{
-            backgroundImage: `url(${bgImagOurPeeks})`,
+
             height: '780px',
             width: '100vw',
 
         }} >
-            {/* <img className="w-100" src={bgImagOurPeeks} /> */}
+            <div className="pageNuv">
+                {isTablet && (
+                    <div style={{
+
+                    }}>
+                        <Navbar bg="black" expand={false} variant="dark">
+                            <Container fluid>
+                                <Navbar.Brand href="#"></Navbar.Brand>
+                                <Navbar.Toggle aria-controls="offcanvasNavbar" />
+                                <Navbar.Offcanvas
+                                    id="offcanvasNavbar"
+                                    aria-labelledby="offcanvasNavbarLabel"
+                                    placement="top"
+                                >
+                                    <Offcanvas.Header closeButton>
+                                        <Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
+                                    </Offcanvas.Header>
+                                    <Offcanvas.Body>
+
+                                        <Nav
+                                            className="me-auto my-2 my-lg-0 linksNuv"
+                                            style={{ maxHeight: 'fit-content' }}
+                                            navbarScroll
+                                        >
+                                            <Nav.Link className=" hoverLink" href="/home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
+                                            <Nav.Link className=" hoverLink" href="/home/orders">הזמנות</Nav.Link>
+
+                                            <Nav.Link className=" hoverLink" href="/home/recommend">ממליצים</Nav.Link>
+                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
+
+                                                <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
+                                            </NavDropdown>
+                                            <Nav.Link className=" hoverLink" href="/home/shop" >
+                                                חנות
+                                            </Nav.Link>
+                                            <Nav.Link className=" hoverLink" href="/home/events" >
+                                                אירועים
+                                            </Nav.Link>
 
 
-            <div style={{
-                position: 'sticky',
-                top: '0',
-                zIndex: 1020
-
-            }}>
-                <Image style={{
-                    backgroundImage: `url(${underLogo})`,
-                    maxHeight: "80px",
-                    position: "absolute",
-                    zIndex: 99999,
-                    borderRadius: '0px 50px 50px 0px',
-                    left: '0px',
-                    top: '32px',
-                    padding: '12px'
+                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
+                                                <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
+                                                <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
+                                            </NavDropdown>
+                                        </Nav>
 
 
-                }} src={logo} />
-                <Header />
-                <div style={{
+                                    </Offcanvas.Body>
+                                </Navbar.Offcanvas>
+                            </Container>
+                        </Navbar>
+                    </div>
+                )}
 
-                    backgroundColor: 'rgba(0,0,0,0.5)'
+                {!isMobile && !isTablet && (
+                    <div style={{
 
-                }}> <Nuv /></div>
+                    }}>
+                        <Image style={{
+                            backgroundImage: `url(${underLogo})`,
+                            maxHeight: "80px",
+                            position: "absolute",
+                            zIndex: 99999,
+                            borderRadius: '0px 50px 50px 0px',
+                            left: '0px',
+                            top: '32px',
+                            padding: '12px'
+                        }} src={logo} />
+
+                        {!isMobile && !isTablet && (<Header />)}
+                        <div style={{
+                            backgroundColor: 'rgba(0,0,0,0.5)'
+                        }}> <Nuv /></div>
+                    </div>
+                )}
+            </div>
+
+            <div className="pageHeader">
+                <label > לקוחותינו </label>
+                {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
+                {/* <img className="h-100 w-100" src={headerBgImag} /> */}
 
             </div>
+
+
+
 
 
 
@@ -67,9 +137,10 @@ export function OurCustomers(props) {
 
 
                 <div class="OurPeekscontent flex-column ">
-                    <div className="routing"> דף הבית &gt; סקופ קייטרינג &gt;לקוחותינו</div>
-                    <hr className="hrStyle hrUnderRouting " />
-                    <div className="titel">
+                    <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt;  לקוחותינו</span>&gt;</div>
+
+
+                    <div className="titel pt-5">
                         <h1 className="font-weight-bold mb-0">בין לקוחותינו</h1>
                     </div>
                     <hr className="hrStyle " style={{ width: '6%' }} />

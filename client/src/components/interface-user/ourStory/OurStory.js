@@ -68,7 +68,7 @@ function OurStory() {
                                             <Nav.Link className=" hoverLink" href="/home/orders">הזמנות</Nav.Link>
 
                                             <Nav.Link className=" hoverLink" href="/home/recommend">ממליצים</Nav.Link>
-                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
 
                                                 <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
@@ -83,7 +83,7 @@ function OurStory() {
                                             </Nav.Link>
 
 
-                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
                                                 <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
                                                 <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
@@ -137,7 +137,7 @@ function OurStory() {
                 <div className="d-flex justify-content-center ">
                     <div className="theContent  mt-5 pt-5 mb-5" >
                         <h3 className="Title mb-3 font-weight-bold"> יחס אישי ואיכות בלי פשרות, הם סוד ההצלחה שלנו</h3>
-                        <hr className="m-auto mb-5 goldColor" style={{ width: '10%', height: '2px', opacity: '1' }} ></hr>
+                        <hr className=" mb-5 goldColor" style={{ width: '6%', height: '2px', opacity: '1', marginLeft: '49%' }} ></hr>
                         <p className="text-end mb-0">סקופ קייטרינג התחילה כבית קפה קטן בבית שמש, גרי שיקמן ואריה בן חמו, שניהם עם נסיון</p>
                         <p className="text-end mb-0">.עשיר בתחום המזון.הבינו שיש חוסר במקומות הסעדה המספקים שירות אישי ומזון איכותי</p>
                         <p className="text-end mb-0">המקום החדש שגשג, ובתוך שנה מהפתיחה, כבר פתחו השותפים את הסניף הבא ביישוב אפרת. כיום סקופ קייטרינג  </p>
