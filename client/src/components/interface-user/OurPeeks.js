@@ -25,7 +25,9 @@ export function OurPeeks(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    function goHome() {
+        window.location.href = "/"
+    }
     return (
 
         <div style={{
@@ -125,7 +127,7 @@ export function OurPeeks(props) {
                     <div style={{
 
                     }}>
-                        <Image style={{
+                        <Image onClick={e => goHome()} style={{
                             backgroundImage: `url(${underLogo})`,
                             maxHeight: "80px",
                             position: "absolute",

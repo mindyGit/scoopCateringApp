@@ -37,7 +37,9 @@ function OurStory() {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    function goHome() {
+        window.location.href = "/"
+    }
     return (
         <div className="ourStoryPage">
             <div className="pageNuv">
@@ -103,7 +105,7 @@ function OurStory() {
                     <div style={{
 
                     }}>
-                        <Image style={{
+                        <Image onClick={e => goHome()} style={{
                             backgroundImage: `url(${underLogo})`,
                             maxHeight: "80px",
                             position: "absolute",

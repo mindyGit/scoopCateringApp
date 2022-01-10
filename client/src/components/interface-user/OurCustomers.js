@@ -30,7 +30,9 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 export function OurCustomers(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    function goHome() {
+        window.location.href = "/"
+    }
     return (
 
         <div style={{
@@ -102,7 +104,7 @@ export function OurCustomers(props) {
                     <div style={{
 
                     }}>
-                        <Image style={{
+                        <Image onClick={e => goHome()} style={{
                             backgroundImage: `url(${underLogo})`,
                             maxHeight: "80px",
                             position: "absolute",
