@@ -590,6 +590,9 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
   border-radius: 0% !important;
 
 }
+.dropdown-toggle::after{
+  margin-right: 6px;
+}
 .dropdown-menu[data-bs-popper]{
   margin-top: 1rem !important;
 }
