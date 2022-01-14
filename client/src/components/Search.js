@@ -6,18 +6,14 @@ function Search({ details, searchItem }) {
 
     const [searchField, setSearchField] = useState("");
 
-    const filteredProducts = details.filter(
+    const filteredProducts = details && details.filter(
         product => {
             return (
-                product
+                product && product
                     .name
                     .toLowerCase()
                     .includes(searchField.toLowerCase())
-                // ||
-                // product
-                //     .description
-                //     .toLowerCase()
-                //     .includes(searchField.toLowerCase())
+
             );
         }
     );

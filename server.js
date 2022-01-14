@@ -23,6 +23,8 @@ let emails
 // const { db } = require('./models')
 
 app.use(cors())
+// dotenv.config({ path: 'C:\Users\mindy\Downloads\openssl-0.9.8k_X64\bin' })
+
 dotenv.config({ path: __dirname + '/.env' });
 
 app.use(bodyParser.urlencoded({

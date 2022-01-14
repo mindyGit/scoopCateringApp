@@ -9,7 +9,7 @@ export const getAllEmails = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_ALL_EMAILS') {
 
         return new Promise((resolve, reject) => {
-            return axios.get('http://localhost:5002/emails/')
+            return axios.get('http://localhost:80/emails/')
                 .then(resJson => {
 
                     dispatch(actions.setAllEmails(resJson.data))
@@ -33,7 +33,7 @@ export const createEmail = ({ dispatch, getState }) => next => action => {
 
 
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:5002/email/', action.payload)
+            axios.post('http://localhost:80/email/', action.payload)
                 .then(res => {
                     dispatch(actions.setEmail(res.data))
 
@@ -55,7 +55,7 @@ export const updateEmail = ({ dispatch, getState }) => next => action => {
 
 
 
-        axios.patch(`http://localhost:5002/emails/${emailId}`, action.payload)
+        axios.patch(`http://localhost:80/emails/${emailId}`, action.payload)
 
             .then(res => {
                 dispatch(actions.setEmail(res.data))
@@ -79,7 +79,7 @@ export const deleteEmail = ({ dispatch, getState }) => next => action => {
         email = action.payload;
         if (email !== undefined)
             emailId = email._id;
-        axios.delete(`http://localhost:5002/email/${emailId}`)
+        axios.delete(`http://localhost:80/email/${emailId}`)
             .then(res => {
                 dispatch(actions.deleteEmailFromEmails(emailId))
 

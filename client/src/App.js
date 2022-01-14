@@ -6,6 +6,9 @@ import Home from './components/Home'
 import ContactUs from './components/interface-user/ContactUs'
 import Menu from './components/interface-user/Shop'
 import ProductList from './components/product/ProductList';
+import ProductList_manager from './components/product/ProductList_manager';
+import history from "./components/history"
+
 import OurPeeks from './components/interface-user/OurPeeks'
 import Shop from './components/interface-user/Shop'
 
@@ -24,7 +27,8 @@ import AppFirebase from './components/Firebase/AppFirebase'
 import OrderSummary from './components/interface-manager/OrderSummary'
 import Try from './components/try'
 import NavBar from './components/navBar/NavBar'
-
+import SearchList from './components/SearchList'
+import SearchResults from './components/interface-user/SearchResults'
 
 
 
@@ -34,14 +38,22 @@ function App(props) {
 
 
   const { productReducer } = props
+  const list = [
+    { 'id': 1, 'name': 'mindy' },
+    { 'id': 2, 'name': 'shimon' },
+    { 'id': 3, 'name': 'arye' },
 
+
+
+  ]
   useEffect(() => {
   }, []);
   return (
 
-    <Router>
+    <Router history={history}>
       <div className="App" >
 
+        {/* <SearchList /> */}
         {/* <NavBar /> */}
         {/* <OrderSummary /> */}
         {/* <ProductList /> */}
@@ -58,16 +70,23 @@ function App(props) {
           <Link to="/menu">Menu</Link>
         </header>
          */}
+
+
         <Switch>
           {/* <Route exact path="/appFirebase" component={AppFirebase} /> */}
           <Route exact path="home/ProductList" component={ProductList} />
           <Route exact path="/" component={Home} />
-          <Route exact path="/home/shop" component={Shop} />
+          <Route exact path="/shop" component={Shop} />
+          <Route exact path="/shop/*" component={ProductList} />
+
           <Route exact path="home/contact" component={ContactUs} />
-          {/* <Route exact path="home/menu" component={Menu} /> */}
+
           <Route exact path="/home/ourPeeks" component={OurPeeks} />
           <Route exact path="/home/ourCustomers" component={OurCustomers} />
           <Route exact path="/home/OurStory" component={OurStory} />
+          <Route exact path="/SearchResults/*" component={SearchResults} />
+
+
 
         </Switch>
 

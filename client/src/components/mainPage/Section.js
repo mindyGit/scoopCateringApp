@@ -12,7 +12,7 @@ import { ReactComponent as YourSvg1 } from '../../data/imges/shoppingCart.svg';
 import { ReactComponent as YourSvg2 } from '../../data/imges/shabatTimes.svg';
 import locationIcon from '../../data/imges/locationIcon.png'
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
-
+import background_image from '../../data/imges/backgroundImg.jpg'
 export function Section() {
     let clicked = false
     let previousClick = "empty"
@@ -57,7 +57,12 @@ export function Section() {
         <section >
 
 
-            <div class="container_" style={{ width: '120%', height: "700px" }}>
+            <div class="container_" style={{
+                width: '100vw', height: "900px",
+
+
+
+            }}>
 
 
                 <div className="searchBox btnOne bc-white centerItems flex-column d-none" style={{ width: '60%', height: "40%", zIndex: '9', position: 'absolute', left: '15%', top: "20%", opacity: "0.9" }}>

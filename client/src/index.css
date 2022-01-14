@@ -16,6 +16,8 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+.rtl { direction: rtl}
+.ltr { direction: ltr}
 .whiteColor{
   color: #FFFFFF;
 
@@ -173,8 +175,12 @@ color: black !important;
   position: relative;
 text-align: center;
 
+
+
   /* color: red; */
 }
+
+
 
 .centered_ {
   position: absolute;
@@ -249,6 +255,10 @@ text-align: center;
 .svgSize{
   width: 30px!important;
   height: 30px!important;
+  position: absolute;
+  left: 200px;
+  top:55px;
+  z-index: 99999;
 }
 .outSvgSize{
   display: flex !important;
@@ -406,12 +416,22 @@ line-height: 1;
   border:2px solid #CCCCCC;
   width: 200px !important;
   height: 170px;
-
   margin-bottom: 0px;
   
 
 }
+.CustomerItem{
+  
+  width: 250px !important;
+  height: 200px;
+ 
+  
+
+}
 /* productList */
+.productLine{
+border-right: 5px solid #C59950;
+}
 .customPlacholderInList::placeholder{
   color: #111 !important;
   
@@ -454,8 +474,13 @@ line-height: 1;
 
 }
 /* home page slider */
+.homeBg{
+  transition: transform ease 0.3s;
+}
 
-
+.homeBg:hover{
+  transform: scale(1.1);
+}
 .slider{
   background: transparent;
   height: 80px;
@@ -549,8 +574,16 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
 .dropdown-menu{
   border: none !important;
 }
+.dropdown-item{
+  width: 30% !important;
+  display: flex;
+  justify-content: center;
+  
+}
 .dropdown-item:hover{
-  background: none !important;
+  
+ padding-right: 2% !important;
+  background:none !important;
   font-weight: bold !important;
 }
 .pageNuv{
@@ -559,6 +592,34 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
   z-index: 1020;
   height: 5vh;
 }
+#search-button:focus{
+border:none !important;
+background: none !important;
+outline:none !important;
+box-shadow: none !important;
+}
+.form-control.inputOfSearch{
+  width:60vw !important;
+  font-size: 1.3rem;
+
+
+}
+.inputOfSearch::placeholder {
+  color: white !important;
+  opacity: 1 !important; 
+  text-align: start !important;
+  font-size: 22.4px !important;
+}
+.form-control:focus{
+  /* border:none !important; */
+  background: none !important;
+  outline:none !important;
+  box-shadow: none !important;
+}
+.form-select:focus{
+box-shadow: none !important;
+outline: none !important;
+  }
 .zoomBOut {
   width: 42%; 
   height: 400px;
@@ -579,6 +640,9 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
 }
 .zoomBIn:hover {
   transform: scale(1.1);
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(./data/imges/galeryImag.png);
+  background-position: center;
+  background-size: cover;
 }
 .dropdown-menu{
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -601,7 +665,14 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
 .categoryTitle{
   position:absolute;
   color: white;
-  border: 1px solid
+  border: 1px solid;
+  height: 25%;
+  width: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+ 
 }
   .categoryItem {
     display: inline-block;
@@ -633,5 +704,31 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
 
 .categoryItem img {
     vertical-align: bottom;
+}
+.goldButton{
+  border:none !important;
+  background-color: #C39957 !important;
+  color: #FFFFFF !important;
+
+}
+.white-arrow{
+background: none !important;
+color: #FFFFFF !important;
+border:none !important;
+}
+.searchIcon{
+  width: 25px!important;
+    height: 25px!important;
+    position: absolute;
+    top: 10px;
+    z-index: 99999;
+}
+
+@media only screen and (max-width: 320px) {
+
+  body { 
+     font-size: 2em !important; 
+  }
+
 }
 

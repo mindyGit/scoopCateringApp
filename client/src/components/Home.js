@@ -34,18 +34,31 @@ import $ from 'jquery'
 import useMediaQuery from "../hooks/useMediaQuery";
 // import searchIcon from '../data/imges/searchIcon.svg'
 // import { ReactComponent as YourSvg } from '../data/imges/searchIcon.svg';
-
+import Hamborger from './mainPage/Hamborger'
+import TopPageDesktop from './mainPage/TopPageDesktop'
 
 export function Home(props) {
+
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     ;
     useEffect(() => {
+        if ($) {
+            $(".zoomBIn").mouseover(function () {
+
+                $(this).find('.textHide').addClass("d-none")
+
+            });
+            $(".zoomBIn").mouseout(function () {
+                $(this).find('.textHide').removeClass("d-none")
+
+            });
+        }
+
         const inputSlide = document.querySelector("input");
         const secondInputSlide = document.getElementById("secondinput");
 
         secondInputSlide.oninput = (() => {
-
             secondInputSlide.style.background = `linear-gradient(to right, #FFFFFF 0%, #A38047 ${secondInputSlide.value}%, #A38047 ${secondInputSlide.value}%, #FFFFFF 100%)`
         });
     }, [$])
@@ -56,104 +69,32 @@ export function Home(props) {
                 height: '1000px',
                 width: '100vw'
             }}>
-                <div style={{
+                <div className='' style={{
                     backgroundImage: `url(${background_image})`,
                     width: '100%',
                     height: '100%',
                     backgroundColor: 'black',
                     backgroundPosition: 'center',
                     backgroundSize: 'cover'
+
                 }} >
                     <div>
                         {isTablet && (
-                            <Navbar style={{
-                                position: 'sticky',
-                                top: '0',
-                                zIndex: 1020,
+                            <Hamborger />
 
-
-                            }} bg="dark" expand={false} variant="dark">
-                                <Container fluid>
-                                    <Navbar.Brand href="#"></Navbar.Brand>
-                                    <Navbar.Toggle aria-controls="offcanvasNavbar" className='mr-0 pr-0' />
-                                    <Navbar.Offcanvas
-                                        id="offcanvasNavbar"
-                                        aria-labelledby="offcanvasNavbarLabel"
-                                        placement="top"
-                                    >
-                                        <Offcanvas.Header closeButton>
-                                            <Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
-                                        </Offcanvas.Header>
-                                        <Offcanvas.Body>
-
-                                            <Nav
-                                                className="me-auto my-2 my-lg-0 linksNuv"
-                                                style={{ maxHeight: 'fit-content' }}
-                                                navbarScroll
-                                            >
-                                                <Nav.Link className=" hoverLink" href="/home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
-                                                <Nav.Link className=" hoverLink" href="/home/orders">הזמנות</Nav.Link>
-
-                                                <Nav.Link className=" hoverLink" href="/home/recommend">ממליצים</Nav.Link>
-                                                <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-
-                                                    <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
-                                                </NavDropdown>
-                                                <Nav.Link className=" hoverLink" href="/home/shop" >
-                                                    חנות
-                                                </Nav.Link>
-                                                <Nav.Link className=" hoverLink" href="/home/events" >
-                                                    אירועים
-                                                </Nav.Link>
-
-
-                                                <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-                                                    <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
-                                                </NavDropdown>
-                                            </Nav>
-
-
-                                        </Offcanvas.Body>
-                                    </Navbar.Offcanvas>
-                                </Container>
-                            </Navbar>
                         )}
 
                         {!isMobile && !isTablet && (
-                            <div style={{
-                                position: 'sticky',
-                                top: '0',
-                                zIndex: 1020
 
-                            }}>
-                                <Image style={{
-                                    backgroundImage: `url(${underLogo})`,
-                                    maxHeight: "80px",
-                                    position: "absolute",
-                                    zIndex: 99999,
-                                    borderRadius: '0px 50px 50px 0px',
-                                    left: '0px',
-                                    top: '32px',
-                                    padding: '12px'
-                                }} src={logo} />
 
-                                <Header />
-                                <div style={{
-                                    backgroundColor: 'rgba(0,0,0,0.5)'
+                            <TopPageDesktop />
 
-                                }}> <Nuv /></div>
-
-                            </div>
                         )}
 
 
-                        <Section className="sectionOne" urlImg={background_image} />
+                        <Section className="sectionOne homeBg" style={{
+
+                        }} />
                         <div className="sectionTwo bg-black" >
                             <Row>
                                 <div className="d-flex justify-content-center align-items-center flex-column" style={{
@@ -169,7 +110,7 @@ export function Home(props) {
 
                                 <div class="zoomBOut">
                                     <div class="zoomBIn d-flex align-items-center flex-column  justify-content-center">
-                                        <div className=''>
+                                        <div className='textHide'>
 
                                             <div className="h1 font-weight-bold whiteColor " style={{ fontSize: '240%', lineHeight: '1.1' }} ><span className='d-block'>אוכל</span> מוכן לשבת</div>
                                             <hr className="font-weight-bold whiteColor m-auto" style={{ width: '30%', height: '5px', opacity: '1' }} ></hr>

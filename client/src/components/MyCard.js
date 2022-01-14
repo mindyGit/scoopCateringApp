@@ -19,7 +19,7 @@ function MyCard({ list }) {
     return (
 
         <Row xs={6} md={2} className="menuList">
-            {list.map((item) => (
+            {list && list.map((item) => (
                 //col-xs-6 col-sm-4 col-md-3
                 <Col xs={6} sm={4} md={3} className="card-style ">
                     <Card Style="height:335px"  >

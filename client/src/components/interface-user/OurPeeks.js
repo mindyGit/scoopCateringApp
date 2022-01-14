@@ -4,9 +4,9 @@ import { connect } from 'react-redux';
 import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 import blog3 from '../../data/imges/blog3.png'
-import Nuv from '../mainPage/Nuv';
+
 import Section from '../mainPage/Section';
-import Header from '../mainPage/Header';
+
 import Footer from '../mainPage/Footer';
 import UnderFooter from '../mainPage/UnderFooter'
 import underLogo from '../../data/imges/underLogo.png'
@@ -19,15 +19,14 @@ import teamImages from '../../data/imges/teamImages.png'
 import headerBgImag from '../../data/imges/headerBgImag.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-import Navbar from 'react-bootstrap/Navbar'
-import Offcanvas from 'react-bootstrap/Offcanvas'
+
+import Hamborger from '../mainPage/Hamborger'
+import TopPageDesktop from '../mainPage/TopPageDesktop'
 export function OurPeeks(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-    function goHome() {
-        window.location.href = "/"
-    }
+
     return (
 
         <div style={{
@@ -37,119 +36,22 @@ export function OurPeeks(props) {
 
         }} >
 
-
-            {/* <div style={{
-                position: 'sticky',
-                top: '0',
-                zIndex: 1020
-
-            }}>
-                <Image style={{
-                    backgroundImage: `url(${underLogo})`,
-                    maxHeight: "80px",
-                    position: "absolute",
-                    zIndex: 99999,
-                    borderRadius: '0px 50px 50px 0px',
-                    left: '0px',
-                    top: '32px',
-                    padding: '12px'
-
-
-                }} src={logo} />
-                <Header />
-                <div style={{
-                    backgroundColor: 'rgba(0,0,0,0.5)'
-
-                }}> <Nuv /></div>
-
-            </div>
- */}
             <div className="pageNuv">
                 {isTablet && (
-                    <div style={{
+                    <Hamborger />
 
-                    }}>
-                        <Navbar bg="black" expand={false} variant="dark">
-                            <Container fluid>
-                                <Navbar.Brand href="#"></Navbar.Brand>
-                                <Navbar.Toggle aria-controls="offcanvasNavbar" />
-                                <Navbar.Offcanvas
-                                    id="offcanvasNavbar"
-                                    aria-labelledby="offcanvasNavbarLabel"
-                                    placement="top"
-                                >
-                                    <Offcanvas.Header closeButton>
-                                        <Offcanvas.Title id="offcanvasNavbarLabel"></Offcanvas.Title>
-                                    </Offcanvas.Header>
-                                    <Offcanvas.Body>
-
-                                        <Nav
-                                            className="me-auto my-2 my-lg-0 linksNuv"
-                                            style={{ maxHeight: 'fit-content' }}
-                                            navbarScroll
-                                        >
-                                            <Nav.Link className=" hoverLink" href="/home/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
-                                            <Nav.Link className=" hoverLink" href="/home/orders">הזמנות</Nav.Link>
-
-                                            <Nav.Link className=" hoverLink" href="/home/recommend">ממליצים</Nav.Link>
-                                            <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-
-                                                <NavDropdown.Item href="/home/menu/bakery" style={{ textAlign: 'center' }}> בייקרי</NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/menu/weekday" style={{ textAlign: 'center' }}>סקופ אמצ"ש</NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/menu/holidays" style={{ textAlign: 'center' }}>   מתחם חגים  </NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/menu/salads" style={{ textAlign: 'center' }}>סלטים </NavDropdown.Item>
-                                            </NavDropdown>
-                                            <Nav.Link className=" hoverLink" href="/home/shop" >
-                                                חנות
-                                            </Nav.Link>
-                                            <Nav.Link className=" hoverLink" href="/home/events" >
-                                                אירועים
-                                            </Nav.Link>
-
-
-                                            <NavDropdown className=" hoverLink" title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-                                                <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'center' }}>הסיפור שלנו</NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'center' }}>לקוחותינו</NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'center' }}> הצוות שלנו </NavDropdown.Item>
-                                                <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'center' }}>צור קשר</NavDropdown.Item>
-                                            </NavDropdown>
-                                        </Nav>
-
-
-                                    </Offcanvas.Body>
-                                </Navbar.Offcanvas>
-                            </Container>
-                        </Navbar>
-                    </div>
                 )}
 
                 {!isMobile && !isTablet && (
-                    <div style={{
+                    <TopPageDesktop />
 
-                    }}>
-                        <Image onClick={e => goHome()} style={{
-                            backgroundImage: `url(${underLogo})`,
-                            maxHeight: "80px",
-                            position: "absolute",
-                            zIndex: 99999,
-                            borderRadius: '0px 50px 50px 0px',
-                            left: '0px',
-                            top: '32px',
-                            padding: '12px'
-                        }} src={logo} />
-
-                        {!isMobile && !isTablet && (<Header />)}
-                        <div style={{
-                            backgroundColor: 'rgba(0,0,0,0.5)'
-                        }}> <Nuv /></div>
-                    </div>
                 )}
             </div>
 
             <div className="pageHeader">
                 <label > הצוות שלנו</label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
-                {/* <img className="h-100 w-100" src={headerBgImag} /> */}
+
 
             </div>
 
@@ -160,7 +62,7 @@ export function OurPeeks(props) {
 
 
                 <div class="OurPeekscontent flex-column ">
-                    {/* <div className="routing"> דף הבית &gt; סקופ קייטרינג &gt; הצוות שלנו</div> */}
+
                     <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הצוות שלנו</span>&gt;</div>
 
 

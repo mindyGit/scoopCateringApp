@@ -6,6 +6,7 @@ import categoryReducer from './category.reducer';
 import amountReducer from './amount.reducer'
 import productsOnOrderReducer from './productsOnOrder.reducer'
 import navReducer from './nav.reducer'
+import searchWordReducer from './searchWord.reducer'
 // Combine with other reducers we may add in the future
 
 const AppReducers = combineReducers({
@@ -15,6 +16,7 @@ const AppReducers = combineReducers({
   categoryReducer: categoryReducer,
   amountReducer: amountReducer,
   productsOnOrderReducer: productsOnOrderReducer,
+  searchWordReducer: searchWordReducer,
   nav: navReducer,
 });
 

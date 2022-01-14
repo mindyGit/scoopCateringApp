@@ -9,7 +9,9 @@ function SearchList({ filteredProducts }) {
     // const filtered = <List list={filteredProducts} />;
     return (
         <div>
+
             {filtered}
+
         </div>
     );
 }

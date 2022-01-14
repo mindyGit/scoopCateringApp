@@ -8,7 +8,7 @@ export const getAllUsers = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_ALL_USERS') {
 
         return new Promise((resolve, reject) => {
-            return axios.get('http://localhost:5002/users/')
+            return axios.get('http://localhost:80/users/')
                 .then(resJson => {
                     dispatch(actions.setAllUsers(resJson.data))
                     resolve()
@@ -33,7 +33,7 @@ export const createUser = ({ dispatch, getState }) => next => action => {
         console.log("fgvhjk");
 
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:5002/user/', action.payload)
+            axios.post('http://localhost:80/user/', action.payload)
                 .then(res => {
                     dispatch(actions.setUser(res.data))
 
@@ -59,7 +59,7 @@ export const updateUserPassword = ({ dispatch, getState }) => next => action => 
         console.log("updateUserPassword");
 
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:5002/updateUserPassword/', action.payload)
+            axios.post('http://localhost:80/updateUserPassword/', action.payload)
                 .then(res => {
                     dispatch(actions.setUser(res.data))
 
