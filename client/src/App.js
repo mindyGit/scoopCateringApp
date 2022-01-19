@@ -29,6 +29,17 @@ import Try from './components/try'
 import NavBar from './components/navBar/NavBar'
 import SearchList from './components/SearchList'
 import SearchResults from './components/interface-user/SearchResults'
+import ShoppingCart from './components/interface-user/ShoppingCart'
+import Checkout from './components/interface-user/Checkout'
+import Payment from './components/interface-user/Payment'
+
+import Events from './components/interface-user/Events'
+import Gallery from './components/interface-user/Gallery'
+import Kashrut from './components/interface-user/Kashrut'
+import RelatedProducts from './components/interface-user/RelatedProducts'
+
+
+
 
 
 
@@ -77,14 +88,33 @@ function App(props) {
           <Route exact path="home/ProductList" component={ProductList} />
           <Route exact path="/" component={Home} />
           <Route exact path="/shop" component={Shop} />
+          <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
           <Route exact path="/shop/*" component={ProductList} />
 
-          <Route exact path="home/contact" component={ContactUs} />
+
+
+
+          <Route exact path="/contact-us" component={ContactUs} />
 
           <Route exact path="/home/ourPeeks" component={OurPeeks} />
           <Route exact path="/home/ourCustomers" component={OurCustomers} />
           <Route exact path="/home/OurStory" component={OurStory} />
+          <Route exact path="/home/kashrut" component={Kashrut} />
           <Route exact path="/SearchResults/*" component={SearchResults} />
+          <Route exact path="/Cart" component={ShoppingCart} />
+          <Route exact path="/Checkout" component={Checkout} />
+          <Route exact path="/Payment" component={Payment} />
+          <Route exact path="/gallery" component={Gallery} />
+          <Route exact path="/events" component={Events} />
+
+
+
+
+
+
+
+
+
 
 
 

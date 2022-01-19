@@ -55,6 +55,7 @@ export function TopPageDesktop(props) {
     useEffect(() => {
         if ($) {
             $(".searchButton").click(function () {
+
                 $('.searchDiv').removeClass('d-none')
                 $('.topPage').addClass('d-none')
 
@@ -68,6 +69,7 @@ export function TopPageDesktop(props) {
 
             });
             $("#search-button").click(function () {
+
                 const word = $('.inputOfSearch').val()
                 if (word != "") {
                     search(word)
@@ -98,10 +100,13 @@ export function TopPageDesktop(props) {
                 }
 
             })
+
+
         }
     }, [$])
     return (
         <>
+
             <div style={{
                 position: 'sticky',
                 top: '0',
@@ -127,7 +132,7 @@ export function TopPageDesktop(props) {
 
                     </div>
                     <button id="" type="button" For="form1" className="btn  m-0 border-0 searchClose text-white pl-5" style={{ height: 'fit-content', fontsize: '30px' }}     >
-                        <i className="fas fa-times "></i>
+                        <i className="fas fa-times " style={{ fontSize: '32px' }}></i>
                     </button>
                 </div>
                 <div className='topPage'>

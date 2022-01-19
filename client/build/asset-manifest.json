@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/static/css/main.dcc30b5b.chunk.css",
-    "main.js": "/static/js/main.fe19b81f.chunk.js",
-    "main.js.map": "/static/js/main.fe19b81f.chunk.js.map",
+    "main.css": "/static/css/main.69d0c9b4.chunk.css",
+    "main.js": "/static/js/main.e0a000ce.chunk.js",
+    "main.js.map": "/static/js/main.e0a000ce.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.37eaf898.js",
     "runtime-main.js.map": "/static/js/runtime-main.37eaf898.js.map",
     "static/css/2.70c2dce5.chunk.css": "/static/css/2.70c2dce5.chunk.css",
-    "static/js/2.41bb02f5.chunk.js": "/static/js/2.41bb02f5.chunk.js",
-    "static/js/2.41bb02f5.chunk.js.map": "/static/js/2.41bb02f5.chunk.js.map",
+    "static/js/2.d0d3cfd3.chunk.js": "/static/js/2.d0d3cfd3.chunk.js",
+    "static/js/2.d0d3cfd3.chunk.js.map": "/static/js/2.d0d3cfd3.chunk.js.map",
     "static/js/3.fc68fa73.chunk.js": "/static/js/3.fc68fa73.chunk.js",
     "static/js/3.fc68fa73.chunk.js.map": "/static/js/3.fc68fa73.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.70c2dce5.chunk.css.map": "/static/css/2.70c2dce5.chunk.css.map",
-    "static/css/main.dcc30b5b.chunk.css.map": "/static/css/main.dcc30b5b.chunk.css.map",
-    "static/js/2.41bb02f5.chunk.js.LICENSE.txt": "/static/js/2.41bb02f5.chunk.js.LICENSE.txt",
+    "static/css/main.69d0c9b4.chunk.css.map": "/static/css/main.69d0c9b4.chunk.css.map",
+    "static/js/2.d0d3cfd3.chunk.js.LICENSE.txt": "/static/js/2.d0d3cfd3.chunk.js.LICENSE.txt",
     "static/media/Extras.f52ce4ed.png": "/static/media/Extras.f52ce4ed.png",
     "static/media/Rectangle.641194c7.jpg": "/static/media/Rectangle.641194c7.jpg",
     "static/media/mdb.css": "/static/media/arrow_right.f7c6ac6d.svg",
@@ -44,14 +44,15 @@
     "static/media/shabat.c8ac457b.png": "/static/media/shabat.c8ac457b.png",
     "static/media/shabatTimes.3382e1e0.svg": "/static/media/shabatTimes.3382e1e0.svg",
     "static/media/shoppingCart.0f59e173.svg": "/static/media/shoppingCart.0f59e173.svg",
+    "static/media/soops_.630c9e68.jpg": "/static/media/soops_.630c9e68.jpg",
     "static/media/taglitImage.34b37cb7.png": "/static/media/taglitImage.34b37cb7.png",
     "static/media/teamImages.7fd47caf.png": "/static/media/teamImages.7fd47caf.png"
   },
   "entrypoints": [
     "static/js/runtime-main.37eaf898.js",
     "static/css/2.70c2dce5.chunk.css",
-    "static/js/2.41bb02f5.chunk.js",
-    "static/css/main.dcc30b5b.chunk.css",
-    "static/js/main.fe19b81f.chunk.js"
+    "static/js/2.d0d3cfd3.chunk.js",
+    "static/css/main.69d0c9b4.chunk.css",
+    "static/js/main.e0a000ce.chunk.js"
   ]
 }

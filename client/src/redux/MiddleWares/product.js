@@ -70,7 +70,6 @@ export const copyProduct = ({ dispatch, getState }) => next => action => {
 };
 
 export const getAllProducts = ({ dispatch, getState }) => next => action => {
-    // if (action.type === 'GET_ALL_productS') {
     if (action.type === 'GET_ALL_PRODUCTS') {
         return new Promise((resolve, reject) => {
             return axios.get('http://localhost:80/products/')

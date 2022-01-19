@@ -63,10 +63,14 @@ export function OurPeeks(props) {
 
                 <div class="OurPeekscontent flex-column ">
 
-                    <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הצוות שלנו</span>&gt;</div>
+                    {/* <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הצוות שלנו</span>&gt;</div> */}
+                    <div className='location ' style={{ right: '50px', position: 'absolute' }}>
+                        <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
+                        <div className='d-inline'>סקופ קייטרינג  </div>
+                        <div className='goldColor d-inline'> /הצוות שלנו </div>
+                    </div>
 
-
-                    <div className="titel pt-5">
+                    <div className="titel pt-5 mt-5">
                         <h1 className="font-weight-bold mb-0">הצוות שלנו</h1>
                     </div>
                     <hr className="hrStyle " style={{ width: '10%' }} />

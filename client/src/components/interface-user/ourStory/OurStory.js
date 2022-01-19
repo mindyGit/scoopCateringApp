@@ -11,6 +11,8 @@ import UnderFooter from '../../mainPage/UnderFooter'
 import underLogo from '../../../data/imges/underLogo.png'
 import logo from '../../../data/imges/logo.png'
 import './ourStory.css';
+
+
 import headerBgImag from '../../../data/imges/headerBgImag.png'
 
 
@@ -28,7 +30,7 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import Hamborger from '../../mainPage/Hamborger'
 import TopPageDesktop from '../../mainPage/TopPageDesktop'
 
-function OurStory() {
+function OurStory(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
@@ -56,8 +58,13 @@ function OurStory() {
 
 
             <div className="PageContent mb-5">
-                <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הסיפור שלנו</span>&gt;</div>
-                <div className="d-flex justify-content-center ">
+                {/* <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הסיפור שלנו</span>&gt;</div> */}
+                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
+                    <div className='d-inline'>סקופ קייטרינג  </div>
+                    <div className='goldColor d-inline'> /הסיפור שלנו  </div>
+                </div>
+                <div className="d-flex justify-content-center mt-3">
                     <div className="theContent  mt-5 pt-5 mb-5" >
                         <h3 className="Title mb-3 font-weight-bold"> יחס אישי ואיכות בלי פשרות, הם סוד ההצלחה שלנו</h3>
                         <hr className=" mb-5 goldColor" style={{ width: '6%', height: '2px', opacity: '1', marginLeft: '49%' }} ></hr>

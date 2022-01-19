@@ -158,7 +158,7 @@ export function Home(props) {
                                 </div>
                             </div>
 
-                            <button className='bg-black text-white border mb-5 '> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>כנסו לכל המוצרים</button>
+                            <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>כנסו לכל המוצרים</button>
 
 
 

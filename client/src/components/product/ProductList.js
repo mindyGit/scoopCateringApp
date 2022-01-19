@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
@@ -12,6 +11,7 @@ import headerBgImag from '../../data/imges/headerBgImag.png'
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import useMediaQuery from "../../hooks/useMediaQuery";
+import Cart from '../../data/imges/cart.png'
 import '../../App.css'
 import $ from 'jquery'
 import { height } from '@mui/system';
@@ -63,22 +63,32 @@ function ProductList(props) {
 
 
       </div>
-      <div className='pageContent m-auto w-50 pt-4'>
-        <div className='location h6' style={{ right: '50px', position: 'absolute' }}>{lastSegment} /ראשי /חנות</div>
+      <div className='pageContent m-auto w-50 pt-4 pb-5'>
+        <div className='location ' style={{ right: '50px', position: 'absolute' }}><div className='goldColor d-inline'>{lastSegment}/ </div>
+          <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
+          <div className='d-inline' onClick={() => props.history.push('/shop')}>תפריט שבת </div>
+
+        </div>
         <button className='goldButton h5 p-2 mt-2' style={{
           left: '250px',
           position: 'absolute'
-        }}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>לסל הקניות </button>
+        }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>לסל הקניות </button>
         <br />
         <br />
         <h3 className='text-end font-weight-bold mb-1'>מנות ראשונות</h3>
         <h6 className='text-end  mb-5'> הוסיפו מוצרים לסל הקניות</h6>
-        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0' style={{ backgroundColor: '#F7F4EF' }}>
 
-          <div className='productName font-weight-bold col-3'> סלומון ברוטוב טריאקי</div>
-          <div className='amountOption col-2 pb-1 pt-1' style={{ fontSize: '12px', width: 'fit-content' }}>
+
+
+
+
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'> סלומון ברוטב טריאקי</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0" aria-label=".form-select-sm example " style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> 1 יחידה</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -86,19 +96,24 @@ function ProductList(props) {
             </select>
           </div>
           <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
-          <div className='price col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 </div>
-          <div className='amountToBuy col-3 goldColor d-flex     align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-1 pr-1 m-1' style={{ fontSize: '15px' }}>3</div>-</div>
-          <div className='addToCart col-2 bg-black text-white' style={{ height: 'fit-content' }}>הוספה לסל</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
 
         </div>
 
 
-        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0' style={{ backgroundColor: '#F7F4EF' }}>
 
-          <div className='productName font-weight-bold col-3'> סלומון ברוטוב טריאקי</div>
-          <div className='amountOption col-2 pb-1 pt-1' style={{ fontSize: '12px', width: 'fit-content' }}>
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'> סלומון ברוטב טריאקי</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> 1 יחידה</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -106,18 +121,21 @@ function ProductList(props) {
             </select>
           </div>
           <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
-          <div className='price col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 </div>
-          <div className='amountToBuy col-3 goldColor d-flex     align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-1 pr-1 m-1' style={{ fontSize: '15px' }}>3</div>-</div>
-          <div className='addToCart col-2 bg-black text-white' style={{ height: 'fit-content' }}>הוספה לסל</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
 
         </div>
 
-        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0' style={{ backgroundColor: '#F7F4EF' }}>
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
 
-          <div className='productName font-weight-bold col-3'> סלומון ברוטוב טריאקי</div>
-          <div className='amountOption col-2 pb-1 pt-1' style={{ fontSize: '12px', width: 'fit-content' }}>
+          <div className='productName font-weight-bold text-end col-4'> סלומון ברוטב טריאקי</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0" aria-label=".form-select-sm example " style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> 1 יחידה</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -125,19 +143,21 @@ function ProductList(props) {
             </select>
           </div>
           <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
-          <div className='price col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 </div>
-          <div className='amountToBuy col-3 goldColor d-flex     align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-1 pr-1 m-1' style={{ fontSize: '15px' }}>3</div>-</div>
-          <div className='addToCart col-2 bg-black text-white' style={{ height: 'fit-content' }}>הוספה לסל</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
 
         </div>
 
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
 
-        <div className=' productLine w-100 d-flex row rtl    justify-content-around align-items-center pr-1 pl-1 ml-0' style={{ backgroundColor: '#F7F4EF' }}>
-
-          <div className='productName font-weight-bold col-3'> סלומון ברוטוב טריאקי</div>
-          <div className='amountOption col-2 pb-1 pt-1' style={{ fontSize: '12px', width: 'fit-content' }}>
+          <div className='productName font-weight-bold text-end col-4'> סלומון ברוטב טריאקי</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> 1 יחידה</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -145,11 +165,158 @@ function ProductList(props) {
             </select>
           </div>
           <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
-          <div className='price col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 </div>
-          <div className='amountToBuy col-3 goldColor d-flex     align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-1 pr-1 m-1' style={{ fontSize: '15px' }}>3</div>-</div>
-          <div className='addToCart col-2 bg-black text-white' style={{ height: 'fit-content' }}>הוספה לסל</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
 
         </div>
+
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1'>
+
+          <div className='productName font-weight-bold text-end col-4'> סלומון ברוטב טריאקי</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> 1 יחידה</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+
+        <h4 className='text-end font-weight-bold mb-4 mt-5'>?אולי תרצה גם</h4>
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'>   תבנית חד"פ</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> גדול </option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'> סיר חד"פ  </div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> גדול</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1'>
+
+          <div className='productName font-weight-bold text-end col-4'>   חלה פיקנטית</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> בינוני</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+
+
+        <h4 className='text-end font-weight-bold mb-4 mt-5'>מוצרים משדרגים</h4>
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'> קוקה קולה</div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> גדול </option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+        <div className=' productLine w-100 d-flex row rtl  mb-3  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1' >
+
+          <div className='productName font-weight-bold text-end col-4'> פריגת  </div>
+          <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
+            <div >בחר אפשרות:</div>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+              <option selected> 600 מ"ל</option>
+              <option value="1">One</option>
+              <option value="2">Two</option>
+              <option value="3">Three</option>
+            </select>
+          </div>
+          <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
+          <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+          <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1' style={{ fontSize: '13px' }}>1</div>-</div>
+          <div className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}><img style={{
+            height: '17px',
+            marginLeft: '5px'
+          }} src={Cart} />הוספה לסל</div>
+
+        </div>
+
+
+
+
+
 
 
 

@@ -34,11 +34,11 @@ export function Nuv(props) {
                     navbarScroll
                 >
 
-                    <Nav.Link className="active hoverLink" href="/organizationsAndCompanies">ארגונים וחברות</Nav.Link>
-                    <Nav.Link className="active hoverLink" href="/orders">הזמנות</Nav.Link>
+                    <Nav.Link className="active hoverLink" href="/gallery">גלריה</Nav.Link>
+                    {/* <Nav.Link className="active hoverLink" href="/orders">הזמנות</Nav.Link> */}
 
-                    <Nav.Link className="active hoverLink" href="/recommend">ממליצים</Nav.Link>
-                    <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
+                    <Nav.Link className="active hoverLink" href="/contact-us">צור קשר</Nav.Link>
+                    {/* <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
                         <div className='row d-flex align-content-center justify-content-center  h-100 w-100 m-0'>
                             <div className='col-md-6 d-flex p-0 flex-column align-conte-center justify-content-center'>
                                 <NavDropdown.Item href="/menu/bakery" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' > בייקרי</NavDropdown.Item>
@@ -53,11 +53,14 @@ export function Nuv(props) {
                             <div className='col-md-6  CustomerItem p-0'><img className='h-100 w-100' src={foodExample} /></div>
                         </div>
                     </NavDropdown>
+ */}
+
+
                     <Nav.Link className="active hoverLink" href="/shop" >
-                        חנות
+                        תפריט שבת
                     </Nav.Link>
                     <Nav.Link className="active hoverLink" href="/events" >
-                        אירועים
+                        הזמנת אירועים
                     </Nav.Link>
 
 
@@ -72,7 +75,7 @@ export function Nuv(props) {
                                 <hr className="hr_Style m-0 mb-2" />
                                 <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' > הצוות שלנו </NavDropdown.Item>
                                 <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/home/contactUs" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>צור קשר</NavDropdown.Item>
+                                <NavDropdown.Item href="/home/kashrut" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>כשרות</NavDropdown.Item>
                                 <hr className="hr_Style m-0 mb-2" />
                             </div>
                             <div className='col-md-6   CustomerItem p-0'> <img className='h-100 w-100' src={img1} /></div>

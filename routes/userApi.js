@@ -72,9 +72,11 @@ router.get('/users', async (req, res) => {
 
 
     User.find().then(users => {
-        if (!users)
-            console.log("users:::::::::" + users);
-        res.send(users);
+        if (users)
+            res.send(users);
+        else
+            res.send("no users");
+
     })
         .catch((err) => {
             res.status(500).send(err)

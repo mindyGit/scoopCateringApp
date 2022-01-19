@@ -44,7 +44,7 @@ app.use(fileupload());
 // app.use(helmet());
 // app.get('/', (req, res) => { res.send('hello world') })
 
-
+// if(req.get('host')=="http://scoopcatering.co.il/")
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', (req, res) => {
@@ -75,7 +75,7 @@ let transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
         user: 'mindysahar@gmail.com',
-        pass: '0548440106'
+        pass: '0583233770'
     }
 });
 
@@ -87,7 +87,7 @@ let messageOptions = {
     text: 'Hi there. This email was automatically sent by us.'
 };
 //send email every monday at 10:00 automatically
-cron.schedule('0 10 * * Monday', function () {
+cron.schedule('0 11 * * Monday', function () {
     console.log('---------------------');
     console.log('Running Cron Job');
     transporter.sendMail(messageOptions, function (error, info) {
