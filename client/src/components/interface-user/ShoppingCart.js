@@ -55,9 +55,12 @@ export function ShoppingCart(props) {
 
 
             </div>
-            <div className="page_content justify-content-center pt-5 mt-5" style={{ width: '80%', margin: 'auto' }}>
-
-                <h2 className="text-end mb-4 font-weight-bold">סל הקניות</h2>
+            <div className="page_content justify-content-center pt-3 " style={{ width: '80%', margin: 'auto' }}>
+                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
+                    <div className='goldColor d-inline'> / סל הקניות </div>
+                </div>
+                <h2 className="text-end mb-4 font-weight-bold mt-5 pt-5 ">סל הקניות</h2>
                 <div className="row justify-content-between rtl">
                     <div className=" bg-grey col-8  px-5 pb-3">
                         <div className="row justify-content-around text-white align-items-center py-3">

@@ -64,7 +64,10 @@ if (process.env.NODE_ENV === 'production') {
     });
 
 }
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect(process.env.DB_CONNECT, {
+    useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true,
+    useFindAndModify: false
+}, () => {
     console.log("connected to db")
     // emails = db.Email.find();
     // console.log(emails);

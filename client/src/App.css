@@ -64,7 +64,12 @@ h5.title{
 a.TitleB{
   font-weight: bolder !important;
 }
-a.subTitleB{
+/* a.subTitleB{
+ 
+  color: #d4cccc !important;
+
+} */
+a.subTitleB:hover{
  
   color: #FFFFFF !important;
 

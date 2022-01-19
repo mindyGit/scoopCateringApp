@@ -85,7 +85,7 @@ export function Footer() {
                                             </li>
                                             <li>
                                                 <a href="#pablo" class="text-muted subTitleB">
-                                                    תפריט חלבי אקסלוסיב
+                                                    תפריט חלבי
                                                 </a>
                                             </li>
                                         </ul>
@@ -126,7 +126,7 @@ export function Footer() {
                                     </li>
                                     <li>
                                         <a href="#pablo" class="text-muted subTitleB">
-                                            תפריט חלבי אקסלוסיב
+                                            תפריט חלבי
                                         </a>
                                     </li>
                                     <li>

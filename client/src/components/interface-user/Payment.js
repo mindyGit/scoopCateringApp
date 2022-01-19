@@ -55,8 +55,14 @@ export function Payment(props) {
 
 
             </div>
-            <div className="page_content justify-content-center pt-5 mt-5" style={{ width: '65%', margin: 'auto' }}>
-                <h2 className="text-end mb-5 font-weight-bold">אמצעי תשלום </h2>
+            <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
+                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
+                    <div className='d-inline' onClick={() => props.history.push('/Checkout')}> /ביצוע הזמנה</div>
+
+                    <div className='goldColor d-inline'> /תשלום  </div>
+                </div>
+                <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">אמצעי תשלום </h2>
                 <div className="row justify-content-start rtl">
                     <div className="  col-6 ml-5 p-0 text-end ">
 

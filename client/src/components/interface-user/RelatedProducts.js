@@ -78,8 +78,14 @@ export function RelatedProducts(props) {
             </div>
 
 
-            <div className="pageContent">
+            <div className="pageContent pt-3">
+                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
+                    <div className='d-inline' onClick={() => props.history.push('/shop')}>תפריט שבת </div>
+                    <div className='goldColor d-inline'>/מוצרים נלווים   </div>
 
+
+                </div>
 
 
             </div>
