@@ -27,10 +27,12 @@ import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import arrow_left_white from '../../data/imges/arrow-left-white.png'
 import $ from 'jquery'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 export function Checkout(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { t, i18n } = useTranslation();
     const products = Store.getState().productReducer.products
     useEffect(() => {
         if ($) { }
@@ -50,17 +52,18 @@ export function Checkout(props) {
             </div>
 
             <div className="pageHeader">
-                <label > ביצוע הזמנה </label>
+                <label > {i18.t('checkout')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
             </div>
-            <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
-                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='goldColor d-inline'> / ביצוע הזמנה </div>
-                </div>
-                <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">ביצוע הזמנה </h2>
+            <div className='location pt-3 text-end px-5 ' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='goldColor d-inline'> / {i18.t('checkout')} </div>
+            </div>
+            <div className="page_content justify-content-center pt-5 " style={{ width: '65%', margin: 'auto' }}>
+
+                <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">{i18.t('checkout')} </h2>
                 <div className="row justify-content-start rtl">
                     <div className="  col-6 ml-5 p-0 text-end ">
 

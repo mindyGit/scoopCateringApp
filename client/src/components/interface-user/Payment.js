@@ -27,10 +27,12 @@ import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import arrow_left_white from '../../data/imges/arrow-left-white.png'
 import $ from 'jquery'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 export function Payment(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { t, i18n } = useTranslation();
     const products = Store.getState().productReducer.products
     useEffect(() => {
         if ($) { }
@@ -50,18 +52,19 @@ export function Payment(props) {
             </div>
 
             <div className="pageHeader">
-                <label > תשלום </label>
+                <label > {i18.t('payment')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
             </div>
-            <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
-                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='d-inline' onClick={() => props.history.push('/Checkout')}> /ביצוע הזמנה</div>
+            <div className='location pt-3 text-end px-5 ' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='d-inline' onClick={() => props.history.push('/Checkout')}> /{i18.t('checkout')}</div>
 
-                    <div className='goldColor d-inline'> /תשלום  </div>
-                </div>
+                <div className='goldColor d-inline'> /{i18.t('payment')}  </div>
+            </div>
+            <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
+
                 <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">אמצעי תשלום </h2>
                 <div className="row justify-content-start rtl">
                     <div className="  col-6 ml-5 p-0 text-end ">
@@ -103,7 +106,7 @@ export function Payment(props) {
                         <label className="  w-100 pt-1 text-end  goldbgColor px-3 mb-0" > אפשרויות תשלום נוספות </label>
                         <div className=" bg-grey p-3 mb-4">
                             <p>ביט / פייבוקס / העברה בנקאית </p>
-                            <p>צרו קשר עם המשרד 054292595</p>
+                            <p>צרו קשר עם המשרד {i18.t('CompanyPhone')}</p>
                             <div className="row">
                                 <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
                                     <option> בחר אופן תשלום</option>

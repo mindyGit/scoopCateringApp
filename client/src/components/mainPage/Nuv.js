@@ -8,90 +8,145 @@ import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
 import Search from '../Search';
-
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+import $ from 'jquery'
+import { useTranslation } from 'react-i18next';
+import i18 from '../../i18/i18';
 
 import Navbar from 'react-bootstrap/Navbar'
+import { useEffect } from 'react';
 export function Nuv(props) {
+    const { language } = props
+    async function chang_language(lang) {
+        i18n.changeLanguage(lang)
+        if (lang == 'en') {
+            await props.setLanguage(lang)
+
+        }
+        else
+            if (lang == 'he') {
+                await props.setLanguage(lang)
+
+            }
+
+    }
+
+    const { t, i18n } = useTranslation();
     const { products } = props;
+    useEffect(() => {
+        if ($) {
+
+            // if (language == 'he') {
+            //     $('.EnLanguage').removeClass('d-none')
+            //     $('.HeLanguage').addClass('d-none')
+            //     $('.scoopButton').css('direction', 'rtl')
+            //     $('.linksNuv').addClass('rtl')
+            //     $('.linksNuv').css({ "right": '3%', "position": 'absolute' })
+            //     $('.svgSize').css({ "right": '', "left": '200px' })
+            //     $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', left: '0px' })
+            //     $('.location').removeClass('text-start').addClass('text-end')
+            //     $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
+            //     $('.swithSide').css('text-align', 'right')
+            //     $('.productLine').addClass('rtl')
+            //     $('.productName').css('text-align', 'right')
+            //     $('.productLine').css({ "border-right": "8px solid #C59950", "border-left": '0px solid #C59950' })
+            //     $('.swithDir').addClass('rtl')
+
+
+
+            // }
+            // else {
+            //     // $(".inputOfSearch").css('plach')
+            //     $('.HeLanguage').removeClass('d-none')
+            //     $('.EnLanguage').addClass('d-none')
+            //     $('.linksNuv').removeClass('rtl')
+            //     $('.swithDir').removeClass('rtl')
+
+            //     $('.scoopButton').css('direction', 'ltr')
+            //     $('.linksNuv').css({ "right": '', "position": '' })
+            //     $('.location').removeClass('text-end').addClass('text-start')
+            //     $('.svgSize').css({ "right": '200px', "left": '' })
+            //     $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
+            //     $(".inputOfSearch").attr("placeholder", " ")
+            //     $('.swithSide').css('text-align', 'left')
+            //     $('.productLine').removeClass('rtl')
+            //     $('.productName').css('text-align', 'left')
+            //     $('.productLine').css({ "border-right": "0px solid #C59950", "border-left": '8px solid #C59950' })
+
+
+            // }
+        }
+    }, [$, language])
     return (
 
+        <>
+            <Navbar variant="dark" expand="lg" style={{ height: '8vh' }}>
 
-        <Navbar variant="dark" expand="lg" style={{ height: '8vh' }}>
-
-            <Navbar.Brand href="#"></Navbar.Brand>
-            <Navbar.Toggle aria-controls="navbarScroll" />
-            <Navbar.Collapse id="navbarScroll">
+                <Navbar.Brand ></Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
 
 
 
-                {/* <Search details={products} /> */}
-                <Nav
-                    className="me-auto my-2 my-lg-0 linksNuv pt-2 pb-2"
-                    style={{
-                        maxHeight: 'fit-content', right: '3%',
-                        position: 'absolute'
-                    }}
-                    navbarScroll
-                >
+                    {/* <Search details={products} /> */}
+                    <Nav
+                        className="me-auto my-2 my-lg-0 linksNuv pt-2 pb-2 "
+                        style={{
+                            // maxHeight: 'fit-content', right: '3%',
+                            // position: 'absolute'
+                        }}
+                        navbarScroll
+                    >
+                        <NavDropdown className=" hoverLink scoopButton" title={i18.t('ScoopCatering')}
+                            id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
+                            <div className='row d-flex align-content-center justify-content-center h-100 w-100 m-0'>
+                                <div className='col-md-6 d-flex p-0 flex-column align-conte-center justify-content-center'>
 
-                    <Nav.Link className="active hoverLink" href="/gallery">גלריה</Nav.Link>
-                    {/* <Nav.Link className="active hoverLink" href="/orders">הזמנות</Nav.Link> */}
 
-                    <Nav.Link className="active hoverLink" href="/contact-us">צור קשר</Nav.Link>
-                    {/* <NavDropdown className="hoverLink" title="תפריטים" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-                        <div className='row d-flex align-content-center justify-content-center  h-100 w-100 m-0'>
-                            <div className='col-md-6 d-flex p-0 flex-column align-conte-center justify-content-center'>
-                                <NavDropdown.Item href="/menu/bakery" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' > בייקרי</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/menu/weekday" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>סקופ אמצ"ש</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/menu/holidays" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'> מתחם חגים  </NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/menu/salads" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'> סלטים</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
+
+                                    <NavDropdown.Item onClick={() => props.history.push('/home/ourStory')} style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' >{i18.t('OurStory')} </NavDropdown.Item>
+
+                                    <hr className="hr_Style m-0 mb-2" />
+                                    <NavDropdown.Item onClick={() => props.history.push('/home/ourCustomers')} style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>{i18.t('OurCustomers')}</NavDropdown.Item>
+                                    <hr className="hr_Style m-0 mb-2" />
+                                    <NavDropdown.Item onClick={() => props.history.push('/home/ourTeam')} style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' >  {i18.t('OurTeam')} </NavDropdown.Item>
+                                    <hr className="hr_Style m-0 mb-2" />
+                                    <NavDropdown.Item onClick={() => props.history.push('/home/kashrut')} style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>{i18.t('Kashrut')}</NavDropdown.Item>
+                                    <hr className="hr_Style m-0 mb-2" />
+                                </div>
+                                <div className='col-md-6   CustomerItem p-0'> <img className='h-100 w-100' src={img1} /></div>
                             </div>
-                            <div className='col-md-6  CustomerItem p-0'><img className='h-100 w-100' src={foodExample} /></div>
-                        </div>
-                    </NavDropdown>
- */}
+                        </NavDropdown>
+                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/events')} >{i18.t('EventBooking')}</Nav.Link>
+                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/shop')} >{i18.t('shabatMenu')}</Nav.Link>
+                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/contact-us')} >{i18.t('ContactUs')} </Nav.Link>
+                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/gallery')}>{i18.t('gallery')}</Nav.Link>
+                        <ButtonGroup disableElevation variant="contained" color="primary">
+
+                            <Button
+                                className="HeLanguage bg-black border-0  p-0 ml-4"
+                                onClick={() => chang_language("he")}
+                                color="secondary">
+                                HE
+                            </Button>
+                            <Button
+                                className="EnLanguage d-none bg-black border-white p-0 mr-4"
+                                onClick={() => chang_language("en")}
+                            >
+                                EN
+                            </Button>
+                        </ButtonGroup>
+
+                    </Nav>
 
 
-                    <Nav.Link className="active hoverLink" href="/shop" >
-                        תפריט שבת
-                    </Nav.Link>
-                    <Nav.Link className="active hoverLink" href="/events" >
-                        הזמנת אירועים
-                    </Nav.Link>
+                </Navbar.Collapse>
 
-
-                    <NavDropdown id="scoopButton" className=" hoverLink " title=" סקופ קייטרינג" id="navbarScrollingDropdown" style={{ direction: "rtl" }}>
-                        <div className='row d-flex align-content-center justify-content-center h-100 w-100 m-0'>
-                            <div className='col-md-6 d-flex p-0 flex-column align-conte-center justify-content-center'>
-
-
-                                <NavDropdown.Item href="/home/ourStory" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' >הסיפור שלנו</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/home/ourCustomers" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>לקוחותינו</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/home/ourPeeks" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0' > הצוות שלנו </NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                                <NavDropdown.Item href="/home/kashrut" style={{ textAlign: 'start' }} className='pb-1 pr-0 h2 m-0'>כשרות</NavDropdown.Item>
-                                <hr className="hr_Style m-0 mb-2" />
-                            </div>
-                            <div className='col-md-6   CustomerItem p-0'> <img className='h-100 w-100' src={img1} /></div>
-                        </div>
-                    </NavDropdown>
-
-
-                </Nav>
-
-
-            </Navbar.Collapse>
-
-        </Navbar >
+            </Navbar >
 
 
 
+        </>
 
 
     );
@@ -101,12 +156,13 @@ const mapStateToProps = (state) => {
     return {
 
         products: state.productReducer.products,
+        language: state.languageReducer.language
 
     };
 }
 const mapDispatchToProps = (dispatch) => ({
     getAllProducts: () => dispatch(actions.getAllProducts()),
-
+    setLanguage: (lan) => dispatch(actions.setLanguage(lan))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Nuv)
 

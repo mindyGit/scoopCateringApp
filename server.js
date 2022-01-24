@@ -105,3 +105,20 @@ cron.schedule('0 11 * * Monday', function () {
 app.listen(port, () => {
     console.log(" listening to port :" + port);
 })
+// export let MSGS = {
+//     'key': {
+//         en: 'קוד',
+//         he: "code",
+
+//     }
+// }
+
+// let LANG = localStorage.getItem('LANG');
+// if (!LANG || LANG == '' || LANG == 'undefined') {
+//     LANG = 'he';
+//     localStorage.setItem('LANG', 'he');
+// }
+
+// export const findword = (word) => {
+//     return MSGS[key].LANG
+// }

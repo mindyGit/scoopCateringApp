@@ -27,7 +27,13 @@ import products_ from '../../data/imges/foodCategories/products.png'
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import soops from '../../data/imges/foodCategories/soops_.jpg'
+import drinks from '../../data/imges/drinks.png'
+
 import $ from 'jquery'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
+
+
 import { height } from "@mui/system";
 
 
@@ -37,7 +43,7 @@ export function Shop(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { t, i18n } = useTranslation();
     const products = Store.getState().productReducer.products
     useEffect(() => {
         if ($) {
@@ -67,38 +73,38 @@ export function Shop(props) {
             </div>
 
             <div className="pageHeader">
-                <label > תפריט שבת</label>
+                <label > {i18.t('shabatMenu')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
             </div>
 
+            <div className='location pt-3 text-end px-5 ' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='goldColor d-inline'> /{i18.t('shabatMenu')}  </div>
+            </div>
+            <div className="page_content justify-content-center pt-5">
 
-            <div className="page_content justify-content-center pt-3">
-                <div className='location' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='goldColor d-inline'> /תפריט שבת </div>
-                </div>
-                <h2> קטגוריות אוכל מוכן </h2>
+                <h2>{i18.t('PreparedFoodCategories')} </h2>
                 <hr className="m-auto mb-3 goldColor" style={{ width: '4%', height: '3px', opacity: '1' }} ></hr>
-                <h6>בואו לטעום ממאכלי השבת</h6>
+                <h6>{i18.t('ComeAndTasteTheShabbatFood')}</h6>
                 <div className="foodCategories">
 
 
                     <div className="row mb-3 d-flex justify-content-center wrapper">
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/firsts')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">מנות ראשונות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Appetizers')}>
+                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">מנות פתיחה</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={fish} />
                         </div>
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/salads')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Salads')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">סלטים </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={salads} />
                         </div>
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/bakery')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Bakery')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מאפיה</h5> <h6 className=" mb-0">מוצרים 36</h6></div>
                         </div>
                             <img className="h-100 w-100" src={shabat} />
@@ -108,19 +114,19 @@ export function Shop(props) {
 
                     </div>
                     <div className="row mb-3 d-flex justify-content-center">
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/desserts')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Desserts')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">קינוחים </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={desserts} />
                         </div>
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/mainCourses')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/MainCourses')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מנות עקריות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={mainCourses} />
                         </div>
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/extras')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Extras')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold"> תוספות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={Extras} />
@@ -130,12 +136,16 @@ export function Shop(props) {
                     </div>
                     <div className="row mb-3 d-flex justify-content-center">
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/relatedProducts')}>
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/RelatedProducts')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מוצרים נלווים  </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>
                             <img className="h-100 w-100" src={soops} />
                         </div>
-
+                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Drinks')}>
+                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">משקאות  </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
+                        </div>
+                            <img className="h-100 w-100" src={drinks} />
+                        </div>
                         {/* <div className="categoryItem mr-3 p-0" style={{ width: '20%' }}><div className="categoryHover" onClick={() => props.history.push('/shop/mainCourses')}>
                             <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מנות עקריות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                         </div>

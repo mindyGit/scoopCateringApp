@@ -6,7 +6,8 @@ import VectorSmart from '../../data/imges/VectorSmart.png'
 import allVectorSmart from '../../data/imges/allVectorSmart.png'
 import InputGroup from 'react-bootstrap/InputGroup'
 
-
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
 {/* <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png"> */ }
 
@@ -18,6 +19,8 @@ import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "r
 // import "https://use.fontawesome.com/releases/v5.7.1/css/all.css"
 
 export function Footer() {
+    const { t, i18n } = useTranslation();
+
     return (
         <>
             <footer class="footer footer-big " style={{ backgroundColor: '#0F0F0F' }}>
@@ -149,7 +152,7 @@ export function Footer() {
 
 
                             <div class="col-md-2 text-end">
-                                <h5 class="title"> סקופ קייטרינג</h5>
+                                <h5 class="title"> {i18.t('ScoopCatering')}</h5>
                                 <ul class="links-vertical">
                                     <li>
                                         <a href="#pablo" class="text-muted subTitleB TitleB">
@@ -210,7 +213,8 @@ export function Footer() {
                         </div>
 
                         <div class=" col-md-3 mb-4 p-0 mr-3">
-                            scoop@scoop.com
+
+                            {i18.t('CompanyEmail')}
                             <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
                                 <Image src={emailIcon} style={{ height: '18px', marginBottom: "3px" }} />
                             </div>
@@ -220,7 +224,7 @@ export function Footer() {
 
 
                         <div class=" col-md-3 mb-4 p-0  ml-4">
-                            077-255-9982
+                            {i18.t('CompanyPhone')}
                             <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
                                 <Image src={phoneIcon} style={{ height: '22px', marginBottom: "3px" }} />
                             </div>

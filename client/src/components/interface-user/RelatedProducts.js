@@ -31,7 +31,8 @@ import TopPageDesktop from '../mainPage/TopPageDesktop'
 import Scroll from '../Scroll';
 import SearchList from '../SearchList';
 import $ from 'jquery'
-
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -39,6 +40,7 @@ export function RelatedProducts(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
+    const { t, i18n } = useTranslation();
 
 
 
@@ -80,7 +82,7 @@ export function RelatedProducts(props) {
 
             <div className="pageContent pt-3">
                 <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
+                    <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>   /
                     <div className='d-inline' onClick={() => props.history.push('/shop')}>תפריט שבת </div>
                     <div className='goldColor d-inline'>/מוצרים נלווים   </div>
 

@@ -30,8 +30,11 @@ import useMediaQuery from "../../../hooks/useMediaQuery";
 import Hamborger from '../../mainPage/Hamborger'
 import TopPageDesktop from '../../mainPage/TopPageDesktop'
 
-function OurStory(props) {
+import i18 from '../../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
+function OurStory(props) {
+    const { t, i18n } = useTranslation();
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
 
@@ -48,7 +51,7 @@ function OurStory(props) {
             </div>
 
             <div className="pageHeader">
-                <label >הסיפור שלנו</label>
+                <label >{i18.t('OurStory')}</label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
                 {/* <img className="h-100 w-100" src={headerBgImag} /> */}
 
@@ -56,28 +59,29 @@ function OurStory(props) {
 
 
 
-
+            <div className='location pt-3 text-end px-5' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                {/* <div className='d-inline'>  </div> */}
+                <div className='goldColor d-inline'> /{i18.t('OurStory')}  </div>
+            </div>
             <div className="PageContent mb-5">
-                {/* <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הסיפור שלנו</span>&gt;</div> */}
-                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
-                    <div className='d-inline'>סקופ קייטרינג  </div>
-                    <div className='goldColor d-inline'> /הסיפור שלנו  </div>
-                </div>
+
+
                 <div className="d-flex justify-content-center mt-3">
                     <div className="theContent  mt-5 pt-5 mb-5" >
-                        <h3 className="Title mb-3 font-weight-bold"> יחס אישי ואיכות בלי פשרות, הם סוד ההצלחה שלנו</h3>
+                        <h3 className="Title mb-3 font-weight-bold">{i18.t('ourStoryLable1')}</h3>
                         <hr className=" mb-5 goldColor" style={{ width: '6%', height: '2px', opacity: '1', marginLeft: '49%' }} ></hr>
-                        <p className="text-end mb-0">סקופ קייטרינג התחילה כבית קפה קטן בבית שמש, גרי שיקמן ואריה בן חמו, שניהם עם נסיון</p>
-                        <p className="text-end mb-0">.עשיר בתחום המזון.הבינו שיש חוסר במקומות הסעדה המספקים שירות אישי ומזון איכותי</p>
-                        <p className="text-end mb-0">המקום החדש שגשג, ובתוך שנה מהפתיחה, כבר פתחו השותפים את הסניף הבא ביישוב אפרת. כיום סקופ קייטרינג  </p>
-                        <p className="text-end mb-0">מספק את אותו חזון לשירות ואיכות, גם במטבח החלבי, וגם במטבח הבשרי של החברה, אשר מספקים שירות יום יומי</p>
-                        <p className="text-end ">לחברות, מוסדות, ואירועים בכל גודל ותקציב</p>
+                        <span className="swithSide ">
+                            <p className=" mb-0">{i18.t('ScoopCatering')} {i18.t('ourStoryTitle1')}</p>
+                            <p className=" mb-0">{i18.t('ourStoryTitle2')}</p>
+                            <p className=" mb-0">{i18.t('ourStoryTitle3')} {i18.t('ScoopCatering')}  </p>
+                            <p className=" mb-0">{i18.t('ourStoryTitle4')}</p>
+                            <p className=" ">{i18.t('ourStoryTitle5')}</p>
 
-                        <p className="text-end">בשנים האחרונות הצטרף מייקל סמייגל כשהוא מרחיב את פעילות החברה לקהלים חדשים מחוץ לגוש עציון ובבית שמש</p>
+                            <p className="">{i18.t('ourStoryTitle6')}</p>
 
-
-                        <h3 className="Title mb-3 font-weight-bold mt-5"> בעלי הקייטרינג</h3>
+                        </span>
+                        <h3 className="Title mb-3 font-weight-bold mt-5"> {i18.t('ourStoryLable2')}</h3>
                         <hr className="m-auto mb-5 goldColor" style={{ width: '6%', height: '2px', opacity: '1' }} ></hr>
                         <div className="row d-flex justify-content-center mb-5">
                             <div class="col-md-3 teamItem d-flex  align-items-center flex-column mt-5">

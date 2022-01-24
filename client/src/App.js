@@ -22,11 +22,12 @@ import NewProduct from './components/product/NewProduct';
 import { connect } from 'react-redux';
 import Search from './components/Search';
 import initialDetails from './data/initialDetails';
-import UpLoadImg from './components/UpLoadImg'
+
 import AppFirebase from './components/Firebase/AppFirebase'
 import OrderSummary from './components/interface-manager/OrderSummary'
 import Try from './components/try'
 import NavBar from './components/navBar/NavBar'
+import Nuv from './components/mainPage/Nuv'
 import SearchList from './components/SearchList'
 import SearchResults from './components/interface-user/SearchResults'
 import ShoppingCart from './components/interface-user/ShoppingCart'
@@ -90,13 +91,13 @@ function App(props) {
           <Route exact path="/shop" component={Shop} />
           <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
           <Route exact path="/shop/*" component={ProductList} />
-
+          <Route exact path="/Nuv/" component={Nuv} />
 
 
 
           <Route exact path="/contact-us" component={ContactUs} />
 
-          <Route exact path="/home/ourPeeks" component={OurPeeks} />
+          <Route exact path="/home/ourTeam" component={OurPeeks} />
           <Route exact path="/home/ourCustomers" component={OurCustomers} />
           <Route exact path="/home/OurStory" component={OurStory} />
           <Route exact path="/home/kashrut" component={Kashrut} />

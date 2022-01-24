@@ -31,11 +31,13 @@ import TopPageDesktop from '../mainPage/TopPageDesktop'
 import Scroll from '../Scroll';
 import SearchList from '../SearchList';
 import $ from 'jquery'
-
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
 
 
 export function SearchResults(props) {
+    const { t, i18n } = useTranslation();
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
@@ -98,13 +100,13 @@ export function SearchResults(props) {
                 <label > תוצאות חיפוש</label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
-
+            <div className='location pt-3 text-end px-5' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='goldColor d-inline'> / תוצאות חיפוש </div>
+            </div>
 
             <div className="pageContent pt-3">
-                <div className='location' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='goldColor d-inline'> / תוצאות חיפוש </div>
-                </div>
+
 
                 {searchList()}
 

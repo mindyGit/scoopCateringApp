@@ -26,11 +26,13 @@ import products_ from '../../data/imges/foodCategories/products.png'
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import arrow_left_white from '../../data/imges/arrow-left-white.png'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 import $ from 'jquery'
 export function ShoppingCart(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { t, i18n } = useTranslation();
     const products = Store.getState().productReducer.products
     useEffect(() => {
         if ($) { }
@@ -50,18 +52,19 @@ export function ShoppingCart(props) {
             </div>
 
             <div className="pageHeader">
-                <label > סל הקניות</label>
+                <label > {i18.t('ShoppingCart')}</label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
             </div>
-            <div className="page_content justify-content-center pt-3 " style={{ width: '80%', margin: 'auto' }}>
-                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='goldColor d-inline'> / סל הקניות </div>
-                </div>
-                <h2 className="text-end mb-4 font-weight-bold mt-5 pt-5 ">סל הקניות</h2>
-                <div className="row justify-content-between rtl">
+            <div className='location pt-3 text-end px-5 ' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='goldColor d-inline'> / {i18.t('ShoppingCart')} </div>
+            </div>
+            <div className="page_content justify-content-center pt-5" style={{ width: '80%', margin: 'auto' }}>
+
+                <h2 className="text-end mb-4 font-weight-bold mt-5 pt-5 ">{i18.t('ShoppingCart')}</h2>
+                <div className="row justify-content-between swithDir">
                     <div className=" bg-grey col-8  px-5 pb-3">
                         <div className="row justify-content-around text-white align-items-center py-3">
                             <div className="col-2 text-black mb-0 h6">שם המוצר</div>|
@@ -69,8 +72,8 @@ export function ShoppingCart(props) {
                             <div className="col-2 text-black mb-0 h6">מחיר</div>|
                             <div className="col-3 text-black text-end pr-5 mb-0 h6">סה"כ</div>
                         </div>
-                        <div className="productItem row justify-content-between align-items-end    border-bottom border-dark py-2">
-                            <div className='col-3 productName font-weight-bold text-end '> סלומון ברוטב טריאקי
+                        <div className="productItem mb-2 row justify-content-between align-items-end    border-bottom border-dark py-2">
+                            <div className='col-3 productName font-weight-bold  '> סלומון ברוטב טריאקי
 
                                 <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
                                     <option selected> 1 יחי'</option>
@@ -88,7 +91,26 @@ export function ShoppingCart(props) {
 
                         </div>
 
-                        <div className="productItem row justify-content-between align-items-end    border-bottom border-dark py-2">
+                        <div className="productItem mb-2 row justify-content-between align-items-end    border-bottom border-dark py-2">
+                            <div className='col-3 productName font-weight-bold  '> סלומון ברוטב טריאקי
+
+                                <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+                                    <option selected> 1 יחי'</option>
+                                    <option value="1">One</option>
+                                    <option value="2">Two</option>
+                                    <option value="3">Three</option>
+                                </select>
+                            </div>
+                            <div className='col-2 amountToBuy goldColor d-flex align-items-end'>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2  m-1 my-0' style={{ fontSize: '13px' }}>1</div>-</div>
+                            <div className='col-2 price h6 mb-0 font-weight-bold  goldColor ' >14.90 &#8362; </div>
+
+                            <div className='col-2 endprice h6 mb-0 font-weight-bold pr-5 ' >46.70 &#8362; </div>
+                            <i class="fas fa-trash-alt col-1"></i>
+
+
+                        </div>
+
+                        <div className="productItem mb-2 row justify-content-between align-items-end    border-bottom border-dark py-2">
                             <div className='col-3 productName font-weight-bold text-end '> סלומון ברוטב טריאקי
 
                                 <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
@@ -107,26 +129,7 @@ export function ShoppingCart(props) {
 
                         </div>
 
-                        <div className="productItem row justify-content-between align-items-end    border-bottom border-dark py-2">
-                            <div className='col-3 productName font-weight-bold text-end '> סלומון ברוטב טריאקי
-
-                                <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
-                                    <option selected> 1 יחי'</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                            <div className='col-2 amountToBuy goldColor d-flex align-items-end'>+<div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2  m-1 my-0' style={{ fontSize: '13px' }}>1</div>-</div>
-                            <div className='col-2 price h6 mb-0 font-weight-bold  goldColor ' >14.90 &#8362; </div>
-
-                            <div className='col-2 endprice h6 mb-0 font-weight-bold pr-5 ' >46.70 &#8362; </div>
-                            <i class="fas fa-trash-alt col-1"></i>
-
-
-                        </div>
-
-                        <div className="productItem row justify-content-between align-items-end    py-2">
+                        <div className="productItem mb-2 row justify-content-between align-items-end    py-2">
                             <div className='col-3 productName font-weight-bold text-end '> סלומון ברוטב טריאקי
 
                                 <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
@@ -164,7 +167,7 @@ export function ShoppingCart(props) {
                                 <div className="col-7 text-end">סה"כ</div>
                                 <div className="col-5 ">178.8 ש"ח</div>
                             </div>
-                            <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> לרכישה<img src={arrow_left_white} style={{
+                            <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} <img src={arrow_left_white} style={{
                                 paddingRight: '5px',
                                 width: '25px'
                             }} /></button>

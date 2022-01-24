@@ -22,16 +22,18 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 export function OurPeeks(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
+    const { t, i18n } = useTranslation();
 
     return (
-
         <div style={{
             // backgroundImage: `url(${bgImagOurPeeks})`,
-            height: '1400px',
+            height: '1600px',
             width: '100vw'
 
         }} >
@@ -49,7 +51,7 @@ export function OurPeeks(props) {
             </div>
 
             <div className="pageHeader">
-                <label > הצוות שלנו</label>
+                {/* <label > {i18.t('OurTeam')}</label> */}
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
@@ -59,36 +61,35 @@ export function OurPeeks(props) {
 
 
             <section className="" style={{ height: '100%' }}>
-
+                <div className='location pt-3 text-end px-5'>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                    {/* <div className='d-inline'>  </div> */}
+                    <div className='goldColor d-inline'> /{i18.t('OurTeam')} </div>
+                </div>
 
                 <div class="OurPeekscontent flex-column ">
 
-                    {/* <div className="routing text-end pr-4 pt-3">  דף הבית&gt; סקופ קייטרינג <span style={{ color: "#C59950 " }}>&gt; הצוות שלנו</span>&gt;</div> */}
-                    <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                        <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
-                        <div className='d-inline'>סקופ קייטרינג  </div>
-                        <div className='goldColor d-inline'> /הצוות שלנו </div>
-                    </div>
+
 
                     <div className="titel pt-5 mt-5">
-                        <h1 className="font-weight-bold mb-0">הצוות שלנו</h1>
+                        <h1 className="font-weight-bold mb-0">{i18.t('OurTeam')}</h1>
                     </div>
                     <hr className="hrStyle " style={{ width: '10%' }} />
-                    <div className="content mt-3  pr-5 ">
-                        <span className="text-end  pr-5">
-                            <pre className="preStyle font-weight-bold h5" >בסקופ קייטרינג השירות תמיד נמצא בראש סדר העדיפויות שלנו.</pre>
-                            <pre className="preStyle h5">אנחנו יודעים עד כמה מיוחד וחשוב לכם האירוע שלכם, ולכן גם לנו הוא חשוב.</pre>
+                    <div className="content mt-5  ">
+                        <span className="swithSide ">
+                            <p className="preStyle font-weight-bold h5" >{i18.t('ourTeamTitle1')}</p>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle2')}</p>
                             <br />
-                            <pre className="preStyle h5">הצוות שלנו בסקופ תמיד אדיב ומחויך,</pre>
-                            <pre className="preStyle h5">ויגיש לאורחים שלכם שירות אישי ברמה שלא תישכח עבורם.</pre>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle3')}</p>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle4')}</p>
                             <br />
-                            <pre className="preStyle h5">בכל אירוע יש "מנהל אירועים" הדואג שהכול יהיה מושלם.</pre>
-                            <pre className="preStyle h5">תפקידו גם להיות קשוב לצרכים והבקשות המיוחדות שלכם מתחילת האירוע ועד סופו.</pre>
-                            <pre className="preStyle h5">כך שאתם יכולים להיות רגועים וליהנות מהאירוע.</pre>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle5')}</p>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle6')}</p>
+                            <p className="preStyle h5">{i18.t('ourTeamTitle7')}</p>
 
                         </span>
 
-                        <div className="teamList" >
+                        <div className="teamList mt-5" >
                             <div className="row mb-3">
 
                                 <div className="col-md-4 teamItem d-flex  align-items-center flex-column">
@@ -140,7 +141,7 @@ export function OurPeeks(props) {
                             </div>
 
                             <div className="titel d-flex flex-column align-items-center mt-3">
-                                <h1 className="font-weight-bold mb-0">  הצוות שלנו באירועים</h1>
+                                <h1 className="font-weight-bold mb-0">  {i18.t('ourTeamLable2')} </h1>
                                 <hr className="hrStyle " style={{ width: '8%' }} />
                             </div>
 

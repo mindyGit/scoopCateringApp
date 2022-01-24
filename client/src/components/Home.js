@@ -36,8 +36,10 @@ import useMediaQuery from "../hooks/useMediaQuery";
 // import { ReactComponent as YourSvg } from '../data/imges/searchIcon.svg';
 import Hamborger from './mainPage/Hamborger'
 import TopPageDesktop from './mainPage/TopPageDesktop'
-
+import { useTranslation } from 'react-i18next';
+import i18 from '../i18/i18';
 export function Home(props) {
+    const { t, i18n } = useTranslation();
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
@@ -85,10 +87,10 @@ export function Home(props) {
                         )}
 
                         {!isMobile && !isTablet && (
-
-
-                            <TopPageDesktop />
-
+                            <>
+                                {/* <button onClick={() => props.history.push('/gallery')}>hjk</button> */}
+                                <TopPageDesktop />
+                            </>
                         )}
 
 
@@ -158,7 +160,7 @@ export function Home(props) {
                                 </div>
                             </div>
 
-                            <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>כנסו לכל המוצרים</button>
+                            <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{i18.t('shabatMenu')}</button>
 
 
 

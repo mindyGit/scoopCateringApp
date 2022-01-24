@@ -18,6 +18,8 @@ import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 
 import $ from 'jquery'
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
 
 
@@ -26,7 +28,7 @@ export function Kashrut(props) {
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { t, i18n } = useTranslation();
     useEffect(() => {
         if ($) {
 
@@ -45,19 +47,17 @@ export function Kashrut(props) {
                     <TopPageDesktop />
                 )}
             </div>
-
             <div className="pageHeader ">
-                <label >כשרות </label>
+                <label >{i18.t('Kashrut')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
+            <div className='location pt-3 text-end px-5' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
 
-
+                <div className='goldColor d-inline'> /{i18.t('Kashrut')}  </div>
+            </div>
             <div className="pageContent pt-3">
-                <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
-                    <div className='d-inline'>סקופ קייטרינג  </div>
-                    <div className='goldColor d-inline'> /כשרות  </div>
-                </div>
+
 
 
             </div>

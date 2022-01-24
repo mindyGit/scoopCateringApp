@@ -30,11 +30,13 @@ import TopPageDesktop from '../mainPage/TopPageDesktop'
 import Scroll from '../Scroll';
 import SearchList from '../SearchList';
 import $ from 'jquery'
-
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
 
 
 export function Gallery(props) {
+    const { t, i18n } = useTranslation();
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
@@ -59,16 +61,16 @@ export function Gallery(props) {
             </div>
 
             <div className="pageHeader">
-                <label >גלריה </label>
+                <label >{i18.t('gallery')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
-
+            <div className='location pt-3 text-end px-5' >
+                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                <div className='goldColor d-inline'> /{i18.t('gallery')}    </div>
+            </div>
 
             <div className="pageContent pt-3">
-                <div className='location' style={{ right: '50px', position: 'absolute' }}>
-                    <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>
-                    <div className='goldColor d-inline'> /גלריה    </div>
-                </div>
+
 
 
             </div>

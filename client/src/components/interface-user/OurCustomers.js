@@ -25,11 +25,13 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
-
+import i18 from '../../i18/i18';
+import { useTranslation } from 'react-i18next';
 
 export function OurCustomers(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
+    const { t, i18n } = useTranslation();
 
     return (
 
@@ -51,7 +53,7 @@ export function OurCustomers(props) {
             </div>
 
             <div className="pageHeader">
-                <label > לקוחותינו </label>
+                <label > {i18.t('OurCustomers')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
                 {/* <img className="h-100 w-100" src={headerBgImag} /> */}
 
@@ -63,17 +65,17 @@ export function OurCustomers(props) {
 
 
             <section className="" style={{ height: '100%' }}>
-
+                <div className='location pt-3 text-end px-5'>
+                    <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                    {/* <div className='d-inline'>  </div> */}
+                    <div className='goldColor d-inline'> /{i18.t('OurCustomers')}  </div>
+                </div>
 
                 <div class="OurPeekscontent flex-column ">
-                    <div className='location ' style={{ right: '50px', position: 'absolute' }}>
-                        <div className='d-inline' onClick={() => props.history.push('/')}>ראשי</div>   /
-                        <div className='d-inline'>סקופ קייטרינג  </div>
-                        <div className='goldColor d-inline'> /לקוחותינו  </div>
-                    </div>
+
 
                     <div className="titel pt-5 mt-5">
-                        <h1 className="font-weight-bold mb-0">בין לקוחותינו</h1>
+                        <h1 className="font-weight-bold mb-0">{i18.t('OurCustomersLable')}</h1>
                     </div>
                     <hr className="hrStyle " style={{ width: '6%' }} />
 
@@ -85,8 +87,9 @@ export function OurCustomers(props) {
                             <div className="col-md-3  d-flex  align-items-center flex-column customerItem mr-3 x-smallFont justify-content-center font-weight-bold">
                                 לוגו בנגיעה מתהפך ורואים את הטקסט הארוך
                             </div>
-                            <div className="col-md-3  d-flex justify-content-center flex-column customerItem goldbgColor text-end" style={{ fontSize: '11px' }}><span className="font-weight-bold mb-2">
-                                קליבר - בי"ס לאבטחה</span> "ניהול בי"ס ירי המחנך דורות של אנשי ביטחון, מחייב עמידה בסטנדרטים גבוהים ביותר, ודיוק מרבי בזמנים. השירות והרמה הגבוהה של סקופ קייטרינג תורמת לנו ליכולת הזו. תודה על שנים של שיתוף פעולה. רן סופר - מנכ"ל
+                            <div className="col-md-3  d-flex justify-content-center flex-column customerItem goldbgColor text-end" style={{ fontSize: '11px' }}>
+                                <span className="font-weight-bold mb-2"> קליבר - בי"ס לאבטחה</span>
+                                <span> "ניהול בי"ס ירי המחנך דורות של אנשי ביטחון, מחייב עמידה בסטנדרטים גבוהים ביותר, ודיוק מרבי בזמנים. השירות והרמה הגבוהה של סקופ קייטרינג תורמת לנו ליכולת הזו. תודה על שנים של שיתוף פעולה. רן סופר - מנכ"ל</span>
                             </div>
 
 
@@ -101,9 +104,8 @@ export function OurCustomers(props) {
                             <Image className="col-md-3 customerItem mr-3" src={bneiAkivaImage} />
                             <Image className="col-md-3 customerItem mr-3" src={bneiAkivaImage} />
                             <div className="col-md-3  d-flex  justify-content-center flex-column customerItem text-end " style={{ backgroundColor: '#CCCCCC', fontSize: '11px' }} >
-                                <span className="font-weight-bold mb-2">    אל"יי – אשנב לשיח יהודי ישראלי
-                                </span>
-                                "לפני שהכרנו את סקופ קייטרינג, כל פריסת שטח הייתה מלווה בלוגיסטיקה מורכבת והמון כאב ראש. דבר שפגע לפעמים בפעילות. היום חזרנו ליהנות שוב מהפעילות עצמה, כשאת כל היתר אנחנו משאירים לחברה מסקופ.
+                                <span className="font-weight-bold mb-2"> אל"יי – אשנב לשיח יהודי ישראלי</span>
+                                <span>  לפני שהכרנו את סקופ קייטרינג, כל פריסת שטח הייתה מלווה בלוגיסטיקה מורכבת והמון כאב ראש. דבר שפגע לפעמים בפעילות. היום חזרנו ליהנות שוב מהפעילות עצמה, כשאת כל היתר אנחנו משאירים לחברה מסקופ.</span>
                             </div>
 
 

@@ -41,7 +41,7 @@ import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
 
 
 export function TopPageDesktop(props) {
-
+    const { language } = props
     function goHome() {
         if (window.location.href != " ") //if not home page
             props.history.push('/')
@@ -51,14 +51,59 @@ export function TopPageDesktop(props) {
         props.history.push('/SearchResults/' + word)
 
     }
-
     useEffect(() => {
         if ($) {
+            if (language == 'he') {
+                $('.EnLanguage').removeClass('d-none')
+                $('.HeLanguage').addClass('d-none')
+                $('.scoopButton').css('direction', 'rtl')
+                $('.linksNuv').addClass('rtl')
+                $('.linksNuv').css({ "right": '3%', "position": 'absolute' })
+                $('.svgSize').css({ "right": '', "left": '200px' })
+                $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', left: '0px' })
+                $('.location').removeClass('text-start').addClass('text-end')
+                $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
+                $('.swithSide').css('text-align', 'right')
+                $('.productLine').addClass('rtl')
+                $('.productName').css('text-align', 'right')
+                $('.productLine').css({ "border-right": "8px solid #C59950", "border-left": '0px solid #C59950' })
+                $('.swithDir').css('direction', 'rtl !important')
+
+
+
+            }
+            else {
+                // $(".inputOfSearch").css('plach')
+                $('.HeLanguage').removeClass('d-none')
+                $('.EnLanguage').addClass('d-none')
+                $('.linksNuv').removeClass('rtl')
+                $('.scoopButton').css('direction', 'ltr')
+                $('.linksNuv').css({ "right": '', "position": '' })
+                $('.location').removeClass('text-end').addClass('text-start')
+                $('.svgSize').css({ "right": '200px', "left": '' })
+                $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
+                $(".inputOfSearch").attr("placeholder", " ")
+                $('.swithSide').css('text-align', 'left')
+                $('.productLine').removeClass('rtl')
+                $('.productName').css('text-align', 'left')
+                $('.productLine').css({ "border-right": "0px solid #C59950", "border-left": '8px solid #C59950' })
+                $('.swithDir').css('direction', 'ltr !important')
+
+
+            }
+        }
+    }, [$, language])
+
+    useEffect(() => {
+
+
+        if ($) {
+
             $(".searchButton").click(function () {
 
                 $('.searchDiv').removeClass('d-none')
                 $('.topPage').addClass('d-none')
-
+                $(".inputOfSearch").focus()
 
 
             });
@@ -114,7 +159,7 @@ export function TopPageDesktop(props) {
                 height: '100px'
 
             }}>
-                <div className='searchDiv bg-black d-none h-100 d-flex justify-content-center align-items-center'>
+                <div className='searchDiv bg-black d-none h-100 d-flex justify-content-center align-items-center' >
 
 
 
@@ -125,7 +170,7 @@ export function TopPageDesktop(props) {
                         </button> */}
                         <YourSvg className="searchIcon" id="search-button" />
                         <div className="form-outline">
-                            <input id="search-input" type="text" id="form1" className=" form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-0 pb-0 pt-2 rtl pr-0" placeholder=' הזן/י מוצר לחיפוש...' />
+                            <input id="search-input" type="text" tabIndex='-1' className="pr-2 form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-0 pb-0 pt-2 rtl pr-0" placeholder=' הזן/י מוצר לחיפוש...' />
                             {/* <label className="form-label errorSearch  text-white " ></label> */}
                             <p className='errorSearch mb-0 text-muted h6 small'></p>
                         </div>
@@ -137,13 +182,13 @@ export function TopPageDesktop(props) {
                 </div>
                 <div className='topPage'>
                     <YourSvg className="svgSize searchButton" />
-                    <Image onClick={e => goHome()} style={{
+                    <Image className='logoSide' onClick={e => goHome()} style={{
                         backgroundImage: `url(${underLogo})`,
                         maxHeight: "80px",
                         position: "absolute",
                         zIndex: 99999,
-                        borderRadius: '0px 50px 50px 0px',
-                        left: '0px',
+                        borderRadius: '50px 0px 0px 50px',
+                        right: '0px',
                         top: '32px',
                         padding: '12px'
                     }} src={logo} />
@@ -151,7 +196,10 @@ export function TopPageDesktop(props) {
                     <Header />
                     <div style={{
                         backgroundColor: 'rgba(0,0,0,0.5)'
-                    }}> <Nuv /></div>
+                    }}>
+                        <Nuv history={props.history} />
+
+                    </div>
                 </div>
 
 
@@ -167,6 +215,7 @@ export function TopPageDesktop(props) {
 }
 const mapStateToProps = (state) => {
     return {
+        language: state.languageReducer.language
 
 
     };
@@ -174,6 +223,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => ({
     setSearchWord: (word) => dispatch(actions.setSearchWord(word)),
+    setLanguage: (lan) => dispatch(actions.setLanguage(lan))
+
 
 })
 
