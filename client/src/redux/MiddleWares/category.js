@@ -6,7 +6,7 @@ import { actions } from '../actions/action'
 export const createCategory = ({ dispatch, getState }) => next => action => {
     if (action.type === 'CREATE_CATEGORY') {
         return new Promise((resolve, reject) => {
-            axios.post('http://localhost:80/category/', action.payload)
+            axios.post('http://scoopcatering.co.il/category/', action.payload)
                 .then(res => {
                     dispatch(actions.setCategory(res.data))
                 })
@@ -25,7 +25,7 @@ export const updateCategory = ({ dispatch, getState }) => next => action => {
         if (action.payload != undefined) {
             category = action.payload._id;
         }
-        axios.post(`http://localhost:80/categories/${category}`, action.payload)
+        axios.post(`http://scoopcatering.co.il/categories/${category}`, action.payload)
             .then(res => {
                 dispatch(actions.setCategory(res.data))
             })
@@ -39,7 +39,7 @@ export const updateCategory = ({ dispatch, getState }) => next => action => {
 export const deleteCategory = ({ dispatch, getState }) => next => action => {
     if (action.type === 'DELETE_CATEGORY') {
         if (action.payload !== undefined)
-            axios.delete(`http://localhost:80/category/${action.payload}`)
+            axios.delete(`http://scoopcatering.co.il/category/${action.payload}`)
                 .then(res => {
                     dispatch(actions.deleteCategoryFromCategories(action.payload))
 
@@ -58,7 +58,7 @@ export const getAllCategories = ({ dispatch, getState }) => next => action => {
 
     if (action.type === 'GET_ALL_CATEGORIES') {
         return new Promise((resolve, reject) => {
-            return axios.get('http://localhost:80/categories/')
+            return axios.get('http://scoopcatering.co.il/categories/')
                 .then(resJson => {
                     dispatch(actions.setAllCategories(resJson.data))
                     resolve()
