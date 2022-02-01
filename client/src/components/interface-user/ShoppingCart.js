@@ -95,7 +95,7 @@ export function ShoppingCart(props) {
                                 <div className='col-3 productName font-weight-bold  '> {it.Id}
 
                                     <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
-                                        <option selected> 1 יחי'</option>
+                                        {/* <option selected> 1 יחי'</option> */}
                                         <option value="1">One</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>

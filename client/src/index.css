@@ -646,7 +646,7 @@ box-shadow: none !important;
 }
 .EnLanguage,.HeLanguage:focus{
   border:none !important;
-background: none !important;
+
 outline:none !important;
 box-shadow: none !important;
 }
