@@ -6,7 +6,7 @@ import '../../App.css';
 import { connect } from 'react-redux';
 import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
-import Search from '../Search';
+// import Search from '../Search';
 import Nuv from '../mainPage/Nuv'
 import Header from '../mainPage/Header'
 import Footer from '../mainPage/Footer';
@@ -33,12 +33,13 @@ import SearchList from '../SearchList';
 import $ from 'jquery'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
+import languageReducer from "../../redux/reducers/language.reducer";
 
 
 
 export function SearchResults(props) {
     const { t, i18n } = useTranslation();
-
+    const { language } = props
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
 
@@ -51,29 +52,30 @@ export function SearchResults(props) {
     const { products } = props
     const { searchWord } = props
 
-
-
     // const searchField = urlArray[urlArray.length - 1]
-
-
     const filteredProducts = products && products.filter(
-
         product => {
-
-            return (
-                product
-                    .name
-                    .toLowerCase()
-                    .includes(searchWord.toLowerCase())
-
-            );
+            if (language != "he")
+                return (
+                    product && product
+                        .name
+                        .toLowerCase()
+                        .includes(searchWord.toLowerCase())
+                );
+            else
+                return (
+                    product && product
+                        .hebrewName
+                        .toLowerCase()
+                        .includes(searchWord.toLowerCase())
+                );
         }
     );
     function searchList() {
 
         return (
             <Scroll>
-                <SearchList filteredProducts={filteredProducts} />
+                <SearchList filteredProducts={filteredProducts} lang={language} />
             </Scroll>
         );
     }
@@ -81,7 +83,7 @@ export function SearchResults(props) {
         if ($) {
 
         }
-    }, [$])
+    }, [$, language])
     return (
         <>
             {/* <Search details={products} /> */}
@@ -97,12 +99,13 @@ export function SearchResults(props) {
             </div>
 
             <div className="pageHeader">
-                <label > תוצאות חיפוש</label>
-                {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
+                <label> {i18.t('SearchResults')}</label>
+                {isTablet ? <img className="h-100" src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
             <div className='location pt-3 text-end px-5' >
                 <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
-                <div className='goldColor d-inline'> / תוצאות חיפוש </div>
+                <div className='goldColor d-inline'> / {i18.t('SearchResults')} </div>
+
             </div>
 
             <div className="pageContent pt-3">
@@ -123,7 +126,8 @@ export function SearchResults(props) {
 const mapStateToProps = (state) => {
     return {
         products: state.productReducer.products,
-        searchWord: state.searchWordReducer.searchWord
+        searchWord: state.searchWordReducer.searchWord,
+        language: state.languageReducer.language
     };
 }
 

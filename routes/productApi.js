@@ -1,23 +1,29 @@
 const router = require('express').Router()
 const Product = require('../models/Product')
-
+const Category = require('../models/Category')
 // API PRODUCT:
 
 //add product
-router.post('/product', async (req, res) => {
-    const product = new Product(req.body)
+router.post('/product/', async (req, res) => {
     try {
-        const newProduct = await product.save(function (err, product) {
-            if (err) {
-                console.log(err)
-                return err;
-            }
-            res.json({ status: 201, product: product })
-        })
+        const category = await Category.findOne({ _id: req.body.categoryID })
+        console.log("----------- " + category);
+        const newProduct = new Product(req.body)
+        console.log("----------- " + newProduct);
+        await newProduct.save()
+        await category.products.push(newProduct)
+        await category.save()
+        console.log(category);
+
+        res.json({ status: 201, product: newProduct })
+
     } catch (err) {
         res.json({ status: 500, error: err })
     }
 })
+
+
+
 
 // edit product
 router.post('/products/:id', async (req, res) => {
@@ -101,7 +107,7 @@ router.post('/copyProduct/:id', async (req, res) => {
 // get all products
 router.get('/products', async (req, res) => {
 
-    Product.find().populate("categories").then(products => {
+    Product.find().populate("categoryID").then(products => {
         if (!products)
             console.log(products);
         res.send(products);

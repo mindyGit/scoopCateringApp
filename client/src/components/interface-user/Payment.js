@@ -32,7 +32,7 @@ import { useTranslation } from 'react-i18next';
 export function Payment(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-    const { t, i18n } = useTranslation();
+    const { i18n } = useTranslation();
     const products = Store.getState().productReducer.products
     useEffect(() => {
         if ($) { }
@@ -57,7 +57,7 @@ export function Payment(props) {
 
 
             </div>
-            <div className='location pt-3 text-end px-5 ' >
+            <div className='location pt-3 swithSide px-5 ' >
                 <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                 <div className='d-inline' onClick={() => props.history.push('/Checkout')}> /{i18.t('checkout')}</div>
 
@@ -65,69 +65,74 @@ export function Payment(props) {
             </div>
             <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
 
-                <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">אמצעי תשלום </h2>
-                <div className="row justify-content-start rtl">
-                    <div className="  col-6 ml-5 p-0 text-end ">
+                <h2 className="swithSide mb-5 font-weight-bold mt-5 pt-5 ml-5">{i18.t('FormOfPayment')} </h2>
+                <div className="row justify-content-start swithDir">
+                    <div className="  col-6 ml-5 p-0 swithSide ">
 
 
-                        <label className="  w-100 pt-1 text-end  goldbgColor px-3 mb-0" >פרטים אישיים </label>
+
+
+
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('PersonalInformation')}</label>
                         <div className=" bg-grey mb-4">
-                            <Form className="px-3 text-end w-75 py-3 mb-3  ">
+
+                            <Form className="px-3 swithSide w-75 py-3 mb-3  ">
+
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
-                                    <Form.Label class="mb-1"> מספר כרטיס</Form.Label>
-                                    <Form.Control className="rounded-0" type="text" />
+                                    <Form.Label class="mb-1"> {i18.t('CardNumber')}</Form.Label>
+                                    <Form.Control className="rounded-0" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
                                 </Form.Group>
                                 <Form.Group className="mb-2 row" controlId="formBasicEmail">
                                     <div className="col-6">
-                                        <Form.Label class="mb-1"> תוקף חודש </Form.Label>
-                                        <Form.Control className="rounded-0" type="text" />
+                                        <Form.Label class="mb-1"> {i18.t('Expiration')} </Form.Label>
+                                        <Form.Control className="rounded-0" placeholder="MM/YYYY" type="text" />
                                     </div>
 
-                                    <div className="col-6">
-                                        <Form.Label class="mb-1"> תוקף שנה</Form.Label>
-                                        <Form.Control className="rounded-0" type="text" />
-                                    </div>
+
 
                                 </Form.Group>
 
-                                <Form.Group className="mb-2" controlId="formBasicName">
-                                    <Form.Label class="mb-1"> בגב הכרטיס</Form.Label>
-                                    <Form.Control className="rounded-0" type="text" />
+                                <Form.Group className="mb-2 row" controlId="formBasicName">
+                                    <div className="col-6">
+                                        <Form.Label class="mb-1">{i18.t('CVV')}</Form.Label>
+                                        <Form.Control className="rounded-0" maxLength="3" type="text" />
+                                    </div>
+
                                 </Form.Group>
 
                                 <Form.Group className="mb-2" controlId="formBasicLastName">
-                                    <Form.Label class="mb-1">ת"ז</Form.Label>
-                                    <Form.Control className="rounded-0" type="text" />
+                                    <Form.Label class="mb-1">{i18.t('Id')}</Form.Label>
+                                    <Form.Control className="rounded-0" minLength="8" type="text" />
                                 </Form.Group>
 
                             </Form>
 
                         </div>
-                        <label className="  w-100 pt-1 text-end  goldbgColor px-3 mb-0" > אפשרויות תשלום נוספות </label>
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('AdditionalPayment')} </label>
                         <div className=" bg-grey p-3 mb-4">
-                            <p>ביט / פייבוקס / העברה בנקאית </p>
-                            <p>צרו קשר עם המשרד {i18.t('CompanyPhone')}</p>
+                            <p className="w-75">{i18.t('AdditionalPayment_')}</p>
                             <div className="row">
                                 <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
-                                    <option> בחר אופן תשלום</option>
-                                    <option>פייבוקס</option>
-                                    <option>ביט </option>
-                                    <option>העברה בנקאית </option>
+                                    <option> {i18.t('paymentMethod')}</option>
+                                    <option>{i18.t('payBox')}</option>
+                                    <option>{i18.t('Bit')}</option>
+                                    <option>{i18.t('BankTransfer')}</option>
                                 </select>
-                                <input className=" col-3 mr-1 pt-1 text-end px-0" type="text" style={{ fontSize: 'medium' }} />
-                                <button className=" col-3  goldButton  mb-4 mr-1 " > הפעל קוד  <img style={{ paddingRight: '5px' }} /></button>
+                                <input className=" col-3 mx-1 pt-1 swithSide px-0" type="text" style={{ fontSize: 'medium' }} />
+                                <button className=" col-3  goldButton  mb-4 mr-1 " > {i18.t('ActivateCode')}  <img style={{ paddingRight: '5px' }} /></button>
                             </div>
                         </div>
                         <div className="w-50 mr50">
-                            <label className="  w-100  pt-1 text-end  bg-black text-white px-3 mb-0" >סה"כ לתשלום </label>
+
+                            <label className="  w-100  pt-1 swithSide  bg-black text-white px-3 mb-0" >{i18.t('TotalPayment')}</label>
                             <div className=" bg-grey p-3 mb-4">
                                 <div className="row pt-2 font-weight-bold ">
-                                    <div className="col-7 text-end">סה"כ</div>
-                                    <div className="col-5 ">178.8 ש"ח</div>
+                                    <div className="col-7 swithSide">{i18.t('Total')}</div>
+                                    <div className="col-5 ">178.8 &#8362;</div>
                                 </div>
                             </div>
 
-                            <button className="  goldButton mb-5 mr52" > בצע תשלום<img src={arrow_left_white} style={{
+                            <button className="  goldButton mb-5 mr52" >{i18.t('MakePayment')}<img src={arrow_left_white} style={{
 
                                 paddingRight: '5px',
                                 width: '25px'

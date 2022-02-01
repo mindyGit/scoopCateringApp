@@ -6,7 +6,7 @@ import Offcanvas from 'react-bootstrap/Offcanvas'
 
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
-import Search from '../Search';
+// import Search from '../Search';
 import initialDetails from '../../data/initialDetails';
 import background_image from '../../data/imges/backgroundImg.jpg'
 import { Container, Row, Col } from 'react-grid-system';

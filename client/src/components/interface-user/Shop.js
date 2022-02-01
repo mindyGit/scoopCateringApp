@@ -4,7 +4,7 @@ import '../../App.css';
 import { connect } from 'react-redux';
 import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
-import Search from '../Search';
+// import Search from '../Search';
 import Nuv from '../mainPage/Nuv'
 import Header from '../mainPage/Header'
 import Footer from '../mainPage/Footer';
@@ -36,27 +36,30 @@ import { useTranslation } from 'react-i18next';
 
 import { height } from "@mui/system";
 
-
-
-
 export function Shop(props) {
+
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { t, i18n } = useTranslation();
-    const products = Store.getState().productReducer.products
+    // const products = Store.getState().productReducer.products
+    const { language } = props
+    const { categories } = props
+    if (!categories || !categories.length) {
+        props.getAllCategories()
+    }
     useEffect(() => {
         if ($) {
+
             $(".categoryHover").mouseover(function () {
                 $(this).find('.categoryTitle').removeClass("d-none")
-
             });
             $(".categoryHover").mouseout(function () {
                 $(this).find('.categoryTitle').addClass("d-none")
 
             });
         }
-    }, [$])
+    }, [$, props, language])
     return (
         <>
 
@@ -91,78 +94,17 @@ export function Shop(props) {
                 <div className="foodCategories">
 
 
-                    <div className="row mb-3 d-flex justify-content-center wrapper">
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Appetizers')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">מנות פתיחה</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={fish} />
-                        </div>
+                    <div className="row mb-3 d-flex justify-content-center wrapper  m-auto" style={{ width: '80%' }}>
+                        {categories && categories.map((category) => (
+                            <div className="categoryItem  p-0 col-3 mr-3 mb-3" style={{ height: '380px' }}><div className="categoryHover" onClick={() => props.history.push(`/shop/${language == "he" ? category.hebrewName : category.name}`)}>
+                                <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">{language == "he" ? category.hebrewName : category.name}</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
+                            </div>
+                                <img className="h-100 w-100" src="" />
+                            </div>
 
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Salads')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">סלטים </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={salads} />
-                        </div>
-
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Bakery')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מאפיה</h5> <h6 className=" mb-0">מוצרים 36</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={shabat} />
-                        </div>
-
-
+                        ))}
 
                     </div>
-                    <div className="row mb-3 d-flex justify-content-center">
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Desserts')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">קינוחים </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={desserts} />
-                        </div>
-
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/MainCourses')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מנות עקריות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={mainCourses} />
-                        </div>
-
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Extras')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold"> תוספות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={Extras} />
-                        </div>
-
-
-                    </div>
-                    <div className="row mb-3 d-flex justify-content-center">
-
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/RelatedProducts')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מוצרים נלווים  </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={soops} />
-                        </div>
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%', height: '380px' }}><div className="categoryHover" onClick={() => props.history.push('/shop/Drinks')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">משקאות  </h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={drinks} />
-                        </div>
-                        {/* <div className="categoryItem mr-3 p-0" style={{ width: '20%' }}><div className="categoryHover" onClick={() => props.history.push('/shop/mainCourses')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold">מנות עקריות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={mainCourses} />
-                        </div>
-
-                        <div className="categoryItem mr-3 p-0" style={{ width: '20%' }}><div className="categoryHover" onClick={() => props.history.push('/shop/extras')}>
-                            <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold"> תוספות</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
-                        </div>
-                            <img className="h-100 w-100" src={Extras} />
-                        </div>
- */}
-
-                    </div>
-
-
-
                 </div>
             </div>
 
@@ -178,11 +120,13 @@ export function Shop(props) {
 }
 const mapStateToProps = (state) => {
     return {
-
+        categories: state.categoryReducer.categories,
+        language: state.languageReducer.language
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
+    getAllCategories: () => dispatch(actions.getAllCategories()),
 
 
 })

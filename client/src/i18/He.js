@@ -38,7 +38,8 @@ export const He = {
         ShoppingCart: 'סל הקניות',
         payment: 'תשלום',
         checkout: 'ביצוע הזמנה',
-
+        SearchResults: 'תוצאות חיפוש',
+        NoResults: "אין תוצאות",
         // shabatMenu
         PreparedFoodCategories: 'קטגוריות אוכל מוכן',
         ComeAndTasteTheShabbatFood: 'בואו לטעום ממאכלי השבת',
@@ -69,7 +70,80 @@ export const He = {
         ToTheShoppingCart: `לסל הקניות`,
         toCheckout: 'לרכישה',
         addProductsLable: `הוסיפו מוצרים לסל הקניות`,
+        SelectAnOption: 'בחר אפשרות',
         addToCart: `הוספה לסל`,
-        product1: 'סלומון ברוטב טריאקי'
+        product1: 'סלומון ברוטב טריאקי',
+        products: 'מוצרים',
+        scoop: 'סקופ',
+        OurAddress: 'כתובתינו',
+        OpeningHours: 'שעות פתיחה',
+        PersonalInformation: 'פרטים אשיים',
+        mailAdress: 'כתובת מייל',
+        FirstName: 'שם פרטי',
+        LastName: 'שם משפחה',
+        phone: 'טלפון',
+        anotherPhone: 'טלפון נוסף',
+        OrderSummary: 'סיכום הזמנה',
+        Items: 'פריטים',
+        InterimTotal: 'סך ביניים',
+        ShippingCost: 'עלות המשלוח',
+        Total: 'סה"כ',
+        deliveryDetails: 'פרטי משלוח',
+        AreaOrCity: 'אזור/עיר',
+        BeitShemesh: 'בית שמש',
+        GushEtzion: 'גוש עציון',
+        Jerusalem: 'ירושלים',
+        Modiin: `מודיעין`,
+        Raanana: 'רעננה',
+        shippingMethod: 'אנא בחר בשיטת משלוח',
+
+        shippingMethod1: 'איסוף עצמי מהחנות',
+        shippingMethod2: 'משלוח עד הבית',
+        shippingMethod3: 'הזמנות הפתעה/כתובת שונה',
+        InvoiceDetails: 'פרטי חשבונית',
+        sameShippingAndAccountDetails: 'פרטי המשלוח ופרטי החשבון זהים',
+        CouponCode: 'קוד קופון',
+        EnterCouponCode: 'הזינו קוד קופון',
+        ActivateCoupon: 'הפעל קופון',
+        ActivateCode: 'הפעל קוד',
+        CommentsToOrder: 'הערות להזמנה',
+        ApprovalOfRegulations: 'אישור תקנון:תכין תקנון',
+        SaveDetails: 'שמור פרטים לפעם הבאה',
+        ContinueToPay: 'המשך לתשלום',
+
+        // payment page
+        FormOfPayment: 'אמצעי תשלום',
+        CardNumber: 'מספר כרטיס',
+        Expiration: 'תוקף',
+        CVV: 'CVV',
+        Id: 'ת"ז',
+        AdditionalPayment: 'אפשרויות תשלום נוספות',
+        AdditionalPayment_: `ביט / פייבוקס / העברה בנקאית
+צרו קשר עם המשרד 054-290-2590`,
+
+        paymentMethod: 'בחר אופן תשלום',
+        payBox: 'פייבוקס',
+        Bit: 'ביט',
+        BankTransfer: 'העברה בנקאית',
+        TotalPayment: 'סה"כ לתשלום',
+        MakePayment: 'בצע תשלום',
+        // shopping cart
+        ProductName: 'שם המוצר',
+        Amount: 'כמות',
+        price: 'מחיר'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

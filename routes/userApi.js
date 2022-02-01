@@ -71,7 +71,7 @@ router.delete('/user/:id', async (req, res) => {
 router.get('/users', async (req, res) => {
 
 
-    User.find().then(users => {
+    User.find().populate("orders").then(users => {
         if (users)
             res.send(users);
         else

@@ -51,147 +51,158 @@ export function Checkout(props) {
                 )}
             </div>
 
+
             <div className="pageHeader">
-                <label > {i18.t('checkout')} </label>
+                <label> {i18.t('checkout')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 
             </div>
-            <div className='location pt-3 text-end px-5 ' >
+            <div className='location pt-3 swithSide px-5 ' >
                 <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                 <div className='goldColor d-inline'> / {i18.t('checkout')} </div>
             </div>
             <div className="page_content justify-content-center pt-5 " style={{ width: '65%', margin: 'auto' }}>
 
-                <h2 className="text-end mb-5 font-weight-bold mt-5 pt-5">{i18.t('checkout')} </h2>
-                <div className="row justify-content-start rtl">
-                    <div className="  col-6 ml-5 p-0 text-end ">
+                <h2 className="swithSide mb-5 font-weight-bold mt-5 pt-5 ml-5">{i18.t('checkout')} </h2>
+                <div className="row justify-content-start swithDir">
+                    <div className="  col-6 ml-5 p-0 swithSide ">
 
-                        <label className="  w-100 pt-1 text-end  goldbgColor px-3 mb-0" >פרטים אישיים </label>
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
-                            <Form className="px-3 text-end w-75 py-3 mb-3  ">
+                            <Form className="px-3 swithSide w-75 py-3 mb-3  ">
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
-                                    <Form.Label class="mb-1"> כתובת מייל</Form.Label>
+                                    <Form.Label class="mb-1"> {i18.t('mailAdress')}</Form.Label>
                                     <Form.Control className="rounded-0" type="email" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicName">
-                                    <Form.Label class="mb-1"> שם פרטי</Form.Label>
+                                    <Form.Label class="mb-1"> {i18.t('FirstName')}</Form.Label>
                                     <Form.Control className="rounded-0" type="text" />
                                 </Form.Group>
 
                                 <Form.Group className="mb-2" controlId="formBasicLastName">
-                                    <Form.Label class="mb-1"> שם משפחה</Form.Label>
+                                    <Form.Label class="mb-1">{i18.t('LastName')}</Form.Label>
                                     <Form.Control className="rounded-0" type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1"> טלפון </Form.Label>
+                                    <Form.Label class="mb-1"> {i18.t('phone')}</Form.Label>
                                     <Form.Control className="rounded-0 " type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1"> טלפון נוסף </Form.Label>
+                                    <Form.Label class="mb-1"> {i18.t('anotherPhone')}</Form.Label>
                                     <Form.Control className="rounded-0 " type="text" />
                                 </Form.Group>
                             </Form>
                         </div>
 
-                        <label className="  w-100 pt-1 text-end  goldbgColor px-3 mb-0" > פרטי משלוח </label>
+
+
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" > {i18.t('deliveryDetails')} </label>
                         <div className=" bg-grey p-3 mb-5">
-                            <div><label >אזור/עיר</label></div>
+                            <div><label >{i18.t('AreaOrCity')}</label></div>
                             <select className="w-75">
                                 <option></option>
-
-                                <option>בית שמש</option>
-                                <option>גוש עציון</option>
-                                <option>ירושלים</option>
-                                <option>מודיעין</option>
-                                <option>רעננה</option>
+                                AreaOrCity: 'אזור/עיר',
+                                <option>{i18.t('BeitShemesh')}</option>
+                                <option>{i18.t('GushEtzion')}</option>
+                                <option>{i18.t('Jerusalem')}</option>
+                                <option>{i18.t('Modiin')}</option>
+                                <option>{i18.t('Raanana')}</option>
                             </select>
-                            <div ><label >אנא בחר בשיטת משלוח</label></div>
-                            <div className="row pr-3" style={{ width: '80%' }}>
+                            <div ><label >{i18.t('shippingMethod')}</label></div>
+                            <div className="row  justify-content-around d-flex" style={{ width: '80%' }}>
 
-                                <div className="col-3 shippingOption p-2 text-center"> איסוף עצמי מהחנות</div>
-                                <div className="col-3 mr-3 shippingOption p-2 text-center">משלוח עד הבית</div>
-                                <div className="col-3 mr-3 shippingOption p-0 pt-2 text-center">
-                                    <div> הזמנות הפתעה/</div>
-                                    <div> כתובת שונה</div>
+                                <div className="col-3 shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</div>
+                                <div className="col-3  shippingOption p-2 text-center">{i18.t('shippingMethod2')}</div>
+                                <div className="col-3  shippingOption p-0 pt-2 text-center">
+                                    <div> {i18.t('shippingMethod3')}</div>
+
                                 </div>
                             </div>
                         </div>
-                        <label className="  w-100  pt-1 text-end  goldbgColor px-3 mb-0" > פרטי חשבונית </label>
+                        <label className="  w-100  pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('InvoiceDetails')} </label>
                         <div className="bg-grey p-3 mb-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
                                 <label class="form-check-label mr-4" for="flexCheckDefault">
-                                    פרטי המשלוח ופרטי החשבון זהים
+                                    {i18.t('sameShippingAndAccountDetails')}
                                 </label>
                             </div>
 
                         </div>
-                        <label className="  w-100 pt-1 pb-1 text-end  goldbgColor px-3 mb-0"> קוד קופון  </label>
+                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 mb-0">{i18.t('CouponCode')} </label>
                         <div className="bg-grey p-3 mb-5">
-                            <div>הזינו קוד קופון</div>
+                            <div>{i18.t('EnterCouponCode')}</div>
                             <div className="row p-2" style={{ width: '80%' }}>
                                 <input className=" col-5 mr-1" type="text" />
 
-                                <button className="goldButton col-5 mr-3" >הפעל קופון</button>
+                                <button className="goldButton col-5 mr-3" >{i18.t('ActivateCoupon')}</button>
                             </div>
 
                         </div>
-                        <label className="  w-100 pt-1 pb-1 text-end  goldbgColor px-3 mb-0"> הערות להזמנה   </label>
+                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 mb-0">  {i18.t('CommentsToOrder')}  </label>
                         <div className="bg-grey p-3 mb-3">
 
                             <div className="row p-2" style={{ width: '80%' }}>
                                 <div class="form-group pr-1">
-                                    <label for="exampleFormControlTextarea1">הערות להזמנה</label>
+                                    <label for="exampleFormControlTextarea1">{i18.t('CommentsToOrder')} </label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 
                         </div>
-                        <div className="d-flex align-items-center">
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                            <label className="mr-2 ml-3  mb-0" for="vehicle1 " style={{ fontSize: 'smaller' }}>אישור תקנון:תכין תקנון</label>
-                            <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
-                            <label className="mr-2 mb-0" for="vehicle1   " style={{ fontSize: 'smaller' }}> שמור פרטים לפעם הבאה</label>
+
+                        <div className="">
+                            <div className="d-flex align-items-center"> <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                                <label className="mr-2 ml-3  mb-0" for="vehicle1 " style={{ fontSize: 'smaller' }}>{i18.t('ApprovalOfRegulations')}</label>
+                            </div>
+                            <div className="d-flex align-items-center">  <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike" />
+                                <label className="mr-2 ml-3 mb-0" for="vehicle2   " style={{ fontSize: 'smaller' }}> {i18.t('SaveDetails')}</label>
+                            </div>
+
+
+
                         </div>
 
 
 
-                        <button className=" mt-5 goldButton mb-5  mr71" onClick={() => props.history.push('/Payment')}> המשך לתשלום<img src={arrow_left_white} style={{
+                        <button className=" mt-5 goldButton mb-5  mr71" onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}<img src={arrow_left_white} style={{
 
                             paddingRight: '5px',
                             width: '25px'
                         }} /></button>
                     </div>
-                    <div className=" bg-grey col-4 ml-5 p-0">
-                        <label className="bg-black text-white w-100 pt-1 text-end px-3">סיכום הזמנה</label>
-                        <div className="px-4 pb-5">
+                    <div className=" bg-grey col-4 ml-5 p-0 pb-5">
+                        <label className="bg-black text-white w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label>
+
+                        <div className="px-4">
                             <div className="row ">
-                                <div className="col-8 text-end">פריטים</div>
-                                <div className="col-4 text-start">12</div>
-                            </div>
 
-                            <br />
-                            <br />
-                            <div className="row">
-                                <div className="col-7  text-end">סך ביניים</div>
-                                <div className="col-3 pl-0 ">153.8 </div>
-                                <div className="col-2 pr-0 ">ש"ח</div>
+                                <div className="col-10 swithSide">{i18.t('Items')}</div>
+                                <div className="col-2 ">12</div>
 
                             </div>
+                            <br />
+                            <br />
+                            <div className="row  pb-3">
 
-                            <div className="row border-bottom border-dark pb-3 pt-3">
-                                <div className="col-7  text-end">עלות המשלוח </div>
-                                <div className="col-3 pl-0 ">25 </div>
-                                <div className="col-2 pr-0"> ש"ח</div>
+                                <div className="col-8 swithSide">{i18.t('InterimTotal')}</div>
+                                <div className="col-4 ">153.8 &#8362;</div>
+
+                            </div>
+                            <div className="row border-bottom border-dark pb-3">
+
+                                <div className="col-8 swithSide">{i18.t('ShippingCost')}</div>
+                                <div className="col-4 ">25 &#8362;</div>
 
                             </div>
                             <div className="row pt-2 font-weight-bold ">
-                                <div className="col-7  text-end">סה"כ</div>
-                                <div className="col-3 pl-0 ">178.8 </div>
-                                <div className="col-2 pr-0 "> ש"ח</div>
+
+                                <div className="col-7 swithSide">{i18.t('Total')}</div>
+                                <div className="col-5 ">178.8 &#8362;</div>
 
                             </div>
+                            {/* <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}
 
 
                         </div>

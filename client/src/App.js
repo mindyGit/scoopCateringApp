@@ -11,7 +11,7 @@ import history from "./components/history"
 
 import OurPeeks from './components/interface-user/OurPeeks'
 import Shop from './components/interface-user/Shop'
-
+import MyCard from './components/MyCard'
 import OurCustomers from './components/interface-user/OurCustomers'
 import OurStory from './components/interface-user/ourStory/OurStory'
 import OrdertList from './components/order/OrderList';
@@ -20,7 +20,7 @@ import UserList from './components/user/UserList';
 import NewUser from './components/user/NewUser';
 import NewProduct from './components/product/NewProduct';
 import { connect } from 'react-redux';
-import Search from './components/Search';
+// import Search from './components/Search';
 import initialDetails from './data/initialDetails';
 
 import AppFirebase from './components/Firebase/AppFirebase'
@@ -38,7 +38,7 @@ import Events from './components/interface-user/Events'
 import Gallery from './components/interface-user/Gallery'
 import Kashrut from './components/interface-user/Kashrut'
 import RelatedProducts from './components/interface-user/RelatedProducts'
-
+import Local_Storag from './components/Local_Storag'
 
 
 
@@ -64,7 +64,7 @@ function App(props) {
 
     <Router history={history}>
       <div className="App" >
-
+        {/* <Local_Storag /> */}
         {/* <SearchList /> */}
         {/* <NavBar /> */}
         {/* <OrderSummary /> */}

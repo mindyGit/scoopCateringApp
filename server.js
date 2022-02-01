@@ -86,6 +86,7 @@ mongoose.connect(process.env.DB_CONNECT, {
     useFindAndModify: false
 }
 )
+
 //sendMail
 let transporter = nodemailer.createTransport({
     service: 'gmail',

@@ -160,27 +160,17 @@ export function Header(props) {
 
 
                             <div className=" swithDir d-flex row  justify-content-around " >
-                                <button className="col-5 bg-black text-white" >{i18.t('ToTheShoppingCart')}</button>
-                                <button className=" col-5 goldButton">{i18.t('toCheckout')}</button>
+                                <button className="col-5 bg-black text-white" onClick={() => props.history.push('/Cart')} >{i18.t('ToTheShoppingCart')}</button>
+                                <button className=" col-5 goldButton" onClick={() => props.history.push('/Checkout')}>{i18.t('toCheckout')}</button>
                             </div>
                         </Offcanvas.Body>
                     </Navbar.Offcanvas>
                 </Container>
             </Navbar>
             <div className="bg-black">
-
-
                 <div className="row px-5 pt-2 pb-2 d-flex  headerPage justify-content-space-around align-items-center">
-
-
-
-
-
                     <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-2">&#8362; 0 </div><div className="ml-5 mr-5"><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
                     <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  " >  {i18.t('BookAnEvent')} : 077-255-9982   </div>
-
-
-
                 </div>
                 {/* <Navbar.Brand href="#home">Navbar</Navbar.Brand>
                 <Nav className="me-auto">
@@ -188,8 +178,7 @@ export function Header(props) {
                     <Nav.Link href="#features">Features</Nav.Link>
                     <Nav.Link href="#pricing">Pricing</Nav.Link>
                 </Nav> */}
-
-            </div >
+            </div>
         </>
     )
 }

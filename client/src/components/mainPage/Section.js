@@ -4,9 +4,9 @@ import decorite from '../../data/imges/decorite.png'
 import $ from 'jquery'
 
 // import Nuv from './Nuv';
-import bg1 from '../../assets/img/bg1.jpg'
-import bg3 from '../../assets/img/bg3.jpg'
-import bg4 from '../../assets/img/bg4.jpg'
+// import bg1 from '../../assets/img/bg1.jpg'
+// import bg3 from '../../assets/img/bg3.jpg'
+// import bg4 from '../../assets/img/bg4.jpg'
 import { ReactComponent as YourSvg } from '../../data/imges/searchIcon_Black.svg';
 import { ReactComponent as YourSvg1 } from '../../data/imges/shoppingCart.svg';
 import { ReactComponent as YourSvg2 } from '../../data/imges/shabatTimes.svg';

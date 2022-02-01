@@ -26,7 +26,7 @@ router.post('/category', async (req, res) => {
 router.post('/categories/:id', async (req, res) => {
     const updates = Object.keys(req.body)
     console.log("updates", updates)
-    const allowedUpdates = ["name"];
+    const allowedUpdates = ["name", "products"];
     const isValidOpreration = updates.every((update) => {
         console.log("update", update)
         allowedUpdates.includes(update)
@@ -61,7 +61,7 @@ router.delete('/category/:id', async (req, res) => {
 
 // get all categories
 router.get('/categories', async (req, res) => {
-    Category.find().then(categories => {
+    Category.find().populate("products").then(categories => {
         if (!categories)
             console.log(categories);
         res.send(categories);

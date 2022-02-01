@@ -313,7 +313,7 @@ button.outSvgSize:hover{
 ::placeholder {
   color: #95918C !important;
   opacity: 1; /* Firefox */
-  text-align: center;
+  text-align: start;
 }
 .bc-white{
 background: #FFFFFF;
@@ -852,3 +852,34 @@ overflow-x: hidden;
   height:80px ;
   border: 1px solid black;
 }
+
+/* input number of product */
+
+	
+/* .numberInput{
+  margin:80px;
+} */
+.minus, .plus{
+  width:20px;
+  /* height:20px; */
+  color: #C59950 !important;
+  cursor:pointer;
+  padding:5px 5px 5px 5px;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center; 
+}
+.input_number{
+  height:20px;
+  width: 30px;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  font-size: 17px;
+  border:1px solid #ddd;
+  /* border-radius:4px; */
+  display: inline-block;
+  vertical-align: middle;
+  padding-top:4px;
+}
+/* input number of product end*/

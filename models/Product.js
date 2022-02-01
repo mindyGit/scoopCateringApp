@@ -5,7 +5,14 @@ const productSchema = new mongoose.Schema({
     name: {
         type: String
     },
+    hebrewName: {
+        type: String
+    },
     description: {
+
+        type: String
+    },
+    hebrewDescription: {
 
         type: String
     },
@@ -14,13 +21,13 @@ const productSchema = new mongoose.Schema({
     },
     available: {
         type: Boolean,
-        default: false
+        default: true
     },
     display: {
         type: Boolean,
         default: true
     },
-    categories: {
+    categoryID: {
         type: mongoose.Schema.Types.ObjectId, ref: "Category"
     },
     SubCategories: {
