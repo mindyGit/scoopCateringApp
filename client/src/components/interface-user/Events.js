@@ -8,13 +8,14 @@ import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 import Search from '../Search';
 import Nuv from '../mainPage/Nuv'
-import Header from '../mainPage/Header'
+import Header from './Header'
 import Footer from '../mainPage/Footer';
 import UnderFooter from '../mainPage/UnderFooter'
 import underLogo from '../../data/imges/underLogo.png'
 import logo from '../../data/imges/logo.png'
 
 import headerBgImag from '../../data/imges/headerBgImag.png'
+import EventsImage from '../../data/imges/EventsImage.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image, Dropdown, DropdownButton, ButtonGroup } from "react-bootstrap"
 import Navbar from 'react-bootstrap/Navbar'
@@ -70,12 +71,14 @@ export function Events(props) {
             </div>
 
             <div className="pageContent pt-3">
-
+                <div>
+                    <img className="h-100 w-100" src={EventsImage} />
+                </div>
 
 
             </div>
 
-            <div className="PageFooter mt-5">
+            <div className="PageFooter ">
                 <Footer />
                 <UnderFooter />
             </div>

@@ -5,7 +5,7 @@ import Home from './components/Home'
 
 import ContactUs from './components/interface-user/ContactUs'
 import Menu from './components/interface-user/Shop'
-import ProductList from './components/product/ProductList';
+import ProductList from './components/interface-user/ProductList';
 import ProductList_manager from './components/product/ProductList_manager';
 import history from "./components/history"
 
@@ -92,6 +92,9 @@ function App(props) {
           <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
           <Route exact path="/shop/*" component={ProductList} />
           <Route exact path="/Nuv/" component={Nuv} />
+          <Route exact path="/OrderSummary" component={OrderSummary} />
+
+
 
 
 

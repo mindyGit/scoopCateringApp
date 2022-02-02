@@ -38,6 +38,11 @@ export const He = {
         ShoppingCart: 'סל הקניות',
         payment: 'תשלום',
         checkout: 'ביצוע הזמנה',
+        homePageTitel: 'שירות זה הטעם שלנו',
+        MenusForEvents: 'תפריטים לאירועים',
+        FoodReadyToShabat: 'אוכל מוכן לשבת',
+        Galleries: 'גלריות',
+        homePageTitel2: 'מבחר מאכלי השבת מבית סקופ קייטרינג',
         SearchResults: 'תוצאות חיפוש',
         NoResults: "אין תוצאות",
         // shabatMenu
@@ -131,6 +136,7 @@ export const He = {
         ProductName: 'שם המוצר',
         Amount: 'כמות',
         price: 'מחיר'
+
 
 
 

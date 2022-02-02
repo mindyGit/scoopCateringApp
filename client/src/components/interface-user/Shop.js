@@ -6,7 +6,7 @@ import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 // import Search from '../Search';
 import Nuv from '../mainPage/Nuv'
-import Header from '../mainPage/Header'
+import Header from './Header'
 import Footer from '../mainPage/Footer';
 import UnderFooter from '../mainPage/UnderFooter'
 import underLogo from '../../data/imges/underLogo.png'
@@ -77,6 +77,7 @@ export function Shop(props) {
 
             <div className="pageHeader">
                 <label > {i18.t('shabatMenu')} </label>
+                {/* <label >  {i18.t('shabatMenu')} <button className='white-arrow h4 p-1 ' onClick={() => props.history.goBack()} ><i class="fas fa-long-arrow-alt-right  pr-2" style={{ height: 'fit-content' }} ></i> </button> </label> */}
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
 
 

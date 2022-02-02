@@ -119,8 +119,11 @@ export function Nuv(props) {
                         </NavDropdown>
                         <Nav.Link className="active hoverLink" onClick={() => props.history.push('/events')} >{i18.t('EventBooking')}</Nav.Link>
                         <Nav.Link className="active hoverLink" onClick={() => props.history.push('/shop')} >{i18.t('shabatMenu')}</Nav.Link>
-                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/contact-us')} >{i18.t('ContactUs')} </Nav.Link>
                         <Nav.Link className="active hoverLink" onClick={() => props.history.push('/gallery')}>{i18.t('gallery')}</Nav.Link>
+                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/contact-us')} >{i18.t('ContactUs')} </Nav.Link>
+                        {/* <Nav.Link className="active hoverLink" onClick={() => props.history.push('/OrderSummary')} >Orders </Nav.Link> */}
+
+
                         <ButtonGroup disableElevation variant="contained" color="primary">
 
                             <Button

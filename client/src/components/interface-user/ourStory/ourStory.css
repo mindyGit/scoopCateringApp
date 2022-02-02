@@ -6,14 +6,14 @@ width:100vw
 .pageHeader{
    
     color: white;
-    height:40vh;
+    height:30vh;
     width:100vw;
     /* background-image: url(../../../data/imges/headerBgImag.png); */
 }
 .pageHeader label{
 font-size:5vh;
 
-top: 25%;
+top: 18%;
 left:50%;
 /* z-index: 1020; */
 position: absolute;

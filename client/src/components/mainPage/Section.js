@@ -13,7 +13,10 @@ import { ReactComponent as YourSvg2 } from '../../data/imges/shabatTimes.svg';
 import locationIcon from '../../data/imges/locationIcon.png'
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
 import background_image from '../../data/imges/backgroundImg.jpg'
+import { useTranslation } from 'react-i18next';
+import i18 from '../../i18/i18';
 export function Section() {
+    const { t, i18n } = useTranslation();
     let clicked = false
     let previousClick = "empty"
     let currentClass
@@ -58,7 +61,7 @@ export function Section() {
 
 
             <div class="container_" style={{
-                width: '100vw', height: "900px",
+                width: '100vw', height: "750px",
 
 
 
@@ -119,7 +122,7 @@ export function Section() {
 
 
 
-                <div class="centered_  ">שירות זה הטעם שלנו</div>
+                <div class="centered_  ">{i18.t('homePageTitel')}</div>
                 {/* <div className="left_side">הזמינו אירוע 077-255-9982</div> */}
                 <Image className="decorite" src={decorite} />
                 <div className="row  " style={{

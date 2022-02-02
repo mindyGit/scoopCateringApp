@@ -24,6 +24,9 @@ background-color: black !important;
 div .bg-grey{
   height: fit-content;
 }
+.w-fitCon{
+  width:fit-content !important;
+}
 .rtl { direction: rtl !important}
 .ltr { direction: ltr !important}
 .whiteColor{
@@ -638,6 +641,9 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
   z-index: 1020;
   height: 4vh;
 }
+.pageNoContent{
+height: 50vh;
+}
 #search-button:focus{
 border:none !important;
 background: none !important;
@@ -708,7 +714,7 @@ outline: none !important;
 }
 .zoomBIn:hover {
   transform: scale(1.1);
-  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0)), url(./data/imges/galeryImag.png);
+  background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url(./data/imges/galeryImag.png);
   background-position: center;
   background-size: cover;
 }

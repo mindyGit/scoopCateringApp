@@ -7,7 +7,7 @@ import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 import Search from '../Search';
 import Nuv from '../mainPage/Nuv'
-import Header from '../mainPage/Header'
+import Header from './Header'
 import Footer from '../mainPage/Footer';
 import UnderFooter from '../mainPage/UnderFooter'
 import underLogo from '../../data/imges/underLogo.png'

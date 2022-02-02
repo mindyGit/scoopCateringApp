@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Nuv from './mainPage/Nuv';
 import Section from './mainPage/Section';
-import Header from './mainPage/Header';
+import Header from './interface-user/Header';
 import Footer from './mainPage/Footer';
 import UnderFooter from './mainPage/UnderFooter'
 import { connect } from 'react-redux';
@@ -36,6 +36,7 @@ import useMediaQuery from "../hooks/useMediaQuery";
 // import { ReactComponent as YourSvg } from '../data/imges/searchIcon.svg';
 import Hamborger from './mainPage/Hamborger'
 import TopPageDesktop from './mainPage/TopPageDesktop'
+import EventsImage from '../data/imges/EventsImage.png'
 import { useTranslation } from 'react-i18next';
 import i18 from '../i18/i18';
 export function Home(props) {
@@ -46,15 +47,15 @@ export function Home(props) {
     ;
     useEffect(() => {
         if ($) {
-            $(".zoomBIn").mouseover(function () {
+            // $(".zoomBIn").mouseover(function () {
 
-                $(this).find('.textHide').addClass("d-none")
+            //     $(this).find('.textHide').addClass("d-none")
 
-            });
-            $(".zoomBIn").mouseout(function () {
-                $(this).find('.textHide').removeClass("d-none")
+            // });
+            // $(".zoomBIn").mouseout(function () {
+            //     $(this).find('.textHide').removeClass("d-none")
 
-            });
+            // });
         }
 
         const inputSlide = document.querySelector("input");
@@ -105,17 +106,19 @@ export function Home(props) {
 
                                     , width: '26%',
                                     backgroundColor: "#C69A51"
-                                }}><div className="h1 font-weight-bold w-50  whiteColor" style={{ lineHeight: '1.1', fontSize: '240%' }} >תפריטים לאירועים</div>
+
+
+                                }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
                                     {/* <div className="font-weight-bold whiteColor" style={{ lineHeight: '0.1', fontSize: '250%' }}>__</div> */}
                                     <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
                                 </div>
 
-                                <div class="zoomBOut">
+                                <div class="zoomBOut" onClick={() => props.history.push('/shop')}>
                                     <div class="zoomBIn d-flex align-items-center flex-column  justify-content-center">
                                         <div className='textHide'>
 
-                                            <div className="h1 font-weight-bold whiteColor " style={{ fontSize: '240%', lineHeight: '1.1' }} ><span className='d-block'>אוכל</span> מוכן לשבת</div>
-                                            <hr className="font-weight-bold whiteColor m-auto" style={{ width: '30%', height: '5px', opacity: '1' }} ></hr>
+                                            <div className="h1 font-weight-bold whiteColor w-75 m-auto mb-4" style={{ fontSize: '240%', lineHeight: '1.1' }} >{i18.t('FoodReadyToShabat')}</div>
+                                            <hr className="font-weight-bold whiteColor m-auto" style={{ width: '20%', height: '5px', opacity: '1' }} ></hr>
                                         </div>
                                     </div>
                                 </div>
@@ -131,8 +134,8 @@ export function Home(props) {
                                 }}>
                                     {/* <div className=" font-weight-bold  w-25 mb-0 whiteColor" style={{ lineHeight: '1.1', fontSize: '240%' }}>אוכל</div> */}
 
-                                    <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> גלריות</div>
-                                    <hr className="font-weight-bold whiteColor" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
+                                    <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> {i18.t('Galleries')}</div>
+                                    <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
                                     {/* <div ><i class="fas fa-horizontal-rule"></i></div> */}
                                 </div>
 
@@ -141,17 +144,17 @@ export function Home(props) {
 
 
 
-                            <h1 className='text-white mt-5 font-weight-bold'  >אוכל מוכן לשבת</h1>
+                            <h1 className='text-white mt-5 font-weight-bold'  >{i18.t('FoodReadyToShabat')}</h1>
                             <hr className="font-weight-bold goldColor m-auto" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
-                            <h6 className='text-white mt-5'>מבחר מאכלי השבת מבית סקופ קייטרינג</h6>
+                            <h6 className='text-white mt-5'> {i18.t('homePageTitel2')}</h6>
                             <div className='d-flex justify-content-center mt-5  ' style={{ height: '300px' }}>
                                 <div className='row d-flex justify-content-center pr-5 pl-5' style={{ maxHeight: '200px' }}>
 
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>הוספה לסל</div></div>
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>הוספה לסל</div></div>
+                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
+                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
 
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>הוספה לסל</div></div>
-                                    <div className='col-md-2 p-0 '><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>הוספה לסל</div></div>
+                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
+                                    <div className='col-md-2 p-0 '><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
 
 
 

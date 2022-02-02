@@ -5,7 +5,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import Nuv from './Nuv';
 import Section from './Section';
-import Header from './Header';
+import Header from '../interface-user/Header';
 import Footer from './Footer';
 import UnderFooter from './UnderFooter'
 import { connect } from 'react-redux';
@@ -34,13 +34,15 @@ import foodExample from '../../data/imges/foodExample.png'
 import SearchResults from '../interface-user/SearchResults'
 import $ from 'jquery'
 import { Redirect } from 'react-router';
-
+import { useTranslation } from 'react-i18next';
+import i18 from '../../i18/i18';
 import useMediaQuery from "../../hooks/useMediaQuery";
 // import searchIcon from '../data/imges/searchIcon.svg'
 import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
 
 
 export function TopPageDesktop(props) {
+    const { t, i18n } = useTranslation();
     const { language } = props
     function goHome() {
         if (window.location.href != " ") //if not home page
@@ -71,7 +73,7 @@ export function TopPageDesktop(props) {
                 // shoppingCart
                 $('.sumColumn').addClass('text-end').removeClass('pl-0')
                 $('.sumColumnVal').removeClass('pl-5').addClass('pr-5')
-
+                $('input').addClass('rtl')
 
 
 
@@ -96,6 +98,7 @@ export function TopPageDesktop(props) {
                 // shoppingCart
                 $('.sumColumn').removeClass('text-end').addClass('pl-0')
                 $('.sumColumnVal').removeClass('pr-5').addClass('pl-5 pr-0')
+                $('input').removeClass('rtl')
 
 
             }
