@@ -17,10 +17,19 @@ export function Header(props) {
     const [side, setSide] = useState('');
     const [align, setAlign] = useState('');
     const { language } = props
-
+    let productsInCart
     const myStorage = window.localStorage;
+    if (myStorage.cart != undefined) {
+        try {
+            productsInCart = JSON.parse(myStorage.cart);
+        }
+        catch (errror) {
+            console.error("Not a JSON response")
+        }
+    }
 
-    const productsInCart = JSON.parse(myStorage.cart);
+    // const productsInCart = myStorage.cart
+
     const deleteItem = (id) => {
         let list = productsInCart.filter(x => {
             return x.product._id != id;
@@ -61,7 +70,7 @@ export function Header(props) {
                         className=""
                     >
                         <Offcanvas.Header closeButton className="rtl py-4" style={{ backgroundColor: '#f1f1f2' }}>
-                            <Offcanvas.Title className="m-auto     font-weight-bold" id="offcanvasNavbarLabel">{i18.t('ShoppingCart')} ({productsInCart.length})</Offcanvas.Title>
+                            <Offcanvas.Title className="m-auto     font-weight-bold" id="offcanvasNavbarLabel">{i18.t('ShoppingCart')} ({productsInCart && productsInCart.length})</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body className=" d-flex flex-column  pl-4 pt-0 pr-0 overflow-hidden">
                             {productsInCart == "" && (
@@ -71,7 +80,7 @@ export function Header(props) {
                             }
 
                             <div className="ShoppingCart_itemList mb-5 px-2 pt-3">
-                                {productsInCart.map(item =>
+                                {productsInCart && productsInCart.map(item =>
                                     <div className={`productItem row justify-content-around align-items-end  border-bottom border-dark py-2 ${side} ${item.product._id}`} >
                                         <div className={`productName col-12  font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
                                         <div className='col-3 amountToBuy goldColor d-flex align-items-end'><div>+</div><div className='border text-black bg-white pt-0 pb-0 pl-2 pr-2  m-1 my-0' style={{ fontSize: '13px' }}>{item.Amount}</div><div>-</div></div>
