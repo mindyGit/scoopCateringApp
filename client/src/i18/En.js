@@ -35,6 +35,8 @@ export const En = {
         Galleries: 'Galleries',
         homePageTitel2: 'A selection of Shabbat dishes from Scoop Catering',
         SearchResults: 'Search Results',
+        searchPlaceholder: ' Enter product to search ...',
+        searchMessage: 'Enter a product to search',
         NoResults: "No Results",
         PreparedFoodCategories: 'Prepared food categories',
         ComeAndTasteTheShabbatFood: 'Come and taste the Shabbat food',

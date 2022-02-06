@@ -222,18 +222,12 @@ export function Footer() {
 
                         </div>
 
-
                         <div class=" col-md-3 mb-4 p-0  ml-4">
                             {i18.t('CompanyPhone')}
                             <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
-                                <Image src={phoneIcon} style={{ height: '22px', marginBottom: "3px" }} />
+                                <Image src={phoneIcon ? phoneIcon : emailIcon} style={{ height: '22px', marginBottom: "3px" }} />
                             </div>
-
-
                         </div>
-
-
-
 
                     </div>
                     {/* <div class="copyright">

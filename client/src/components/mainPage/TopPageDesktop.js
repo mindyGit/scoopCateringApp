@@ -64,7 +64,7 @@ export function TopPageDesktop(props) {
                 $('.svgSize').css({ "right": '', "left": '200px' })
                 $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', left: '0px' })
                 $('.location').removeClass('text-start').addClass('text-end')
-                $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
+                // $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
                 $('.swithSide').css('text-align', 'right')
                 $('.productLine').addClass('rtl')
                 $('.productName').css('text-align', 'right')
@@ -74,7 +74,7 @@ export function TopPageDesktop(props) {
                 $('.sumColumn').addClass('text-end').removeClass('pl-0')
                 $('.sumColumnVal').removeClass('pl-5').addClass('pr-5')
                 $('input').addClass('rtl')
-
+                $('.searchIcon').css({ "right": '', "left": '1%' })
 
 
 
@@ -89,7 +89,7 @@ export function TopPageDesktop(props) {
                 $('.location').removeClass('text-end').addClass('text-start')
                 $('.svgSize').css({ "right": '200px', "left": '' })
                 $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
-                $(".inputOfSearch").attr("placeholder", " ")
+                // $(".inputOfSearch").attr("placeholder", " ")
                 $('.swithSide').css('text-align', 'left')
                 $('.productLine').removeClass('rtl')
                 $('.productName').css('text-align', 'left')
@@ -99,6 +99,7 @@ export function TopPageDesktop(props) {
                 $('.sumColumn').removeClass('text-end').addClass('pl-0')
                 $('.sumColumnVal').removeClass('pr-5').addClass('pl-5 pr-0')
                 $('input').removeClass('rtl')
+                $('.searchIcon').css({ "right": '1%', "left": '' })
 
 
             }
@@ -131,7 +132,7 @@ export function TopPageDesktop(props) {
                     search(word)
                 }
                 else {
-                    $('.errorSearch').text('הכנס מוצר לחיפוס ')
+                    $('.errorSearch').text(i18.t('searchMessage'))
                     setTimeout(function () {
                         $('.errorSearch').text('')
                     }, 2000);
@@ -170,26 +171,24 @@ export function TopPageDesktop(props) {
                 height: '100px'
 
             }}>
-                <div className='searchDiv bg-black d-none h-100 d-flex justify-content-center align-items-center' >
+                <div className=' swithDir searchDiv bg-black d-none h-100 d-flex justify-content-center align-items-center' >
 
 
-
-                    <div className="input-group align-items-center" style={{ width: 'fit-content' }}>
-
-                        {/* <button id="search-button" type="button" className="btn btn-primary m-0 bg-black border-0 pb-0" style={{ height: 'fit-content' }}     >
-                            <i className="fas fa-search"></i>
-                        </button> */}
-                        <YourSvg className="searchIcon" id="search-button" />
-                        <div className="form-outline">
-                            <input id="search-input" type="text" tabIndex='-1' className="pr-2 form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-0 pb-0 pt-2 rtl pr-0" placeholder=' הזן/י מוצר לחיפוש...' />
-                            {/* <label className="form-label errorSearch  text-white " ></label> */}
-                            <p className='errorSearch mb-0 text-muted h6 small'></p>
-                        </div>
-
-                    </div>
                     <button id="" type="button" For="form1" className="btn  m-0 border-0 searchClose text-white pl-5" style={{ height: 'fit-content', fontsize: '30px' }}     >
                         <i className="fas fa-times " style={{ fontSize: '32px' }}></i>
                     </button>
+                    <div className="input-group align-items-center" style={{ width: 'fit-content' }}>
+
+
+
+                        <div className="form-outline">
+                            <input id="search-input" type="text" tabIndex='-1' className="pr-2 form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-0 pb-0 pt-2 rtl pr-0" placeholder={i18.t('searchPlaceholder')} />
+
+                            <p className='errorSearch mb-0 text-muted h6 small'>  </p>
+                        </div>
+                        <YourSvg className="searchIcon" id="search-button" />
+                    </div>
+
                 </div>
                 <div className='topPage'>
                     <YourSvg className="svgSize searchButton" />

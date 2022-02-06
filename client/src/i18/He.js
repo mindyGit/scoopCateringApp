@@ -23,6 +23,9 @@ export const He = {
         setting: 'הגדרות',
         employees: 'עובדים',
         search: '...חיפוש',
+        searchPlaceholder: ' הזן/י מוצר לחיפוש...',
+        searchMessage: 'הכנס מוצר לחיפוש',
+
         Login: 'התחברות',
         Register: 'הרשמה',
         BookAnEvent: 'הזמינו אירוע',

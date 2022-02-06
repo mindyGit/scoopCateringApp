@@ -678,11 +678,12 @@ background-color: black !important;
   transform: scale(1.5);
   padding: 10px;
 } */
+
 .inputOfSearch::placeholder {
   color: white !important;
   opacity: 1 !important; 
   text-align: start !important;
-  font-size: 22.4px !important;
+  font-size: 20px !important;
 }
 .form-control:focus{
   /* border:none !important; */
@@ -808,6 +809,7 @@ border:none !important;
     position: absolute;
     top: 10px;
     z-index: 99999;
+   
 }
 
 @media only screen and (max-width: 320px) {
