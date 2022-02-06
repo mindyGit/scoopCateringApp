@@ -17,7 +17,7 @@ const fileupload = require("express-fileupload");
 const cors = require('cors')
 // const helmet = require('helmet');
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 5002;
 let emails
 
 // const { db } = require('./models')
