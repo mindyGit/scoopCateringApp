@@ -1,7 +1,7 @@
 import React from "react";
 import locationIcon from '../../data/imges/locationIcon.png'
 import emailIcon from '../../data/imges/emailIcon.png'
-import phoneI from '../../data/imges/emailIcon.png'
+import phoneIcon from '../../data/imges/phoneIcon.png'
 import VectorSmart from '../../data/imges/VectorSmart.png'
 import allVectorSmart from '../../data/imges/allVectorSmart.png'
 import InputGroup from 'react-bootstrap/InputGroup'
@@ -226,7 +226,7 @@ export function Footer() {
                         <div class=" col-md-3 mb-4 p-0  ml-4">
                             {i18.t('CompanyPhone')}
                             <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
-                                <Image src={phoneI} style={{ height: '22px', marginBottom: "3px" }} />
+                                <Image src={phoneIcon} style={{ height: '22px', marginBottom: "3px" }} />
                             </div>
 
 
