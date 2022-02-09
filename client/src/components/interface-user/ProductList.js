@@ -6,6 +6,7 @@ import { Table, Button } from 'react-bootstrap'
 import { Formik, Field, Select, Form } from 'formik';
 import NewProduct from '../product/NewProduct';
 import Scroll from '../Scroll';
+import Carousel from '../Carousel_'
 // import Search from '../Search'
 import headerBgImag from '../../data/imges/headerBgImag.png'
 import Hamborger from '../mainPage/Hamborger'
@@ -30,6 +31,47 @@ function ProductList(props) {
 
   const isMobile = useMediaQuery(768);
   const isTablet = useMediaQuery(1024);
+
+  const [cart, setCart] = useLocalStorage("cart", []);
+  const [numItems, setNumItems] = useLocalStorage("numItems", 0);
+  const [total, setTotal] = useLocalStorage("total", 0);
+
+  function useLocalStorage(key, initialValue) {
+    debugger
+    // State to store our value
+    // Pass initial state function to useState so logic is only executed once
+    const [storedValue, setStoredValue] = useState(() => {
+      try {
+        // Get from local storage by key
+        const item = window.localStorage.getItem(key);
+        // Parse stored json or if none return initialValue
+        return item ? JSON.parse(item) : initialValue;
+      } catch (error) {
+        // If error also return initialValue
+        console.log(error);
+        return initialValue;
+      }
+    });
+    // Return a wrapped version of useState's setter function that ...
+    // ... persists the new value to localStorage.
+    const setValue = (value) => {
+      try {
+        // Allow value to be a function so we have same API as useState
+        const valueToStore =
+          value instanceof Function ? value(storedValue) : value;
+        // Save state
+        setStoredValue(valueToStore);
+        // Save to local storage
+        window.localStorage.setItem(key, JSON.stringify(valueToStore));
+      } catch (error) {
+        // A more advanced implementation would handle the error case
+        console.log(error);
+      }
+    };
+    return [storedValue, setValue];
+  }
+
+
   if (!products || !products.length) {
     props.getAllProducts()
   }
@@ -38,67 +80,126 @@ function ProductList(props) {
     props.getAllCategories()
 
   }
+  const changeAmount = async (id, action) => {
+    debugger
+    let amount = parseInt($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
-  const myStorage = window.localStorage;
+    // cart.map(item => {
 
+    //     if (item.product._id == id) {
+    if (action == 'plus') {
+      // item.Amount = parseInt(item.Amount) + 1
+      // setNumItems(numItems + 1)
+      amount++
+
+    }
+    else {
+      if (amount != '1') {
+        // item.Amount = parseInt(item.Amount) - 1
+        // setNumItems(numItems - 1)
+
+        amount--
+
+      }
+
+    }
+
+    // }
+    // })
+    $('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
+    // setCart(cart)
+  }
+
+
+  // const myStorage = window.localStorage;
   const AddToCart = async (product) => {
+    let amountToAdd = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+    let productName = $('#' + product._id + ' ' + '.productName').text()
+    let productPrice = $('#' + product._id + ' ' + '.price').text()
+
+    setTotal(total + (parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90))//product.price
+    setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
     let flag = 0
-
-
-
-
-    // const productToAdd = getProductById(id)
+    let a
     let shoppingCart = []
-    if (myStorage.cart != undefined)
-      shoppingCart = JSON.parse(myStorage.cart);
+    if (cart != undefined)
+      shoppingCart = cart
     shoppingCart.map(item => {
 
       if (item.product._id == product._id) {
         debugger
-        item.Amount = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+        a = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+        item.Amount = a
+        item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
         flag = 1
+
+
       }
-
-
     })
     if (flag == 0) {
       let newItem = {
         product: product,
-        Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()
+        Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val(),
+        Total: parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//product.price
+
       }
-      shoppingCart.push(newItem)
+      await shoppingCart.push(newItem)
+      // setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
     }
 
-    // setCart(shoppingCart)
-    myStorage.cart = JSON.stringify(shoppingCart);
+
+    await setCart(shoppingCart)
+
 
     $('.navbar-toggler').click()
+    $('.numItems').text(numItems + amountToAdd)
+    if (flag != 1) {
+      if (language == "he")
+        $('.ShoppingCart_itemList').append(`
+
+    <div class="productItem row justify-content-around align-items-end  border-bottom border-dark py-2 rtl ${product._id}">
+    <div class="productName col-12  font-weight-bold text-end">${productName}</div>
+    <div class='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style="width: fit-content">
+        <span class="plus" style="height: 29px">+</span>
+        <input type="text" value=${amountToAdd} class='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style="font-size: 13px" />
+        <span class="minus"  style ="height: 29px" >-</span>
+    </div>
+    <div class='col-6 price h6 mb-0 font-weight-bold  goldColor ' >${productPrice}</div>
+
+    <div class="col-1"> <i class="fas fa-trash-alt "></i></div>
+
+
+
+</div>
+    `)
+      else
+        $('.ShoppingCart_itemList').append(`
+
+        <div class="productItem row justify-content-around align-items-end  border-bottom border-dark py-2 ${product._id}">
+        <div class="productName col-12  font-weight-bold">${productName}</div>
+        <div class='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style="width: fit-content">
+            <span class="plus" style="height: 29px">+</span>
+            <input type="text" value=${amountToAdd} class='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style="font-size: 13px" />
+            <span class="minus"  style ="height: 29px" >-</span>
+        </div>
+        <div class='col-6 price h6 mb-0 font-weight-bold  goldColor ' >${productPrice}</div>
+
+        <div class="col-1"> <i class="fas fa-trash-alt "></i></div>
+
+
+
+    </div>
+        `)
+    }
+    else {
+      $('.' + product._id + ' ' + '.amountToBuy' + ' ' + '.AmountInput').val(a)
+    }
   }
 
 
   useEffect(() => {
-    if ($) {
-      $('.minus').click(function () {
-        debugger
-        var $input = $(this).parent().find('input');
-        var count = parseInt($input.val()) - 1;
-        count = count < 1 ? 1 : count;
-        $input.val(count);
-        $input.change();
-        return false;
-      });
-      $('.plus').click(function () {
-        debugger
-        var $input = $(this).parent().find('input');
-        $input.val(parseInt($input.val()) + 1);
-        $input.change();
-        return false;
-      });
-
-
-
-    }
-  }, [$, props, language]);
+    if ($) { }
+  }, [$, props, language, AddToCart]);
 
 
 
@@ -133,9 +234,14 @@ function ProductList(props) {
         <button className='goldButton h5 p-2 mt-2' style={{
           left: '250px',
           position: 'absolute'
-        }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')} </button>
+        }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')}
+        </button>
         <br />
         <br />
+
+        <Carousel />
+
+
         <h3 className=' font-weight-bold mb-1'>{lastSegment}</h3>
         <h6 className='  mb-5'> {i18.t('addProductsLable')}</h6>
 
@@ -162,9 +268,9 @@ function ProductList(props) {
                   <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
 
                   <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>
-                    <span class="plus">+</span>
+                    <span class="plus" onClick={() => changeAmount(product._id, "plus")} >+</span>
                     <input type="text" value='1' className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 input_number' style={{ fontSize: '13px' }} />
-                    <span class="minus">-</span>
+                    <span class="minus" onClick={() => changeAmount(product._id, "minus")}>-</span>
                   </div>
 
                   <div onClick={() => AddToCart(product)} className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}>{i18.t('addToCart')}

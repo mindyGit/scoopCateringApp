@@ -93,6 +93,9 @@ function App(props) {
           <Route exact path="/shop/*" component={ProductList} />
           <Route exact path="/Nuv/" component={Nuv} />
           <Route exact path="/OrderSummary" component={OrderSummary} />
+          <Route exact path="/login" component={AppFirebase} />
+
+
 
 
 
@@ -110,17 +113,6 @@ function App(props) {
           <Route exact path="/Payment" component={Payment} />
           <Route exact path="/gallery" component={Gallery} />
           <Route exact path="/events" component={Events} />
-
-
-
-
-
-
-
-
-
-
-
 
         </Switch>
 

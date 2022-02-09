@@ -62,6 +62,7 @@ export const En = {
         // cart
         emptyCart: `No items yet!`,
         ToTheShoppingCart: `Shopping Cart`,
+        ToTheShop: 'Back to menu',
         toCheckout: 'checkout',
         addProductsLable: `Add products to cart`,
         SelectAnOption: 'Select option',

@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Store from '../redux/store'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -21,8 +20,7 @@ import galeryImag from '../data/imges/galeryImag.png'
 // import img1 from '../data/imges/img1.png'
 // import img1_ from '../data/imges/img1_.png'
 import img1 from '../data/imges/imgG.png'
-
-
+import MyVerticallyCenteredModal from './mainPage/MyVerticallyCenteredModal'
 import img3 from '../data/imges/img3.png'
 import Rectangle from '../data/imges/Rectangle.jpg'
 import blog1 from '../data/imges/blog1.png'
@@ -39,25 +37,18 @@ import TopPageDesktop from './mainPage/TopPageDesktop'
 import EventsImage from '../data/imges/EventsImage.png'
 import { useTranslation } from 'react-i18next';
 import i18 from '../i18/i18';
+
 export function Home(props) {
     const { t, i18n } = useTranslation();
-
+    const [modalShow, setModalShow] = useState(false);
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-    ;
+
     useEffect(() => {
+        // alert('Not available at the moment, the site is running only !! \n אינו זמין כרגע ,האתר בהרצה בלבד!!')
         if ($) {
-            // $(".zoomBIn").mouseover(function () {
 
-            //     $(this).find('.textHide').addClass("d-none")
-
-            // });
-            // $(".zoomBIn").mouseout(function () {
-            //     $(this).find('.textHide').removeClass("d-none")
-
-            // });
         }
-
         const inputSlide = document.querySelector("input");
         const secondInputSlide = document.getElementById("secondinput");
 
@@ -67,7 +58,6 @@ export function Home(props) {
     }, [$])
     return (
         <>
-
             <div style={{
                 height: '1000px',
                 width: '100vw'
@@ -103,11 +93,8 @@ export function Home(props) {
                                 <div className="d-flex justify-content-center align-items-center flex-column" style={{
                                     height: '400px', border: '2px solid #C69A51'
                                     , opacity: '1'
-
                                     , width: '26%',
                                     backgroundColor: "#C69A51"
-
-
                                 }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
                                     {/* <div className="font-weight-bold whiteColor" style={{ lineHeight: '0.1', fontSize: '250%' }}>__</div> */}
                                     <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
@@ -122,8 +109,6 @@ export function Home(props) {
                                         </div>
                                     </div>
                                 </div>
-
-
                                 <div className="d-flex justify-content-center align-items-center flex-column" style={{
                                     height: '400px', border: '2px solid #C69A51'
 
@@ -138,12 +123,7 @@ export function Home(props) {
                                     <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
                                     {/* <div ><i class="fas fa-horizontal-rule"></i></div> */}
                                 </div>
-
                             </Row>
-
-
-
-
                             <h1 className='text-white mt-5 font-weight-bold'  >{i18.t('FoodReadyToShabat')}</h1>
                             <hr className="font-weight-bold goldColor m-auto" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
                             <h6 className='text-white mt-5'> {i18.t('homePageTitel2')}</h6>
@@ -156,31 +136,11 @@ export function Home(props) {
                                     <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
                                     <div className='col-md-2 p-0 '><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
 
-
-
-
-
                                 </div>
                             </div>
 
                             <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{i18.t('shabatMenu')}</button>
 
-
-
-                            {/* <div className='row sectionFour d-flex justify-content-around align-items-center mt-5 mb-5 col-md-12'>
-
-                                <div className='col-md-7 p-0 ' style={{ height: '550px' }}>
-                                    <div className='childD'>
-
-                                    </div>
-                                </div>
-
-                                <div className='col-md-4 '>
-                                    <div className="font-weight-bold h2" style={{ color: "#A38047", fontSize: '2vw' }}> ?מתכנן אירוע</div>
-                                    <div className="font-weight-bold" style={{ lineHeight: '0.1', fontSize: '250%', color: "#A38047" }}>__</div>
-                                    <p className="mt-5 w-75  text-end" style={{ color: "white", fontSize: '1.5vw' }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
-                                </div>
-                            </div> */}
                             <div className="row justify-content-around mt-3  " style={{ height: '60vh', paddingLeft: '6%' }}>
 
 
@@ -188,9 +148,6 @@ export function Home(props) {
                                     marginLeft: '25%',
                                     marginTop: '10%'
                                 }}>תפריט מומלץ</div><img className='w-100 h-100' src={img1} /> </div>
-                                {/* <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginLeft: '3%', height: '60vh' }}><div className='childD'></div></div> */}
-
-
 
 
                                 <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '10%', paddingLeft: '5%' }}>
@@ -200,8 +157,6 @@ export function Home(props) {
                                     <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
                                 </div>
                             </div>
-
-
                             <div className="row justify-content-around mt-4 " style={{ paddingRight: '6%' }} >
                                 <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '4%', paddingLeft: '8.4%' }}>
                                     <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>

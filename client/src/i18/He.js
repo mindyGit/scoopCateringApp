@@ -76,6 +76,7 @@ export const He = {
         // cart
         emptyCart: `אין מוצרים בעגלה`,
         ToTheShoppingCart: `לסל הקניות`,
+        ToTheShop: 'חזרה לתפריט',
         toCheckout: 'לרכישה',
         addProductsLable: `הוסיפו מוצרים לסל הקניות`,
         SelectAnOption: 'בחר אפשרות',

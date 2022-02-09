@@ -17,8 +17,12 @@ import Navbar from 'react-bootstrap/Navbar'
 import { useEffect } from 'react';
 export function Nuv(props) {
     const { language } = props
+    let url = window.location.pathname.split('/');
+    let isTrue = url[url.length - 2]
     async function chang_language(lang) {
         i18n.changeLanguage(lang)
+        if (isTrue == 'shop')
+            props.history.push('/shop')
         if (lang == 'en') {
             await props.setLanguage(lang)
 

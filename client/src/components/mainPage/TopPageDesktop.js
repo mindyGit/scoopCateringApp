@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import Store from '../../redux/store'
 import Navbar from 'react-bootstrap/Navbar'
@@ -44,6 +44,45 @@ import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
 export function TopPageDesktop(props) {
     const { t, i18n } = useTranslation();
     const { language } = props
+    const [cart, setCart] = useLocalStorage("cart", []);
+    const [numItems, setNumItems] = useLocalStorage("numItems", 0);
+    const [total, setTotal] = useLocalStorage("total", 0);
+    function useLocalStorage(key, initialValue) {
+        debugger
+        // State to store our value
+        // Pass initial state function to useState so logic is only executed once
+        const [storedValue, setStoredValue] = useState(() => {
+            try {
+                // Get from local storage by key
+                const item = window.localStorage.getItem(key);
+                // Parse stored json or if none return initialValue
+                return item ? JSON.parse(item) : initialValue;
+            } catch (error) {
+                // If error also return initialValue
+                console.log(error);
+                return initialValue;
+            }
+        });
+        // Return a wrapped version of useState's setter function that ...
+        // ... persists the new value to localStorage.
+        const setValue = (value) => {
+            try {
+                // Allow value to be a function so we have same API as useState
+                const valueToStore =
+                    value instanceof Function ? value(storedValue) : value;
+                // Save state
+                setStoredValue(valueToStore);
+                // Save to local storage
+                window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            } catch (error) {
+                // A more advanced implementation would handle the error case
+                console.log(error);
+            }
+        };
+        return [storedValue, setValue];
+    }
+
+
     function goHome() {
         if (window.location.href != " ") //if not home page
             props.history.push('/')
@@ -73,7 +112,7 @@ export function TopPageDesktop(props) {
                 // shoppingCart
                 $('.sumColumn').addClass('text-end').removeClass('pl-0')
                 $('.sumColumnVal').removeClass('pl-5').addClass('pr-5')
-                $('input').addClass('rtl')
+                $('input[type=text]').addClass('rtl')
                 $('.searchIcon').css({ "right": '', "left": '1%' })
 
 
@@ -98,13 +137,13 @@ export function TopPageDesktop(props) {
                 // shoppingCart
                 $('.sumColumn').removeClass('text-end').addClass('pl-0')
                 $('.sumColumnVal').removeClass('pr-5').addClass('pl-5 pr-0')
-                $('input').removeClass('rtl')
+                $('input[type=text]').removeClass('rtl')
                 $('.searchIcon').css({ "right": '1%', "left": '' })
 
 
             }
         }
-    }, [$, language])
+    }, [$, language, cart])
 
     useEffect(() => {
 
@@ -160,7 +199,7 @@ export function TopPageDesktop(props) {
 
 
         }
-    }, [$])
+    }, [$, cart])
     return (
         <>
 
@@ -203,7 +242,7 @@ export function TopPageDesktop(props) {
                         padding: '12px'
                     }} src={logo} />
 
-                    <Header history={props.history} />
+                    <Header history={props.history} cart={cart} numItems={numItems} total={total} />
                     <div style={{
                         backgroundColor: 'rgba(0,0,0,0.5)'
                     }}>

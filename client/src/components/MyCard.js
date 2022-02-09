@@ -28,7 +28,12 @@ function MyCard({ list, lang }, props) {
 
     const { t, i18n } = useTranslation();
     const [cart, setCart] = useLocalStorage("cart", []);
+    const [numItems, setNumItems] = useLocalStorage("numItems", 0);
+    const [total, setTotal] = useLocalStorage("total", 0);
+
+
     function useLocalStorage(key, initialValue) {
+        debugger
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {
@@ -61,38 +66,79 @@ function MyCard({ list, lang }, props) {
         };
         return [storedValue, setValue];
     }
-
-
-    function AddToCart(id) {
+    const changeAmount = async (id, action) => {
         debugger
-        let newItem = {
-            Id: id,
-            Amount: $('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
+        let amount = parseInt($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+
+        // cart.map(item => {
+
+        //     if (item.product._id == id) {
+        if (action == 'plus') {
+            // item.Amount = parseInt(item.Amount) + 1
+            // setNumItems(numItems + 1)
+            amount++
+
         }
-        let shoppingCart = cart
-        shoppingCart.push(newItem)
-        setCart(shoppingCart)
+        else {
+            if (amount != '1') {
+                // item.Amount = parseInt(item.Amount) - 1
+                // setNumItems(numItems - 1)
+
+                amount--
+
+            }
+
+        }
+
+        // }
+        // })
+        $('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
+        // setCart(cart)
     }
+
+
+
+
+
+    const AddToCart = async (product) => {
+        setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
+
+        setTotal(total + (parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90))//product.price
+        let flag = 0
+
+        let shoppingCart = []
+        if (cart != undefined)
+            shoppingCart = cart
+        shoppingCart.map(item => {
+
+            if (item.product._id == product._id) {
+                debugger
+                item.Amount = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+                item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
+                flag = 1
+                // setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
+            }
+        })
+        if (flag == 0) {
+            let newItem = {
+                product: product,
+                Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val(),
+                Total: parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//product.price
+
+            }
+            await shoppingCart.push(newItem)
+            // setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
+        }
+
+
+        await setCart(shoppingCart)
+
+        $('.navbar-toggler').click()
+    }
+
 
     useEffect(() => {
         if ($) {
-            $('.minus').click(function () {
-                debugger
-                var $input = $(this).parent().find('input');
-                var count = parseInt($input.val()) - 1;
-                count = count < 1 ? 1 : count;
-                $input.val(count);
-                $input.change();
-                return false;
-            });
-            $('.plus').click(function () {
-                debugger
-                var $input = $(this).parent().find('input');
-                $input.val(parseInt($input.val()) + 1);
-                $input.change();
-                return false;
-            });
-
 
         }
     }, [$]);
@@ -108,7 +154,8 @@ function MyCard({ list, lang }, props) {
             return (
 
                 <Row xs={6} md={2} className="menuList">
-                    {list && list.map((item) => (
+
+                    {console.log(list) && list.map((item) => (
                         <div className=' productLine w-100 d-flex row rtl  mb-4  justify-content-around align-items-center pr-1 pl-1 ml-0 pb-1 pt-1 border-left-0' id={item._id} style={{ borderRight: "8px solid #C59950" }}>
                             <div className='productName text-end font-weight-bold  col-4'> {lang == "he" ? item.hebrewName : item.name} </div>
                             <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
@@ -123,12 +170,12 @@ function MyCard({ list, lang }, props) {
                             <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
                             <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
                             <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>
-                                <span class="plus" >+</span>
+                                <span class="plus" onClick={() => changeAmount(item._id, "plus")} >+</span>
                                 <input type="text" value='1' className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 input_number' style={{ fontSize: '13px' }} />
-                                <span class="minus" >-</span>
+                                <span class="minus" onClick={() => changeAmount(item._id, "minus")}>-</span>
                             </div>
 
-                            <div onClick={() => AddToCart(item._id)} className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}>{i18.t('addToCart')}
+                            <div onClick={() => AddToCart(item)} className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}>{i18.t('addToCart')}
                                 <div className='mr-2'></div>
                                 <img style={{
                                     height: '17px',
@@ -165,12 +212,12 @@ function MyCard({ list, lang }, props) {
                             <div className='col-1 goldColor p-0' style={{ width: 'fit-content' }}>|</div>
                             <div className='price font-weight-bold col-1 goldColor p-0' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
                             <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-center' style={{ width: 'fit-content' }}>
-                                <span class="plus">+</span>
+                                <span class="plus" onClick={() => changeAmount(item._id, "plus")} >+</span>
                                 <input type="text" value='1' className='border text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 input_number' style={{ fontSize: '13px' }} />
-                                <span class="minus">-</span>
+                                <span class="minus" onClick={() => changeAmount(item._id, "minus")}>-</span>
                             </div>
 
-                            <div onClick={() => AddToCart(item._id)} className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}>{i18.t('addToCart')}
+                            <div onClick={() => AddToCart(item)} className='addToCart col-3 bg-black text-white align-items-center d-flex h6 pb-1 pt-1 mb-0' style={{ height: 'fit-content', width: 'fit-content' }}>{i18.t('addToCart')}
                                 <div className='mr-2'></div>
                                 <img style={{
                                     height: '17px',

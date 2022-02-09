@@ -28,7 +28,7 @@ import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import soops from '../../data/imges/foodCategories/soops_.jpg'
 import drinks from '../../data/imges/drinks.png'
-
+// import images from '../../data/imges/foodCategories'
 import $ from 'jquery'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
@@ -100,7 +100,7 @@ export function Shop(props) {
                             <div className="categoryItem  p-0 col-3 mr-3 mb-3" style={{ height: '380px' }}><div className="categoryHover" onClick={() => props.history.push(`/shop/${language == "he" ? category.hebrewName : category.name}`)}>
                                 <div className=" categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">{language == "he" ? category.hebrewName : category.name}</h5> <h6 className=" mb-0">מוצרים 20</h6></div>
                             </div>
-                                <img className="h-100 w-100" src="" />
+                                <img className="h-100 w-100" src={category.picUrl} />
                             </div>
 
                         ))}

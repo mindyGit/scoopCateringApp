@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import '../../App.css';
 import { connect } from 'react-redux';
@@ -33,7 +33,45 @@ export function Payment(props) {
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { i18n } = useTranslation();
-    const products = Store.getState().productReducer.products
+    // const products = Store.getState().productReducer.products
+    const [total, setTotal] = useLocalStorage("total", 0);
+
+    function useLocalStorage(key, initialValue) {
+        debugger
+        // State to store our value
+        // Pass initial state function to useState so logic is only executed once
+        const [storedValue, setStoredValue] = useState(() => {
+            try {
+                // Get from local storage by key
+                const item = window.localStorage.getItem(key);
+                // Parse stored json or if none return initialValue
+                return item ? JSON.parse(item) : initialValue;
+            } catch (error) {
+                // If error also return initialValue
+                console.log(error);
+                return initialValue;
+            }
+        });
+        // Return a wrapped version of useState's setter function that ...
+        // ... persists the new value to localStorage.
+        const setValue = (value) => {
+            try {
+                // Allow value to be a function so we have same API as useState
+                const valueToStore =
+                    value instanceof Function ? value(storedValue) : value;
+                // Save state
+                setStoredValue(valueToStore);
+                // Save to local storage
+                window.localStorage.setItem(key, JSON.stringify(valueToStore));
+            } catch (error) {
+                // A more advanced implementation would handle the error case
+                console.log(error);
+            }
+        };
+        return [storedValue, setValue];
+    }
+
+
     useEffect(() => {
         if ($) { }
     }, [$])
@@ -130,7 +168,7 @@ export function Payment(props) {
                             <div className=" bg-grey p-3 mb-4">
                                 <div className="row pt-2 font-weight-bold ">
                                     <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                    <div className="col-5 ">178.8 &#8362;</div>
+                                    <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
                                 </div>
                             </div>
 
