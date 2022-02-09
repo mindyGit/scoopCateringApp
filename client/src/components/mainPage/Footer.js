@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import locationIcon from '../../data/imges/locationIcon.png'
 import emailIcon from '../../data/imges/emailIcon.png'
 import phoneIcon from '../../data/imges/phoneIcon.png'
@@ -9,6 +9,7 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
+import $ from 'jquery'
 {/* <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png"> */ }
 
 // <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -20,32 +21,190 @@ import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "r
 
 export function Footer() {
     const { t, i18n } = useTranslation();
+    function sendEmail() {
+        $('.successEmail').removeClass('d-none')
+        setTimeout(function () {
+            $('.successEmail').addClass('d-none')
+        }, 2000);
+
+    }
+    useEffect(() => {
+
+    }, [$]);
 
     return (
         <>
             <footer class="footer footer-big " style={{ backgroundColor: '#0F0F0F' }}>
                 <div class="container">
                     <div class="content">
-                        <div class="row">
+                        <div class="row swithDir">
+                            {/* successEmail: 'המייל נשלח בהצלחה',
+        ChainStores: 'חנויות הרשת',
+        Events: 'אירועים',
+        PrivateEvents: 'אירועים פרטיים', */}
+                            {/* Menus: 'תפריטים', */}
+                            {/* WeddingMenu: 'תפריט חתונה', */}
+                            {/* DairyMenu: 'תפריט חלבי', */}
+                            {/* BasicDairyMenu: 'תפריט חלבי בסיסי', */}
+                            {/* Recommend: 'ממליצים', */}
+                            {/* orders: 'הזמנות', */}
+                            {/* OrganizationsAndCompanies: 'אירגונים וחברות', */}
+                            {/* OutdoorEvents: 'אירועי חוץ', */}
+                            {/* InformationAndArticles */}
+
+
+                            <div class="col-md-2 swithSide">
+                                <h5 class="title"> {i18.t('ScoopCatering')}</h5>
+                                <ul class="links-vertical">
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB TitleB">
+                                            {i18.t('OurStory')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('OurCustomers')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('ChainStores')}
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+                                <h5 class="title">  {i18.t('Events')}</h5>
+                                <ul class="links-vertical">
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('Galleries')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('OurTeam')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('PrivateEvents')}
+                                        </a>
+                                    </li>
+
+                                </ul>
+
+
+
+                            </div>
+
+
+
+
+
+
+                            <div class="col-md-2 swithSide">
+                                <h5 class="title">{i18.t('Menus')}</h5>
+                                <ul class="links-vertical">
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('WeddingMenu')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('shabatMenu')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('DairyMenu')}
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#pablo" class="text-muted subTitleB">
+                                            {i18.t('BasicDairyMenu')}
+                                        </a>
+                                    </li>
+
+                                </ul>
+                                <h5 class="title"> {i18.t('Recommend')}</h5>
+                                <ul class="links-vertical">
+                                    <li></li></ul>
+
+
+                            </div>
+
+
+                            <div class="  col-md-2  swithSide">
+                                <div className=" ">
+                                    <div className="">
+
+                                        <h5 class="title">{i18.t('orders')}</h5>
+                                        <ul class="links-vertical ">
+                                            <li>
+                                                <a href="#pablo" class="text-muted subTitleB">
+                                                    {i18.t('WeddingMenu')}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#pablo" class="text-muted subTitleB">
+                                                    {i18.t('shabatMenu')}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#pablo" class="text-muted subTitleB">
+                                                    {i18.t('DairyMenu')}
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div className="">
+                                        <h5 class="title ">{i18.t('OrganizationsAndCompanies')}</h5>
+                                        <ul class="links-vertical ">
+                                            <li>
+                                                <a href="#pablo" class="text-muted subTitleB">
+                                                    {i18.t('OutdoorEvents')}
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#pablo" class="text-muted subTitleB">
+                                                    {i18.t('InformationAndArticles')}
+                                                </a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+
+
+
+
 
                             <div class="col-md-1"></div>
-                            <div class="col-md-5">
 
-                                <div class="row col-12 align-items-center mr-0 mt-5 mailInput">
-
-                                    <div class="col-4  text-center pr-0 mt-2 ">
-                                        <button class="btn btn-danger rounded-pill pr-4 pl-4 mt-0" type="button">שלח</button>
-                                    </div>
-
+                            <div class="col-md-5 pt-5">
+                                <label className="text-white col-12 swithSide pr-5">{i18.t('lableInput')}</label>
+                                <div class="row col-12 align-items-center mr-0 mt-3 mailInput  swithDir ">
                                     <div class=" input-group col-8 pl-0" style={{ width: '65%' }} >
-                                        <input type="text" class="rounded-pill form-control plS text-end" placeholder="הצטרפו לעידכונים מקייטרינג סקופ" />
+
+                                        <input type="email" class="rounded-pill form-control plS px-3" placeholder={i18.t('placeholderInput')} />
                                     </div>
+                                    <div class="col-3  text-center p-0  ">
+                                        <button class="btn btn-danger rounded-pill pr-4 pl-4 mt-0 mb-0 w-fitCon " onClick={() => sendEmail()} type="button">{i18.t('send')}</button>
+                                    </div>
+
+
 
 
                                 </div>
                                 {/* <div className="row">
                                     <div className="h6 col-md-4"></div> */}
-                                <p className="  text-end" style={{ color: 'white', paddingRight: '12%', fontSize: '0.9rem' }}>המייל נשלח בהצלחה</p>
+                                <p className="d-none  swithSide successEmail pl-3 pt-2" style={{ color: 'white', paddingRight: '12%', fontSize: '0.9rem' }}>{i18.t('successEmail')}</p>
                                 {/* </div> */}
 
                                 {/* <h5>עקבו אחרינו</h5> */}
@@ -65,178 +224,45 @@ export function Footer() {
                             </div>
 
 
-
-
-
-
-
-                            <div class="  col-md-2  text-end">
-                                <div className=" ">
-                                    <div className="">
-
-                                        <h5 class="title">הזמנות</h5>
-                                        <ul class="links-vertical ">
-                                            <li>
-                                                <a href="#pablo" class="text-muted subTitleB">
-                                                    תפריט חתונה
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#pablo" class="text-muted subTitleB">
-                                                    תפריט שבת
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#pablo" class="text-muted subTitleB">
-                                                    תפריט חלבי
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div className="">
-                                        <h5 class="title ">אירגונים וחברות</h5>
-                                        <ul class="links-vertical ">
-                                            <li>
-                                                <a href="#pablo" class="text-muted subTitleB">
-                                                    אירועי חוץ
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#pablo" class="text-muted subTitleB">
-                                                    מידע ומאמרים
-                                                </a>
-                                            </li>
-
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div class="col-md-2 text-end">
-                                <h5 class="title">תפריטים</h5>
-                                <ul class="links-vertical">
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            תפריט חתונה
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            תפריט שבת
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            תפריט חלבי
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            תפריט חלבי בסיסי
-                                        </a>
-                                    </li>
-
-                                </ul>
-                                <h5 class="title">ממליצים</h5>
-                                <ul class="links-vertical">
-                                    <li></li></ul>
-
-
-                            </div>
-
-
-
-
-
-
-                            <div class="col-md-2 text-end">
-                                <h5 class="title"> {i18.t('ScoopCatering')}</h5>
-                                <ul class="links-vertical">
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB TitleB">
-                                            הסיפור שלנו
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            לקוחותינו
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            חנויות הרשת
-                                        </a>
-                                    </li>
-
-                                </ul>
-
-                                <h5 class="title"> אירועים</h5>
-                                <ul class="links-vertical">
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            גלריות
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            הצוות שלנו
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#pablo" class="text-muted subTitleB">
-                                            אירועים פרטיים
-                                        </a>
-                                    </li>
-
-                                </ul>
-
-
-
-                            </div>
-
-
                         </div>
                     </div>
                     <hr />
-                    <div class="row col-12 d-flex whiteColor justify-content-center" style={{ marginTop: '2.5%' }}>
+                    <div class="  swithDir row col-12 d-flex whiteColor justify-content-center" style={{ marginTop: '2.5%' }}>
 
-
-                        <div class=" col-md-3 mb-4 p-0 ml-5">
-                            יישוב מייצד
-                            <div className="d-inline rounded-circle iconBorder " style={{ marginLeft: '8px', paddingRight: '5%', paddingLeft: '5%', paddingTop: '4%', paddingBottom: '4%', backgroundColor: '#C59950' }}>
-                                <Image src={locationIcon} style={{ height: '25px', marginBottom: "4px" }} />
+                        <div class=" col-md-3 mb-4 p-0  ml-4">
+                            {i18.t('CompanyPhone')}
+                            <div className="d-inline rounded-circle iconBorder mx-3" >
+                                <Image src={phoneIcon ? phoneIcon : emailIcon} style={{ height: '22px', marginBottom: "3px" }} />
                             </div>
-                            {/* <Image src={locationIcon} style={{ marginRight: '8px' }} /> */}
-
                         </div>
+
+
+
 
                         <div class=" col-md-3 mb-4 p-0 mr-3">
 
                             {i18.t('CompanyEmail')}
-                            <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
+                            <div className="d-inline rounded-circle iconBorder mx-3" >
                                 <Image src={emailIcon} style={{ height: '18px', marginBottom: "3px" }} />
                             </div>
                             {/* <Image src={emailIcon} /> */}
 
                         </div>
 
-                        <div class=" col-md-3 mb-4 p-0  ml-4">
-                            {i18.t('CompanyPhone')}
-                            <div className="d-inline rounded-circle iconBorder" style={{ marginLeft: '8px' }}>
-                                <Image src={phoneIcon ? phoneIcon : emailIcon} style={{ height: '22px', marginBottom: "3px" }} />
+
+
+                        <div class=" col-md-3 mb-4 p-0 ml-5">
+                            {i18.t('location')}
+                            <div className="d-inline rounded-circle iconBorder mx-3" style={{ paddingRight: '5%', paddingLeft: '5%', paddingTop: '4%', paddingBottom: '4%', backgroundColor: '#C59950' }}>
+                                <Image src={locationIcon} style={{ height: '25px', marginBottom: "4px" }} />
                             </div>
+                            {/* <Image src={locationIcon} style={{ marginRight: '8px' }} /> */}
+
                         </div>
 
-                    </div>
-                    {/* <div class="copyright">
-                        Copyright &copy;
-                        <script>
-                            document.write(new Date().getFullYear())
-                        </script> Creative Tim All Rights Reserved.
 
-                    </div> */}
+                    </div>
+
                 </div>
             </footer>
         </>

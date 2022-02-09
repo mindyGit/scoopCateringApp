@@ -17,6 +17,11 @@ export const He = {
         status: 'מצב',
         birthdate: 'תאריך לידה',
         email: 'אמייל',
+        name: 'שם',
+        EventType: 'סוג האירוע',
+        NumberOfGuests: 'כמות מוזמנים',
+        fleshy: 'בשרי',
+        milky: 'חלבי',
         hebrew: 'עברית',
         english: 'אנגלית',
         home: 'בית',
@@ -139,7 +144,48 @@ export const He = {
         // shopping cart
         ProductName: 'שם המוצר',
         Amount: 'כמות',
-        price: 'מחיר'
+        price: 'מחיר',
+
+        //events page
+        eventsTitel: 'הזמנת אירועים',
+        eventsLable: '?יש לכם אירוע בקרוב',
+        eventsPiska: 'סקופ קייטרינג תשמח להיות חלק קולינרי באירוע החשוב שלכם,מלאו כאן את הפרטים ונציג סקופ יחזור אליכם עם הצעה משתלמת והטעימה במיוחד כמיטב המסורת של סקופ, מחכים לכם',
+        send: 'שלח',
+        Required: 'שדה מילוי חובה',
+        EventOption1: 'חתונה',
+        EventOption2: 'אירוסין',
+        EventOption3: 'ברית',
+        EventOption4: 'בת מצווה',
+        EventOption5: 'בר מצווה',
+        EventOption6: 'שבע ברכות',
+        EventOption7: 'מסיבה',
+        EventOption8: 'אירוע חברה',
+        EventOption9: 'קאמפ',
+
+        //footer section
+        lableInput: 'הצטרפו לעדכונים מקייטרינג סקופ',
+        successEmail: 'המייל נשלח בהצלחה',
+        placeholderInput: 'המייל שלך',
+        ChainStores: 'חנויות הרשת',
+        Events: 'אירועים',
+        PrivateEvents: 'אירועים פרטיים',
+        Menus: 'תפריטים',
+        WeddingMenu: 'תפריט חתונה',
+        DairyMenu: 'תפריט חלבי',
+        BasicDairyMenu: 'תפריט חלבי בסיסי',
+        Recommend: 'ממליצים',
+        orders: 'הזמנות',
+        OrganizationsAndCompanies: 'אירגונים וחברות',
+        OutdoorEvents: 'אירועי חוץ',
+        InformationAndArticles: 'מידע ומאמרים',
+        location: 'יישוב מיצד',
+        Copyright: 'כל הזכויות שמורות לסקופ קייטרינג',
+        Policy: 'תקנון האתר',
+
+
+
+
+
 
 
 

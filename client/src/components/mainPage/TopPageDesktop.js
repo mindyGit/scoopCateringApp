@@ -143,7 +143,7 @@ export function TopPageDesktop(props) {
 
             }
         }
-    }, [$, language, cart])
+    }, [$, language, cart, setCart])
 
     useEffect(() => {
 

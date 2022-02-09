@@ -199,7 +199,7 @@ function ProductList(props) {
 
   useEffect(() => {
     if ($) { }
-  }, [$, props, language, AddToCart]);
+  }, [$, props, language, AddToCart, setCart]);
 
 
 

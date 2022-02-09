@@ -12,6 +12,11 @@ export const En = {
         status: 'Status',
         birthdate: 'Birthdate',
         email: 'Email',
+        name: 'Name',
+        EventType: 'Event type',
+        NumberOfGuests: 'Number of guests',
+        fleshy: 'Fleshy',
+        milky: 'Milky',
         hebrew: 'hebrew',
         english: 'english',
         Login: 'Login',
@@ -120,6 +125,42 @@ export const En = {
         // shopping cart
         ProductName: 'Item Name',
         Amount: 'Amount',
-        price: 'Price'
+        price: 'Price',
+        //events page
+        eventsTitel: 'Event booking',
+        eventsLable: 'You have an event coming up soon?',
+        eventsPiska: 'Scoop Catering will be happy to be a culinary part of your important event,Fill in the details here and a Scoop representative will get back to you with a particularly affordable and delicious offer In the best tradition of Scoop, we are waiting for you!',
+        send: 'Send',
+        Required: 'Required fill field',
+        EventOption1: 'Wedding',
+        EventOption2: 'Engagement',
+        EventOption3: 'Brith',
+        EventOption4: 'Bat Mitzvah',
+        EventOption5: 'Bar Mitzvah',
+        EventOption6: 'Sheva Brachos',
+        EventOption7: 'Party',
+        EventOption8: 'Company Event',
+        EventOption9: 'Camp',
+
+        //footer section
+        lableInput: 'Join Updates from Scoop Catering',
+        successEmail: 'The email was sent successfully',
+        placeholderInput: 'Your email',
+        ChainStores: 'Chain stores',
+        Events: 'Events',
+        PrivateEvents: 'Private events',
+        Menus: 'Menus',
+        WeddingMenu: 'Wedding menu',
+        DairyMenu: 'Dairy menu',
+        BasicDairyMenu: 'Basic dairy menu',
+        Recommend: 'Recommend',
+        orders: 'Orders',
+        OrganizationsAndCompanies: 'Organizations and companies',
+        OutdoorEvents: 'Outdoor events',
+        InformationAndArticles: 'Information and articles',
+        location: 'Mitzad',
+        Copyright: 'all Copyright to Scoop Catering',
+        Policy: 'Site Policy'
+
     }
 }

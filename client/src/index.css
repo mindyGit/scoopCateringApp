@@ -33,7 +33,12 @@ div .bg-grey{
   color: #FFFFFF;
 
 }
+.EventPageContent{
+height: 1000px;
+/* background-image: url('../../client/src/data/imges/drinks.png'); */
 
+
+}
 /* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
@@ -178,7 +183,7 @@ color: black !important;
   color: inherit;
   padding: 13px 0.5rem;
   font-size: 0.8571em;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   text-decoration: none;
 }
 
@@ -420,6 +425,12 @@ left:0;
 }
 .goldColor{
   color: #C59950 !important;
+  
+
+}
+.goldColorWithShadow{
+  color: #C59950 !important;
+  text-shadow: 2px 2px 2px black;
 
 }
 .goldbgColor{
@@ -668,6 +679,14 @@ background-color: black !important;
 
 
 }
+.plS:focus{
+  background: #fff !important;
+  background-color: #fff !important;
+}
+.lableForm{
+font-weight: bold;
+font-size: 16px;
+}
 /* input[type=checkbox]
 {
  
@@ -687,7 +706,7 @@ background-color: black !important;
 }
 .form-control:focus{
   /* border:none !important; */
-  background: none !important;
+  background: none;
   outline:none !important;
   box-shadow: none !important;
 }
