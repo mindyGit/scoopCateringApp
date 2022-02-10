@@ -141,7 +141,7 @@ export function Home(props) {
 
                             <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{i18.t('shabatMenu')}</button>
 
-                            <div className="row justify-content-around mt-3  " style={{ height: '60vh', paddingLeft: '6%' }}>
+                            <div className="row justify-content-around mt-3  " style={{ height: '60vh', paddingLeft: '10%', paddingRight: '10%' }}>
 
 
                                 <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginLeft: '3%', height: '60vh' }}><div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" style={{
@@ -150,20 +150,20 @@ export function Home(props) {
                                 }}>תפריט מומלץ</div><img className='w-100 h-100' src={img1} /> </div>
 
 
-                                <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '10%', paddingLeft: '5%' }}>
+                                <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '8%', paddingLeft: '5%' }}>
                                     <div className="font-weight-bold h1 mb-0" style={{ color: "#A38047" }}> ? מתכנן אירוע </div>
                                     <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
 
                                     <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
                                 </div>
                             </div>
-                            <div className="row justify-content-around mt-4 " style={{ paddingRight: '6%' }} >
-                                <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '4%', paddingLeft: '8.4%' }}>
+                            <div className="row justify-content-around mt-4 " style={{ paddingLeft: '10%', paddingRight: '10%' }} >
+                                <div className="  d-flex justify-content-center  flex-column align-items-end" style={{ width: '28%' }}>
                                     <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
                                     <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
                                     <p className="mt-2 text-end" style={{ color: "white", paddingLeft: '11%' }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
                                 </div>
-                                <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginRight: '3%', height: '60vh' }}><img className='w-100 h-100' src={img3} /> </div>
+                                <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginRight: '6%', height: '60vh' }}><img className='w-100 h-100' src={img3} /> </div>
 
                             </div>
 

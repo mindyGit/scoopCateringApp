@@ -109,14 +109,18 @@ export function SearchResults(props) {
                 <div className='goldColor d-inline'> / {i18.t('SearchResults')} </div>
 
             </div>
-
+            <button className='goldButton h5 p-2 mt-5' style={{
+                left: '150px',
+                position: 'absolute'
+            }} onClick={() => props.history.push('/shop')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShop')}
+            </button>
             <div className="pageContent pt-3">
 
 
                 {searchList()}
 
             </div>
-            <button className='bg-black text-white border mb-5 p-2 mt-5'> <i class="fas fa-long-arrow-alt-left  " style={{ height: 'fit-content' }} ></i> לכל המוצרים</button>
+            {/* <button className='bg-black text-white border mb-5 p-2 mt-5'> <i class="fas fa-long-arrow-alt-left  " style={{ height: 'fit-content' }} ></i> לכל המוצרים</button> */}
             <div className="PageFooter mt-5">
                 <Footer />
                 <UnderFooter />

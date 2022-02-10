@@ -6,7 +6,7 @@ import Home from './components/Home'
 import ContactUs from './components/interface-user/ContactUs'
 import Menu from './components/interface-user/Shop'
 import ProductList from './components/interface-user/ProductList';
-import ProductList_manager from './components/product/ProductList_manager';
+import ProductList_manager from './components/interface-manager/ProductList_manager';
 import history from "./components/history"
 
 import OurPeeks from './components/interface-user/OurPeeks'
@@ -39,7 +39,7 @@ import Gallery from './components/interface-user/Gallery'
 import Kashrut from './components/interface-user/Kashrut'
 import RelatedProducts from './components/interface-user/RelatedProducts'
 import Local_Storag from './components/Local_Storag'
-
+import ManagerInterface from './components/interface-manager/ManagerInterface'
 
 
 
@@ -94,6 +94,8 @@ function App(props) {
           <Route exact path="/Nuv/" component={Nuv} />
           <Route exact path="/OrderSummary" component={OrderSummary} />
           <Route exact path="/login" component={AppFirebase} />
+          <Route exact path="/manager" component={ProductList_manager} />
+
 
 
 

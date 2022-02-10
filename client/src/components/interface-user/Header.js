@@ -56,16 +56,7 @@ export function Header(props) {
     }
 
 
-    // let cart
-    // const myStorage = window.localStorage;
-    // if (myStorage.cart != undefined) {
-    //     try {
-    //         cart = JSON.parse(myStorage.cart);
-    //     }
-    //     catch (errror) {
-    //         console.error("Not a JSON response")
-    //     }
-    // }
+
     const AddToCart = async (product) => {
 
         let flag = 0
@@ -137,11 +128,17 @@ export function Header(props) {
 
     const deleteItem = async (id) => {
         debugger
-        setTotal(total - parseFloat($('.' + id + ' ' + '.endprice').text()).toFixed(2))//product.price
+        let totalTodel
+
 
         let list = await cart.filter(x => {
+            if (x.product._id == id) {
+                totalTodel = x.Total
+            }
             return x.product._id != id;
         })
+        setTotal(total - parseFloat(totalTodel).toFixed(2))
+
         let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
 
 
@@ -170,10 +167,7 @@ export function Header(props) {
 
     return (
         <>
-
-
             <Navbar className="cartNuvbar bg-transparent border-0 p-0" expand={false} styl={{
-
             }}>
                 <Container fluid className="p-0">
 

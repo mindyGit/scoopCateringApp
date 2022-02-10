@@ -1,6 +1,8 @@
 
 export const He = {
     translation: {
+        //manger interface
+        mangerInterface: 'ממשק מנהל',
         ManagerPhone: '050-950-5023',
         CompanyPhone: '054-290-2590',
         CompanyEmail: 'service@scoopcatering.com',

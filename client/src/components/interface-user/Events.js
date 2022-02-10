@@ -82,13 +82,12 @@ export function Events(props) {
                         <div className='d-inline text-white' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                         <div className='goldColorWithShadow d-inline'> /{i18.t('EventBooking')}</div>
                     </div>
-                    <div className=" m-auto bg-white p-5 mt-2 " style={{ width: '30vw' }}>
+                    <div className=" m-auto bg-white p-5 mt-2 " style={{ width: '40vw' }}>
 
                         <Form.Label className="font-weight-bold h1"> {i18.t('eventsTitel')}</Form.Label>
+                        <br />
                         <Form.Label className="font-weight-bold h5"> {i18.t('eventsLable')}</Form.Label>
-                        <Form.Text className=" text-black">
-                            {i18.t('eventsPiska')}
-                        </Form.Text>
+                        <Form.Text style={{ marginLeft: '10px' }} className=" text-black">{i18.t('eventsPiska')}</Form.Text>
                         <Form >
                             <div className="swithSide">
                                 <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">

@@ -704,6 +704,10 @@ font-size: 16px;
   text-align: start !important;
   font-size: 20px !important;
 }
+.inputOf_Search:focus-visible{
+border:none !important;
+border-bottom: 1px solid black !important;
+}
 .form-control:focus{
   /* border:none !important; */
   background: none;

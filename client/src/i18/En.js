@@ -2,6 +2,8 @@ import { Kashrut } from "../components/interface-user/Kashrut";
 
 export const En = {
     translation: {
+        //manger interface
+        mangerInterface: 'manger interface',
         ManagerPhone: '050-950-5023',
         CompanyPhone: '054-290-2590',
         CompanyEmail: 'service@scoopcatering.com',
@@ -129,7 +131,7 @@ export const En = {
         //events page
         eventsTitel: 'Event booking',
         eventsLable: 'You have an event coming up soon?',
-        eventsPiska: 'Scoop Catering will be happy to be a culinary part of your important event,Fill in the details here and a Scoop representative will get back to you with a particularly affordable and delicious offer In the best tradition of Scoop, we are waiting for you!',
+        eventsPiska: `Scoop Catering will be happy to be a culinary part of your important event,Fill in the details here and a Scoop representative will get back to you with a particularly affordable and delicious offer In the best tradition of Scoop, we are waiting for you!`,
         send: 'Send',
         Required: 'Required fill field',
         EventOption1: 'Wedding',
@@ -160,7 +162,7 @@ export const En = {
         InformationAndArticles: 'Information and articles',
         location: 'Mitzad',
         Copyright: 'all Copyright to Scoop Catering',
-        Policy: 'Site Policy'
+        Policy: 'Policy'
 
     }
 }
