@@ -15,7 +15,7 @@ const MultipleSelect = (props) => {
     const optionsList = props.list.length ? props.list : []
 
     const options = optionsList.map((option) => {
-        return { label: option.name, value: option._id }
+        return { label: option.hebrewName, value: option._id }
 
     })
 

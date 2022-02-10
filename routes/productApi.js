@@ -112,7 +112,7 @@ router.post('/copyProduct/:id', async (req, res) => {
 // get all products
 router.get('/products', async (req, res) => {
 
-    Product.find().populate("categoryID").then(products => {
+    Product.find().then(products => {
         if (!products)
             console.log(products);
         res.send(products);

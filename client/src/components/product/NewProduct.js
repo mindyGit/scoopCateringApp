@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Field, Select, Form } from 'formik';
+import { Formik, Field, Select } from 'formik';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
 import MultipleSelect from '../MultipleSelect';
@@ -10,7 +10,7 @@ import { Checkbox } from '@mui/material';
 import Login from '../Firebase/Login';
 import { values } from 'lodash';
 import { display } from '@mui/system';
-
+import Form from 'react-bootstrap/Form'
 
 
 
@@ -144,100 +144,114 @@ export function NewProduct(props) {
     // const { createProduct } = props
 
     return (
-        <Formik
+        <>
+            <h3 className='px-4 text-end font-weight-bold'>פרטי המוצר:</h3>
 
-            initialValues={{ name: '', description: '', available: false, display: true, category: '', amount: '', price: '' }}
-            onSubmit={handleSubmit}
-        >
-            {() => (
-                <Form className="" >
-                    product details:
-                    <div className="register_profile_image ">
-                        <label for="profilePic">
-                            Picture
-                            {/* <i class="fas fa-file-upload"></i> */}
-                            <div className="previewProfilePic" style={{ width: '100px', height: '100px' }}>
-                                <img src={imgData} style={{ width: '100%', height: '100%' }} />
+            <Formik
+
+                initialValues={{ name: '', description: '', available: false, display: false, category: '', amount: '', price: '' }}
+                onSubmit={handleSubmit}
+            >
+                {() => (
+                    <Form className=" px-4 overflow-auto" style={{ height: '590px' }}>
+
+                        <div className='text-end'>
+                            <div className="form-group">
+                                <lable className="lableForm">שם מוצר:</lable>
+                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl />
                             </div>
-                            <input type="file" id="profilePic" style={{ display: 'none' }} onChange={onChangePicture} />
-                        </label>
-
-                        {/* <input id="profilePic" type="file" onChange={onChangePicture} /> */}
-                    </div>
-                    {/* <div className="previewProfilePic">
-                        <img className="playerProfilePic_home_tile w-25 h-25" src={imgData} />
-                    </div> */}
-                    <div className="form-group">
-                        <lable>Name:</lable>
-                        <Field id="newName" className="form-control" type="text" name="name" pl />
-                    </div>
-                    {/* <Form.Label>Range</Form.Label>
-                    <Form.Range /> */}
-                    <div className="form-group">
-                        <lable>Description:</lable>
-                        <Field id="newDescription" className="form-control" type="text" name="description" />
-                    </div>
-                    {/* <div className="form-group">
-                        <lable>available:</lable>
-                        <Field id="newAvailable" className="form-control" type="text" name="available" />
-                    </div> */}
-
-                    <div className="form-group">
-                        <lable>Category:</lable>
-                        <Field as="select" name="category" className="form-control" id="newCategory"
-                            className="browser-default custom-select">
-                            {
-                                categories.map((category) => <option key={category._id} value={category._id}>{category.name}
-                                </option>)
-                            }
-                        </Field>
-                    </div>
-                    <lable>Available:</lable>
-                    <Field type="checkbox" name="available" id="newAvailable" /><br />
-                    <lable>Display:</lable>
-                    <Field type="checkbox" name="display" id="newDisplay" />
-                    <div id="amountsAndPrices">
-                        <div className="form-group form-row">
-                            <div className='col-md-5'>
-                                <lable>Price:</lable>
-                                <Field id="newPrice" className="form-control" type="text" name="price" />
+                            <div className="form-group">
+                                <lable className="lableForm">שם מוצר(HE):</lable>
+                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl />
                             </div>
-                            <div className='col-md-5'>
-                                <lable>amount:</lable>
-                                <Field id="newAmount" as="select" name="amount" className="form-control"
 
-                                    className="browser-default custom-select">
+                            <div className="form-group">
+                                <lable className="lableForm">תאור מוצר:</lable>
+                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" />
+                            </div>
+                            <div className="form-group">
+                                <lable className="lableForm">תאור מוצר(HE):</lable>
+                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" />
+                            </div>
+                            <div className="form-group">
+                                <lable className="lableForm">מחיר:</lable>
+                                <Field id="newPrice" className="form-control rounded-0" type="text" name="price" />
+                            </div>
+                            {/* <div className="form-group">
+                            <Form.Label class="mb-1 lableForm">קטגוריה:</Form.Label>
+                            <Form.Select aria-label="Default select example" className="rounded-0" required>
+                                {
+                                    categories.map((category) => <option key={category._id} value={category._id}>{category.hebrewName}
+                                    </option>)
+                                }
+                            </Form.Select>
+                        </div> */}
+
+
+
+
+
+                            <div className="form-group">
+                                <lable className="lableForm">קטגוריה:</lable>
+                                <Field as="select" name="category" className="form-control rounded-0" id="newCategory"
+                                    className="browser-default custom-select  rounded-0">
                                     {
-                                        amounts.map((amount) => <option key={amount._id} value={amount._id}>{amount.name}
+                                        categories.map((category) => <option key={category._id} value={category._id}>{category.hebrewName}
                                         </option>)
                                     }
                                 </Field>
+                            </div>
+                            <div className="form-group row d-flex">
+                                <div className='col-5 align-items-center  d-flex'>
+                                    <Field type="checkbox" name="available" id="newAvailable" className="mt-1" />
+                                    <lable className="mr-1 lableForm">חסר במלאי</lable>
+                                </div>
+
+                                <div className='col-6 p-0 align-items-center justify-content-center d-flex'>
+                                    <Field type="checkbox" name="display" id="newDisplay" className="mt-1" />
+                                    <lable className="mr-1 lableForm">הסר תצוגה מהאתר</lable>
+                                </div>
 
                             </div>
-                            <div className='col-md-2 ' style={{ marginTop: '2%' }}>
-                                <button type='button' onClick={newPrice}>add price</button>
-                            </div>
+                            {/* <br /> */}
+                            {/* <div id="amountsAndPrices">
+                            <div className="form-group form-row">
+                                <div className='col-md-5'>
+                                    <lable>Price:</lable>
+                                    <Field id="newPrice" className="form-control" type="text" name="price" />
+                                </div>
+                                <div className='col-md-5'>
+                                    <lable>amount:</lable>
+                                    <Field id="newAmount" as="select" name="amount" className="form-control"
 
+                                        className="browser-default custom-select">
+                                        {
+                                            amounts.map((amount) => <option key={amount._id} value={amount._id}>{amount.name}
+                                            </option>)
+                                        }
+                                    </Field>
+
+                                </div>
+                                <div className='col-md-2 ' style={{ marginTop: '2%' }}>
+                                    <button type='button' onClick={newPrice}>add price</button>
+                                </div>
+
+                            </div>
+                            {prices.length != 0 ? renderNewPrice() : <React.Fragment />}
                         </div>
-                        {prices.length != 0 ? renderNewPrice() : <React.Fragment />}
-                    </div>
-                    {/* <Checkbox
-                        name="active"
-                        checked={checked}
-                        onChange={handleChange}
-                        inputProps={{ 'aria-label': 'controlled' }}
-                    /> */}
+                         */}
+                            {/* <lable className="mr-1 lableForm ">קטגוריות נוספות</lable>
 
-                    <MultipleSelect list={categories} />
+                            <MultipleSelect list={categories} /> */}
+                        </div>
+                        <div className="form-group ">
+                            <button className="btn  saveProduct  goldButton" type="submit">העלה מוצר</button>
+                        </div>
+                    </Form>
 
-                    <div className="form-group">
-                        <button className="btn btn-primary saveProduct" type="submit">Create Product</button>
-                    </div>
-                </Form>
-
-            )}
-        </Formik>
-
+                )}
+            </Formik>
+        </>
     );
 }
 const mapStateToProps = (state) => {
