@@ -79,12 +79,17 @@ router.post('/copyProduct/:id', async (req, res) => {
         if (!product) {
             return res.status(404).send('product not found')
         }
-        // let copy = {
-        //     "name": product.name,
-        //     "description": product.description,
-        //     "status": product.status
-        // }
-        const nproduct = new Product(product)
+        let copy = {
+            "name": product.name,
+            "hebrewName": product.hebrewName,
+            "price": product.price,
+            "available": product.available,
+            "display": product.display,
+            "description": product.description,
+            'hebrewDescription': product.hebrewDescription,
+            'categoryID': product.categoryID
+        }
+        const nproduct = new Product(copy)
         try {
             const newProduct = nproduct.save(function (err, product) {
                 if (err) {

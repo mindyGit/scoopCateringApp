@@ -8,6 +8,9 @@ const productSchema = new mongoose.Schema({
     hebrewName: {
         type: String
     },
+    price: {
+        type: Number
+    },
     description: {
 
         type: String
