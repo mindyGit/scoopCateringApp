@@ -11,7 +11,10 @@ router.post('/order/:userId', async (req, res) => {
 
         const user = await User.findOne({ _id: req.params.userId })
         console.log("----------- " + user);
-        const newOrder = new Order({ date: Date.now(), status: req.body.status, products: req.body.products, userId: user._id })
+        const newOrder = new Order({
+            date: Date.now(), userId: user._id, numItems: req.body.numItems, CostToPay: req.body.CostToPay
+            , shippingAddress: req.body.shippingAddress, status: req.body.status, MethodsOfPayment: req.body.MethodsOfPayment, products: req.body.products
+        })
         console.log("----------- " + newOrder);
         console.log(newOrder);
         await newOrder.save()
