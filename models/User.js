@@ -3,9 +3,7 @@ const validator = require('validator')
 
 const userSchema = new mongoose.Schema({
 
-    uid: {
-        type: String,
-    },
+
     createDate: {
         type: Date,
         default: Date.now()
@@ -57,14 +55,7 @@ const userSchema = new mongoose.Schema({
     },
     anotherPhone: {
         type: String,
-        default: '',
-        validate: {
-            validator: function (v) {
-                return /^$|^\d{10}$/.test(v)
-            },
-            message: props => `${props.value} is not a valid phone number!`
 
-        }
 
     },
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],

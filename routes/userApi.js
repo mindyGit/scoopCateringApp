@@ -5,6 +5,7 @@ const User = require('../models/User')
 
 // add user
 router.post('/user', async (req, res) => {
+    console.log("vdf");
     const user = new User(req.body)
     try {
         const newUser = await user.save(function (err, user) {
