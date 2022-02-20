@@ -82,52 +82,53 @@ export function Events(props) {
                         <div className='d-inline text-white' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                         <div className='goldColorWithShadow d-inline'> /{i18.t('EventBooking')}</div>
                     </div>
-                    <div className=" m-auto bg-white p-5 mt-2 " style={{ width: '40vw' }}>
+                    <div className="row justify-content-center ">
+                        <div className="  bg-white p-5 mt-2  col-md-5 col-sm-12 " >
 
-                        <Form.Label className="font-weight-bold h1"> {i18.t('eventsTitel')}</Form.Label>
-                        <br />
-                        <Form.Label className="font-weight-bold h5"> {i18.t('eventsLable')}</Form.Label>
-                        <Form.Text style={{ marginLeft: '10px' }} className=" text-black">{i18.t('eventsPiska')}</Form.Text>
-                        <Form >
-                            <div className="swithSide">
-                                <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1 lableForm"> *{i18.t('name')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" required />
-                                </Form.Group>
-                                <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1 lableForm"> *{i18.t('phone')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" required />
-                                </Form.Group>
-                                <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1 lableForm"> *{i18.t('email')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" required />
-                                </Form.Group>
+                            <Form.Label className="font-weight-bold h1"> {i18.t('eventsTitel')}</Form.Label>
+                            <br />
+                            <Form.Label className="font-weight-bold h5"> {i18.t('eventsLable')}</Form.Label>
+                            <Form.Text style={{ marginLeft: '10px' }} className=" text-black">{i18.t('eventsPiska')}</Form.Text>
+                            <Form >
+                                <div className="swithSide">
+                                    <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                        <Form.Label class="mb-1 lableForm"> *{i18.t('name')}</Form.Label>
+                                        <Form.Control className="rounded-0 " type="text" required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                        <Form.Label class="mb-1 lableForm"> *{i18.t('phone')}</Form.Label>
+                                        <Form.Control className="rounded-0 " type="text" required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                        <Form.Label class="mb-1 lableForm"> *{i18.t('email')}</Form.Label>
+                                        <Form.Control className="rounded-0 " type="email" required />
+                                    </Form.Group>
 
-                                <Form.Group className="mb-2 row swithDir" controlId="formBasicPhone">
-                                    <div className="col-6">
-                                        <Form.Label class="mb-1 lableForm"> *{i18.t('EventType')}</Form.Label>
-                                        <Form.Select aria-label="Default select example" className="rounded-0" required>
-                                            <option></option>
-                                            <option value={i18.t('EventOption1')}>{i18.t('EventOption1')}</option>
-                                            <option value={i18.t('EventOption2')}>{i18.t('EventOption2')}</option>
-                                            <option value={i18.t('EventOption3')}>{i18.t('EventOption3')}</option>
-                                            <option value={i18.t('EventOption4')}>{i18.t('EventOption4')}</option>
-                                            <option value={i18.t('EventOption5')}>{i18.t('EventOption5')}</option>
-                                            <option value={i18.t('EventOption6')}>{i18.t('EventOption6')}</option>
-                                            <option value={i18.t('EventOption7')}>{i18.t('EventOption7')}</option>
-                                            <option value={i18.t('EventOption8')}>{i18.t('EventOption8')}</option>
-                                            <option value={i18.t('EventOption9')}>{i18.t('EventOption9')}</option>
-                                        </Form.Select>
-                                    </div>
-                                    <div className="col-6">
-                                        <Form.Label class="mb-1 lableForm">*{i18.t('NumberOfGuests')}</Form.Label>
-                                        <Form.Control className="rounded-0 " type="number" min="5" required />
-                                    </div>
+                                    <Form.Group className="mb-2 row swithDir" controlId="formBasicPhone">
+                                        <div className="col-6">
+                                            <Form.Label class="mb-1 lableForm"> *{i18.t('EventType')}</Form.Label>
+                                            <Form.Select aria-label="Default select example" className="rounded-0" required>
+                                                <option></option>
+                                                <option value={i18.t('EventOption1')}>{i18.t('EventOption1')}</option>
+                                                <option value={i18.t('EventOption2')}>{i18.t('EventOption2')}</option>
+                                                <option value={i18.t('EventOption3')}>{i18.t('EventOption3')}</option>
+                                                <option value={i18.t('EventOption4')}>{i18.t('EventOption4')}</option>
+                                                <option value={i18.t('EventOption5')}>{i18.t('EventOption5')}</option>
+                                                <option value={i18.t('EventOption6')}>{i18.t('EventOption6')}</option>
+                                                <option value={i18.t('EventOption7')}>{i18.t('EventOption7')}</option>
+                                                <option value={i18.t('EventOption8')}>{i18.t('EventOption8')}</option>
+                                                <option value={i18.t('EventOption9')}>{i18.t('EventOption9')}</option>
+                                            </Form.Select>
+                                        </div>
+                                        <div className="col-6">
+                                            <Form.Label class="mb-1 lableForm">*{i18.t('NumberOfGuests')}</Form.Label>
+                                            <Form.Control className="rounded-0 " type="number" min="5" required />
+                                        </div>
 
-                                </Form.Group>
-                                <Form.Group className="mb-2 row  swithDir pl-1" controlId="formBasicPhone">
-                                    <div className="col-6 row ">
-                                        {/* <Form.Check
+                                    </Form.Group>
+                                    <Form.Group className="mb-2 row  swithDir pl-1" controlId="formBasicPhone">
+                                        <div className="col-6 row ">
+                                            {/* <Form.Check
                                             className="col-6"
                                             label={i18.t('fleshy')}
                                             name="group1"
@@ -141,28 +142,29 @@ export function Events(props) {
                                             type="radio"
 
                                         /> */}
-                                        <div className="d-flex align-items-center col-6">
-                                            <input type="radio" id="vehicle1" name="vehicle1" value="Bike" checked />
-                                            <label className="mr-2 ml-1  mb-0 lableForm" for="vehicle1 " >{i18.t('fleshy')}</label>
+                                            <div className="d-flex align-items-center col-6">
+                                                <input type="radio" id="vehicle1" name="vehicle1" value="Bike" checked />
+                                                <label className="mr-2 ml-1  mb-0 lableForm" for="vehicle1 " >{i18.t('fleshy')}</label>
+                                            </div>
+                                            <div className="d-flex align-items-center  col-6">  <input type="radio" id="vehicle2" name="vehicle1" value="Bike" />
+                                                <label className="mr-2 ml-1 mb-0 lableForm" for="vehicle2   " > {i18.t('milky')}</label>
+                                            </div>
                                         </div>
-                                        <div className="d-flex align-items-center  col-6">  <input type="radio" id="vehicle2" name="vehicle1" value="Bike" />
-                                            <label className="mr-2 ml-1 mb-0 lableForm" for="vehicle2   " > {i18.t('milky')}</label>
-                                        </div>
-                                    </div>
-                                    <div className="col-6"></div>
+                                        <div className="col-6"></div>
 
 
 
 
-                                </Form.Group>
-                            </div>
-                            <Button variant="primary" type="submit" className=" goldButton px-3 mt-4 mb-2">
-                                {i18.t('send')}  	&#8594;
-                            </Button>
-                            <div className="swithSide">
-                                <p className="swithDir small">*{i18.t('Required')}</p>
-                            </div>
-                        </Form>
+                                    </Form.Group>
+                                </div>
+                                <Button variant="primary" type="submit" className=" goldButton px-3 mt-4 mb-2">
+                                    {i18.t('send')}  	&#8594;
+                                </Button>
+                                <div className="swithSide">
+                                    <p className="swithDir small">*{i18.t('Required')}</p>
+                                </div>
+                            </Form>
+                        </div>
                     </div>
                 </div>
             </div>

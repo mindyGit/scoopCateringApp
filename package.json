@@ -20,6 +20,7 @@
     "node-cron": "^3.0.0",
     "nodemailer": "^6.7.2",
     "nodemon": "^2.0.15",
+    "react-to-print": "^2.14.4",
     "validator": "^13.1.1"
   }
 }

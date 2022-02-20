@@ -6,17 +6,23 @@ const userSchema = new mongoose.Schema({
     uid: {
         type: String,
     },
-
+    createDate: {
+        type: Date,
+        default: Date.now()
+    },
     userType: {
         type: String,
         enum: ['user', 'admin'],
         default: 'user'
     },
-    name: {
+    firstName: {
         type: String,
 
     },
+    lastName: {
+        type: String,
 
+    },
     email: {
         type: String,
         validate: {
@@ -34,6 +40,9 @@ const userSchema = new mongoose.Schema({
         // minlengs: "9",
         // trim: true
     },
+    couponCode: {
+        type: String,
+    },
     phone: {
         type: String,
         default: '',
@@ -46,10 +55,19 @@ const userSchema = new mongoose.Schema({
         }
 
     },
+    anotherPhone: {
+        type: String,
+        default: '',
+        validate: {
+            validator: function (v) {
+                return /^$|^\d{10}$/.test(v)
+            },
+            message: props => `${props.value} is not a valid phone number!`
+
+        }
+
+    },
     orders: [{ type: mongoose.Schema.Types.ObjectId, ref: "Order" }],
-    createDate: {
-        type: Date,
-        default: Date.now()
-    }
+
 })
 module.exports = mongoose.model('User', userSchema)

@@ -53,12 +53,11 @@ export const deleteProductOnOrder = ({ dispatch, getState }) => next => action =
 
 
 export const getAllProductsOnOrder = ({ dispatch, getState }) => next => action => {
-    // if (action.type === 'GET_ALL_productS') {
     if (action.type === 'GET_ALL_PRODUCTS_ON_ORDER') {
         return new Promise((resolve, reject) => {
-            return axios.get('http://scoopcatering.co.il/productsOnOrder/')
+            return axios.get('http://scoopcatering.co.il/productsOnOrder')
                 .then(resJson => {
-                    dispatch(actions.setAllproductsOnOrder(resJson.data))
+                    dispatch(actions.setAllProductsOnOrder(resJson.data))
                     resolve()
                 })
                 .catch(error => {
@@ -69,4 +68,3 @@ export const getAllProductsOnOrder = ({ dispatch, getState }) => next => action 
     }
     return next(action);
 }
-

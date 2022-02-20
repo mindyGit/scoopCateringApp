@@ -85,39 +85,8 @@ export function ShoppingCart(props) {
         props.getAllProducts()
 
     }
-    const AddToCart = async (product) => {
-
-        let flag = 0
-
-        let shoppingCart = []
-        if (cart != undefined)
-            shoppingCart = cart
-        shoppingCart.map(item => {
-
-            if (item.product._id == product._id) {
-                debugger
-
-                item.Amount = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
-
-                item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
-                flag = 1
-            }
-        })
-        if (flag == 0) {
-            let newItem = {
-                product: product,
-                Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val(),
-                Total: parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//product.price
-
-            }
-            await shoppingCart.push(newItem)
-        }
 
 
-        await setCart(shoppingCart)
-
-
-    }
     const changeAmount = async (id, action) => {
         let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
@@ -156,8 +125,11 @@ export function ShoppingCart(props) {
 
     const deleteItem = async (id) => {
         debugger
-
-        setTotal(total - parseFloat($('.' + id + ' ' + '.endprice').text()).toFixed(2))//product.price
+        let currTotal = total - parseFloat($('.' + id + ' ' + '.endprice').text()).toFixed(2)
+        if (currTotal < 0)
+            setTotal(parseFloat(0).toFixed(2))
+        else
+            setTotal(currTotal)//product.price
         let list = await cart.filter(x => {
             return x.product._id != id;
         })

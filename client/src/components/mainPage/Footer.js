@@ -10,6 +10,7 @@ import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap"
 import $ from 'jquery'
+import { alpha } from "@material-ui/core";
 {/* <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png"> */ }
 
 // <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
@@ -22,10 +23,17 @@ import $ from 'jquery'
 export function Footer() {
     const { t, i18n } = useTranslation();
     function sendEmail() {
-        $('.successEmail').removeClass('d-none')
-        setTimeout(function () {
-            $('.successEmail').addClass('d-none')
-        }, 2000);
+
+        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+        if ($('#emailToSend').val().match(mailformat)) {
+            $('.successEmail').removeClass('d-none')
+            setTimeout(function () {
+                $('.successEmail').addClass('d-none')
+                $('#emailToSend').val('')
+            }, 1000);
+        }
+        else
+            alert('Invalid Email')
 
     }
     useEffect(() => {
@@ -192,7 +200,7 @@ export function Footer() {
                                 <div class="row col-12 align-items-center mr-0 mt-3 mailInput  swithDir ">
                                     <div class=" input-group col-8 pl-0" style={{ width: '65%' }} >
 
-                                        <input type="email" class="rounded-pill form-control plS px-3" placeholder={i18.t('placeholderInput')} />
+                                        <input id="emailToSend" type="email" class="rounded-pill form-control plS px-3" placeholder={i18.t('placeholderInput')} required />
                                     </div>
                                     <div class="col-3  text-center p-0  ">
                                         <button class="btn btn-danger rounded-pill pr-4 pl-4 mt-0 mb-0 w-fitCon " onClick={() => sendEmail()} type="button">{i18.t('send')}</button>

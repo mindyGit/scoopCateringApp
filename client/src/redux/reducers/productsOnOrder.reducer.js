@@ -9,7 +9,7 @@ const initialState = {
     productsOnOrder: []
 }
 const productsOnOrderReducer = {
-    setAllproductsOnOrder(state, action) {
+    setAllProductsOnOrder(state, action) {
         state.productsOnOrder = action.payload;
     },
     setProductOnOrder(state, action) {

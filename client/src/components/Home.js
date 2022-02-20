@@ -27,7 +27,14 @@ import blog1 from '../data/imges/blog1.png'
 import blog2 from '../data/imges/blog2.png'
 import blog3 from '../data/imges/blog3.png'
 import foodExample from '../data/imges/foodExample.png'
+import fish from '../data/imges/foodCategories/fish.png'
+import salads from '../data/imges/foodCategories/salads.png'
+import shabat from '../data/imges/foodCategories/shabat.png'
+import desserts from '../data/imges/foodCategories/desserts.png'
+import mainCourses from '../data/imges/foodCategories/mainCourses.png'
 import $ from 'jquery'
+import { withRouter } from 'react-router-dom';
+
 
 import useMediaQuery from "../hooks/useMediaQuery";
 // import searchIcon from '../data/imges/searchIcon.svg'
@@ -43,7 +50,11 @@ export function Home(props) {
     const [modalShow, setModalShow] = useState(false);
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
-
+    const { language } = props
+    const { categories } = props
+    if (!categories || !categories.length) {
+        props.getAllCategories()
+    }
     useEffect(() => {
         // alert('Not available at the moment, the site is running only !! \n אינו זמין כרגע ,האתר בהרצה בלבד!!')
         if ($) {
@@ -55,7 +66,7 @@ export function Home(props) {
         secondInputSlide.oninput = (() => {
             secondInputSlide.style.background = `linear-gradient(to right, #FFFFFF 0%, #A38047 ${secondInputSlide.value}%, #A38047 ${secondInputSlide.value}%, #FFFFFF 100%)`
         });
-    }, [$])
+    }, [$, props, language])
     return (
         <>
             <div style={{
@@ -89,14 +100,14 @@ export function Home(props) {
 
                         }} />
                         <div className="sectionTwo bg-black" >
-                            <Row>
+                            {/* <Row>
                                 <div className="d-flex justify-content-center align-items-center flex-column" style={{
                                     height: '400px', border: '2px solid #C69A51'
                                     , opacity: '1'
                                     , width: '26%',
                                     backgroundColor: "#C69A51"
                                 }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
-                                    {/* <div className="font-weight-bold whiteColor" style={{ lineHeight: '0.1', fontSize: '250%' }}>__</div> */}
+                                   
                                     <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
                                 </div>
 
@@ -109,6 +120,8 @@ export function Home(props) {
                                         </div>
                                     </div>
                                 </div>
+
+
                                 <div className="d-flex justify-content-center align-items-center flex-column" style={{
                                     height: '400px', border: '2px solid #C69A51'
 
@@ -117,55 +130,133 @@ export function Home(props) {
                                     backgroundColor: "#111111",
 
                                 }}>
-                                    {/* <div className=" font-weight-bold  w-25 mb-0 whiteColor" style={{ lineHeight: '1.1', fontSize: '240%' }}>אוכל</div> */}
+                                  
 
                                     <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> {i18.t('Galleries')}</div>
                                     <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
-                                    {/* <div ><i class="fas fa-horizontal-rule"></i></div> */}
+                                 
                                 </div>
+
+                            </Row> */}
+
+
+                            <Row>
+                                <div className=" col-md-3 col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
+                                    height: '400px', border: '2px solid #C69A51'
+                                    , opacity: '1'
+                                    ,
+                                    //  width: '26%',
+                                    backgroundColor: "#C69A51"
+                                }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
+
+                                    <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
+                                </div>
+
+                                <div class=" col-md-6 col-sm-12 zoomBOut p-0" onClick={() => props.history.push('/shop')}>
+                                    <div class=" zoomBIn d-flex align-items-center flex-column  justify-content-center">
+                                        <div className='textHide'>
+
+                                            <div className="h1 font-weight-bold whiteColor w-75 m-auto mb-4" style={{ fontSize: '240%', lineHeight: '1.1' }} >{i18.t('FoodReadyToShabat')}</div>
+                                            <hr className="font-weight-bold whiteColor m-auto" style={{ width: '20%', height: '5px', opacity: '1' }} ></hr>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div className=" col-md-3  col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
+                                    height: '400px', border: '2px solid #C69A51',
+
+                                    // , width: '32%',
+
+                                    backgroundColor: "#111111",
+
+                                }}>
+
+
+                                    <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> {i18.t('Galleries')}</div>
+                                    <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
+
+                                </div>
+
                             </Row>
+
+
+
+
                             <h1 className='text-white mt-5 font-weight-bold'  >{i18.t('FoodReadyToShabat')}</h1>
                             <hr className="font-weight-bold goldColor m-auto" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
                             <h6 className='text-white mt-5'> {i18.t('homePageTitel2')}</h6>
-                            <div className='d-flex justify-content-center mt-5  ' style={{ height: '300px' }}>
-                                <div className='row d-flex justify-content-center pr-5 pl-5' style={{ maxHeight: '200px' }}>
+                            <div className='d-flex justify-content-center my-5' >
+                                <div className=' col-md-10 col-sm-12  row d-flex justify-content-between  ' >
+                                    {/* {categories && categories.map((category, index) => ( */}
 
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
 
-                                    <div className='col-md-2 p-0 mr-4'><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
-                                    <div className='col-md-2 p-0 '><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{i18.t('addToCart')}</div></div>
+                                    <div className='col-md-3  ' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+                                    <div className='col-md-3 ' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות פתיחה" : "Appetizers"}`)}><img className='h-100 w-100' src={fish} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+
+                                    <div className='col-md-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות עקריות" : "Main Course"}`)}><img className='h-100 w-100' src={mainCourses} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+                                    <div className='col-md-3 ' onClick={() => props.history.push(`/shop/${language == "he" ? "קינוחים" : "Desserts"}`)}><img className='h-100 w-100' src={desserts} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+
+                                    {/* ))} */}
+
 
                                 </div>
                             </div>
 
-                            <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{i18.t('shabatMenu')}</button>
-
-                            <div className="row justify-content-around mt-3  " style={{ height: '60vh', paddingLeft: '10%', paddingRight: '10%' }}>
+                            <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{language == "he" ? "לתפריט שבת המלא" : "Full Shabbat Menu"}</button>
 
 
-                                <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginLeft: '3%', height: '60vh' }}><div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" style={{
-                                    marginLeft: '25%',
-                                    marginTop: '10%'
-                                }}>תפריט מומלץ</div><img className='w-100 h-100' src={img1} /> </div>
+
+                            <div className="row justify-content-center mt-3  " >
+
+                                <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between'>
+                                    <div className="  col-md-7 col-sm-12 mb-3" >
+                                        <div className='d-flex justify-content-center   align-items-center'>
+                                            <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div>
+                                            <img className='w-100 h-100' src={img1} />
+                                        </div>
+
+                                    </div>
 
 
-                                <div className="  d-flex justify-content-center  flex-column align-items-end " style={{ width: '38%', paddingRight: '8%', paddingLeft: '5%' }}>
-                                    <div className="font-weight-bold h1 mb-0" style={{ color: "#A38047" }}> ? מתכנן אירוע </div>
-                                    <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
+                                    <div className=" col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
+                                        <div className="font-weight-bold h1 mb-0" style={{ color: "#A38047" }}> ? מתכנן אירוע </div>
+                                        <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
 
-                                    <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
+                                        <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
+                                    </div>
+
                                 </div>
                             </div>
-                            <div className="row justify-content-around mt-4 " style={{ paddingLeft: '10%', paddingRight: '10%' }} >
-                                <div className="  d-flex justify-content-center  flex-column align-items-end" style={{ width: '28%' }}>
-                                    <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
-                                    <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
-                                    <p className="mt-2 text-end" style={{ color: "white", paddingLeft: '11%' }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
-                                </div>
-                                <div className=" bg-light d-flex justify-content-center  flex-column align-items-center col-md-7 p-0" style={{ marginRight: '6%', height: '60vh' }}><img className='w-100 h-100' src={img3} /> </div>
 
+
+
+                            <div className="row justify-content-center mt-3  " >
+
+                                <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between'>
+
+
+
+                                    <div className=" col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
+                                        <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
+                                        <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
+
+                                        <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
+                                    </div>
+                                    <div className="  col-md-7 col-sm-12 mb-3" >
+                                        <div className='d-flex justify-content-center   align-items-center'>
+                                            {/* <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div> */}
+                                            <img className='w-100 h-100' src={img3} />
+                                        </div>
+
+                                    </div>
+
+                                </div>
                             </div>
+
+
+
+
 
 
                         </div>
@@ -173,13 +264,21 @@ export function Home(props) {
 
 
 
-                        <div className="sectionThree whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%', paddingTop: '2%' }}>
-                            <div className="partOfSectionTwo  pb-2" style={{ paddingTop: '5%' }}>
+
+
+
+
+                        {/* <div className="sectionThree whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%', paddingTop: '2%' }}> */}
+                        <div className="sectionThree whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%' }}>
+
+                            {/* <div className="partOfSectionTwo  pb-2" style={{ paddingTop: '5%' }}> */}
+                            <div className="partOfSectionTwo  pb-2" >
+
                                 <div className="h1 font-weight-bold pt-4 whiteColor"> מתאימים לך אירוע אישית</div>
                                 <hr className="font-weight-bold goldColor m-auto mb-5 mt-3" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
                                 <div className="h4 mb-0 pb-5 whiteColor"> אירוע מושלם בסקופ, בדיוק לפי הנקודה המתאימה לך </div>
                             </div>
-                            <div className="row  justify-content-around align-items-center">
+                            <div className="row d-flex justify-content-around align-items-center">
                                 <div className="col-md-2 text-end pr-0 standartFont">סקופ</div>
 
 
@@ -193,7 +292,7 @@ export function Home(props) {
 
                                 <div className="col-md-2 text-start pl-0 standartFont">אירוע מושלם</div>
                             </div>
-                            <div className="row">
+                            <div className="row mb-3">
                                 <div className="col-md-3"></div>
                                 <div className="col-md-6 d-flex standartFont ">
                                     <div className="col-md-2 ">תפריט</div>
@@ -206,18 +305,72 @@ export function Home(props) {
                                 <div className="col-md-3"></div>
                             </div>
 
+                            <div className="row justify-content-center mt-3  " >
 
-                            <div className="blogSection row justify-content-between mb-5" style={{ height: '450px', marginTop: '10%' }}>
-                                <div className="col-md-1"></div>
-                                <div className="col-md-3 bg-light p-0" style={{ height: '450px' }}>
-                                    <div className="h-50" style={{ backgroundImage: `url(${blog1})` }}></div>
+                                <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between my-5 blogSection'>
 
-                                    <div className="h-50 bg-light d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
 
-                                        <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>טרנדים באוכל</div>
-                                        <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
+                                    <div className="col-md-4  my-3" style={{ height: '450px' }}>
+                                        <div className="h-50" style={{ backgroundImage: `url(${blog1})` }}></div>
 
-                                        <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '65%' }}> מה האורחים שלכם אוהבים לראות בשולחן, ומה המנה הכי מבוקשת?</p>
+                                        <div className="h-50 bg-light d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
+
+                                            <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>טרנדים באוכל</div>
+                                            <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
+
+                                            <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '65%' }}> מה האורחים שלכם אוהבים לראות בשולחן, ומה המנה הכי מבוקשת?</p>
+
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+
+                                    <div className="col-md-4 my-3" style={{ height: '450px' }}>
+                                        <div className="h-50" style={{ backgroundImage: `url(${blog2})` }}></div>
+
+                                        <div className="h-50 bg-light  d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
+
+                                            <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>צילום ותמונות </div>
+                                            <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
+
+                                            <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '50%' }}>איך יודעים איזה צלם לבחור? מה הפורמט שהכי מתאים? </p>
+
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+
+
+                                    <div className="col-md-4 mt-3" style={{ height: '450px' }}>
+                                        <div className="h-50" style={{ backgroundImage: `url(${blog3})` }}></div>
+
+
+
+                                        <div className="h-50 bg-light d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
+
+                                            <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>עיצובי פרחים </div>
+                                            <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
+
+                                            <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '55%' }} > איזה פרחים כדאי לבחור לאירוע ?ואיך נדע איזה סגנון מתאים </p>
+
+                                            {/* <p className="font-weight-bold  " style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047", marginRight: '60%' }} >&bull; &bull; &bull;</p> */}
+
+
+
+
+
+                                        </div>
 
 
 
@@ -226,74 +379,18 @@ export function Home(props) {
 
 
                                 </div>
-
-
-
-
-
-                                <div className="col-md-3 bg-light p-0" style={{ height: '450px' }}>
-                                    <div className="h-50" style={{ backgroundImage: `url(${blog2})` }}></div>
-
-                                    <div className="h-50 bg-light d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
-
-                                        <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>צילום ותמונות </div>
-                                        <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
-
-                                        <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '50%' }}>איך יודעים איזה צלם לבחור? מה הפורמט שהכי מתאים? </p>
-
-
-
-                                    </div>
-
-
-
-                                </div>
-
-
-
-
-
-
-                                <div className="col-md-3 bg-light p-0" style={{ height: '450px' }}>
-                                    <div className="h-50" style={{ backgroundImage: `url(${blog3})` }}></div>
-
-                                    <div className="h-50 bg-light d-flex justify-content-center  flex-column align-items-center mr-0" style={{ marginRight: '1%' }}>
-
-                                        <div className="font-weight-bold h2 mb-0" style={{ color: "#A38047" }}>עיצובי פרחים </div>
-                                        <hr className="font-weight-bold m-auto mb-2 mt-3" style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047" }} ></hr>
-
-                                        <p className="mt-3 font-weight-bold h6" style={{ color: "#000000", width: '55%' }} > איזה פרחים כדאי לבחור לאירוע ?ואיך נדע איזה סגנון מתאים </p>
-
-                                        {/* <p className="font-weight-bold  " style={{ width: '11%', height: '5px', opacity: '1', color: "#A38047", marginRight: '60%' }} >&bull; &bull; &bull;</p> */}
-
-
-
-
-
-                                    </div>
-
-
-
-                                </div>
-
-
-
-
-                                <div className="col-md-1"></div>
-
-
 
                             </div>
 
-                            <div className="addLocation row justify-content-between  " style={{ height: '270px', marginTop: '10%' }} >
-                                <div className="col-md-2" ></div>
-                                <div className="col-md-7 d-flex  align-items-end  justify-content-center flex-column pl-5  pr-5 pb-3  pt-3" style={{ backgroundColor: "#404041", border: ' 1px solid #C69A51' }}>
+                            <div className="addLocation row  justify-content-center  px-3" style={{ height: '270px' }} >
+                                <div className='col-md-10 col-sm-12 px-4'>
+                                    <div className=" d-flex  align-items-end  justify-content-center flex-column pl-5  pr-5 pb-3  pt-3" style={{ backgroundColor: "#404041", border: ' 1px solid #C69A51' }}>
 
-                                    <div style={{ color: '#FFFFFF', fontSize: '60px', lineHeight: "1" }}>?מתחתנים </div>
-                                    <div className="mb-4" style={{ color: '#A38047', fontSize: '60px', fontWeight: '900', lineHeight: "1" }}>מזל"ט סקופ</div>
-                                    <div className="h4" style={{ color: '#FFFFFF' }}>!הזמינו עוד היום אירוע חתונה בטעם מנצח</div>
+                                        <div style={{ color: '#FFFFFF', fontSize: '60px', lineHeight: "1" }}>?מתחתנים </div>
+                                        <div className="mb-4" style={{ color: '#A38047', fontSize: '60px', fontWeight: '900', lineHeight: "1" }}>מזל"ט סקופ</div>
+                                        <div className="h4" style={{ color: '#FFFFFF' }}>!הזמינו עוד היום אירוע חתונה בטעם מנצח</div>
+                                    </div>
                                 </div>
-                                <div className="col-md-2" ></div>
 
                             </div>
                             <div style={{ height: '150px' }}></div>
@@ -315,12 +412,15 @@ export function Home(props) {
 }
 const mapStateToProps = (state) => {
     return {
-
+        categories: state.categoryReducer.categories,
+        language: state.languageReducer.language
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
+    getAllCategories: () => dispatch(actions.getAllCategories()),
 
 
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Home))

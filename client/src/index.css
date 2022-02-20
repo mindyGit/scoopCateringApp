@@ -27,6 +27,14 @@ div .bg-grey{
 .w-fitCon{
   width:fit-content !important;
 }
+.table-responsive {
+ border:none !important;
+  display: table-caption !important;
+  height: 470px !important;
+
+}
+ 
+
 .rtl { direction: rtl !important}
 .ltr { direction: ltr !important}
 .whiteColor{
@@ -214,7 +222,7 @@ table{
   border-collapse: revert !important;
 }
 
-.table td{
+/* .table td{
   border-top: 0px !important;
   justify-content:center;
   align-items: center;
@@ -224,13 +232,10 @@ table{
 tr{
   border-style: none !important;
   border-bottom: 0px white!important;
-}
+} */
 .container_{
-  position: relative;
+position: relative;
 text-align: center;
-
-
-
   /* color: red; */
 }
 
@@ -243,9 +248,9 @@ text-align: center;
   text-shadow: 2px 2px 2px black;
   transform: translate(-50%, -50%);
   font-weight: 900;
-  font-size: 80px !important;
+  font-size: 5rem !important;
   color: #FFFFFF;
-  width: 500px;
+  width: 30vw;
   text-align: end;
   line-height: 1;
 }
@@ -639,7 +644,7 @@ background: linear-gradient(to right, #FFFFFF 0%,  #A38047 20%, #A38047 20%, #FF
  
 }
 .offcanvas-top{
-  height: 100vh !important;
+  height: 60vh !important;
   text-align: center;
 }
 .navbar .navbar-toggler:focus{
@@ -734,7 +739,7 @@ box-shadow: none !important;
 outline: none !important;
   }
 .zoomBOut {
-  width: 42%; 
+  /* width: 42%;  */
   height: 400px;
   overflow: hidden;
   position: relative;
@@ -866,31 +871,64 @@ border:none !important;
   height: 50%;
 }
 .ShoppingCart_itemList{
+  height: 52%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  }
+  .ShoppingCart_itemList::-webkit-scrollbar{
+   width: 15px !important;
+  
+  }
+  
+  
+  /* Track */
+  .ShoppingCart_itemList::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  .ShoppingCart_itemList::-webkit-scrollbar-thumb {
+    background: rgb(197, 153, 80); 
+    /* border-radius: 20px; */
+  }
+
+
+
+
+
+
+/* 
+
+
+
+.ShoppingCart_itemList{
 height: 52%;
 overflow-y: scroll;
 overflow-x: hidden;
 }
-.ShoppingCart_itemList::-webkit-scrollbar{
- width: 15px !important;
+.ShoppingCart_itemList,.productList-manager::-webkit-scrollbar{
+ width: 8px !important;
+
 
 }
 
 
-/* Track */
-.ShoppingCart_itemList::-webkit-scrollbar-track {
+
+.ShoppingCart_itemList,.productList-manager::-webkit-scrollbar-track {
   background: #f1f1f1; 
+
 }
  
-/* Handle */
-.ShoppingCart_itemList::-webkit-scrollbar-thumb {
+
+.ShoppingCart_itemList,.productList-manager::-webkit-scrollbar-thumb {
   background: rgb(197, 153, 80); 
-  /* border-radius: 20px; */
+  
 }
 
-/* Handle on hover */
-.ShoppingCart_itemList::-webkit-scrollbar-thumb:hover {
+
+.ShoppingCart_itemList,.productList-manager::-webkit-scrollbar-thumb:hover {
   background: #8d682f; 
-}
+} */
 
 /* checkout page */
 .shippingOption{

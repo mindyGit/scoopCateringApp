@@ -62,12 +62,8 @@ export function Section() {
 
             <div class="container_" style={{
                 width: '100vw', height: "750px",
-
-
-
             }}>
-
-
+                {/* 
                 <div className="searchBox btnOne bc-white centerItems flex-column d-none" style={{ width: '60%', height: "40%", zIndex: '9', position: 'absolute', left: '15%', top: "20%", opacity: "0.9" }}>
 
                     <div className="text-dark h1 " style={{ marginLeft: "9%" }}>  ?...מה אתם מחפשים  <YourSvg className="svgSize" /></div>
@@ -119,23 +115,27 @@ export function Section() {
 
 
                 </div>
-
+ */}
 
 
                 <div class="centered_  ">{i18.t('homePageTitel')}</div>
                 {/* <div className="left_side">הזמינו אירוע 077-255-9982</div> */}
                 <Image className="decorite" src={decorite} />
-                <div className="row  " style={{
+                {/* <div className="row" style={{
                     width: '2.5%',
                     top: '12%',
                     left: '1.5%',
                     position: 'absolute'
                 }}>
-                    {/* <button className="bc-white p-2 border-top outSvgSize " id="btnOne"><YourSvg className="svgSize" /></button>
+                    <button className="bc-white p-2 border-top outSvgSize " id="btnOne"><YourSvg className="svgSize" /></button>
                     <button className="bc-white p-2 border-top outSvgSize" id="btnTwo"><YourSvg1 className="svgSize" /></button>
-                    <button className="bc-white p-2 border-top outSvgSize" id="btnThree"><YourSvg2 className="svgSize" /></button> */}
+                    <button className="bc-white p-2 border-top outSvgSize" id="btnThree"><YourSvg2 className="svgSize" /></button>
 
                 </div>
+
+ */}
+
+
             </div>
         </section >
 

@@ -6,17 +6,30 @@ const orderSchema = new mongoose.Schema({
         type: Date,
         default: Date.now()
     },
+    userId: {
+        type: mongoose.Schema.Types.ObjectId, ref: "User"
+
+    },
+    numItems: {
+        type: String
+    },
+    CostToPay: {
+        type: String
+    },
+    shippingAddress: {
+        type: String
+    },
     status: {
         type: String,
         enum: ['in process', 'done'],
         default: 'in process'
     },
+    MethodsOfPayment: {
+        type: String
+    },
     products: [{ productId: { type: mongoose.Schema.Types.ObjectId, ref: "Product" }, amount: { type: Number } }],
 
     //The owner of the order
-    userId: {
-        type: mongoose.Schema.Types.ObjectId, ref: "User"
 
-    }
 })
 module.exports = mongoose.model('Order', orderSchema)

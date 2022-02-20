@@ -3,32 +3,50 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { actions } from '../../redux/actions/action';
-import { Table, Button } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
+import Table from 'react-bootstrap/Table'
 // import { Formik, Field, Select, Form } from 'formik';
 import Form from 'react-bootstrap/Form'
+import { AddEdit } from '../AddEdit'
 import NewProduct from '../product/NewProduct';
 import Scroll from '../Scroll';
 import Search from '../Search'
+import Modal from 'react-bootstrap/Modal'
 // import BootstrapTable from 'react-bootstrap-table-next';
 // omit...
 import '../../App.css'
 import $ from 'jquery'
 function ProductList_manager(props) {
+
+  // const [isAddMode, setIsAddMode] = useState(true);
+
+  const [show, setShow] = useState(false);
+  const [idToDelete, setIdToDelete] = useState()
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
   const { products } = props;
   const { categories } = props
   const [data, setData] = useState([]);
+  const [categoryList, setCategoryList] = useState([]);
+  const [productToEdit, setProductToEdit] = useState()
   const [sortType, setSortType] = useState('hebrewName');
+  let productE
   // const [isLoaded, setIsLoaded] = useState(false);
   // const [error, setError] = useState(null);
+
   if (!props.products || !props.products.length) {
     props.getAllProducts()
+
   }
+
   if (!categories || !categories.length) {
 
     props.getAllCategories()
 
   }
   useEffect(() => {
+
+
     console.log(sortType);
     console.log(products);
     const sortArray = type => {
@@ -39,7 +57,8 @@ function ProductList_manager(props) {
         available: 'available',
       };
       const sortProperty = types[type];
-
+      // if (categoryList.length)
+      //   setCategoryList(products)
       const sorted = [...products].sort((a, b) => {
         var regex = /^[a-zA-Z]+$/;
         if ([sortProperty] != "" && [sortProperty] != undefined) {
@@ -63,6 +82,7 @@ function ProductList_manager(props) {
 
       });
       setData(sorted);
+      setCategoryList(data)
     };
 
     sortArray(sortType);
@@ -88,42 +108,48 @@ function ProductList_manager(props) {
         }
       });
     }
-  }, [sortType, props]);
-  // }, []);
+  }, [sortType, props, productToEdit]);
+
 
   const changeCategory = async (event) => {
 
     let categoryId = event.target.value
-    let list = await data.filter(x => {
-      return x.categoryID._id == categoryId;
-    })
-    console.log("list:::::::::::" + list)
+    if (categoryId == "selectCategory")
+      setCategoryList(data)
+    else {
+      let list = await data.filter(x => {
+        return x.categoryID == categoryId;
+      })
+      setCategoryList(list)
+    }
+
+    console.log("list:::::::::::" + categoryList.length)
 
   }
 
 
 
-  function editItem(id) {
+  const editItem = async (product) => {
+    debugger
+    await setProductToEdit(product)
+    alert(productToEdit ? productToEdit._id : "jj")
+    // $('#newId').val(productToEdit._id)
+    // $('#newName').val(productToEdit.name)
+    // $('#newHebrewName').val(productToEdit.hebrewName)
+    // $('#newDescription').val(productToEdit.description)
+    // $('#newHebrewDescription').val(productToEdit.hebrewDescription)
+    // $('#newPrice').val(productToEdit.price)
+    // $('#newCategory').val(productToEdit.categoryID)
+    // $('#newAvailable').prop('checked', productToEdit.available == true ? false : true)
+    // $('#newDisplay').prop('checked', productToEdit.display == true ? false : true)
 
 
-    openForm()
 
 
-    //fill inputs to edit
-    $('#newName').val($('#' + id + ' td #name').attr('placeholder'))
-    $('#newDescription').val($('#' + id + ' td #description').attr('placeholder'))
-    $('#newAvailable').val($('#' + id + ' td #available').val())
-    $('#newAvailable').prop('checked', $('#' + id + ' td #available').val() === 'true' ? true : false);
-    document.getElementById('newCategory').value = $('#' + id + ' td #categories').val()
+
   }
   function saveItem(id) {
-    // $("#" + id + " td input").prop('disabled', true);
-    // $("#" + id + " td select").prop('disabled', true);
-    // $("#" + id + " td input").removeClass('border-bottom')
-    // $("#" + id + " td select").removeClass('border-bottom')
-    // $("#" + id + " .saveButton").addClass('d-none')
-    // $("#" + id + " .editButton").removeClass('d-none')
-    // $("#" + id + " .clearButton").addClass('d-none')
+
 
     let product = {
       "_id": id,
@@ -142,10 +168,17 @@ function ProductList_manager(props) {
 
 
   }
-  function deleteItem(id) {
-    debugger
-    console.log("toDelete: " + id);
-    props.deleteProduct(id)
+
+  function openDeleteMoodal(id) {
+    setShow(true)
+    setIdToDelete(id)
+    // console.log("toDelete: " + id);
+
+  }
+  function deleteProduct() {
+
+    props.deleteProduct(idToDelete)
+    setShow(false)
   }
   function openForm() {
     if ($('.NewProduct').hasClass("d-none")) {
@@ -163,63 +196,81 @@ function ProductList_manager(props) {
   const headers = Object.keys(firstLine);
 
   return (
-    <div className='container p-5 pt-3 pb-0'>
-      <h1>ממשק מנהל</h1>
-      <div className='row  rtl mt-4' style={{ height: '800px !important' }}>
+
+    <div className='container   pb-0'>
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton className='rtl'>
+          <Modal.Title></Modal.Title>
+        </Modal.Header>
+        <Modal.Body className="text-center border-0">?האם אתה בטוח כי ברצונך למחוק מוצר זה לצמיתות</Modal.Body>
+        <Modal.Footer className="d-flex justify-content-center">
+          <Button variant=" secondary" className='' onClick={handleClose}>
+            לא
+          </Button>
+          <Button className='btn goldButton ' onClick={deleteProduct}>
+            כן
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      {/* <h1>ממשק מנהל</h1> */}
+      <div className='row  rtl mt-2' style={{ height: '800px !important' }}>
         {/* <Search details={products} /> */}
 
 
         <div className=' productList col-md-7 p-3 bg-light'  >
           {/* <button onClick={e => openForm()}>adddddd</button> */}
-          <div className='row titles justify-content-between mb-5'>
-            <div className='col-6  text-end'>מוצרים: {products && products.length} מוצרים</div>
+          <div className='row d-flex titles  mb-5'>
+            <div className='col-6  text-end'>מוצרים: {categoryList.length} מוצרים</div>
             <div className='col-6 text-start row d-flex'>
-              <div className='col-6'>
+              <div className='col-md-6'>
                 {/* <Form.Label class="mb-1 lableForm"></Form.Label> */}
                 <Form.Select aria-label="Default select example" className="rounded-0 w-fitCon py-1" required onChange={(e) => changeCategory(e)}>
-                  <option>בחר קטגוריה</option>
+                  <option value="selectCategory">בחר קטגוריה</option>
                   {
                     categories.map((category) => <option key={category._id} value={category._id}>{category.hebrewName}
                     </option>)
                   }
                 </Form.Select>
               </div>
-              <div className='col-6'>
-                <input placeholder='חפש מוצר' className=' inputOf_Search bg-transparent border-0 border-bottom border-dark' />
+              <div className='col-md-6'>
+                <input placeholder='חפש מוצר' className='w-100 inputOf_Search bg-transparent border-0 border-bottom border-dark' />
               </div>
 
             </div>
 
           </div>
-          <Table className='border-none' size="sm" >
-            {/* <thead > */}
-            <div className='row m-auto mb-3' key={"header"}>
-              <div className='col-2 lableForm' value='hebrewName' id='hebrewName' onClick={e => setSortType('hebrewName')}>שם מוצר</div>
-              <div className='col-2 lableForm' value="price" id="price" onClick={e => setSortType("price")}>מחיר</div>
+
+
+          {/* <Table className='border-none' size="sm" >
+
+            <div className='row mr-4 mb-3 ltr' key={"header"}>
+              <div className='col-4  lableForm text-center pl-5'>אפשרויות</div>
+              <div className='col-2 lableForm' value="createDate" id="createDate" onClick={e => setSortType("createDate")}>עדכון אחרון</div>
               <div className='col-2 lableForm' value="available" id="available" onClick={e => setSortType("available")}>מלאי</div>
-              <div className='col-3 lableForm' value="createDate" id="createDate" onClick={e => setSortType("createDate")}>עדכון אחרון</div>
-              <div className='col-3'></div>
+              <div className='col-2 lableForm' value="price" id="price" onClick={e => setSortType("price")}>מחיר</div>
+
+              <div className='col-2 lableForm' value='hebrewName' id='hebrewName' onClick={e => setSortType('hebrewName')}>שם מוצר</div>
 
             </div>
-            {/* </thead> */}
 
-            <div className="overflow-auto border-0" style={{ height: '480px' }}>
+
+            <div className="overflow-auto border-0 productList-manager ltr" style={{ height: '480px' }}>
 
               <tbody id="tableBody" >
-                {data && data.map((item) => (
-                  <tr className='row m-auto bg-white mb-3' key={item._id} id={item._id}>
+                {categoryList.map((item) => (
+                  <tr className='row m-auto bg-white mb-3 ' key={item._id} id={item._id}>
+                    <td className='col-4 '>
+                      <td className=' ' onClick={() => openDeleteMoodal(item._id)}><i class="fas fa-trash-alt "></i></td>
+                      <td className=''>|</td>
+                      <td className=' ' onClick={() => editItem(item)}>עדכון</td>
+
+                    </td>
+                    <td className='col-2'>{item.createDate}</td>
+                    <td className='col-2'>{item.available === true ? "במלאי" : "אזל מהמלאי"}</td>
+                    <td className='col-2'>{item.price}</td>
 
                     <td className='col-2'>{item.hebrewName}</td>
-                    <td className='col-2'>{item.price}</td>
-                    <td className='col-2'>{item.available === true ? "במלאי" : "אזל מהמלאי"}</td>
-                    <td className='col-3'>{item.createDate}</td>
-                    <div className='col-3 d-flex '>
-                      <td className='col-3 p-0' onClick={() => deleteItem(item._id)}><i class="fas fa-trash-alt "></i></td>
-                      <td className=' p-0'>|</td>
-                      <td className='col-3 p-0' onClick={() => editItem(item._id)}>edit</td>
-                      <td className=' p-0'>|</td>
-                      <td className='col-3 p-0' onClick={() => copyItem(item._id)}>copy</td>
-                    </div>
+
 
                   </tr>
                 ))
@@ -229,14 +280,57 @@ function ProductList_manager(props) {
 
             </div>
 
-          </Table >
+          </Table>
 
+
+
+           */}
+
+
+          <Table className='w-100'>
+            <thead>
+              <tr className='col-12 w-100' key={"header"}>
+                <th className='col-2 lableForm ' value='hebrewName' id='hebrewName' onClick={e => setSortType('hebrewName')}>שם מוצר</th>
+                <th className=' col-2 lableForm' value="price" id="price" onClick={e => setSortType("price")}> מחיר</th>
+                <th className=' col-2 lableForm' value="available" id="available" onClick={e => setSortType("available")}>מלאי</th>
+                <th className='col-3 lableForm' value="createDate" id="createDate" onClick={e => setSortType("createDate")}>עדכון אחרון</th>
+
+                <th className='col-1 lableForm  '></th>
+                <th className='col-1 lableForm  '></th>
+              </tr>
+            </thead>
+
+
+            <tbody className='table-responsive'>
+              {categoryList.map((item) => (
+                <>
+                  <tr className=' bg-white   col-12' >
+                    <td className=' border-0 col-2'>{item.hebrewName}</td>
+                    <td className=' border-0 col-2'>{parseFloat(item.price ? item.price : 0).toFixed(2)} &#8362;</td>
+                    <td className=' border-0 col-2'>{item.available === true ? "במלאי" : "אזל מהמלאי"}</td>
+                    <td className=' border-0 col-3' >{item.createDate}</td>
+                    <td className='border-0 bg-transparent col-1' onClick={() => openDeleteMoodal(item._id)}><i class="fas fa-trash-alt "></i></td>
+                    <td className='border-0 bg-transparent col-1' onClick={() => editItem(item)}>עדכון</td>
+
+                  </tr>
+                  <tr className='bg-transparent' style={{ height: '15px' }}></tr>
+                </>
+
+              ))}
+            </tbody>
+
+
+
+          </Table>
 
 
 
         </div >
         <div className='col-md-1 p-0'></div>
-        <div className='col-md-4  NewProduct  p-3 pb-0 bg-light' ><NewProduct /></div>
+        <div className='col-md-4  NewProduct  p-3 pb-0 bg-light' ><NewProduct product={productToEdit} /></div>
+        {/* <div className='col-md-4  NewProduct  p-3 pb-0 bg-light' ><AddEdit /></div> */}
+
+
       </div>
     </div>
   )
@@ -256,6 +350,7 @@ const mapDispatchToProps = (dispatch) => ({
   updateProduct: (product) => dispatch(actions.updateProduct(product)),
   copyProduct: (id) => dispatch(actions.copyProduct(id)),
   getAllCategories: () => dispatch(actions.getAllCategories()),
+  getProductByID: (id) => dispatch(actions.getProductByID(id)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList_manager)
 // export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductList))

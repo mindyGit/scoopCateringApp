@@ -19,7 +19,7 @@ export function Header(props) {
     const { language } = props
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
-    const [total, setTotal] = useLocalStorage("total", 0);
+    const [total, setTotal] = useLocalStorage("total", 0.00);
     function useLocalStorage(key, initialValue) {
         debugger
         // State to store our value
@@ -137,7 +137,12 @@ export function Header(props) {
             }
             return x.product._id != id;
         })
-        setTotal(total - parseFloat(totalTodel).toFixed(2))
+        let currTotal = total - parseFloat(totalTodel).toFixed(2)
+        if (totalTodel < 0)
+            setTotal(parseFloat(0).toFixed(2))
+        else
+            setTotal(currTotal)//product.price
+
 
         let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
 
@@ -226,7 +231,7 @@ export function Header(props) {
             </Navbar>
             <div className="bg-black">
                 <div className="row px-5 pt-2 pb-2 d-flex  headerPage justify-content-space-around align-items-center">
-                    <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-5"> {total ? parseFloat(total).toFixed(2) : 0} &#8362;</div><div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
+                    <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-5"> {total ? parseFloat(total).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div><div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
                     <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  " >  {i18.t('BookAnEvent')} : 077-255-9982   </div>
                 </div>
 

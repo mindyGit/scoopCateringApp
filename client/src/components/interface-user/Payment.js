@@ -114,71 +114,71 @@ export function Payment(props) {
 
 
                         <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('PersonalInformation')}</label>
-                        <div className=" bg-grey mb-4">
+                        <div className="  mb-4">
 
-                            <Form className="px-3 swithSide w-75 py-3 mb-3  ">
+                            <Form className="w-100">
+                                <div className="px-3 swithSide  py-3 mb-3  bg-grey">
+                                    <Form.Group className="mb-2 w-75" controlId="formBasicEmail">
+                                        <Form.Label class="mb-1"> {i18.t('CardNumber')}</Form.Label>
+                                        <Form.Control className="rounded-0" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required />
+                                    </Form.Group>
+                                    <Form.Group className="mb-2 row" controlId="formBasicEmail">
+                                        <div className="col-6">
+                                            <Form.Label class="mb-1"> {i18.t('Expiration')} </Form.Label>
+                                            <Form.Control className="rounded-0" placeholder="MM/YYYY" type="date" required />
+                                        </div>
 
-                                <Form.Group className="mb-2" controlId="formBasicEmail">
-                                    <Form.Label class="mb-1"> {i18.t('CardNumber')}</Form.Label>
-                                    <Form.Control className="rounded-0" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" />
-                                </Form.Group>
-                                <Form.Group className="mb-2 row" controlId="formBasicEmail">
-                                    <div className="col-6">
-                                        <Form.Label class="mb-1"> {i18.t('Expiration')} </Form.Label>
-                                        <Form.Control className="rounded-0" placeholder="MM/YYYY" type="text" />
+
+
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-2 row " controlId="formBasicName">
+                                        <div className="col-6">
+                                            <Form.Label class="mb-1">{i18.t('CVV')}</Form.Label>
+                                            <Form.Control className="rounded-0" maxLength="3" type="text" required />
+                                        </div>
+
+                                    </Form.Group>
+
+                                    <Form.Group className="mb-2 w-75" controlId="formBasicLastName">
+                                        <Form.Label class="mb-1">{i18.t('Id')}</Form.Label>
+                                        <Form.Control className="rounded-0" minLength="8" type="text" required />
+                                    </Form.Group>
+                                </div>
+
+                                <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('AdditionalPayment')} </label>
+                                <div className=" bg-grey p-3 mb-4">
+                                    <p className="w-75">{i18.t('AdditionalPayment_')}</p>
+                                    <div className="row">
+                                        <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
+                                            <option> {i18.t('paymentMethod')}</option>
+                                            <option>{i18.t('payBox')}</option>
+                                            <option>{i18.t('Bit')}</option>
+                                            <option>{i18.t('BankTransfer')}</option>
+                                        </select>
+                                        <input className=" col-3 mx-1 pt-1 swithSide px-0" type="text" style={{ fontSize: 'medium' }} />
+                                        <button className=" col-3  goldButton  mb-4 mr-1 " > {i18.t('ActivateCode')}  <img style={{ paddingRight: '5px' }} /></button>
+                                    </div>
+                                </div>
+                                <div className="w-50 mr50">
+
+                                    <label className="  w-100  pt-1 swithSide  bg-black text-white px-3 mb-0" >{i18.t('TotalPayment')}</label>
+                                    <div className=" bg-grey p-3 mb-4">
+                                        <div className="row pt-2 font-weight-bold ">
+                                            <div className="col-7 swithSide">{i18.t('Total')}</div>
+                                            <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
+                                        </div>
                                     </div>
 
+                                    <button type="submit" className="  goldButton mb-5 mr52" >{i18.t('MakePayment')}<img src={arrow_left_white} style={{
 
-
-                                </Form.Group>
-
-                                <Form.Group className="mb-2 row" controlId="formBasicName">
-                                    <div className="col-6">
-                                        <Form.Label class="mb-1">{i18.t('CVV')}</Form.Label>
-                                        <Form.Control className="rounded-0" maxLength="3" type="text" />
-                                    </div>
-
-                                </Form.Group>
-
-                                <Form.Group className="mb-2" controlId="formBasicLastName">
-                                    <Form.Label class="mb-1">{i18.t('Id')}</Form.Label>
-                                    <Form.Control className="rounded-0" minLength="8" type="text" />
-                                </Form.Group>
-
+                                        paddingRight: '5px',
+                                        width: '25px'
+                                    }} /></button>
+                                </div>
                             </Form>
 
                         </div>
-                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('AdditionalPayment')} </label>
-                        <div className=" bg-grey p-3 mb-4">
-                            <p className="w-75">{i18.t('AdditionalPayment_')}</p>
-                            <div className="row">
-                                <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
-                                    <option> {i18.t('paymentMethod')}</option>
-                                    <option>{i18.t('payBox')}</option>
-                                    <option>{i18.t('Bit')}</option>
-                                    <option>{i18.t('BankTransfer')}</option>
-                                </select>
-                                <input className=" col-3 mx-1 pt-1 swithSide px-0" type="text" style={{ fontSize: 'medium' }} />
-                                <button className=" col-3  goldButton  mb-4 mr-1 " > {i18.t('ActivateCode')}  <img style={{ paddingRight: '5px' }} /></button>
-                            </div>
-                        </div>
-                        <div className="w-50 mr50">
-
-                            <label className="  w-100  pt-1 swithSide  bg-black text-white px-3 mb-0" >{i18.t('TotalPayment')}</label>
-                            <div className=" bg-grey p-3 mb-4">
-                                <div className="row pt-2 font-weight-bold ">
-                                    <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                    <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
-                                </div>
-                            </div>
-
-                            <button className="  goldButton mb-5 mr52" >{i18.t('MakePayment')}<img src={arrow_left_white} style={{
-
-                                paddingRight: '5px',
-                                width: '25px'
-                            }} /></button>
-                        </div>
-
 
                     </div>
                     <div className=" bg-grey col-3 ml-5 p-0">

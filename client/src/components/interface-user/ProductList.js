@@ -231,17 +231,16 @@ function ProductList(props) {
       </div>
       <div className='pageContent swithSide m-auto w-50 pt-4 pb-5'>
 
-        <button className='goldButton h5 p-2 mt-2' style={{
-          left: '250px',
-          position: 'absolute'
-        }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')}
-        </button>
+
         <br />
         <br />
 
         <Carousel />
 
+        <button className='goldButton h5 p-2 my-5 ' style={{
 
+        }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')}
+        </button>
         <h3 className=' font-weight-bold mb-1'>{lastSegment}</h3>
         <h6 className='  mb-5'> {i18.t('addProductsLable')}</h6>
 

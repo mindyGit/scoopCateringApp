@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { Formik, Field, Select } from 'formik';
+
+import { Formik, Form, Field, } from 'formik';
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
 import MultipleSelect from '../MultipleSelect';
@@ -10,55 +11,36 @@ import { Checkbox } from '@mui/material';
 import Login from '../Firebase/Login';
 import { values } from 'lodash';
 import { display } from '@mui/system';
-import Form from 'react-bootstrap/Form'
+import Modal from 'react-bootstrap/Modal'
+
+// import Form from 'react-bootstrap/Form'
 
 
 
 
-export function NewProduct(props) {
+export function NewProduct(props, { product }) {
+    debugger
     const [picture, setPicture] = useState(null);
     const [imgData, setImgData] = useState(null);
     const [prices, setPrices] = useState([]);
-    // const [names, setNames] = useState([]);
     const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    // const [names, setNames] = useState([]);
+
     // const [checked, setChecked] = useState(true);
     const { categories } = props
     const { amounts } = props
     if (!categories || !categories.length) {
-
         props.getAllCategories()
-
     }
     if (!amounts || !amounts.length) {
-
         props.getAllAmounts()
-
     }
-    // $(".deleteButton").on("click", function () {
-    //     $(this).remove()
-    // });
     function deleteButton(index) {
-
         $('#' + index).remove()
     }
-
-    const handleSubmit = async (valuse) => {
-
-        let newProduct = {
-            "name": valuse.name,
-            "description": valuse.description,
-            "categories": valuse.category,
-            "available": valuse.available,
-            "display": valuse.display,
-            "priceList": prices ? prices : [],
-        }
-
-        closeForm()
-
-        // console.log('newProduct:::::;' + newProduct.display);
-        const product = await props.createProduct(newProduct)
-        // alert("added successfully")
-    };
 
 
     const onChangePicture = e => {
@@ -104,11 +86,6 @@ export function NewProduct(props) {
     }
     const newPrice = () => {
         console.log("new price");
-        // let item = $('#newAmount').val()
-        // let amount = {
-        //     "_id": $('#newAmount').val().amountId,
-        //     "name": $('#newAmount').val().amountName
-        // }
         let priceList =
         {
             "amount": $('#newAmount').val(),
@@ -137,19 +114,59 @@ export function NewProduct(props) {
             //     $('#newName').val('')
             //     $('#newDescription').val('')
             //     $('#newStatus').val('')
-
-            // });
         }
-    }, [props, props.products, props.categories, props.amounts, $]);
+    }, [props, props.products, props.categories, props.amounts, $, product]);
     // const { createProduct } = props
+    const handleSubmit = async (values) => {
+        alert(values.name)
+        debugger
+        if (values.Id == "")
+            alert("add")
+        else
+            alert("edit")
+
+
+        let newProduct = {
+            "name": values.name,
+            "hebrewName": values.hebrewName,
+            "description": values.description,
+            "hebrewDescription": values.hebrewDescription,
+            "price": values.price,
+            "categoryID": values.category,
+            "available": values.available == true ? false : true,
+            "display": values.display == true ? false : true,
+
+        }
+
+
+
+        // closeForm()
+
+        // const product = await props.createProduct(newProduct)
+        setShow(true)
+        window.setTimeout(function () {
+            setShow(false)
+
+        }, 5000);
+        // alert("added successfully")
+    };
+
 
     return (
         <>
-            <h3 className='px-4 text-end font-weight-bold'>פרטי המוצר:</h3>
+            <Modal show={show} onHide={handleClose} animation={false}>
+                <Modal.Header closeButton>
+                    <Modal.Title></Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="text-center border-0">המוצר התווסף בהצלחה</Modal.Body>
+                <Modal.Footer className="d-flex justify-content-center">
 
+                </Modal.Footer>
+            </Modal>
+            <h4 className='px-4 text-end font-weight-bold'>פרטי המוצר:</h4>
             <Formik
 
-                initialValues={{ name: '', description: '', available: false, display: false, category: '', amount: '', price: '' }}
+                initialValues={{ Id: '', name: ' ', hebrewName: '', description: ' ', hebrewDescription: ' ', price: ' ', category: ' ', available: false, display: false }}
                 onSubmit={handleSubmit}
             >
                 {() => (
@@ -157,39 +174,30 @@ export function NewProduct(props) {
 
                         <div className='text-end'>
                             <div className="form-group">
+
+                                <Field id="newId" className="form-control rounded-0" type="hidden" name="Id" pl value={product ? product._id : ""} />
+                            </div>
+                            <div className="form-group">
                                 <lable className="lableForm">שם מוצר:</lable>
-                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl />
+                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl value={product ? product.name : ""} />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">שם מוצר(HE):</lable>
-                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl />
+                                <Field id="newHebrewName" className="form-control rounded-0" type="text" name="hebrewName" pl value={product ? product.hebrewName : ""} />
                             </div>
 
                             <div className="form-group">
                                 <lable className="lableForm">תאור מוצר:</lable>
-                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" />
+                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" value={product ? product.description : ""} />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">תאור מוצר(HE):</lable>
-                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" />
+                                <Field id="newHebrewDescription" className="form-control rounded-0" type="text" name="hebrewDescription" value={product ? product.hebrewDescription : ""} />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">מחיר:</lable>
                                 <Field id="newPrice" className="form-control rounded-0" type="text" name="price" />
                             </div>
-                            {/* <div className="form-group">
-                            <Form.Label class="mb-1 lableForm">קטגוריה:</Form.Label>
-                            <Form.Select aria-label="Default select example" className="rounded-0" required>
-                                {
-                                    categories.map((category) => <option key={category._id} value={category._id}>{category.hebrewName}
-                                    </option>)
-                                }
-                            </Form.Select>
-                        </div> */}
-
-
-
-
 
                             <div className="form-group">
                                 <lable className="lableForm">קטגוריה:</lable>
@@ -244,11 +252,13 @@ export function NewProduct(props) {
 
                             <MultipleSelect list={categories} /> */}
                         </div>
-                        <div className="form-group ">
-                            <button className="btn  saveProduct  goldButton" type="submit">העלה מוצר</button>
-                        </div>
-                    </Form>
 
+                        <button className="btn    goldButton " id="addProduct" type="submit" >העלה מוצר</button>
+                        {/* <button className="btn    goldButton " id="editProduct" type="submit" >עדכן מוצר</button> */}
+
+
+
+                    </Form>
                 )}
             </Formik>
         </>

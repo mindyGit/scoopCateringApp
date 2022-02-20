@@ -10,12 +10,16 @@ import { Checkbox } from '@mui/material';
 import Login from '../Firebase/Login';
 import { values } from 'lodash';
 import { display } from '@mui/system';
-
-
+import Tabs from 'react-bootstrap/Tabs'
+import Tab from 'react-bootstrap/Tab'
+// import Sonnet from 'react-bootstrap/Sonnet'
+import ProductList_manager from './ProductList_manager'
+// import { Tab, Sonnet } from 'react-bootstrap-tabs';
 import { useTranslation } from 'react-i18next';
 import i18 from '../../i18/i18';
-
-
+import OrderSummary from './OrderSummary'
+import Orders from './Orders'
+// import Example from '../Example';
 export function ManagerInterface(props) {
 
     const { t, i18n } = useTranslation();
@@ -31,24 +35,47 @@ export function ManagerInterface(props) {
 
     return (
         <>
-            <div className='container p-5'>
-                <h1>ממשק מנהל</h1>
-                <div className='row rtl '>
-                    <div className='col-md-7 p-3' style={{ backgroundColor: '#E5E5E5' }}>
-                        <div className='row titles justify-content-between mb-5'>
-                            <div className='col-6  text-end' >מוצרים: 120 מוצרים</div>
-                            <div className='col-6 text-start' >
-                                <input placeholder='חפש מוצר' className='inputOf_Search bg-transparent border-0 border-bottom border-dark' />
-                            </div>
+            <div className='container p-3'>
+                <h1 className='mb-0'>ממשק מנהל</h1>
+                <Tabs
+                    defaultActiveKey="orders"
+                    transition={false}
+                    id="noanim-tab-example"
+                    dir='rtl'
+                >
+                    {/* <Tab eventKey="home" title="ממשק מנהל" disabled>
 
-                        </div>
+                    </Tab> */}
+                    <Tab eventKey="orders" title="הזמנות">
+                        <Tabs
+                            defaultActiveKey="orderList"
+                            transition={false}
+                            id="noanim-tab-example"
+                            dir='rtl'
+                        >
+
+                            <Tab eventKey="orderList" title="הזמנות">
+                                <Orders />
+                            </Tab>
+                            <Tab eventKey="OrderSummary" title="סיכום הזמנות">
+                                <OrderSummary />
+                            </Tab>
 
 
-                    </div>
-                    <div className='col-md-1 p-0'></div>
+                        </Tabs>
 
-                    <div className='col-md-4 px-0' style={{ backgroundColor: '#E5E5E5' }}></div>
-                </div>
+                    </Tab>
+                    <Tab eventKey="products" title="מוצרים">
+                        <ProductList_manager />
+                    </Tab>
+                    <Tab eventKey="users" title="משתמשים" >
+                        moshe
+                    </Tab>
+                </Tabs>
+
+
+
+
             </div>
 
         </>

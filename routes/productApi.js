@@ -23,8 +23,6 @@ router.post('/product/', async (req, res) => {
 })
 
 
-
-
 // edit product
 router.post('/products/:id', async (req, res) => {
     const updates = Object.keys(req.body)
@@ -57,18 +55,18 @@ router.delete('/product/:id', async (req, res) => {
         res.status(200).send(product)
     })
 })
-router.delete('/delproduct', async (req, res) => {
-    console.log("bhjbj");
+// router.delete('/delproduct', async (req, res) => {
+//     console.log("bhjbj");
 
-    Product.deleteMany({ description: 'חריף' }, (err, product) => {
-        if (err)
-            res.status(400).send(err)
-        console.log("success!");
-        res.status(200).send(product)
-    })
+//     Product.deleteMany({ description: 'חריף' }, (err, product) => {
+//         if (err)
+//             res.status(400).send(err)
+//         console.log("success!");
+//         res.status(200).send(product)
+//     })
 
 
-})
+// })
 
 
 

@@ -85,4 +85,20 @@ export const getAllProducts = ({ dispatch, getState }) => next => action => {
     }
     return next(action);
 }
+export const getProductByID = ({ dispatch, getState }) => next => action => {
+    if (action.type === 'GET_PRODUCT_BY_ID') {
+        return new Promise((resolve, reject) => {
+            return axios.get(`http://scoopcatering.co.il/product/${action.payload}`)
+                .then(resJson => {
+                    // dispatch(actions.setAllProducts(resJson.data))
+                    resolve(resJson.data)
+                })
+                .catch(error => {
+                    console.log(error);
+                    reject()
+                });
+        })
+    }
+    return next(action);
+}
 

@@ -2,13 +2,11 @@ import React, { useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from './components/Home'
-
 import ContactUs from './components/interface-user/ContactUs'
 import Menu from './components/interface-user/Shop'
 import ProductList from './components/interface-user/ProductList';
 import ProductList_manager from './components/interface-manager/ProductList_manager';
 import history from "./components/history"
-
 import OurPeeks from './components/interface-user/OurPeeks'
 import Shop from './components/interface-user/Shop'
 import MyCard from './components/MyCard'
@@ -25,7 +23,7 @@ import initialDetails from './data/initialDetails';
 
 import AppFirebase from './components/Firebase/AppFirebase'
 import OrderSummary from './components/interface-manager/OrderSummary'
-import Try from './components/try'
+// import Try from './components/try'
 import NavBar from './components/navBar/NavBar'
 import Nuv from './components/mainPage/Nuv'
 import SearchList from './components/SearchList'
@@ -40,6 +38,9 @@ import Kashrut from './components/interface-user/Kashrut'
 import RelatedProducts from './components/interface-user/RelatedProducts'
 import Local_Storag from './components/Local_Storag'
 import ManagerInterface from './components/interface-manager/ManagerInterface'
+import PostInfo from './components/PostInfo'
+// import ComponnentToPrint from './components/ComponnentToPrint'
+// import Example from './components/Example'
 
 
 
@@ -61,9 +62,10 @@ function App(props) {
   useEffect(() => {
   }, []);
   return (
-
     <Router history={history}>
       <div className="App" >
+        {/* <Example /> */}
+        {/* <PostInfo /> */}
         {/* <Local_Storag /> */}
         {/* <SearchList /> */}
         {/* <NavBar /> */}
@@ -94,17 +96,8 @@ function App(props) {
           <Route exact path="/Nuv/" component={Nuv} />
           <Route exact path="/OrderSummary" component={OrderSummary} />
           <Route exact path="/login" component={AppFirebase} />
-          <Route exact path="/manager" component={ProductList_manager} />
-
-
-
-
-
-
-
-
+          <Route exact path="/manager" component={ManagerInterface} />
           <Route exact path="/contact-us" component={ContactUs} />
-
           <Route exact path="/home/ourTeam" component={OurPeeks} />
           <Route exact path="/home/ourCustomers" component={OurCustomers} />
           <Route exact path="/home/OurStory" component={OurStory} />

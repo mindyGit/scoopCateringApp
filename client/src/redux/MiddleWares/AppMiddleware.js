@@ -1,5 +1,5 @@
 import thunk from "redux-thunk";
-import { getAllProducts, createProduct, deleteProduct, updateProduct, copyProduct } from './product'
+import { getAllProducts, createProduct, deleteProduct, updateProduct, copyProduct, getProductByID } from './product'
 import { getAllUsers, createUser } from './user'
 import { getAllOrders, createOrder, deleteOrder } from './order'
 import { getAllCategories } from './category'
@@ -15,7 +15,7 @@ const AppMiddleware = [
     deleteProduct,
     updateProduct,
     copyProduct,
-
+    getProductByID,
     // setSearchWord,
 
     getAllUsers,

@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import '../../App.css';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+
 import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 // import Search from '../Search';
@@ -137,4 +139,6 @@ const mapDispatchToProps = (dispatch) => ({
 
 
 })
-export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+// export default connect(mapStateToProps, mapDispatchToProps)(Shop);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Shop))
+
