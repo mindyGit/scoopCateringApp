@@ -151,7 +151,7 @@ function ProductList(props) {
       await shoppingCart.push(newItem)
     }
     await setCart(shoppingCart)
-    await props.setCartRedux(cart)
+    // await props.setCartRedux(cart)
     $('.navbar-toggler').click()
 
   }

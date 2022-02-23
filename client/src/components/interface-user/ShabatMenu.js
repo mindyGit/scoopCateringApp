@@ -248,12 +248,12 @@ function ProductList(props) {
 
             <div className='row px-5 swithDir'>
 
-                <div className='categoryList col-4 d-flex flex-column pt-5 mt-4'>
+                <div className='categoryList col-4 d-flex flex-column pt-5 '>
                     {categories && categories.map((category) => (
                         <a className='' href={'#' + category.name}> <button className='bg-white categoryButton' style={{ height: '60px', width: '80%' }} >{language == "he" ? category.hebrewName : category.name}</button></a>
                     ))}
                 </div>
-                <div className='pageContent swithSide  pt-4 pb-5 col-8'>
+                <div className='pageContent swithSide   pb-5 col-8'>
 
                     {/* <h3 className=' font-weight-bold mb-1'>{lastSegment}</h3> */}
                     <h6 className='  mb-3'> {i18.t('addProductsLable')}</h6>
