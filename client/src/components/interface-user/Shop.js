@@ -50,6 +50,7 @@ export function Shop(props) {
     if (!categories || !categories.length) {
         props.getAllCategories()
     }
+
     useEffect(() => {
         if ($) {
 

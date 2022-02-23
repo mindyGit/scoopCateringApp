@@ -35,6 +35,8 @@ export function Checkout(props) {
     const { t, i18n } = useTranslation();
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
+    let previousClick = "empty"
+    let currentClass
 
     function useLocalStorage(key, initialValue) {
         debugger
@@ -72,8 +74,41 @@ export function Checkout(props) {
     }
 
 
+
     useEffect(() => {
-        if ($) { }
+        if ($) {
+            $("button").click(function () {
+                if ($(this).attr('id') == "btnOne" || $(this).attr('id') == "btnTwo" || $(this).attr('id') == "btnThree") {
+                    currentClass = "." + $(this).attr('id')
+                    if ($(this).hasClass('active')) {
+                        $(this).removeClass('active');
+                        $(currentClass).addClass('d-none');
+                        // $('.left_side').removeClass('d-none');
+                    }
+                    else {
+                        $(this).addClass('active');
+                        $(currentClass).removeClass('d-none');
+                        // $('.left_side').removeClass('d-none');
+                        if (previousClick != "empty" && previousClick != $(this).attr('id')) {
+                            $("#" + previousClick).removeClass('active');
+                            $("." + previousClick).addClass('d-none');
+                            // $('.left_side').addClass('d-none');
+                        }
+                        else {
+                            $("#" + previousClick).addClass('active');
+                            $("." + previousClick).removeClass('d-none');
+                            // if ($('.left_side').hasClass('d-none'))
+                            // $('.left_side').romoveClass('d-none');
+                            // else
+                            //     $('.left_side').addClass('d-none');
+                        }
+                        previousClick = $(this).attr('id')
+                        console.log(previousClick);
+                    }
+                }
+            });
+
+        }
     }, [$])
     return (
         <>
@@ -132,6 +167,10 @@ export function Checkout(props) {
                                     <Form.Label class="mb-1"> {i18.t('anotherPhone')}</Form.Label>
                                     <Form.Control className="rounded-0 " type="text" />
                                 </Form.Group>
+                                <Form.Group className="mb-2" controlId="formBasicPhone">
+                                    <Form.Label class="mb-1"> {i18.t('address')}</Form.Label>
+                                    <Form.Control className="rounded-0 " type="text" />
+                                </Form.Group>
                             </Form>
                         </div>
 
@@ -152,13 +191,28 @@ export function Checkout(props) {
                             <div ><label >{i18.t('shippingMethod')}</label></div>
                             <div className="row  justify-content-around d-flex" style={{ width: '80%' }}>
 
-                                <div className="col-3 shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</div>
-                                <div className="col-3  shippingOption p-2 text-center">{i18.t('shippingMethod2')}</div>
-                                <div className="col-3  shippingOption p-0 pt-2 text-center">
+                                <button id="btnOne" className="col-3  shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</button>
+                                <button id="btnTwo" className="col-3  shippingOption p-2 text-center">{i18.t('shippingMethod2')}</button>
+                                <button id="btnThree" className="col-3  shippingOption p-0 pt-2 text-center" >
                                     <div> {i18.t('shippingMethod3')}</div>
 
-                                </div>
+                                </button>
                             </div>
+                            <Form.Group className="my-2 row  btnThree d-none" controlId="formBasicAddress" style={{ width: '80%' }}>
+                                <div className="col-6">
+                                    <Form.Label class="mb-1 ">{i18.t('Street')}</Form.Label>
+                                    <Form.Control className="rounded-0 " type="text" />
+                                </div>
+                                <div className="col-3">
+                                    <Form.Label class="mb-1">{i18.t('buildingNumber')}</Form.Label>
+                                    <Form.Control className="rounded-0 " type="number" min="1" />
+                                </div>
+                                <div className="col-3">
+                                    <Form.Label class="mb-1">{i18.t('ApartmentNumber')}</Form.Label>
+                                    <Form.Control className="rounded-0 " type="number" min="1" />
+                                </div>
+                            </Form.Group>
+
                         </div>
                         <label className="  w-100  pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('InvoiceDetails')} </label>
                         <div className="bg-grey p-3 mb-5">

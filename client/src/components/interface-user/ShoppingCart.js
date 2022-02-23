@@ -39,7 +39,17 @@ export function ShoppingCart(props) {
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
-
+    const { totalRedux, numItemsRedux, cartRedux } = props
+    if (!totalRedux || !totalRedux.length) {
+        props.setTotalRedux(total)
+    }
+    if (!numItemsRedux || !numItemsRedux.length) {
+        props.setNumItemsRedux(numItems)
+    }
+    if (!cartRedux || !cartRedux.length) {
+        debugger
+        props.setCartRedux(cart)
+    }
 
     function useLocalStorage(key, initialValue) {
         debugger
@@ -91,32 +101,31 @@ export function ShoppingCart(props) {
         let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
         cart.map(item => {
-
             if (item.product._id == id) {
                 if (action == 'plus') {
                     item.Amount = parseInt(item.Amount) + 1
                     setNumItems(numItems + 1)
+                    props.setNumItemsRedux(numItems + 1)
                     setTotal(total + 14.90)//+item.product.price
+                    props.setTotalRedux(total + 14.90)//+item.product.price
                     amount++
-
                 }
                 else {
                     if (amount != '1') {
                         item.Amount = parseInt(item.Amount) - 1
                         setNumItems(numItems - 1)
+                        props.setNumItemsRedux(numItems - 1)
                         setTotal(total - 14.90)//-item.product.price
+                        props.setTotalRedux(total - 14.90)//-item.product.price
                         amount--
-
-
-
                     }
-
                 }
                 item.Total = item.Amount * 14.90//*item.product.price
             }
         })
         $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
         setCart(cart)
+        props.setCartRedux(cart)
     }
 
 
@@ -126,19 +135,28 @@ export function ShoppingCart(props) {
     const deleteItem = async (id) => {
         debugger
         let currTotal = total - parseFloat($('.' + id + ' ' + '.endprice').text()).toFixed(2)
-        if (currTotal < 0)
+        if (currTotal < 0) {
             setTotal(parseFloat(0).toFixed(2))
-        else
+            props.setTotalRedux(parseFloat(0).toFixed(2))
+        }
+
+        else {
             setTotal(currTotal)//product.price
-        let list = await cart.filter(x => {
+            props.setTotalRedux(currTotal)//product.price
+        }
+
+        let list = await cartRedux.filter(x => {
             return x.product._id != id;
         })
         let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
-        setCart(list);
+        await setCart(list);
+        await props.setCartRedux(list)
+
         // await $('.navbar-toggler').click()
         $('.' + id).remove()
         $('.numItems').text(numItems - less)
         setNumItems(numItems - less)
+        props.setNumItemsRedux(numItems - less)
     }
     useEffect(() => {
         if ($) { }
@@ -200,7 +218,7 @@ export function ShoppingCart(props) {
                                 <div className=" sumColumn col-3 text-black text-end pr-5 mb-0 h6">{i18.t('Total')}</div>
                             </div>
 
-                            {cart.map(item =>
+                            {cart && cart.map(item =>
 
                                 <div className={`productItem mb-2 row justify-content-between align-items-end border-bottom border-dark py-2 ${item.product._id} `}>
                                     <div className='col-3 productName font-weight-bold  '> {language == "he" ? item.product.hebrewName : item.product.name}
@@ -236,7 +254,7 @@ export function ShoppingCart(props) {
                                 <div className="row ">
 
                                     <div className="col-7 swithSide">{i18.t('Items')}</div>
-                                    <div className="col-5 numItems">{numItems}</div>
+                                    <div className="col-5 numItems">{numItemsRedux}</div>
 
                                 </div>
                                 <br />
@@ -244,13 +262,13 @@ export function ShoppingCart(props) {
                                 <div className="row border-bottom border-dark pb-3">
 
                                     <div className="col-7 swithSide">{i18.t('InterimTotal')}</div>
-                                    <div className="col-5 ">{parseFloat(total).toFixed(2)} &#8362;</div>
+                                    <div className="col-5 ">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
 
                                 </div>
                                 <div className="row pt-2 font-weight-bold ">
 
                                     <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                    <div className="col-5 ">{parseFloat(total).toFixed(2)} &#8362;</div>
+                                    <div className="col-5 ">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
 
                                 </div>
                                 <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} <img src={arrow_left_white} style={{
@@ -288,12 +306,18 @@ export function ShoppingCart(props) {
 const mapStateToProps = (state) => {
     return {
         products: state.productReducer.products,
-        language: state.languageReducer.language
+        language: state.languageReducer.language,
+        cartRedux: state.cartReducer.cartRedux,
+        numItemsRedux: state.numItemsReducer.numItemsRedux,
+        totalRedux: state.totalReducer.totalRedux
 
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
     getAllProducts: () => dispatch(actions.getAllProducts()),
+    setCartRedux: (x) => dispatch(actions.setCartRedux(x)),
+    setNumItemsRedux: (NumItems) => dispatch(actions.setNumItemsRedux(NumItems)),
+    setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ShoppingCart);

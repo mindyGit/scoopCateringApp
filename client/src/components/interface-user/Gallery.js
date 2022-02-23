@@ -64,18 +64,25 @@ export function Gallery(props) {
                 <label >{i18.t('gallery')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
-            <div className='location pt-3 text-end px-5' >
-                <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
-                <div className='goldColor d-inline'> /{i18.t('gallery')}    </div>
+
+
+            <div className="pageContent ">
+
+                <div className="bg-black " style={{ height: '70vh' }}>
+                    <div className='location pt-3 text-end px-5' >
+                        <div className='d-inline text-white' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                        <div className='goldColor d-inline'> /{i18.t('gallery')}    </div>
+
+                    </div>
+
+
+                    <h1 className="text-white mt-5 pt-5">{i18.t('soon')}</h1>
+                </div>
+
+
             </div>
 
-            <div className="pageContent pt-3">
-
-
-
-            </div>
-
-            <div className="PageFooter mt-5">
+            <div className="PageFooter ">
                 <Footer />
                 <UnderFooter />
             </div>

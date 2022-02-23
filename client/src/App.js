@@ -38,6 +38,7 @@ import Kashrut from './components/interface-user/Kashrut'
 import RelatedProducts from './components/interface-user/RelatedProducts'
 import Local_Storag from './components/Local_Storag'
 import ManagerInterface from './components/interface-manager/ManagerInterface'
+import ShabatMenu from './components/interface-user/ShabatMenu'
 import PostInfo from './components/PostInfo'
 // import ComponnentToPrint from './components/ComponnentToPrint'
 // import Example from './components/Example'
@@ -64,6 +65,7 @@ function App(props) {
   return (
     <Router history={history}>
       <div className="App" >
+
         {/* <Example /> */}
         {/* <PostInfo /> */}
         {/* <Local_Storag /> */}
@@ -90,6 +92,9 @@ function App(props) {
           {/* <Route exact path="/appFirebase" component={AppFirebase} /> */}
           <Route exact path="home/ProductList" component={ProductList} />
           <Route exact path="/" component={Home} />
+          <Route exact path="/ShabatMenu" component={ShabatMenu} />
+
+
           <Route exact path="/shop" component={Shop} />
           <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
           <Route exact path="/shop/*" component={ProductList} />

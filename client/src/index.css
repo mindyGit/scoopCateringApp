@@ -331,6 +331,7 @@ text-align: center;
   justify-content: center !important;
  
 }
+
 button.outSvgSize.active{
  background-color:#C59950 !important ;
 }
@@ -792,6 +793,11 @@ outline: none !important;
   flex-direction: column;
  
 }
+.categoryButton:hover{
+color: #C39957 !important;
+font-size: larger;
+
+}
   .categoryItem {
     display: inline-block;
     position: relative;
@@ -935,8 +941,14 @@ overflow-x: hidden;
   font-size: 0.7rem;
   height:80px ;
   border: 1px solid black;
+  background-color: #fff !important;
 }
-
+button.shippingOption.active{
+  background-color:#C59950 !important ;
+ }
+ button.shippingOption:hover{
+  border-color: #C59950 !important ;
+ }
 /* input number of product */
 
 	

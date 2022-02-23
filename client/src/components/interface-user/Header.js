@@ -19,7 +19,18 @@ export function Header(props) {
     const { language } = props
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
-    const [total, setTotal] = useLocalStorage("total", 0.00);
+    const [total, setTotal] = useLocalStorage("total", 0);
+    const { totalRedux, numItemsRedux, cartRedux } = props
+    if (totalRedux == 0) {
+        props.setTotalRedux(total)
+    }
+    if (numItemsRedux == 0) {
+        props.setNumItemsRedux(numItems)
+    }
+    if (!cartRedux.length) {
+        debugger
+        props.setCartRedux(cart)
+    }
     function useLocalStorage(key, initialValue) {
         debugger
         // State to store our value
@@ -56,39 +67,6 @@ export function Header(props) {
     }
 
 
-
-    const AddToCart = async (product) => {
-
-        let flag = 0
-
-        let shoppingCart = []
-        if (cart != undefined)
-            shoppingCart = cart
-        shoppingCart.map(item => {
-
-            if (item.product._id == product._id) {
-                debugger
-
-                item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
-                item.Amount = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
-                flag = 1
-            }
-        })
-        if (flag == 0) {
-            let newItem = {
-                product: product,
-                Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val(),
-                Total: parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//product.price
-
-            }
-            await shoppingCart.push(newItem)
-        }
-
-
-        await setCart(shoppingCart)
-
-
-    }
     const changeAmount = async (id, action) => {
         let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
@@ -96,30 +74,40 @@ export function Header(props) {
 
             if (item.product._id == id) {
                 if (action == 'plus') {
+                    debugger
+
                     item.Amount = parseInt(item.Amount) + 1
+                    props.setNumItemsRedux(numItems + 1)
                     setNumItems(numItems + 1)
                     setTotal(total + 14.90)//+item.product.price
+                    props.setTotalRedux(total)
                     amount++
-                    $('.numItems').text(numItems + 1)
-
                 }
                 else {
                     if (amount != '1') {
+
                         item.Amount = parseInt(item.Amount) - 1
+                        props.setNumItemsRedux(numItems - 1)
                         setNumItems(numItems - 1)
                         setTotal(total - 14.90)//-item.product.price
+                        props.setTotalRedux(total)
                         amount--
-                        $('.numItems').text(numItems - 1)
+
 
                     }
 
                 }
                 item.Total = item.Amount * 14.90//*item.product.price
+
             }
         })
 
         $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
-        setCart(cart)
+        // setCart(cart)
+        // props.setCartRedux(cart)
+
+
+
     }
 
 
@@ -138,18 +126,26 @@ export function Header(props) {
             return x.product._id != id;
         })
         let currTotal = total - parseFloat(totalTodel).toFixed(2)
-        if (totalTodel < 0)
+        if (totalTodel < 0) {
             setTotal(parseFloat(0).toFixed(2))
-        else
+            props.setTotalRedux(parseFloat(0).toFixed(2))
+        }
+
+        else {
             setTotal(currTotal)//product.price
+            props.setTotalRedux(currTotal)//product.price
+        }
 
 
         let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
 
 
         setCart(list);
-        $('.' + id).remove()
+        await props.setCartRedux(list)
+        // $('.' + id).remove()
+        props.setNumItemsRedux(numItems - less)
         setNumItems(numItems - less)
+
 
     }
 
@@ -168,7 +164,7 @@ export function Header(props) {
 
 
 
-    }, [language, cart])
+    }, [language, totalRedux, numItemsRedux, cartRedux])
 
     return (
         <>
@@ -185,17 +181,17 @@ export function Header(props) {
                     >
                         <Offcanvas.Header closeButton className="rtl py-4" style={{ backgroundColor: '#f1f1f2' }}>
                             <Offcanvas.Title className="m-auto     font-weight-bold" id="offcanvasNavbarLabel">{i18.t('ShoppingCart')}
-                                (<span className="numItems">{numItems}</span>)</Offcanvas.Title>
+                                (<span className="numItems">{numItemsRedux}</span>)</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body className=" d-flex flex-column  pl-4 pt-0 pr-0 overflow-hidden">
-                            {cart == "" && (
+                            {cartRedux == "" && (
                                 <h4 className="text-center mt-5 pt-5">{i18.t('emptyCart')}</h4>
 
                             )
                             }
 
                             <div className="ShoppingCart_itemList mb-5 px-2 pt-3">
-                                {cart && cart.map(item =>
+                                {cartRedux && cartRedux.map(item =>
                                     <div className={`productItem row justify-content-around align-items-end  border-bottom border-dark py-2 ${side} ${item.product._id}`}  >
                                         <div className={`productName col-12  font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
                                         <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style={{ width: 'fit-content' }}>
@@ -231,7 +227,7 @@ export function Header(props) {
             </Navbar>
             <div className="bg-black">
                 <div className="row px-5 pt-2 pb-2 d-flex  headerPage justify-content-space-around align-items-center">
-                    <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-5"> {total ? parseFloat(total).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div><div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
+                    <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-5"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div><div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
                     <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  " >  {i18.t('BookAnEvent')} : 077-255-9982   </div>
                 </div>
 
@@ -245,12 +241,19 @@ const mapStateToProps = (state) => {
     return {
 
         products: state.productReducer.products,
-        language: state.languageReducer.language
+        language: state.languageReducer.language,
+        cartRedux: state.cartReducer.cartRedux,
+        numItemsRedux: state.numItemsReducer.numItemsRedux,
+        totalRedux: state.totalReducer.totalRedux
 
     };
 }
 const mapDispatchToProps = (dispatch) => ({
     getAllProducts: () => dispatch(actions.getAllProducts()),
-    setLanguage: (lan) => dispatch(actions.setLanguage(lan))
+    setLanguage: (lan) => dispatch(actions.setLanguage(lan)),
+    setCartRedux: (x) => dispatch(actions.setCartRedux(x)),
+    setNumItemsRedux: (NumItems) => dispatch(actions.setNumItemsRedux(NumItems)),
+    setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total))
+
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

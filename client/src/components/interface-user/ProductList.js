@@ -20,6 +20,7 @@ import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 import { Sync } from '@material-ui/icons';
 function ProductList(props) {
+
   const url = window.location.href
 
   // const [cart, setCart] = useLocalStorage("cart", []);
@@ -35,7 +36,17 @@ function ProductList(props) {
   const [cart, setCart] = useLocalStorage("cart", []);
   const [numItems, setNumItems] = useLocalStorage("numItems", 0);
   const [total, setTotal] = useLocalStorage("total", 0);
-
+  const { totalRedux, numItemsRedux, cartRedux } = props
+  // if (totalRedux == 0) {
+  //   props.setTotalRedux(total)
+  // }
+  // if (numItemsRedux == 0) {
+  //   props.setNumItemsRedux(numItems)
+  // }
+  // if (!cartRedux.length) {
+  //   debugger
+  //   props.setCartRedux(cart)
+  // }
   function useLocalStorage(key, initialValue) {
     debugger
     // State to store our value
@@ -114,92 +125,41 @@ function ProductList(props) {
   // const myStorage = window.localStorage;
   const AddToCart = async (product) => {
     let amountToAdd = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
-    let productName = $('#' + product._id + ' ' + '.productName').text()
-    let productPrice = $('#' + product._id + ' ' + '.price').text()
 
-    setTotal(total + (parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90))//product.price
-    setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
+    props.setTotalRedux(total + (amountToAdd * 14.90))
+    setTotal(total + (amountToAdd * 14.90))//product.price
+    props.setNumItemsRedux(numItems + amountToAdd)
+    setNumItems(numItems + amountToAdd)
     let flag = 0
-    let a
     let shoppingCart = []
     if (cart != undefined)
       shoppingCart = cart
     shoppingCart.map(item => {
-
       if (item.product._id == product._id) {
         debugger
-        a = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
-        item.Amount = a
-        item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
+        item.Amount = item.Amount + amountToAdd
+        item.Total = item.Total + (amountToAdd * 14.90)//item.product.price
         flag = 1
-
-
       }
     })
     if (flag == 0) {
       let newItem = {
         product: product,
-        Amount: $('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val(),
-        Total: parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//product.price
-
+        Amount: amountToAdd,
+        Total: amountToAdd * 14.90//product.price
       }
       await shoppingCart.push(newItem)
-      // setNumItems(numItems + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()))
     }
-
-
     await setCart(shoppingCart)
-
-
+    await props.setCartRedux(cart)
     $('.navbar-toggler').click()
-    $('.numItems').text(numItems + amountToAdd)
-    if (flag != 1) {
-      if (language == "he")
-        $('.ShoppingCart_itemList').append(`
 
-    <div class="productItem row justify-content-around align-items-end  border-bottom border-dark py-2 rtl ${product._id}">
-    <div class="productName col-12  font-weight-bold text-end">${productName}</div>
-    <div class='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style="width: fit-content">
-        <span class="plus" style="height: 29px">+</span>
-        <input type="text" value=${amountToAdd} class='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style="font-size: 13px" />
-        <span class="minus"  style ="height: 29px" >-</span>
-    </div>
-    <div class='col-6 price h6 mb-0 font-weight-bold  goldColor ' >${productPrice}</div>
-
-    <div class="col-1"> <i class="fas fa-trash-alt "></i></div>
-
-
-
-</div>
-    `)
-      else
-        $('.ShoppingCart_itemList').append(`
-
-        <div class="productItem row justify-content-around align-items-end  border-bottom border-dark py-2 ${product._id}">
-        <div class="productName col-12  font-weight-bold">${productName}</div>
-        <div class='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style="width: fit-content">
-            <span class="plus" style="height: 29px">+</span>
-            <input type="text" value=${amountToAdd} class='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style="font-size: 13px" />
-            <span class="minus"  style ="height: 29px" >-</span>
-        </div>
-        <div class='col-6 price h6 mb-0 font-weight-bold  goldColor ' >${productPrice}</div>
-
-        <div class="col-1"> <i class="fas fa-trash-alt "></i></div>
-
-
-
-    </div>
-        `)
-    }
-    else {
-      $('.' + product._id + ' ' + '.amountToBuy' + ' ' + '.AmountInput').val(a)
-    }
   }
 
 
   useEffect(() => {
     if ($) { }
-  }, [$, props, language, AddToCart, setCart]);
+  }, [$, language, totalRedux, numItemsRedux, cartRedux]);
 
 
 
@@ -433,13 +393,18 @@ const mapStateToProps = (state) => {
   return {
     products: state.productReducer.products,
     categories: state.categoryReducer.categories,
-    language: state.languageReducer.language
-
+    language: state.languageReducer.language,
+    cartRedux: state.cartReducer.cartRedux,
+    numItemsRedux: state.numItemsReducer.numItemsRedux,
+    totalRedux: state.totalReducer.totalRedux
   };
 }
 const mapDispatchToProps = (dispatch) => ({
   getAllProducts: () => dispatch(actions.getAllProducts()),
   getAllCategories: () => dispatch(actions.getAllCategories()),
+  setCartRedux: (x) => dispatch(actions.setCartRedux(x)),
+  setNumItemsRedux: (x) => dispatch(actions.setNumItemsRedux(x)),
+  setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total))
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ProductList)
 // export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductList))

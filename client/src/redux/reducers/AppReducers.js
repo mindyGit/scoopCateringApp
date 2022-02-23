@@ -8,6 +8,9 @@ import productsOnOrderReducer from './productsOnOrder.reducer'
 import navReducer from './nav.reducer'
 import searchWordReducer from './searchWord.reducer'
 import languageReducer from './language.reducer'
+import cartReducer from './cart.reducer'
+import numItemsReducer from './numItems.reducer'
+import totalReducer from './total.reducer'
 // Combine with other reducers we may add in the future
 
 const AppReducers = combineReducers({
@@ -19,7 +22,11 @@ const AppReducers = combineReducers({
   productsOnOrderReducer: productsOnOrderReducer,
   searchWordReducer: searchWordReducer,
   nav: navReducer,
-  languageReducer: languageReducer
+  languageReducer: languageReducer,
+  cartReducer: cartReducer,
+  numItemsReducer: numItemsReducer,
+  totalReducer: totalReducer,
+
 });
 
 
