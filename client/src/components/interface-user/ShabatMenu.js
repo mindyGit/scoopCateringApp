@@ -264,7 +264,7 @@ function ProductList(props) {
                                 <div className=' d-flex align-items-center mb-3 ' style={{ height: "100px" }}>
                                     <h1>{language == "he" ? category.hebrewName : category.name}</h1>
                                     <div className='mx-3 h-100' style={{ width: '15%' }}>
-                                        <img className="h-100 w-100 " src={'http://scoopcatering.co.il/images/foodCategories/Pictures/' + category.picUrl} />
+                                        <img className="h-100 w-100 " src={'http://scoopcatering.co.il/images/' + category.picUrl} />
                                     </div>
 
                                 </div>
