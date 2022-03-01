@@ -83,7 +83,7 @@ export function Events(props) {
                         <div className='goldColorWithShadow d-inline'> /{i18.t('EventBooking')}</div>
                     </div>
                     <div className="row justify-content-center ">
-                        <div className="  bg-white p-5 mt-2  col-md-5 col-sm-12 " >
+                        <div className="EventsDiv  bg-white p-5 mt-2  col-md-5 col-sm-12 " >
 
                             <Form.Label className="font-weight-bold h1"> {i18.t('eventsTitel')}</Form.Label>
                             <br />
@@ -93,21 +93,21 @@ export function Events(props) {
                                 <div className="swithSide">
                                     <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
                                         <Form.Label class="mb-1 lableForm"> *{i18.t('name')}</Form.Label>
-                                        <Form.Control className="rounded-0 " type="text" required />
+                                        <Form.Control className="rounded-custom " type="text" required />
                                     </Form.Group>
                                     <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
                                         <Form.Label class="mb-1 lableForm"> *{i18.t('phone')}</Form.Label>
-                                        <Form.Control className="rounded-0 " type="text" required />
+                                        <Form.Control className="rounded-custom " type="text" required />
                                     </Form.Group>
                                     <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
                                         <Form.Label class="mb-1 lableForm"> *{i18.t('email')}</Form.Label>
-                                        <Form.Control className="rounded-0 " type="email" required />
+                                        <Form.Control className="rounded-custom " type="email" required />
                                     </Form.Group>
 
                                     <Form.Group className="mb-2 row swithDir" controlId="formBasicPhone">
                                         <div className="col-6">
                                             <Form.Label class="mb-1 lableForm"> *{i18.t('EventType')}</Form.Label>
-                                            <Form.Select aria-label="Default select example" className="rounded-0" required>
+                                            <Form.Select aria-label="Default select example" className="rounded-custom" required>
                                                 <option></option>
                                                 <option value={i18.t('EventOption1')}>{i18.t('EventOption1')}</option>
                                                 <option value={i18.t('EventOption2')}>{i18.t('EventOption2')}</option>
@@ -122,7 +122,7 @@ export function Events(props) {
                                         </div>
                                         <div className="col-6">
                                             <Form.Label class="mb-1 lableForm">*{i18.t('NumberOfGuests')}</Form.Label>
-                                            <Form.Control className="rounded-0 " type="number" min="5" required />
+                                            <Form.Control className="rounded-custom " type="number" min="5" required />
                                         </div>
 
                                     </Form.Group>
@@ -157,11 +157,12 @@ export function Events(props) {
 
                                     </Form.Group>
                                 </div>
-                                <Button variant="primary" type="submit" className=" goldButton px-3 mt-4 mb-2">
-                                    {i18.t('send')}  	&#8594;
+                                <Button variant="primary" type="submit" className=" goldButton px-5 py-2 my-5">
+                                    {i18.t('send')}
+                                    {/* &#8594; */}
                                 </Button>
                                 <div className="swithSide">
-                                    <p className="swithDir small">*{i18.t('Required')}</p>
+                                    <p className="swithDir small mb-0">*{i18.t('Required')}</p>
                                 </div>
                             </Form>
                         </div>

@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from "react"
+import { useAuth } from "../../contexts/AuthContext"
 import logo from '../../data/imges/logo.png'
 import underLogo from '../../data/imges/underLogo.png'
 // import Navbar from 'react-bootstrap/Navbar'
+import Login from '../Firebase/Login'
+import Signup from '../Firebase/Signup'
+import AppFirebase from '../Firebase/AppFirebase'
+import { withRouter, Link, useHistory } from 'react-router-dom';
+
+import Collapse from 'react-bootstrap/Collapse'
 import Offcanvas from 'react-bootstrap/Offcanvas'
 import { connect } from 'react-redux';
 import { actions } from '../../redux/actions/action';
-import { Container, Form, FormControl, Nav, Button, NavDropdown, Image, Row } from "react-bootstrap"
+import { Container, Form, FormControl, Nav, Button, NavDropdown, Image, Row, Card } from "react-bootstrap"
 import allVectorSmart from '../../data/imges/allVectorSmart.png'
 import Navbar from 'react-bootstrap/Navbar'
 import Cart from '../../data/imges/cart.png'
+// import { withRouter, Link, useHistory } from 'react-router-dom';
+
 import $ from 'jquery'
 import { useTranslation } from 'react-i18next';
 import i18 from '../../i18/i18';
@@ -16,6 +25,23 @@ export function Header(props) {
     const { t, i18n } = useTranslation();
     const [side, setSide] = useState('');
     const [align, setAlign] = useState('');
+    const history = useHistory()
+    // const [error, setError] = useState("")
+    // const { currentUser, logout } = useAuth()
+    // const history = useHistory()
+
+
+    // async function handleLogout() {
+    //     setError("")
+
+    //     try {
+    //         await logout()
+    //         history.push("/login")
+    //     } catch {
+    //         setError("Failed to log out")
+    //     }
+    // }
+    const [open, setOpen] = useState(false);
     const { language } = props
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
@@ -66,52 +92,40 @@ export function Header(props) {
         return [storedValue, setValue];
     }
 
-
     const changeAmount = async (id, action) => {
+        debugger
         let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
-        cart.map(item => {
+        cartRedux && cartRedux.map(item => {
 
             if (item.product._id == id) {
                 if (action == 'plus') {
-                    debugger
-
-                    item.Amount = parseInt(item.Amount) + 1
-                    props.setNumItemsRedux(numItems + 1)
+                    console.log(item.Amount);
+                    // item.Amount = parseInt(item.Amount) + 1
                     setNumItems(numItems + 1)
                     setTotal(total + 14.90)//+item.product.price
-                    props.setTotalRedux(total)
+                    props.setTotalRedux(total + 14.90)//+item.product.price
                     amount++
+                    $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
                 }
                 else {
                     if (amount != '1') {
-
                         item.Amount = parseInt(item.Amount) - 1
-                        props.setNumItemsRedux(numItems - 1)
                         setNumItems(numItems - 1)
-                        setTotal(total - 14.90)//-item.product.price
-                        props.setTotalRedux(total)
+                        setTotal(total + 14.90)//+item.product.price
+                        props.setTotalRedux(total + 14.90)//+item.product.price
+                        $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
                         amount--
-
 
                     }
 
                 }
-                item.Total = item.Amount * 14.90//*item.product.price
 
             }
         })
-
         $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
-        // setCart(cart)
-        // props.setCartRedux(cart)
-
-
-
+        setCart(cart)
     }
-
-
-
 
 
     const deleteItem = async (id) => {
@@ -125,7 +139,7 @@ export function Header(props) {
             }
             return x.product._id != id;
         })
-        let currTotal = total - parseFloat(totalTodel).toFixed(2)
+        let currTotal = parseFloat(total).toFixed(2) - parseFloat(totalTodel).toFixed(2)
         if (totalTodel < 0) {
             setTotal(parseFloat(0).toFixed(2))
             props.setTotalRedux(parseFloat(0).toFixed(2))
@@ -143,9 +157,9 @@ export function Header(props) {
         setCart(list);
         await props.setCartRedux(list)
         // $('.' + id).remove()
-        props.setNumItemsRedux(numItems - less)
-        setNumItems(numItems - less)
 
+        await setNumItems(numItems - less)
+        props.setNumItemsRedux(numItems - less)
 
     }
 
@@ -170,7 +184,7 @@ export function Header(props) {
         <>
             <Navbar className="cartNuvbar bg-transparent border-0 p-0" expand={false} styl={{
             }}>
-                <Container fluid className="p-0">
+                <Container fluid className="p-0 ">
 
                     <Navbar.Toggle aria-controls="offcanvasNavbar" className=" p-0" />
                     <Navbar.Offcanvas
@@ -213,7 +227,7 @@ export function Header(props) {
 
                             </div>
 
-                            {cart != "" && (
+                            {cartRedux != "" && (
                                 <div className=" swithDir d-flex row  justify-content-around " >
                                     <button className="col-5 bg-black text-white" onClick={() => props.history.push('/Cart')} >{i18.t('ToTheShoppingCart')}</button>
                                     <button className=" col-5 goldButton" onClick={() => props.history.push('/Checkout')}>{i18.t('toCheckout')}</button>
@@ -227,7 +241,49 @@ export function Header(props) {
             </Navbar>
             <div className="bg-black">
                 <div className="row px-5 pt-2 pb-2 d-flex  headerPage justify-content-space-around align-items-center">
-                    <div className=" col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mr-5"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div><div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div>  </div>
+                    {/* <div className="registerSection col-6 d-flex">
+                        <Button
+                            className=""
+                            onClick={() => {
+
+                                setOpen(!open)
+                            }}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                        >
+
+                        </Button>
+
+                        <Collapse in={open}>
+                            <div id="example-collapse-text" style={{ position: 'absolute', zIndex: '99999', top: '40px', left: '50%' }}>
+                                <Card body style={{ width: '50vw', height: 'fit-content' }} >
+
+
+                                    <div className=""><AppFirebase /></div>
+                                  
+
+
+                                </Card>
+                            </div>
+                        </Collapse>
+                    </div>
+ */}
+
+
+                    <div className=" registerSection col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mx-5"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
+                        {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div> */}
+
+                    </div>
+                    {/* <div className=" col-6 d-flex d-none connectSection">
+                        <div className="text-white">    {currentUser.email}</div>
+                        <Button variant="link" className="p-0 m-0"
+                            onClick={handleLogout}>
+                            Log Out
+                        </Button>
+                    </div> */}
+
+
+
                     <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  " >  {i18.t('BookAnEvent')} : 077-255-9982   </div>
                 </div>
 

@@ -1,5 +1,6 @@
-import React, { useEffect } from 'react';
-
+import React, { useEffect, useState } from 'react';
+import Header from '../interface-user/Header';
+// import AppFirebase from '../Firebase/AppFirebase'
 import Store from '../../redux/store'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -10,16 +11,35 @@ import { actions } from '../../redux/actions/action';
 import initialDetails from '../../data/initialDetails';
 import background_image from '../../data/imges/backgroundImg.jpg'
 import { Container, Row, Col } from 'react-grid-system';
-import { Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap";
+import { Form, FormControl, Nav, Button, NavDropdown, Image, Card } from "react-bootstrap";
+import { withRouter, Link, useHistory } from 'react-router-dom';
+import { useAuth } from "../../contexts/AuthContext"
+import Collapse from 'react-bootstrap/Collapse'
+import AppFirebase from '../Firebase/AppFirebase';
 
 
 
 export function Hamborger(props) {
+    const [open, setOpen] = useState(false);
 
+    // const [error, setError] = useState("")
+    // const { currentUser, logout } = useAuth()
+    // const history = useHistory()
 
+    // async function handleLogout() {
+    //     setError("")
+
+    //     try {
+    //         await logout()
+    //         history.push("/login")
+    //     } catch {
+    //         setError("Failed to log out")
+    //     }
+    // }
 
     return (
         <>
+
             <Navbar style={{
                 position: 'sticky',
                 top: '0',
@@ -27,9 +47,34 @@ export function Hamborger(props) {
 
 
             }} bg="dark" expand={false} variant="dark">
-                <Container fluid>
+                <Container fluid className='m-0 p-0 d-flex'>
+
                     <Navbar.Brand href="#"></Navbar.Brand>
-                    <Navbar.Toggle aria-controls="offcanvasNavbar" className='mr-0 pr-0' />
+                    <Navbar.Toggle aria-controls="offcanvasNavbar" className='mr-0 px-0' />
+                    <div className="registerSection  d-flex">
+                        <Button
+                            className=""
+                            onClick={() => setOpen(!open)}
+                            aria-controls="example-collapse-text"
+                            aria-expanded={open}
+                        >
+
+                        </Button>
+
+                        <Collapse in={open}>
+                            <div id="example-collapse-text" style={{ position: 'absolute', zIndex: '99999', top: '130px' }}>
+                                <Card body  >
+                                    <div className="">
+                                        <AppFirebase />
+
+                                    </div>
+
+                                </Card>
+                            </div>
+                        </Collapse>
+                    </div>
+
+
                     <Navbar.Offcanvas
                         id="offcanvasNavbar"
                         aria-labelledby="offcanvasNavbarLabel"
@@ -41,7 +86,7 @@ export function Hamborger(props) {
                         <Offcanvas.Body>
 
                             <Nav
-                                className="me-auto my-2 my-lg-0 linksNuv"
+                                className=" my-2 my-lg-0 linksNuv"
                                 style={{ maxHeight: 'fit-content' }}
                                 navbarScroll
                             >

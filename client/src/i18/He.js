@@ -115,7 +115,7 @@ export const He = {
         Raanana: 'רעננה',
         shippingMethod: 'אנא בחר בשיטת משלוח',
 
-        shippingMethod1: 'איסוף עצמי מהחנות',
+        shippingMethod1: 'איסוף עצמי',
         shippingMethod2: 'משלוח עד הבית',
         shippingMethod3: 'הזמנות הפתעה/כתובת שונה',
         InvoiceDetails: 'פרטי חשבונית',
@@ -142,7 +142,7 @@ export const He = {
         AdditionalPayment_: `ביט / פייבוקס / העברה בנקאית
 צרו קשר עם המשרד 054-290-2590`,
 
-        paymentMethod: 'בחר אופן תשלום',
+        paymentMethod: 'אופן התשלום',
         payBox: 'פייבוקס',
         Bit: 'ביט',
         BankTransfer: 'העברה בנקאית',

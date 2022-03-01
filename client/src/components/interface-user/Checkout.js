@@ -143,52 +143,64 @@ export function Checkout(props) {
                 <div className="row justify-content-start swithDir">
                     <div className="  col-6 ml-5 p-0 swithSide ">
 
-                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('PersonalInformation')} </label>
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
                             <Form className="px-3 swithSide w-75 py-3 mb-3  ">
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
                                     <Form.Label class="mb-1"> {i18.t('mailAdress')}</Form.Label>
-                                    <Form.Control className="rounded-0" type="email" />
+                                    <Form.Control className="rounded-custom" type="email" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicName">
                                     <Form.Label class="mb-1"> {i18.t('FirstName')}</Form.Label>
-                                    <Form.Control className="rounded-0" type="text" />
+                                    <Form.Control className="rounded-custom" type="text" />
                                 </Form.Group>
 
                                 <Form.Group className="mb-2" controlId="formBasicLastName">
                                     <Form.Label class="mb-1">{i18.t('LastName')}</Form.Label>
-                                    <Form.Control className="rounded-0" type="text" />
+                                    <Form.Control className="rounded-custom" type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('phone')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" />
+                                    <Form.Control className="rounded-custom " type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('anotherPhone')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" />
+                                    <Form.Control className="rounded-custom " type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('address')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" />
+                                    <Form.Control className="rounded-custom " type="text" />
                                 </Form.Group>
                             </Form>
                         </div>
 
 
 
-                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" > {i18.t('deliveryDetails')} </label>
+                        <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " > {i18.t('deliveryDetails')} </label>
                         <div className=" bg-grey p-3 mb-5">
-                            <div><label >{i18.t('AreaOrCity')}</label></div>
-                            <select className="w-75">
+                            {/* <div><label >{i18.t('AreaOrCity')}</label></div> */}
+                            {/* <select className="w-75 rounded-custom p-1">
                                 <option></option>
-                                AreaOrCity: 'אזור/עיר',
+                              
                                 <option>{i18.t('BeitShemesh')}</option>
                                 <option>{i18.t('GushEtzion')}</option>
                                 <option>{i18.t('Jerusalem')}</option>
                                 <option>{i18.t('Modiin')}</option>
                                 <option>{i18.t('Raanana')}</option>
                             </select>
-                            <div ><label >{i18.t('shippingMethod')}</label></div>
+ */}
+                            <Form.Label class="mb-2 "> {i18.t('AreaOrCity')}</Form.Label>
+                            <Form.Select aria-label="Default select example" className="rounded-custom w-75" required>
+                                <option></option>
+
+                                <option>{i18.t('BeitShemesh')}</option>
+                                <option>{i18.t('GushEtzion')}</option>
+                                <option>{i18.t('Jerusalem')}</option>
+                                <option>{i18.t('Modiin')}</option>
+                                <option>{i18.t('Raanana')}</option>
+                            </Form.Select>
+
+                            <div className="mt-2"><label >{i18.t('shippingMethod')}</label></div>
                             <div className="row  justify-content-around d-flex" style={{ width: '80%' }}>
 
                                 <button id="btnOne" className="col-3  shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</button>
@@ -201,20 +213,20 @@ export function Checkout(props) {
                             <Form.Group className="my-2 row  btnThree d-none" controlId="formBasicAddress" style={{ width: '80%' }}>
                                 <div className="col-6">
                                     <Form.Label class="mb-1 ">{i18.t('Street')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="text" />
+                                    <Form.Control className="rounded-custom " type="text" />
                                 </div>
                                 <div className="col-3">
                                     <Form.Label class="mb-1">{i18.t('buildingNumber')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="number" min="1" />
+                                    <Form.Control className="rounded-custom " type="number" min="1" />
                                 </div>
                                 <div className="col-3">
                                     <Form.Label class="mb-1">{i18.t('ApartmentNumber')}</Form.Label>
-                                    <Form.Control className="rounded-0 " type="number" min="1" />
+                                    <Form.Control className="rounded-custom " type="number" min="1" />
                                 </div>
                             </Form.Group>
 
                         </div>
-                        <label className="  w-100  pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('InvoiceDetails')} </label>
+                        <label className="  w-100  pt-1 swithSide  goldbgColor px-3 " >{i18.t('InvoiceDetails')} </label>
                         <div className="bg-grey p-3 mb-5">
                             <div class="form-check">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
@@ -224,23 +236,27 @@ export function Checkout(props) {
                             </div>
 
                         </div>
-                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 mb-0">{i18.t('CouponCode')} </label>
+                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 ">{i18.t('CouponCode')} </label>
                         <div className="bg-grey p-3 mb-5">
                             <div>{i18.t('EnterCouponCode')}</div>
                             <div className="row p-2" style={{ width: '80%' }}>
-                                <input className=" col-5 mr-1" type="text" />
 
-                                <button className="goldButton col-5 mr-3" >{i18.t('ActivateCoupon')}</button>
+                                <Form.Group className=" col-6 p-0" controlId="formBasicPhone">
+
+                                    <Form.Control className="rounded-custom  h-100" type="text" />
+                                </Form.Group>
+
+                                <button className="goldButton px-3 col-4 mx-3" >{i18.t('ActivateCoupon')}</button>
                             </div>
 
                         </div>
-                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 mb-0">  {i18.t('CommentsToOrder')}  </label>
+                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 ">  {i18.t('CommentsToOrder')}  </label>
                         <div className="bg-grey p-3 mb-3">
 
                             <div className="row p-2" style={{ width: '80%' }}>
                                 <div class="form-group pr-1">
                                     <label for="exampleFormControlTextarea1">{i18.t('CommentsToOrder')} </label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control rounded-custom" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -260,16 +276,16 @@ export function Checkout(props) {
 
 
 
-                        <button className=" mt-5 goldButton mb-5  mr71" onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}<img src={arrow_left_white} style={{
-
-                            paddingRight: '5px',
-                            width: '25px'
-                        }} /></button>
+                        <button className=" mt-5 goldButton px-3 py-2 mb-5  mr71" onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
+                            {/* <img src={arrow_left_white} style={{ paddingRight: '5px',width: '25px'}} /> */}
+                        </button>
                     </div>
-                    <div className=" bg-grey col-4 ml-5 p-0 pb-5">
-                        <label className="bg-black text-white w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label>
+                    <div className="  col-4 ml-5 p-0 pb-5">
+                        {/* <label className="    font-weight-bolder w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label> */}
+                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 "> {i18.t('OrderSummary')}  </label>
 
-                        <div className="px-4">
+
+                        <div className="px-4 p-3 mb-3 bg-grey">
                             <div className="row ">
 
                                 <div className="col-7 swithSide">{i18.t('Items')}</div>
@@ -296,7 +312,7 @@ export function Checkout(props) {
                                 <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
 
                             </div>
-                            {/* <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}
+                            {/* <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}
 
 
                         </div>

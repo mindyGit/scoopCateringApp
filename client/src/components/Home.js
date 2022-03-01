@@ -1,4 +1,8 @@
 import React, { useEffect, useState } from 'react';
+// import { Card, Button, Alert } from "react-bootstrap"
+import { useAuth } from "../contexts/AuthContext"
+
+
 import Store from '../redux/store'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -33,7 +37,7 @@ import shabat from '../data/imges/foodCategories/shabat.png'
 import desserts from '../data/imges/foodCategories/desserts.png'
 import mainCourses from '../data/imges/foodCategories/mainCourses.png'
 import $ from 'jquery'
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link, useHistory } from 'react-router-dom';
 
 
 import useMediaQuery from "../hooks/useMediaQuery";
@@ -55,6 +59,20 @@ export function Home(props) {
     if (!categories || !categories.length) {
         props.getAllCategories()
     }
+    // const [error, setError] = useState("")
+    // const { currentUser, logout } = useAuth()
+    // const history = useHistory()
+
+    // async function handleLogout() {
+    //     setError("")
+
+    //     try {
+    //         await logout()
+    //         history.push("/login")
+    //     } catch {
+    //         setError("Failed to log out")
+    //     }
+    // }
     useEffect(() => {
         // alert('Not available at the moment, the site is running only !! \n אינו זמין כרגע ,האתר בהרצה בלבד!!')
         if ($) {
@@ -90,7 +108,7 @@ export function Home(props) {
 
                         {!isMobile && !isTablet && (
                             <>
-                                {/* <button onClick={() => props.history.push('/gallery')}>hjk</button> */}
+
                                 <TopPageDesktop />
                             </>
                         )}
@@ -99,58 +117,30 @@ export function Home(props) {
                         <Section className="sectionOne homeBg" style={{
 
                         }} />
-                        <div className="sectionTwo bg-black" >
-                            {/* <Row>
-                                <div className="d-flex justify-content-center align-items-center flex-column" style={{
-                                    height: '400px', border: '2px solid #C69A51'
-                                    , opacity: '1'
-                                    , width: '26%',
-                                    backgroundColor: "#C69A51"
-                                }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
-                                   
-                                    <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
-                                </div>
-
-                                <div class="zoomBOut" onClick={() => props.history.push('/shop')}>
-                                    <div class="zoomBIn d-flex align-items-center flex-column  justify-content-center">
-                                        <div className='textHide'>
-
-                                            <div className="h1 font-weight-bold whiteColor w-75 m-auto mb-4" style={{ fontSize: '240%', lineHeight: '1.1' }} >{i18.t('FoodReadyToShabat')}</div>
-                                            <hr className="font-weight-bold whiteColor m-auto" style={{ width: '20%', height: '5px', opacity: '1' }} ></hr>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div className="sectionTwo text-center bg-black" >
 
 
-                                <div className="d-flex justify-content-center align-items-center flex-column" style={{
-                                    height: '400px', border: '2px solid #C69A51'
 
-                                    , width: '32%',
+                            <Row>
+
+                                <div className=" border-bottom-0 col-md-3  col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
+                                    height: '400px', border: '2px solid #C69A51',
+
 
                                     backgroundColor: "#111111",
 
                                 }}>
-                                  
+
 
                                     <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> {i18.t('Galleries')}</div>
                                     <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
-                                 
+
                                 </div>
 
-                            </Row> */}
 
 
-                            <Row>
-                                <div className=" col-md-3 col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
-                                    height: '400px', border: '2px solid #C69A51'
-                                    , opacity: '1'
-                                    ,
-                                    //  width: '26%',
-                                    backgroundColor: "#C69A51"
-                                }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
 
-                                    <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
-                                </div>
+
 
                                 <div class=" col-md-6 col-sm-12 zoomBOut p-0" onClick={() => props.history.push('/shop')}>
                                     <div class=" zoomBIn d-flex align-items-center flex-column  justify-content-center">
@@ -163,20 +153,19 @@ export function Home(props) {
                                 </div>
 
 
-                                <div className=" col-md-3  col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
-                                    height: '400px', border: '2px solid #C69A51',
 
-                                    // , width: '32%',
+                                <div className=" col-md-3 col-sm-12 d-flex justify-content-center align-items-center flex-column" style={{
+                                    height: '400px', border: '2px solid #C69A51'
+                                    , opacity: '1'
+                                    ,
 
-                                    backgroundColor: "#111111",
+                                    backgroundColor: "#C69A51"
+                                }}><div className="h1 font-weight-bold w-50  whiteColor " style={{ lineHeight: '1.1', fontSize: '240%' }} >{i18.t('MenusForEvents')}</div>
 
-                                }}>
-
-
-                                    <div className=" font-weight-bold whiteColor w-50" style={{ lineHeight: '1.1', fontSize: '240%' }}> {i18.t('Galleries')}</div>
-                                    <hr className="font-weight-bold whiteColor mt-4" style={{ width: '10%', height: '5px', opacity: '1' }} ></hr>
-
+                                    <hr className="font-weight-bold whiteColor" style={{ width: '12%', height: '5px', opacity: '1' }} ></hr>
                                 </div>
+
+
 
                             </Row>
 
@@ -184,18 +173,18 @@ export function Home(props) {
 
 
                             <h1 className='text-white mt-5 font-weight-bold'  >{i18.t('FoodReadyToShabat')}</h1>
-                            <hr className="font-weight-bold goldColor m-auto" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
+                            <hr className="font-weight-bold goldColor m-auto" style={{ width: '5rem', height: '5px', opacity: '1' }} ></hr>
                             <h6 className='text-white mt-5'> {i18.t('homePageTitel2')}</h6>
                             <div className='d-flex justify-content-center my-5' >
                                 <div className=' col-md-10 col-sm-12  row d-flex justify-content-between  ' >
                                     {/* {categories && categories.map((category, index) => ( */}
 
 
-                                    <div className='col-md-3  ' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
-                                    <div className='col-md-3 ' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות פתיחה" : "Appetizers"}`)}><img className='h-100 w-100' src={fish} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+                                    <div className=' col-xs-12 col-sm-6 col-md-3 p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{language == 'he' ? 'סלטים' : 'salads'}</div></div>
+                                    <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות פתיחה" : "Appetizers"}`)}><img className='h-100 w-100' src={fish} /> <div className='AddToCart text-white'>{language == 'he' ? 'מנות פתיחה' : 'Appetizers'}</div></div>
 
-                                    <div className='col-md-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות עקריות" : "Main Course"}`)}><img className='h-100 w-100' src={mainCourses} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
-                                    <div className='col-md-3 ' onClick={() => props.history.push(`/shop/${language == "he" ? "קינוחים" : "Desserts"}`)}><img className='h-100 w-100' src={desserts} /> <div className='AddToCart text-white'>{language == 'he' ? 'לקניה' : 'To Buy'}</div></div>
+                                    <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות עקריות" : "Main Course"}`)}><img className='h-100 w-100' src={mainCourses} /> <div className='AddToCart text-white'>{language == 'he' ? 'מנות עקריות' : 'Main Course'}</div></div>
+                                    <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "קינוחים" : "Desserts"}`)}><img className='h-100 w-100' src={desserts} /> <div className='AddToCart text-white'>{language == 'he' ? 'קינוחים' : 'Desserts'}</div></div>
 
                                     {/* ))} */}
 
@@ -209,17 +198,17 @@ export function Home(props) {
 
                             <div className="row justify-content-center mt-3  " >
 
-                                <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between'>
-                                    <div className="  col-md-7 col-sm-12 mb-3" >
+                                <div className='col-md-10 col-sm-12 col-xs-12  row d-flex justify-content-between'>
+                                    <div className="  col-md-7 col-sm-12 mb-3 p-0" >
                                         <div className='d-flex justify-content-center   align-items-center'>
-                                            <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div>
+                                            {/* <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div> */}
                                             <img className='w-100 h-100' src={img1} />
                                         </div>
 
                                     </div>
 
 
-                                    <div className=" col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
+                                    <div className=" col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end px-4" >
                                         <div className="font-weight-bold h1 mb-0" style={{ color: "#A38047" }}> ? מתכנן אירוע </div>
                                         <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
 
@@ -233,23 +222,54 @@ export function Home(props) {
 
                             <div className="row justify-content-center mt-3  " >
 
-                                <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between'>
+
+
+                                <div className='col-md-10 col-sm-12  row d-flex justify-content-between'>
+                                    {isTablet && (
+                                        <>
+
+
+                                            <div className="  col-md-7 col-sm-12 mb-3 p-0" >
+                                                <div className='d-flex justify-content-center   align-items-center'>
+                                                    {/* <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div> */}
+                                                    <img className='w-100 h-100' src={img3} />
+                                                </div>
+
+                                            </div>
 
 
 
-                                    <div className=" col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
-                                        <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
-                                        <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
 
-                                        <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
-                                    </div>
-                                    <div className="  col-md-7 col-sm-12 mb-3" >
-                                        <div className='d-flex justify-content-center   align-items-center'>
-                                            {/* <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div> */}
-                                            <img className='w-100 h-100' src={img3} />
-                                        </div>
+                                            <div className=" px-4 col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
+                                                <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
+                                                <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
 
-                                    </div>
+                                                <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
+                                            </div>
+                                        </>
+                                    )}
+
+                                    {!isMobile && !isTablet && (
+                                        <>
+
+                                            <div className=" px-4 col-md-5 col-sm-12 d-flex justify-content-center  flex-column align-items-end " >
+                                                <div className="font-weight-bold h1" style={{ color: "#A38047" }}> ?מארגנים טיול לעובדים</div>
+                                                <hr className="font-weight-bold goldColor " style={{ width: '8%', height: '5px', opacity: '1' }} ></hr>
+
+                                                <p className="mt-2  text-end" style={{ color: "white" }}>לורם איפסום דולור סיט אמט, קונסקטורר אדיפיסינג אלית להאמית קרהשק סכעיט דז מא, מנכם למטכין נשואי מנורךגולר מונפרר סוברט לורם שבצק יהול, לכנוץ בעריר גק ליץ, ושבעגט. קוואזי במר מודוף. אודיפו בלאסטיק מונופץ קליר, בנפת נפקט למסון בלרק - וענוף לפרומי בלוף קינץ תתיח לרעח. לת צשחמי צש בליא, מנסוטו צמלח לביקו ננבי, צמוקו</p>
+                                            </div>
+                                            <div className="  col-md-7 col-sm-12 mb-3 p-0" >
+                                                <div className='d-flex justify-content-center   align-items-center'>
+                                                    {/* <div class="text-dark border border-dark pl-4  pr-4 pb-2  pt-2 h4 font-weight-bold position-absolute" >תפריט מומלץ</div> */}
+                                                    <img className='w-100 h-100' src={img3} />
+                                                </div>
+
+                                            </div>
+
+
+
+                                        </>
+                                    )}
 
                                 </div>
                             </div>
@@ -269,20 +289,20 @@ export function Home(props) {
 
 
                         {/* <div className="sectionThree whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%', paddingTop: '2%' }}> */}
-                        <div className="sectionThree whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%' }}>
+                        <div className="sectionThree text-center whiteColor " style={{ backgroundImage: `url(${Rectangle})`, height: "100%", width: '100%' }}>
 
                             {/* <div className="partOfSectionTwo  pb-2" style={{ paddingTop: '5%' }}> */}
                             <div className="partOfSectionTwo  pb-2" >
 
                                 <div className="h1 font-weight-bold pt-4 whiteColor"> מתאימים לך אירוע אישית</div>
-                                <hr className="font-weight-bold goldColor m-auto mb-5 mt-3" style={{ width: '3%', height: '5px', opacity: '1' }} ></hr>
+                                <hr className="font-weight-bold goldColor m-auto mb-5 mt-3" style={{ width: '5rem', height: '5px', opacity: '1' }} ></hr>
                                 <div className="h4 mb-0 pb-5 whiteColor"> אירוע מושלם בסקופ, בדיוק לפי הנקודה המתאימה לך </div>
                             </div>
-                            <div className="row d-flex justify-content-around align-items-center">
-                                <div className="col-md-2 text-end pr-0 standartFont">סקופ</div>
+                            <div className="row d-flex col-md-12 col-sm-12 m-auto align-items-center justify-content-center p-0">
+                                <div className="col-3  h4 ">סקופ</div>
 
 
-                                <div class="slider col-md-7 grad1">
+                                <div class="slider col-6 grad1 p-0">
                                     <div class="field second">
                                         <input type="range" class="rangInput" id="secondinput" min="0" max="100" defaultValue="20" steps="1" />
 
@@ -290,22 +310,28 @@ export function Home(props) {
                                 </div>
 
 
-                                <div className="col-md-2 text-start pl-0 standartFont">אירוע מושלם</div>
-                            </div>
-                            <div className="row mb-3">
-                                <div className="col-md-3"></div>
-                                <div className="col-md-6 d-flex standartFont ">
-                                    <div className="col-md-2 ">תפריט</div>
-                                    <div className="col-md-2 ">טריות ואיכות</div>
-                                    <div className="col-md-2">טעם מצוין </div>
-                                    <div className="col-md-2">צוות אדיב</div>
-                                    <div className="col-md-2">עיצוב</div>
-                                    <div className="col-md-2">הפקה</div>
-                                </div>
-                                <div className="col-md-3"></div>
+                                <div className="col-3  h4 ">אירוע מושלם</div>
                             </div>
 
-                            <div className="row justify-content-center mt-3  " >
+
+
+                            {!isMobile && !isTablet && (
+                                <>
+                                    <div className=" mb-3 row d-flex col-12 m-auto align-items-center">
+                                        <div className="col-3"></div>
+                                        <div className="col-6 d-flex h4 p-0 ">
+                                            <div className="col-2 ">תפריט</div>
+                                            <div className="col-2 ">טריות ואיכות</div>
+                                            <div className="col-2">טעם מצוין </div>
+                                            <div className="col-2">צוות אדיב</div>
+                                            <div className="col-2">עיצוב</div>
+                                            <div className="col-2">הפקה</div>
+                                        </div>
+                                        <div className="col-3"></div>
+                                    </div>
+                                </>
+                            )}
+                            < div className="row justify-content-center mt-3  " >
 
                                 <div className='col-md-10 col-sm-12 px-4 row d-flex justify-content-between my-5 blogSection'>
 

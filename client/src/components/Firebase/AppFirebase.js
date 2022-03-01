@@ -8,7 +8,7 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
-import Home from '../Home'
+import Home from './Home'
 
 
 function AppFirebase() {
@@ -21,9 +21,10 @@ function AppFirebase() {
         <Router>
           <AuthProvider>
             <Switch>
+              {/* <PrivateRoute exact path="/" component={Login} /> */}
               <PrivateRoute exact path="/" component={Dashboard} />
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
-              <Route path="/home" component={Home} />
+              <PrivateRoute path="/Home" component={Home} />
               <Route path="/signup" component={Signup} />
               <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />

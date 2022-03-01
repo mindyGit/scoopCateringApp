@@ -30,9 +30,9 @@ export default function Dashboard() {
           <Link to="/update-profile" className="btn btn-primary w-100 mt-3">
             Update Profile
           </Link>
-          <a href></a>
-          {/* <Button onClick={() => history.push("/home")}>  continue</Button> */}
-          <Link to="/home" className="btn btn-primary w-100 mt-3" >
+          {/* <a href="/home"> <Button > continue</Button></a> */}
+          {/* <Button onClick={() => history.push("")}>  continue</Button> */}
+          <Link to="/Home" className="btn btn-primary w-100 mt-3" >
             continue
           </Link>
         </Card.Body>

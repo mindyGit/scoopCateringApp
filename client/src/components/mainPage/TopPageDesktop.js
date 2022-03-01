@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+
 import Store from '../../redux/store'
 import Navbar from 'react-bootstrap/Navbar'
 import Offcanvas from 'react-bootstrap/Offcanvas'
@@ -39,6 +39,8 @@ import i18 from '../../i18/i18';
 import useMediaQuery from "../../hooks/useMediaQuery";
 // import searchIcon from '../data/imges/searchIcon.svg'
 import { ReactComponent as YourSvg } from '../../data/imges/searchIcon.svg';
+import { withRouter, Link, useHistory } from 'react-router-dom';
+import { useAuth } from "../../contexts/AuthContext"
 
 
 export function TopPageDesktop(props) {
@@ -47,8 +49,23 @@ export function TopPageDesktop(props) {
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
+    // const [error, setError] = useState("")
+    // const { currentUser, logout } = useAuth()
+    // const history = useHistory()
+
+    // async function handleLogout() {
+    //     setError("")
+
+    //     try {
+    //         await logout()
+    //         history.push("/login")
+    //     } catch {
+    //         setError("Failed to log out")
+    //     }
+    // }
     function useLocalStorage(key, initialValue) {
-        debugger
+
+
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {
@@ -221,7 +238,7 @@ export function TopPageDesktop(props) {
 
 
                         <div className="form-outline">
-                            <input id="search-input" type="text" tabIndex='-1' className="pr-2 form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-0 pb-0 pt-2 rtl pr-0" placeholder={i18.t('searchPlaceholder')} />
+                            <input id="search-input" type="text" tabIndex='-1' className="pr-2 form-control bg-black text-white inputOfSearch h3 small border-bottom border-2 border-0 rounded-custom pb-0 pt-2 rtl pr-0" placeholder={i18.t('searchPlaceholder')} />
 
                             <p className='errorSearch mb-0 text-muted h6 small'>  </p>
                         </div>
@@ -241,7 +258,13 @@ export function TopPageDesktop(props) {
                         top: '32px',
                         padding: '12px'
                     }} src={logo} />
-
+                    {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a> <strong>Email:</strong> {currentUser.email}
+                        <div className="w-100 text-center mt-2">
+                            <Button variant="link" onClick={handleLogout}>
+                                Log Out
+                            </Button>
+                        </div>
+                    </div> */}
                     <Header history={props.history} cart={cart} numItems={numItems} total={total} />
                     <div style={{
                         backgroundColor: 'rgba(0,0,0,0.5)'

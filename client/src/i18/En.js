@@ -99,7 +99,7 @@ export const En = {
         Modiin: `Modi'in`,
         Raanana: 'Raanana',
         shippingMethod: 'Please select shipping method',
-        shippingMethod1: 'Self-collection from the store',
+        shippingMethod1: 'Pickup',
         shippingMethod2: 'Home delivery',
         shippingMethod3: 'Surprise Orders /Different address',
         InvoiceDetails: 'Invoice Details',
@@ -126,7 +126,7 @@ export const En = {
         payBox: 'paybox',
         Bit: 'Bit',
         BankTransfer: 'Bank transfer',
-        paymentMethod: 'Payment Methods',
+        paymentMethod: 'Select Payment',
         TotalPayment: 'Total payment',
         MakePayment: 'Make payment',
         // shopping cart

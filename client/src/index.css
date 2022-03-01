@@ -18,6 +18,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+div .bg-grey{
+  border-radius: 1.5rem;
+}
+div .EventsDiv{
+  border-radius: 1.5rem;
+}
 .btn-primary:not([disabled]):not(.disabled):active, .btn-primary:not([disabled]):not(.disabled).active, .show>.btn-primary.dropdown-toggle:active{
 background-color: black !important;
 }
@@ -64,6 +70,7 @@ height: 1000px;
 } */
 button.btn-danger{
   font: bold !important;
+ 
 }
 
 .iconBorder{
@@ -375,6 +382,9 @@ background: #FFFFFF;
  right: 3%;
 
 }
+.rounded-custom{
+  border-radius: 1.5rem!important;
+}
 .lineInput {
   outline: 0;
   border-width: 0 0 2px;
@@ -455,8 +465,9 @@ left:0;
 
 }
 .goldbgColor{
-  background-color: #C59950 !important;
-  color: #FFFFFF;
+  /* background-color: #C59950 !important; */
+  color: #C59950;
+  font-weight: bolder;
 
 }
 
@@ -537,7 +548,9 @@ text-align: left;
   background-size: cover;
 }
 .AddToCart{
-  height: 42px;
+  padding-bottom: 1rem;
+  height: 15%;
+  padding-right: 2rem;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.8);
   position: absolute;
@@ -833,6 +846,8 @@ font-size: larger;
   border:none !important;
   background-color: #C39957 !important;
   color: #FFFFFF !important;
+  border-radius: 1.5rem!important;
+  
 
 }
 .mr71{
@@ -875,6 +890,9 @@ border:none !important;
 }
 .bg-grey input{
   height: 50%;
+}
+.customInput{
+  height: 100% !important;
 }
 .ShoppingCart_itemList{
   height: 52%;
@@ -940,14 +958,16 @@ overflow-x: hidden;
 .shippingOption{
   font-size: 0.7rem;
   height:80px ;
-  border: 1px solid black;
+  border: 1px solid #ced4da;
   background-color: #fff !important;
+  border-radius: 1rem;
 }
 button.shippingOption.active{
-  background-color:#C59950 !important ;
+  background-color:#C59950 !important;
+  color: white;
  }
  button.shippingOption:hover{
-  border-color: #C59950 !important ;
+  border-color: #C59950 !important;
  }
 /* input number of product */
 

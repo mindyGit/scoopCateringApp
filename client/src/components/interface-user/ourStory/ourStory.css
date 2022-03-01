@@ -4,7 +4,9 @@ width:100vw
 }
 
 .pageHeader{
-   
+   display: flex;
+   justify-content: center;
+   align-items: center;
     color: white;
     height:30vh;
     width:100vw;
@@ -13,8 +15,7 @@ width:100vw
 .pageHeader label{
 font-size:5vh;
 
-top: 18%;
-left:50%;
+
 /* z-index: 1020; */
 position: absolute;
 }

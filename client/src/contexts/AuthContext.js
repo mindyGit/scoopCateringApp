@@ -16,7 +16,7 @@ export function AuthProvider({ children }, props) {
 
     const createUser = (user) => {
 
-        return fetch(`http://localhost:5002/user/`, {
+        return fetch(`http://scoopcatering.co.il/user`, {
 
             method: 'POST',
             headers: {
@@ -70,7 +70,7 @@ export function AuthProvider({ children }, props) {
         console.log(update_user);
     };
     const createNewUser = async (valuse) => {
-
+        console.log(valuse);
         const user = await createUser(valuse)
         console.log(user);
     };
@@ -82,14 +82,14 @@ export function AuthProvider({ children }, props) {
     // };
 
 
-    function signup(email, password) {
+    function signup(email, password, firstName, lastName, phoneNumber) {
 
         // auth.signOut()
-        let result = auth.createUserWithEmailAndPassword(email, password)
-        // createNewUser({ "email": email, "password": password, "uid": currentUser.uid })
-        console.log(currentUser.email);
-        console.log(currentUser.uid);
+        let result = auth.createUserWithEmailAndPassword(email, password).then(
 
+            createNewUser({ "uid": currentUser.uid, "email": email, "password": password, "firstName": firstName, "lastName": lastName, "phone": phoneNumber })
+
+        )
         return result
 
     }

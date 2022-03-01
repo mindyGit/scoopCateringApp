@@ -94,7 +94,7 @@ export function Nuv(props) {
 
                     {/* <Search details={products} /> */}
                     <Nav
-                        className="me-auto my-2 my-lg-0 linksNuv pt-2 pb-2 "
+                        className=" my-2 my-lg-0 linksNuv pt-2 pb-2 "
                         style={{
                             // maxHeight: 'fit-content', right: '3%',
                             // position: 'absolute'

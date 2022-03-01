@@ -197,7 +197,7 @@ function ProductList(props) {
 
         <Carousel />
 
-        <button className='goldButton h5 p-2 my-5 ' style={{
+        <button className='goldButton px-3 h5 p-2 my-5 ' style={{
 
         }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')}
         </button>
@@ -216,7 +216,7 @@ function ProductList(props) {
                   <div className='productName font-weight-bold  col-4'> {language == "he" ? product.hebrewName : product.name} </div>
                   <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
                     <div > {i18.t('SelectAnOption')}:</div>
-                    <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+                    <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
                       {/* <option selected> 1 יחידה</option> */}
                       <option value="1">One</option>
                       <option value="2">Two</option>
@@ -259,7 +259,7 @@ function ProductList(props) {
           <div className='productName font-weight-bold  col-4'>   תבנית חד"פ</div>
           <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >{i18.t('SelectAnOption')}:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> גדול </option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -283,7 +283,7 @@ function ProductList(props) {
           <div className='productName font-weight-bold  col-4'> סיר חד"פ  </div>
           <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> גדול</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -308,7 +308,7 @@ function ProductList(props) {
           <div className='productName font-weight-bold  col-4'>   חלה פיקנטית</div>
           <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> בינוני</option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -335,7 +335,7 @@ function ProductList(props) {
           <div className='productName font-weight-bold  col-4'> קוקה קולה</div>
           <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >{i18.t('SelectAnOption')} :</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> גדול </option>
               <option value="1">One</option>
               <option value="2">Two</option>
@@ -359,7 +359,7 @@ function ProductList(props) {
           <div className='productName font-weight-bold  col-4'> פריגת  </div>
           <div className='amountOption font-weight-bold col-2 pb-1 pt-1 pl-0' style={{ fontSize: '12px', width: 'fit-content' }}>
             <div >בחר אפשרות:</div>
-            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
               <option selected> 600 מ"ל</option>
               <option value="1">One</option>
               <option value="2">Two</option>

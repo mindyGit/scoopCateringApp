@@ -40,13 +40,13 @@ export function ShoppingCart(props) {
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
     const { totalRedux, numItemsRedux, cartRedux } = props
-    if (!totalRedux || !totalRedux.length) {
+    if (totalRedux != 0) {
         props.setTotalRedux(total)
     }
-    if (!numItemsRedux || !numItemsRedux.length) {
+    if (numItemsRedux != 0) {
         props.setNumItemsRedux(numItems)
     }
-    if (!cartRedux || !cartRedux.length) {
+    if (cartRedux.length) {
         debugger
         props.setCartRedux(cart)
     }
@@ -109,6 +109,7 @@ export function ShoppingCart(props) {
                     setTotal(total + 14.90)//+item.product.price
                     props.setTotalRedux(total + 14.90)//+item.product.price
                     amount++
+                    $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
                 }
                 else {
                     if (amount != '1') {
@@ -118,12 +119,13 @@ export function ShoppingCart(props) {
                         setTotal(total - 14.90)//-item.product.price
                         props.setTotalRedux(total - 14.90)//-item.product.price
                         amount--
+                        $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
                     }
                 }
                 item.Total = item.Amount * 14.90//*item.product.price
             }
         })
-        $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
+
         setCart(cart)
         props.setCartRedux(cart)
     }
@@ -131,11 +133,19 @@ export function ShoppingCart(props) {
 
 
 
-
     const deleteItem = async (id) => {
         debugger
-        let currTotal = total - parseFloat($('.' + id + ' ' + '.endprice').text()).toFixed(2)
-        if (currTotal < 0) {
+        let totalTodel
+
+
+        let list = await cart.filter(x => {
+            if (x.product._id == id) {
+                totalTodel = x.Total
+            }
+            return x.product._id != id;
+        })
+        let currTotal = parseFloat(total).toFixed(2) - parseFloat(totalTodel).toFixed(2)
+        if (totalTodel < 0) {
             setTotal(parseFloat(0).toFixed(2))
             props.setTotalRedux(parseFloat(0).toFixed(2))
         }
@@ -145,25 +155,27 @@ export function ShoppingCart(props) {
             props.setTotalRedux(currTotal)//product.price
         }
 
-        let list = await cartRedux.filter(x => {
-            return x.product._id != id;
-        })
+
         let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
-        await setCart(list);
+
+
+        setCart(list);
         await props.setCartRedux(list)
+        // $('.' + id).remove()
 
-        // await $('.navbar-toggler').click()
-        $('.' + id).remove()
-        $('.numItems').text(numItems - less)
-        setNumItems(numItems - less)
+        await setNumItems(numItems - less)
         props.setNumItemsRedux(numItems - less)
+
     }
+
+
+
     useEffect(() => {
-        if ($) { }
 
 
 
-    }, [$, language])
+
+    }, [language, totalRedux, numItemsRedux, cartRedux, total, numItems, cart])
 
 
 
@@ -192,15 +204,15 @@ export function ShoppingCart(props) {
                 <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                 <div className='goldColor d-inline'> / {i18.t('ShoppingCart')} </div>
             </div>
-            <button className='goldButton h5 p-2 mt-5' style={{
+            <button className='goldButton px-3 h5 p-2 mt-5' style={{
                 left: '150px',
                 position: 'absolute'
             }} onClick={() => props.history.push('/shop')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShop')}
             </button>
-            {cart == "" && (
+            {cartRedux == "" && (
                 <div className="pageNoContent"></div>
             )}
-            {cart != "" && (
+            {cartRedux != "" && (
                 <div className="page_content justify-content-center pt-5" style={{ width: '80%', margin: 'auto' }}>
 
 
@@ -218,12 +230,12 @@ export function ShoppingCart(props) {
                                 <div className=" sumColumn col-3 text-black text-end pr-5 mb-0 h6">{i18.t('Total')}</div>
                             </div>
 
-                            {cart && cart.map(item =>
+                            {cartRedux && cartRedux.map(item =>
 
                                 <div className={`productItem mb-2 row justify-content-between align-items-end border-bottom border-dark py-2 ${item.product._id} `}>
                                     <div className='col-3 productName font-weight-bold  '> {language == "he" ? item.product.hebrewName : item.product.name}
 
-                                        <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-0 font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+                                        <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
                                             {/* <option selected> 1 יחי'</option> */}
                                             <option value="1">One</option>
                                             <option value="2">Two</option>
@@ -248,8 +260,9 @@ export function ShoppingCart(props) {
 
                         </div>
 
-                        <div className=" bg-grey col-3 ml-5 p-0">
-                            <label className="bg-black text-white w-100 pt-1 swithSide px-3" >{i18.t('OrderSummary')}</label>
+                        <div className=" bg-grey col-3 ml-5 p-0 py-3">
+                            <label className=" w-100 pt-1 goldColor font-weight-bold swithSide px-3 mb-0" >{i18.t('OrderSummary')}</label>
+                            <hr className="mb-3 mt-0 w-25 mx-3 goldColor" style={{ height: '2px' }} />
                             <div className="px-4">
                                 <div className="row ">
 
@@ -271,7 +284,7 @@ export function ShoppingCart(props) {
                                     <div className="col-5 ">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
 
                                 </div>
-                                <button className="mt-5 goldButton mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} <img src={arrow_left_white} style={{
+                                <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} <img src={arrow_left_white} style={{
                                     paddingRight: '5px',
                                     width: '25px'
                                 }} /></button>
