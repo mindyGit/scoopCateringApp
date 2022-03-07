@@ -124,8 +124,8 @@ export function TopPageDesktop(props) {
                 $('.swithSide').css('text-align', 'right')
                 $('.productLine').addClass('rtl')
                 $('.productName').css('text-align', 'right')
-                $('.productLine').css({ "border-right": "20px solid #C59950", "border-left": '0px solid #C59950' })
-                $('.swithDir').css('direction', 'rtl ')
+                // $('.productLine').css({ "border-right": "8px solid #C59950", "border-left": '0px solid #C59950' })
+                $('.swithDir').css('direction', 'rtl')
                 // shoppingCart
                 $('.sumColumn').addClass('text-end').removeClass('pl-0')
                 $('.sumColumnVal').removeClass('pl-5').addClass('pr-5')
@@ -149,7 +149,7 @@ export function TopPageDesktop(props) {
                 $('.swithSide').css('text-align', 'left')
                 $('.productLine').removeClass('rtl')
                 $('.productName').css('text-align', 'left')
-                $('.productLine').css({ "border-right": "0px solid #C59950", "border-left": '8px solid #C59950' })
+                // $('.productLine').css({ "border-right": "0px solid #C59950", "border-left": '8px solid #C59950' })
                 $('.swithDir').css('direction', 'ltr ')
                 // shoppingCart
                 $('.sumColumn').removeClass('text-end').addClass('pl-0')

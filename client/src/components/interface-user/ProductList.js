@@ -201,6 +201,8 @@ function ProductList(props) {
 
         }} onClick={() => props.history.push('/Cart')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShoppingCart')}
         </button>
+
+
         <h3 className=' font-weight-bold mb-1'>{lastSegment}</h3>
         <h6 className='  mb-5'> {i18.t('addProductsLable')}</h6>
 

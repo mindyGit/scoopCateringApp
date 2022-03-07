@@ -122,7 +122,7 @@ export const En = {
         CVV: 'CVV',
         Id: 'ID',
         AdditionalPayment: 'Additional payment options',
-        AdditionalPayment_: `Bit / paybox / Bank transfer Contact the office at 054-290-2590`,
+        AdditionalPayment_: `Bit / paybox / Bank transfer Contact the office at`,
         payBox: 'paybox',
         Bit: 'Bit',
         BankTransfer: 'Bank transfer',

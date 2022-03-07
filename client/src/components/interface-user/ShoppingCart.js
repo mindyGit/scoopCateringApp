@@ -98,53 +98,69 @@ export function ShoppingCart(props) {
 
 
     const changeAmount = async (id, action) => {
-        let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+        debugger
+        let amountTocart = parseInt($('.' + id + ' ' + '.Am' + ' ' + 'input').val())
 
-        cart.map(item => {
-            if (item.product._id == id) {
-                if (action == 'plus') {
-                    item.Amount = parseInt(item.Amount) + 1
-                    setNumItems(numItems + 1)
-                    props.setNumItemsRedux(numItems + 1)
-                    setTotal(total + 14.90)//+item.product.price
-                    props.setTotalRedux(total + 14.90)//+item.product.price
-                    amount++
-                    $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
-                }
-                else {
-                    if (amount != '1') {
-                        item.Amount = parseInt(item.Amount) - 1
-                        setNumItems(numItems - 1)
-                        props.setNumItemsRedux(numItems - 1)
-                        setTotal(total - 14.90)//-item.product.price
-                        props.setTotalRedux(total - 14.90)//-item.product.price
-                        amount--
-                        $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val(amount)
+        if (action == 'minusToCart' || action == 'plusToCart') {
+
+            // let shoppingCart = cart
+            cart.map(item => {
+                if (item.product._id == id) {
+                    alert(item.Amount);
+                    if (action == 'plusToCart') {
+                        $('.' + id + ' ' + '.Am' + ' ' + 'input').val(amountTocart + 1)
+                        // item = { ...item, Amount: item.Amount + 1 };
+
+
+                        item.Amount = item.Amount + 1
+                        setNumItems(numItems + 1)
+                        props.setNumItemsRedux(numItems + 1)
+                        setTotal(total + 14.90)//+item.product.price
+                        props.setTotalRedux(total + 14.90)//+item.product.price
+
                     }
+                    else {
+                        if (amountTocart != '1') {
+                            $('.' + id + ' ' + '.Am' + ' ' + 'input').val(amountTocart - 1)
+                            // item = { ...item, Amount: item.Amount - 1 };
+
+                            item.Amount = item.Amount - 1
+                            setNumItems(numItems - 1)
+                            props.setNumItemsRedux(numItems - 1)
+                            setTotal(total - 14.90)//+item.product.price
+                            props.setTotalRedux(total - 14.90)//+item.product.price
+
+                        }
+                    }
+                    // item = { ...item, Total: item.Amount * 14.90 };
+
+                    item.Total = item.Amount * 14.90//*item.product.price
+
                 }
-                item.Total = item.Amount * 14.90//*item.product.price
-            }
-        })
+            })
 
-        setCart(cart)
-        props.setCartRedux(cart)
+
+            setCart(cart)
+        }
+
     }
-
-
 
 
     const deleteItem = async (id) => {
         debugger
+        // console.log($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val());
         let totalTodel
-
+        let less
 
         let list = await cart.filter(x => {
             if (x.product._id == id) {
                 totalTodel = x.Total
+                less = x.Amount
             }
             return x.product._id != id;
         })
         let currTotal = parseFloat(total).toFixed(2) - parseFloat(totalTodel).toFixed(2)
+
         if (totalTodel < 0) {
             setTotal(parseFloat(0).toFixed(2))
             props.setTotalRedux(parseFloat(0).toFixed(2))
@@ -156,11 +172,11 @@ export function ShoppingCart(props) {
         }
 
 
-        let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
+        // let less = $('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
 
 
         setCart(list);
-        await props.setCartRedux(list)
+        // await props.setCartRedux(list)
         // $('.' + id).remove()
 
         await setNumItems(numItems - less)
@@ -170,12 +186,49 @@ export function ShoppingCart(props) {
 
 
 
+    // const deleteItem = async (id) => {
+    //     debugger
+    //     let totalTodel
+
+
+    //     let list = await cart.filter(x => {
+    //         if (x.product._id == id) {
+    //             totalTodel = x.Total
+    //         }
+    //         return x.product._id != id;
+    //     })
+    //     let currTotal = parseFloat(total).toFixed(2) - parseFloat(totalTodel).toFixed(2)
+    //     if (totalTodel < 0) {
+    //         setTotal(parseFloat(0).toFixed(2))
+    //         props.setTotalRedux(parseFloat(0).toFixed(2))
+    //     }
+
+    //     else {
+    //         setTotal(currTotal)//product.price
+    //         props.setTotalRedux(currTotal)//product.price
+    //     }
+
+
+    //     let less = $('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val()
+
+
+    //     setCart(list);
+    //     await props.setCartRedux(list)
+    //     // $('.' + id).remove()
+
+    //     await setNumItems(numItems - less)
+    //     props.setNumItemsRedux(numItems - less)
+
+    // }
+
+
+
     useEffect(() => {
 
 
 
 
-    }, [language, totalRedux, numItemsRedux, cartRedux, total, numItems, cart])
+    }, [$, props, language, totalRedux, numItemsRedux, cartRedux, total])
 
 
 
@@ -209,10 +262,10 @@ export function ShoppingCart(props) {
                 position: 'absolute'
             }} onClick={() => props.history.push('/shop')}><i class="fas fa-long-arrow-alt-left  pr-2" style={{ height: 'fit-content' }}></i>{i18.t('ToTheShop')}
             </button>
-            {cartRedux == "" && (
+            {cart == "" && (
                 <div className="pageNoContent"></div>
             )}
-            {cartRedux != "" && (
+            {cart != "" && (
                 <div className="page_content justify-content-center pt-5" style={{ width: '80%', margin: 'auto' }}>
 
 
@@ -221,42 +274,48 @@ export function ShoppingCart(props) {
 
 
                     <div className="row justify-content-between swithDir">
-                        <div className=" bg-grey col-8  px-5 pb-3" style={{ overflowY: 'scroll', height: '470px' }}>
+                        <div className=" bg-grey col-8  px-5 pb-3" >
                             <div className="row justify-content-around text-white align-items-center py-3">
 
                                 <div className="col-2 text-black mb-0 h6">{i18.t('ProductName')}</div>|
                                 <div className="col-2 text-black mb-0 h6">{i18.t('Amount')}</div>|
                                 <div className="col-2 text-black mb-0 h6">{i18.t('price')}</div>|
-                                <div className=" sumColumn col-3 text-black text-end pr-5 mb-0 h6">{i18.t('Total')}</div>
+                                <div className=" sumColumn col-3 text-black text-end pr-5 mb-0 h6 fontNumber">{i18.t('Total')}</div>
+                            </div>
+                            <div style={{ overflowY: 'scroll', height: '450px' }}>
+                                {cart && cart.map(item =>
+
+                                    <div className={`productItem mb-2 row justify-content-between align-items-end border-bottom border-dark py-2 ${item.product._id} `}>
+                                        <div className='col-3 productName font-weight-bold  '> {language == "he" ? item.product.hebrewName : item.product.name}
+
+                                            <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+                                                {/* <option selected> 1 יחי'</option> */}
+                                                <option value="1">One</option>
+                                                <option value="2">Two</option>
+                                                <option value="3">Three</option>
+                                            </select>
+                                        </div>
+                                        <div className='amountToBuy Am col-3 goldColor d-flex   p-0  align-items-end' style={{ width: 'fit-content' }}>
+                                            <span className="plus" onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ height: '30px' }}>+</span>
+                                            {/* <input type="text" value={item.Amount} className='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style={{ fontSize: '13px' }} />
+                                         */}
+                                            <input type="text" value={item.Amount} className='AmountInput border  p-0 text-black bg-white    m-1 my-0 input_number fontNumber' style={{ height: 'fit-content' }} />
+
+                                            <span className="minus" onClick={() => changeAmount(item.product._id, "minusToCart")} style={{ height: '30px' }}>-</span>
+                                        </div>
+                                        <div className='col-2 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+
+                                        <div className='sumColumnVal col-2 endprice h6 mb-0 font-weight-bold pr-5 fontNumber' >{parseFloat(item.Amount * 14.90).toFixed(2)} &#8362; </div>
+                                        <div className="col-1" onClick={() => deleteItem(item.product._id)}> <i class="fas fa-trash-alt "></i></div>
+
+
+                                    </div>
+
+
+                                )}
+
                             </div>
 
-                            {cartRedux && cartRedux.map(item =>
-
-                                <div className={`productItem mb-2 row justify-content-between align-items-end border-bottom border-dark py-2 ${item.product._id} `}>
-                                    <div className='col-3 productName font-weight-bold  '> {language == "he" ? item.product.hebrewName : item.product.name}
-
-                                        <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
-                                            {/* <option selected> 1 יחי'</option> */}
-                                            <option value="1">One</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
-                                        </select>
-                                    </div>
-                                    <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style={{ width: 'fit-content' }}>
-                                        <span className="plus" onClick={() => changeAmount(item.product._id, "plus")} style={{ height: '27px' }}>+</span>
-                                        <input type="text" value={item.Amount} className='border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style={{ fontSize: '13px' }} />
-                                        <span className="minus" onClick={() => changeAmount(item.product._id, "minus")} style={{ height: '27px' }}>-</span>
-                                    </div>
-                                    <div className='col-2 price h6 mb-0 font-weight-bold  goldColor ' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
-
-                                    <div className='sumColumnVal col-2 endprice h6 mb-0 font-weight-bold pr-5 ' >{parseFloat(item.Amount * 14.90).toFixed(2)} &#8362; </div>
-                                    <div className="col-1" onClick={() => deleteItem(item.product._id)}> <i class="fas fa-trash-alt "></i></div>
-
-
-                                </div>
-
-
-                            )}
 
                         </div>
 
@@ -267,21 +326,21 @@ export function ShoppingCart(props) {
                                 <div className="row ">
 
                                     <div className="col-7 swithSide">{i18.t('Items')}</div>
-                                    <div className="col-5 numItems">{numItemsRedux}</div>
+                                    <div className="col-5 numItems fontNumber">{numItemsRedux}</div>
 
                                 </div>
                                 <br />
                                 <br />
                                 <div className="row border-bottom border-dark pb-3">
 
-                                    <div className="col-7 swithSide">{i18.t('InterimTotal')}</div>
-                                    <div className="col-5 ">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
+                                    <div className="col-7 swithSide ">{i18.t('InterimTotal')}</div>
+                                    <div className="col-5 fontNumber">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
 
                                 </div>
                                 <div className="row pt-2 font-weight-bold ">
 
                                     <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                    <div className="col-5 ">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
+                                    <div className="col-5  fontNumber">{parseFloat(totalRedux).toFixed(2)} &#8362;</div>
 
                                 </div>
                                 <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} <img src={arrow_left_white} style={{

@@ -141,35 +141,35 @@ export function Checkout(props) {
 
                 <h2 className="swithSide mb-5 font-weight-bold mt-5 pt-5 ml-5">{i18.t('checkout')} </h2>
                 <div className="row justify-content-start swithDir">
-                    <div className="  col-6 ml-5 p-0 swithSide ">
+                    <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}>
 
                         <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
                             <Form className="px-3 swithSide w-75 py-3 mb-3  ">
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
                                     <Form.Label class="mb-1"> {i18.t('mailAdress')}</Form.Label>
-                                    <Form.Control className="rounded-custom" type="email" />
+                                    <Form.Control className="rounded-custom fontNumber" type="email" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicName">
                                     <Form.Label class="mb-1"> {i18.t('FirstName')}</Form.Label>
-                                    <Form.Control className="rounded-custom" type="text" />
+                                    <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </Form.Group>
 
                                 <Form.Group className="mb-2" controlId="formBasicLastName">
                                     <Form.Label class="mb-1">{i18.t('LastName')}</Form.Label>
-                                    <Form.Control className="rounded-custom" type="text" />
+                                    <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('phone')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="text" />
+                                    <Form.Control className="rounded-custom fontNumber " type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('anotherPhone')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="text" />
+                                    <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
                                     <Form.Label class="mb-1"> {i18.t('address')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="text" />
+                                    <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </Form.Group>
                             </Form>
                         </div>
@@ -205,7 +205,7 @@ export function Checkout(props) {
 
                                 <button id="btnOne" className="col-3  shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</button>
                                 <button id="btnTwo" className="col-3  shippingOption p-2 text-center">{i18.t('shippingMethod2')}</button>
-                                <button id="btnThree" className="col-3  shippingOption p-0 pt-2 text-center" >
+                                <button id="btnThree" className="col-3  shippingOption p-2 text-center" >
                                     <div> {i18.t('shippingMethod3')}</div>
 
                                 </button>
@@ -213,15 +213,15 @@ export function Checkout(props) {
                             <Form.Group className="my-2 row  btnThree d-none" controlId="formBasicAddress" style={{ width: '80%' }}>
                                 <div className="col-6">
                                     <Form.Label class="mb-1 ">{i18.t('Street')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="text" />
+                                    <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </div>
                                 <div className="col-3">
                                     <Form.Label class="mb-1">{i18.t('buildingNumber')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="number" min="1" />
+                                    <Form.Control className="rounded-custom fontNumber" type="number" min="1" />
                                 </div>
                                 <div className="col-3">
                                     <Form.Label class="mb-1">{i18.t('ApartmentNumber')}</Form.Label>
-                                    <Form.Control className="rounded-custom " type="number" min="1" />
+                                    <Form.Control className="rounded-custom fontNumber" type="number" min="1" />
                                 </div>
                             </Form.Group>
 
@@ -243,7 +243,7 @@ export function Checkout(props) {
 
                                 <Form.Group className=" col-6 p-0" controlId="formBasicPhone">
 
-                                    <Form.Control className="rounded-custom  h-100" type="text" />
+                                    <Form.Control className="rounded-custom  h-100 fontNumber" type="text" />
                                 </Form.Group>
 
                                 <button className="goldButton px-3 col-4 mx-3" >{i18.t('ActivateCoupon')}</button>
@@ -256,7 +256,7 @@ export function Checkout(props) {
                             <div className="row p-2" style={{ width: '80%' }}>
                                 <div class="form-group pr-1">
                                     <label for="exampleFormControlTextarea1">{i18.t('CommentsToOrder')} </label>
-                                    <textarea class="form-control rounded-custom" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                    <textarea class="form-control rounded-custom fontNumber" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
 
@@ -289,7 +289,7 @@ export function Checkout(props) {
                             <div className="row ">
 
                                 <div className="col-7 swithSide">{i18.t('Items')}</div>
-                                <div className="col-5 numItems">{numItems}</div>
+                                <div className="col-5 numItems fontNumber">{numItems}</div>
 
                             </div>
                             <br />
@@ -297,19 +297,19 @@ export function Checkout(props) {
                             <div className="row  pb-3">
 
                                 <div className="col-7 swithSide">{i18.t('InterimTotal')}</div>
-                                <div className="col-5 ">{parseFloat(total).toFixed(2)} &#8362;</div>
+                                <div className="col-5 fontNumber">{parseFloat(total).toFixed(2)} &#8362;</div>
 
                             </div>
                             <div className="row border-bottom border-dark pb-3">
 
                                 <div className="col-7 swithSide">{i18.t('ShippingCost')}</div>
-                                <div className="col-5 ">{parseFloat(25).toFixed(2)} &#8362;</div>
+                                <div className="col-5 fontNumber">{parseFloat(25).toFixed(2)} &#8362;</div>
 
                             </div>
                             <div className="row pt-2 font-weight-bold ">
 
                                 <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
+                                <div className="col-5 fontNumber">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
 
                             </div>
                             {/* <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}

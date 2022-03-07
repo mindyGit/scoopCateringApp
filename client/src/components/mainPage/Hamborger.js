@@ -51,7 +51,7 @@ export function Hamborger(props) {
 
                     <Navbar.Brand href="#"></Navbar.Brand>
                     <Navbar.Toggle aria-controls="offcanvasNavbar" className='mr-0 px-0' />
-                    <div className="registerSection  d-flex">
+                    {/* <div className="registerSection  d-flex">
                         <Button
                             className=""
                             onClick={() => setOpen(!open)}
@@ -73,7 +73,7 @@ export function Hamborger(props) {
                             </div>
                         </Collapse>
                     </div>
-
+ */}
 
                     <Navbar.Offcanvas
                         id="offcanvasNavbar"

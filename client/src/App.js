@@ -39,7 +39,7 @@ import Kashrut from './components/interface-user/Kashrut'
 import RelatedProducts from './components/interface-user/RelatedProducts'
 import Local_Storag from './components/Local_Storag'
 import ManagerInterface from './components/interface-manager/ManagerInterface'
-import ShabatMenu from './components/interface-user/ShabatMenu'
+import ShabbatMenu from './components/interface-user/ShabbatMenu'
 import PostInfo from './components/PostInfo'
 // import ComponnentToPrint from './components/ComponnentToPrint'
 // import Example from './components/Example'
@@ -135,8 +135,10 @@ function App(props) {
           <Switch>
             <Route exact path="home/ProductList" component={ProductList} />
             <Route exact path="/" component={Home} />
-            <Route exact path="/ShabatMenu" component={ShabatMenu} />
-            <Route exact path="/shop" component={Shop} />
+            {/* <Route exact path="/ShabbatMenu" component={ShabbatMenu} /> */}
+            {/* <Route exact path="/shop" component={Shop} /> */}
+            <Route exact path="/shop" component={ShabbatMenu} />
+
             <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
             <Route exact path="/shop/*" component={ProductList} />
             <Route exact path="/Nuv/" component={Nuv} />

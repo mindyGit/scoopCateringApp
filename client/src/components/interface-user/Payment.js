@@ -123,12 +123,12 @@ export function Payment(props) {
                                 <div className="px-3 swithSide  py-3 mb-3  bg-grey">
                                     <Form.Group className="mb-2 w-75" controlId="formBasicEmail">
                                         <Form.Label class="mb-1"> {i18.t('CardNumber')}</Form.Label>
-                                        <Form.Control className="rounded-custom" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required onChange={(e) => CharacterPrevention(e)} />
+                                        <Form.Control className="rounded-custom fontNumber" type="tel" inputmode="numeric" pattern="[0-9\s]{13,19}" autocomplete="cc-number" maxlength="19" placeholder="xxxx xxxx xxxx xxxx" required onChange={(e) => CharacterPrevention(e)} />
                                     </Form.Group>
                                     <Form.Group className="mb-2 row" controlId="formBasicEmail">
                                         <div className="col-6">
                                             <Form.Label class="mb-1"> {i18.t('Expiration')} </Form.Label>
-                                            <Form.Control className="rounded-custom" placeholder="MM/YY" type="text" required maxlength="4" onChange={(e) => CharacterPrevention(e)} />
+                                            <Form.Control className="rounded-custom fontNumber" placeholder="MM/YY" type="text" required maxlength="4" onChange={(e) => CharacterPrevention(e)} />
                                         </div>
 
 
@@ -138,19 +138,19 @@ export function Payment(props) {
                                     <Form.Group className="mb-2 row " controlId="formBasicName">
                                         <div className="col-6">
                                             <Form.Label class="mb-1">{i18.t('CVV')}</Form.Label>
-                                            <Form.Control className="rounded-custom" maxLength="3" type="text" required onChange={(e) => CharacterPrevention(e)} />
+                                            <Form.Control className="rounded-custom fontNumber" maxLength="3" type="text" required onChange={(e) => CharacterPrevention(e)} />
                                         </div>
                                     </Form.Group>
 
                                     <Form.Group className="mb-2 w-75" controlId="formBasicLastName">
                                         <Form.Label class="mb-1">{i18.t('Id')}</Form.Label>
-                                        <Form.Control className="rounded-custom" minLength="8" maxLength="9" type="text" required onChange={(e) => CharacterPrevention(e)} />
+                                        <Form.Control className="rounded-custom fontNumber" minLength="8" maxLength="9" type="text" required onChange={(e) => CharacterPrevention(e)} />
                                     </Form.Group>
                                 </div>
 
                                 <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('AdditionalPayment')} </label>
                                 <div className="bg-grey  p-3 mb-4">
-                                    <p className="w-75">{i18.t('AdditionalPayment_')}</p>
+                                    <p className="w-75 ">{i18.t('AdditionalPayment_')} <span className="fontNumber">054-290-2590</span></p>
                                     {/* <div className="row">
                                         <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
                                             <option> {i18.t('paymentMethod')}</option>
@@ -178,7 +178,7 @@ export function Payment(props) {
                                         {/* <input className=" col-3 mx-1 pt-1 swithSide px-0" type="text" style={{ fontSize: 'medium' }} /> */}
                                         <Form.Group className=" col-5  swithSide px-1" controlId="formBasicPhone">
 
-                                            <Form.Control className="rounded-custom  customInput" type="text" style={{ fontSize: 'medium' }} />
+                                            <Form.Control className="rounded-custom  customInput fontNumber" type="text" style={{ fontSize: 'medium' }} />
                                         </Form.Group>
                                         <button className=" col-3  goldButton px-1   " > {i18.t('ActivateCode')}  <img style={{ paddingRight: '5px' }} /></button>
 
@@ -191,7 +191,7 @@ export function Payment(props) {
                                     <div className=" bg-grey p-3 mb-4">
                                         <div className="row pt-2 ">
                                             <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                            <div className="col-5 ">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
+                                            <div className="col-5  fontNumber">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
                                         </div>
                                     </div>
 

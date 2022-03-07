@@ -140,7 +140,7 @@ export const He = {
         Id: 'ת"ז',
         AdditionalPayment: 'אפשרויות תשלום נוספות',
         AdditionalPayment_: `ביט / פייבוקס / העברה בנקאית
-צרו קשר עם המשרד 054-290-2590`,
+צרו קשר עם המשרד `,
 
         paymentMethod: 'אופן התשלום',
         payBox: 'פייבוקס',

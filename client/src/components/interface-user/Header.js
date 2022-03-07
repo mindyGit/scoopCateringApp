@@ -182,7 +182,7 @@ export function Header(props) {
 
     return (
         <>
-            <Navbar className="cartNuvbar bg-transparent border-0 p-0" expand={false} styl={{
+            {/* <Navbar className="cartNuvbar bg-transparent border-0 p-0" expand={false} styl={{
             }}>
                 <Container fluid className="p-0 ">
 
@@ -194,26 +194,26 @@ export function Header(props) {
                         className=""
                     >
                         <Offcanvas.Header closeButton className="rtl py-4" style={{ backgroundColor: '#f1f1f2' }}>
-                            <Offcanvas.Title className="m-auto     font-weight-bold" id="offcanvasNavbarLabel">{i18.t('ShoppingCart')}
-                                (<span className="numItems">{numItemsRedux}</span>)</Offcanvas.Title>
+                            <Offcanvas.Title className="m-auto   fontNumber  font-weight-bold" id="offcanvasNavbarLabel">{i18.t('ShoppingCart')}
+                                (<span className="numItems">{numItems}</span>)</Offcanvas.Title>
                         </Offcanvas.Header>
                         <Offcanvas.Body className=" d-flex flex-column  pl-4 pt-0 pr-0 overflow-hidden">
-                            {cartRedux == "" && (
+                            {cart == "" && (
                                 <h4 className="text-center mt-5 pt-5">{i18.t('emptyCart')}</h4>
 
                             )
                             }
 
                             <div className="ShoppingCart_itemList mb-5 px-2 pt-3">
-                                {cartRedux && cartRedux.map(item =>
+                                {cart && cart.map(item =>
                                     <div className={`productItem row justify-content-around align-items-end  border-bottom border-dark py-2 ${side} ${item.product._id}`}  >
                                         <div className={`productName col-12  font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
                                         <div className='amountToBuy col-3 goldColor d-flex   p-0  align-items-end' style={{ width: 'fit-content' }}>
                                             <span className="plus" onClick={() => changeAmount(item.product._id, "plus")} style={{ height: '29px' }}>+</span>
-                                            <input type="text" value={item.Amount} className='AmountInput border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number' style={{ fontSize: '13px' }} />
+                                            <input type="text" value={item.Amount} className='AmountInput border p-0 text-black bg-white pt-0 pb-0 pl-2 pr-2 m-1 my-0 input_number fontNumber' style={{ fontSize: '13px' }} />
                                             <span className="minus" onClick={() => changeAmount(item.product._id, "minus")} style={{ height: '29px' }}>-</span>
                                         </div>
-                                        <div className='col-6 price h6 mb-0 font-weight-bold  goldColor ' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                        <div className='col-6 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
 
                                         <div className="col-1" onClick={() => deleteItem(item.product._id)}> <i class="fas fa-trash-alt "></i></div>
 
@@ -227,7 +227,10 @@ export function Header(props) {
 
                             </div>
 
-                            {cartRedux != "" && (
+
+
+
+                            {cart != "" && (
                                 <div className=" swithDir d-flex row  justify-content-around " >
                                     <button className="col-5 bg-black text-white" onClick={() => props.history.push('/Cart')} >{i18.t('ToTheShoppingCart')}</button>
                                     <button className=" col-5 goldButton" onClick={() => props.history.push('/Checkout')}>{i18.t('toCheckout')}</button>
@@ -239,6 +242,10 @@ export function Header(props) {
                     </Navbar.Offcanvas>
                 </Container>
             </Navbar>
+
+ */}
+
+
             <div className="bg-black">
                 <div className="row px-5 pt-2 pb-2 d-flex  headerPage justify-content-space-around align-items-center">
                     {/* <div className="registerSection col-6 d-flex">
@@ -270,7 +277,7 @@ export function Header(props) {
  */}
 
 
-                    <div className=" registerSection col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mx-5"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
+                    <div className=" registerSection col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mx-5 fontNumber"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
                         {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div> */}
 
                     </div>
@@ -284,7 +291,7 @@ export function Header(props) {
 
 
 
-                    <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  " >  {i18.t('BookAnEvent')} : 077-255-9982   </div>
+                    <div className=" col-6 h6 whiteColor mb-0 d-flex align-items-center justify-content-center  swithDir" > <div> {i18.t('BookAnEvent')}  : </div>  <div className="fontNumber mx-1 mt-2" style={{ fontSize: '0.9em' }}>  077-255-9982 </div> </div>
                 </div>
 
             </div>
