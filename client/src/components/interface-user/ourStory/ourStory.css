@@ -12,6 +12,15 @@ width:100vw
     width:100vw;
     /* background-image: url(../../../data/imges/headerBgImag.png); */
 }
+.small_pageHeader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+     color: white;
+     height:15vh;
+     width:100vw;
+     /* background-image: url(../../../data/imges/headerBgImag.png); */
+ }
 .pageHeader label{
 font-size:5vh;
 

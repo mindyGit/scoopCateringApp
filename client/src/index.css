@@ -464,6 +464,9 @@ left:0;
   
 
 }
+.gold-border{
+border: 1px solid #C59950 !important;
+}
 .goldColorWithShadow{
   color: #C59950 !important;
   text-shadow: 2px 2px 2px black;
@@ -517,14 +520,15 @@ line-height: 1;
 }
 .categoryList{
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
+  /* border-top: 10px solid #C59950; */
 }
 .actionSection{
-  box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
+ border: 2px solid rgb(0,0,0,0.05);
+ box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
 }
 /* productList */
 .productLine{
-/* border-left: 8px solid #C59950 ; */
-/* background-color: #F7F4EF; */
+
 box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
 margin-top: 15px;
 }
@@ -537,16 +541,16 @@ text-align: left;
 
   } */
   .productPic{
-    height: 95px;
+    height: 114.91px;
     /* width: 70px; */
-    background-color: #e0dbd2;
+    background-color: #E3E3E3;
 
     
   }
   .product_Pic{
     height: 70px;
     width: 70px;
-    background-color: #e0dbd2;
+    background-color: #E3E3E3;
 
   }
 .customPlacholderInList::placeholder{
@@ -838,15 +842,19 @@ outline: none !important;
  
 }
 .categoryButton{
-/* border-bottom: 1px solid grey !important; */
+  width: 100%;
+  border:none;
+border-bottom: 1px solid rgb(0 0 0 / 25%) !important;
 border-radius: 0% !important;
+
 
 }
 .categoryButton.active{
+  width: 100%;
   background-color:#C59950 !important;
   color: white;
-  border:2px solid black !important;
-  border-radius: 0.25rem!important;
+  border:none !important;
+  /* border-radius: 0.25rem!important; */
  }
 
   .categoryItem {
@@ -949,6 +957,10 @@ border:none !important;
    width: 0px !important;
   
   }
+  .sidColumn::-webkit-scrollbar{
+    width: 0px !important;
+   
+   }
   .overflow-checkout::-webkit-scrollbar{
     
     width: 5px !important;
@@ -1031,12 +1043,17 @@ button.shippingOption.active{
   margin:80px;
 } */
 .minus, .plus{
+  /* margin-bottom:8px; */
   width:20px;
-  /* height:20px; */
+  height: 37px;
+  font-size: 30px;
+
   color: #C59950 !important;
+ 
   cursor:pointer;
-  padding:5px 5px 5px 5px;
-  display: inline-block;
+
+  display: flex;
+  justify-content: center;
   vertical-align: middle;
   text-align: center; 
 }
@@ -1048,10 +1065,22 @@ button.shippingOption.active{
   justify-content: center;
   font-size: 12px !important;
   border:1px solid #ddd;
-  /* border-radius:4px; */
   display: inline-block;
   vertical-align: middle;
-  padding-top:4px;
+  padding-top:8px;
+  border-radius: 50%;
+}
+.small_input_number{
+  height:18px;
+  width: 18px;
+  text-align: center;
+  display:flex;
+  justify-content: center;
+  font-size: 10px !important;
+  border:1px solid #ddd;
+  display: inline-block;
+  vertical-align: middle;
+  padding-top:8px;
   border-radius: 50%;
 }
 /* input number of product end*/
