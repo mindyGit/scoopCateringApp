@@ -277,7 +277,7 @@ export function Header(props) {
  */}
 
 
-                    <div className=" registerSection col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mx-5 fontNumber"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
+                    <div className=" registerSection col-6 h6 mb-0   whiteColor d-flex align-items-center justify-content-center " ><div className="mx-5 fontNumber totalReduxUp"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
                         {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div> */}
 
                     </div>

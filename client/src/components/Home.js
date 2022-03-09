@@ -180,7 +180,7 @@ export function Home(props) {
                                     {/* {categories && categories.map((category, index) => ( */}
 
 
-                                    <div className=' col-xs-12 col-sm-6 col-md-3 p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'>{language == 'he' ? 'סלטים' : 'salads'}</div></div>
+                                    <div className=' col-xs-12 col-sm-6 col-md-3 p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'><h1>{language == 'he' ? 'סלטים' : 'salads'}</h1>{language == 'he' ? 'סלטים' : 'salads'}</div></div>
                                     <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות פתיחה" : "Appetizers"}`)}><img className='h-100 w-100' src={fish} /> <div className='AddToCart text-white'>{language == 'he' ? 'מנות פתיחה' : 'Appetizers'}</div></div>
 
                                     <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות עקריות" : "Main Course"}`)}><img className='h-100 w-100' src={mainCourses} /> <div className='AddToCart text-white'>{language == 'he' ? 'מנות עקריות' : 'Main Course'}</div></div>

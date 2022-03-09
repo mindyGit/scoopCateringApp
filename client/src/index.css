@@ -40,13 +40,21 @@ body {
   overflow-y: scroll !important;
 
 
-  font-weight: 400; 
+  font-weight: 400 !important; 
 	font-size: 3em;
   /* font-family: 'Rubik', sans-serif !important; */
   font-family: 'Ploni', sans-serif;
     font-size: 18px !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+h1 { 
+	font-family: 'Ploni', 'Dosis', sans-serif !important; 
+	font-weight: 400; 
+	font-size: 3em; 
+}
+.font-medium{
+  font-weight: 600 !important;
 }
 .fontNumber{
   font-family: 'Rubik', sans-serif !important;
@@ -287,7 +295,7 @@ text-align: center;
   left: 53%;
   text-shadow: 2px 2px 2px black;
   transform: translate(-50%, -50%);
-  font-weight: 900;
+  font-weight: 600;
   font-size: 5rem !important;
   color: #FFFFFF;
   width: 30vw;
@@ -469,7 +477,7 @@ left:0;
 }
 .OurPeekscontent .content span .preStyle{
   direction: rtl;
- font-family: 'Rubik', sans-serif !important;
+ font-family: 'ploni', sans-serif !important;
  line-height: 1.5;
 }
 .OurPeekscontent div h1{
@@ -560,6 +568,9 @@ line-height: 1;
 box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
 margin-top: 15px;
 }
+.productItem{
+  border-bottom: 2px solid #C4C4C4!important;
+}
 
 
 .productName{
@@ -568,12 +579,22 @@ text-align: left;
 /* .productLine:hover{
 
   } */
+
+  .amountOption_select{
+    font-size: 16px;
+     width: fit-content;
+    font-weight: 600 !important;
+  }
   .productPic{
     height: 114.91px;
     /* width: 70px; */
     background-color: #E3E3E3;
 
     
+  }
+  .productPrice{
+   width: fit-content;
+    font-size: 22px !important;
   }
   .product_Pic{
     height: 70px;
@@ -872,10 +893,13 @@ outline: none !important;
 .categoryButton{
   width: 100%;
   border:none;
-border-bottom: 1px solid rgb(0 0 0 / 25%) !important;
+border-top: 1px solid rgb(0 0 0 / 25%) !important;
 border-radius: 0% !important;
 
 
+}
+.categoryButton:hover{
+  font-weight: 600;
 }
 .categoryButton.active{
   width: 100%;
@@ -976,8 +1000,8 @@ border:none !important;
   height: 100% !important;
 }
 .ShoppingCart_itemList{
-  max-height: 400px;
-  overflow-y: scroll;
+  /* max-height: 400px;
+  overflow-y: scroll; */
   overflow-x: hidden;
  
   }
@@ -1073,8 +1097,8 @@ button.shippingOption.active{
 .minus, .plus{
   /* margin-bottom:8px; */
   width:20px;
-  height: 37px;
-  font-size: 30px;
+  height: 42px;
+  font-size: 35px;
 
   color: #C59950 !important;
  
@@ -1086,8 +1110,8 @@ button.shippingOption.active{
   text-align: center; 
 }
 .input_number{
-  height:22px;
-  width: 22px;
+  height:25px;
+  width: 25px;
   text-align: center;
   display:flex;
   justify-content: center;

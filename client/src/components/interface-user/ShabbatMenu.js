@@ -315,9 +315,9 @@ function ShabbatMenu(props) {
                 )}
             </div>
 
-            <div className="small_pageHeader " >
+            <div className="small_pageHeader " style={{ backgroundImage: `url(${headerBgImag})` }}>
                 {/* <label >{i18.t('shabatMenu')}<button className='white-arrow h4 p-1 ' onClick={() => props.history.goBack()} ><i class="fas fa-long-arrow-alt-right  pr-2" style={{ height: 'fit-content' }} ></i> </button> </label> */}
-                {isTablet ? <img className=" h-100 w-100" src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
+                {/* {isTablet ? <img className=" h-100 w-100" src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />} */}
 
 
             </div>
@@ -360,13 +360,18 @@ function ShabbatMenu(props) {
                             </div>
                             <div className='categoryList rounded  d-flex flex-column  py-2 px-3'>
                                 {/* <h1>קטגוריות</h1> */}
-                                {categories && categories.map((category) => (
+                                {categories && categories.map((category, index) => (
                                     <>
-                                        <a className='' href={'#' + category.name}>
-                                            <button className='bg-white categoryButton  ' onClick={() => categorySelection(category._id)} style={{ height: '60px' }} id={category._id} >{language == "he" ? category.hebrewName : category.name}</button>
-                                            {/* <hr className='w-75 m-auto my-0' /> */}
-                                        </a>
-                                        {/* <hr className="my-0 m-auto" style={{ height: '1.5px', width: '80%' }} /> */}
+                                        {index == 0 ?
+                                            <a className='' href={'#' + category.name}>
+                                                <button className='bg-white categoryButton border-0 ' onClick={() => categorySelection(category._id)} style={{ height: '60px' }} id={category._id} >{language == "he" ? category.hebrewName : category.name}</button>
+
+                                            </a>
+                                            : <a className='' href={'#' + category.name}>
+                                                <button className='bg-white categoryButton  ' onClick={() => categorySelection(category._id)} style={{ height: '60px' }} id={category._id} >{language == "he" ? category.hebrewName : category.name}</button>
+
+                                            </a>
+                                        }
                                     </>
                                 ))}
                             </div>
@@ -400,14 +405,15 @@ function ShabbatMenu(props) {
                                     {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                         category[key].map(product =>
                                             <>
-                                                <div className=' productLine w-100  row  rounded    justify-content-between   p-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
+                                                <div className=' productLine w-100  row  rounded    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
                                                     <div className='col-2  productPic d-flex align-items-center px-2  '><img className=' w-100' src={image1} /></div>
                                                     <div className='col-5 p-0 '>
                                                         <div className='h-75'>
-                                                            <div className='productName font-weight-bold '>  {language == "he" ? product.hebrewName : product.name}</div>
-                                                            <div className='amountOption font-weight-bold  pb-1 pt-1 pl-0 ' style={{ fontSize: '12px', width: 'fit-content' }}>
+                                                            <div className='productName font-weight-bold ' style={{ fontSize: '22px' }}>  {language == "he" ? product.hebrewName : product.name}</div>
+                                                            <div className='amountOption   pb-1 pt-1 pl-0 ' >
+
                                                                 {/* <div > {i18.t('SelectAnOption')}:</div> */}
-                                                                <select class="form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ width: 'fit-content', fontSize: '12px' }}>
+                                                                <select class=" amountOption_select form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
                                                                     {/* <option selected> 1 יחידה</option> */}
                                                                     <option value="1">500 גר'</option>
                                                                     <option value="1">One</option>
@@ -425,9 +431,9 @@ function ShabbatMenu(props) {
                                                     </div>
 
                                                     <div className='col-4 px-4 h-100'>
-                                                        <div className='d-flex align-items-center row justify-content-between h-50'>
+                                                        <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
                                                             <div className='col-5'></div>
-                                                            <div className='price font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber' style={{ width: 'fit-content' }}>14.90 &#8362; </div>
+                                                            <div className='price productPrice font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber ' >14.90 &#8362; </div>
 
                                                         </div>
 
@@ -485,14 +491,14 @@ function ShabbatMenu(props) {
                                     <div className='py-2 col-12'>שלום,<a className='px-2 text-black' href="#login"> התחבר </a></div>
 
                                     <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
-                                        <div className='mx-2'>{i18.t('ShoppingCart')}</div>
+                                        <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
                                         <div className='  fontNumber'> (<span className="numItems mx-1">{numItems}</span>)</div>
 
                                     </div>
 
                                     <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
                                         {cart && cart.map(item =>
-                                            <div className={`productItem row  align-items-end   border-bottom border-dark py-2 ${side} ${item.product._id}`}  >
+                                            <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
 
                                                 <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
                                                 <div className='col-12 row  align-items-end     justify-content-between'>
@@ -533,7 +539,7 @@ function ShabbatMenu(props) {
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
 
                                         <div className='col-8' >
-                                            <div className={`productName col-12  p-0  ${align}`}> תבנית חד"פ</div>
+                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
                                             <div className='d-flex row  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
@@ -556,7 +562,7 @@ function ShabbatMenu(props) {
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
 
                                         <div className='col-8' >
-                                            <div className={`productName col-12   p-0  ${align}`}> תבנית חד"פ</div>
+                                            <div className={`productName col-12   p-0  ${align} font-medium`}> תבנית חד"פ</div>
                                             <div className='d-flex row  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
@@ -580,7 +586,7 @@ function ShabbatMenu(props) {
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
 
                                         <div className='col-8' >
-                                            <div className={`productName col-12   p-0  ${align}`}> תבנית חד"פ</div>
+                                            <div className={`productName col-12   p-0  ${align} font-medium `}> תבנית חד"פ</div>
                                             <div className='d-flex row  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
@@ -603,7 +609,7 @@ function ShabbatMenu(props) {
                             </div>
 
                             <div className='  col-12 rounded px-4 py-2 mb-3' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
-                                <div>   <label>הערות להזמנה </label></div>
+                                <div>   <label className='font-medium'>הערות להזמנה </label></div>
 
                                 <textarea className='w-100 border-0 border-bottom border-dark'></textarea>
                             </div>
@@ -611,13 +617,13 @@ function ShabbatMenu(props) {
                             <div className='rounded  col-12 p-0' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
                                 <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '0.25rem 0.25rem 0rem 0rem' }}>
 
-                                    <div className="col-9 swithSide"> סה"כ מוצרים:</div>
+                                    <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
                                     <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
 
                                 </div>
                                 <div className="d-flex mb-5  pt-3 pb-2 px-4" >
 
-                                    <div className="col-9 swithSide">סה"כ:</div>
+                                    <div className="col-9 swithSide font-medium">סה"כ:</div>
                                     <div className="col-3 numItems fontNumber font-weight-bold">{parseFloat(total).toFixed(2)}</div>
 
                                 </div>
