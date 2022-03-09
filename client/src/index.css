@@ -1,5 +1,33 @@
 @import "~bootstrap/dist/css/bootstrap.css";
 @import url('https://fonts.googleapis.com/css2?family=Rubik&display=swap');
+@font-face {
+  font-family: 'ploni';
+  font-weight: 400;
+  /*(regular)*/
+  font-style: normal;
+  src: url('../src/data/fonts/webfont_files/ploni-regular-aaa.woff2') format('woff2'),
+    url('../src/data/fonts/webfont_files/ploni-regular-aaa.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'ploni';
+  font-weight: 700;
+  /*(bold)*/
+  font-style: normal;
+  src: url('../src/data/fonts/webfont_files/ploni-bold-aaa.woff2') format('woff2'),
+    url('../src/data/fonts/webfont_files/ploni-bold-aaa.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'ploni';
+  font-weight: 600;
+  /*(bold)*/
+  font-style: normal;
+  src: url('../src/data/fonts/webfont_files/ploni-medium-aaa.woff2') format('woff2'),
+    url('../src/data/fonts/webfont_files/ploni-medium-aaa.woff') format('woff');
+}
+/* webfonts/ploni-regular-aaa.woff
+webfonts/ploni-regular-aaa.woff2 */
 
 body {
   cursor: pointer;
@@ -15,7 +43,7 @@ body {
   font-weight: 400; 
 	font-size: 3em;
   /* font-family: 'Rubik', sans-serif !important; */
-  font-family: 'ploni', 'Dosis', sans-serif !important; 
+  font-family: 'Ploni', sans-serif;
     font-size: 18px !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
