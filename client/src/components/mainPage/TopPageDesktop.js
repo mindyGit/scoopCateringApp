@@ -118,8 +118,9 @@ export function TopPageDesktop(props) {
                 $('.linksNuv').addClass('rtl')
                 $('.linksNuv').css({ "right": '3%', "position": 'absolute' })
                 $('.svgSize').css({ "right": '', "left": '200px' })
-                $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', left: '0px' })
+                $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
                 $('.location').removeClass('text-start').addClass('text-end')
+                $('.linksNuv').css({ "margin-right": '10%' })
                 // $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
                 $('.swithSide').css('text-align', 'right')
                 $('.productLine').addClass('rtl')
@@ -144,7 +145,8 @@ export function TopPageDesktop(props) {
                 $('.linksNuv').css({ "right": '', "position": '' })
                 $('.location').removeClass('text-end').addClass('text-start')
                 $('.svgSize').css({ "right": '200px', "left": '' })
-                $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
+                $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', right: '', left: '0px' })
+                $('.linksNuv').css({ "margin-left": '10%' })
                 // $(".inputOfSearch").attr("placeholder", " ")
                 $('.swithSide').css('text-align', 'left')
                 $('.productLine').removeClass('rtl')
@@ -253,8 +255,9 @@ export function TopPageDesktop(props) {
                         maxHeight: "80px",
                         position: "absolute",
                         zIndex: 99999,
-                        borderRadius: '50px 0px 0px 50px',
-                        right: '0px',
+                        borderRadius: '0px 50px 50px 0px',
+
+                        left: '0px',
                         top: '32px',
                         padding: '12px'
                     }} src={logo} />

@@ -139,8 +139,8 @@ export const He = {
         CVV: 'CVV',
         Id: 'ת"ז',
         AdditionalPayment: 'אפשרויות תשלום נוספות',
-        AdditionalPayment_: `ביט / פייבוקס / העברה בנקאית
-צרו קשר עם המשרד `,
+        AdditionalPayment_: `ביט / פייבוקס / העברה בנקאית`,
+        AdditionalPayment_1: `צרו קשר עם המשרד`,
 
         paymentMethod: 'אופן התשלום',
         payBox: 'פייבוקס',

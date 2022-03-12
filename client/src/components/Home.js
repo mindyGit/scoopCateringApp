@@ -76,7 +76,13 @@ export function Home(props) {
     useEffect(() => {
         // alert('Not available at the moment, the site is running only !! \n אינו זמין כרגע ,האתר בהרצה בלבד!!')
         if ($) {
+            $(".categoryHover").mouseover(function () {
+                $(this).find('.categoryTitle').removeClass("d-none")
+            });
+            $(".categoryHover").mouseout(function () {
+                $(this).find('.categoryTitle').addClass("d-none")
 
+            });
         }
         const inputSlide = document.querySelector("input");
         const secondInputSlide = document.getElementById("secondinput");
@@ -174,10 +180,10 @@ export function Home(props) {
 
                             <h1 className='text-white mt-5 font-weight-bold'  >{i18.t('FoodReadyToShabat')}</h1>
                             <hr className="font-weight-bold goldColor m-auto" style={{ width: '5rem', height: '5px', opacity: '1' }} ></hr>
-                            <h6 className='text-white mt-5'> {i18.t('homePageTitel2')}</h6>
-                            <div className='d-flex justify-content-center my-5' >
+                            <h6 className='text-white mt-4 mb-4'> {i18.t('homePageTitel2')}</h6>
+                            {/* <div className='d-flex justify-content-center my-5' >
                                 <div className=' col-md-10 col-sm-12  row d-flex justify-content-between  ' >
-                                    {/* {categories && categories.map((category, index) => ( */}
+                                   
 
 
                                     <div className=' col-xs-12 col-sm-6 col-md-3 p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "סלטים" : "salads"}`)}><img className='h-100 w-100' src={foodExample} /> <div className='AddToCart text-white'><h1>{language == 'he' ? 'סלטים' : 'salads'}</h1>{language == 'he' ? 'סלטים' : 'salads'}</div></div>
@@ -186,12 +192,37 @@ export function Home(props) {
                                     <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "מנות עקריות" : "Main Course"}`)}><img className='h-100 w-100' src={mainCourses} /> <div className='AddToCart text-white'>{language == 'he' ? 'מנות עקריות' : 'Main Course'}</div></div>
                                     <div className='col-xs-12 col-sm-6 col-md-3  p-3' onClick={() => props.history.push(`/shop/${language == "he" ? "קינוחים" : "Desserts"}`)}><img className='h-100 w-100' src={desserts} /> <div className='AddToCart text-white'>{language == 'he' ? 'קינוחים' : 'Desserts'}</div></div>
 
-                                    {/* ))} */}
+                                 
 
 
                                 </div>
-                            </div>
+                            </div> */}
 
+
+                            <div className="foodCategories">
+
+
+                                <div className="row mb-3 d-flex justify-content-center wrapper  m-auto" style={{ width: '80%' }}>
+                                    {categories && categories.map((category, index) => (
+                                        <>
+                                            {index < 4 ?
+                                                <div className="categoryItem  p-0 col-3  mb-3 rounded px-3" style={{ height: '300px' }}><div className="categoryHover" onClick={() => props.history.push(`/shop/${language == "he" ? category.hebrewName : category.name}`)}>
+                                                    <div className=" d-flex  categoryTitle d-none  p-3"><h5 className=" font-weight-bold ">{language == "he" ? category.hebrewName : category.name}</h5>
+                                                        <div className="row d-flex swithDir ">
+                                                            <h6 className="col-2 mb-0 p-0">{category.products.length}</h6>
+                                                            <h6 className="mb-0 col-2 p-0"></h6>
+                                                            <h6 className="mb-0 col-7 p-0 mr-1">{i18.t('products')}</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                    <img className="h-100 w-100" src={'http://scoopcatering.co.il/images/foodCategories/' + category.picUrl} />
+                                                </div>
+                                                : ''}
+                                        </>
+                                    ))}
+
+                                </div>
+                            </div>
                             <button className='bg-black text-white border mb-5 ' onClick={() => props.history.push('/shop')}> <i class="fas fa-long-arrow-alt-left mr-2 " style={{ height: 'fit-content' }} ></i>{language == "he" ? "לתפריט שבת המלא" : "Full Shabbat Menu"}</button>
 
 

@@ -465,7 +465,7 @@ function ShabbatMenu(props) {
 
                                     ))}
                                 </div>
-                                <hr className='goldColor mt-0' style={{ height: '2.5px', opacity: '1' }} />
+                                <hr className='goldColor mt-0 mb-2' style={{ height: '2.5px', opacity: '1' }} />
                             </>
                         )}
                     </div>

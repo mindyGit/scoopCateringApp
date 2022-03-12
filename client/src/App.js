@@ -138,9 +138,9 @@ function App(props) {
             {/* <Route exact path="/ShabbatMenu" component={ShabbatMenu} /> */}
             {/* <Route exact path="/shop" component={Shop} /> */}
             <Route exact path="/shop" component={ShabbatMenu} />
-
+            <Route exact path="/shop/*" component={ShabbatMenu} />
             <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
-            <Route exact path="/shop/*" component={ProductList} />
+            {/* <Route exact path="/shop/*" component={ProductList} /> */}
             <Route exact path="/Nuv/" component={Nuv} />
             <Route exact path="/OrderSummary" component={OrderSummary} />
             {/* <Route exact path="/login" component={AppFirebase} /> */}

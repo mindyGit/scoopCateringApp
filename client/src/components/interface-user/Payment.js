@@ -108,7 +108,7 @@ export function Payment(props) {
             </div>
             <div className="page_content justify-content-center pt-3 " style={{ width: '65%', margin: 'auto' }}>
 
-                <h2 className="swithSide mb-5 font-weight-bold mt-5 pt-5 ml-5">{i18.t('FormOfPayment')} </h2>
+                <h2 className="swithSide mb-5 font-weight-bold  pt-5 ml-5">{i18.t('FormOfPayment')} </h2>
                 <div className="row justify-content-start swithDir">
                     <div className="  col-6 ml-5 p-0 swithSide ">
 
@@ -150,7 +150,8 @@ export function Payment(props) {
 
                                 <label className="  w-100 pt-1 swithSide  goldbgColor px-3 mb-0" >{i18.t('AdditionalPayment')} </label>
                                 <div className="bg-grey  p-3 mb-4">
-                                    <p className="w-75 ">{i18.t('AdditionalPayment_')} <span className="fontNumber">054-290-2590</span></p>
+                                    <p className="w-75 ">{i18.t('AdditionalPayment_')}</p>
+                                    <p>{i18.t('AdditionalPayment_1')} <span className="fontNumber">054-290-2590</span></p>
                                     {/* <div className="row">
                                         <select className="col-4 px-1 pt-1" style={{ height: 'fit-content', fontSize: 'medium' }}>
                                             <option> {i18.t('paymentMethod')}</option>
@@ -164,7 +165,7 @@ export function Payment(props) {
                                     <div className="row w-100">
                                         <div className="col-4 px-1 ">
 
-                                            <Form.Select aria-label="Default select example" className="rounded-custom " required>
+                                            <Form.Select aria-label="Default select example" className="rounded-custom " required style={{ padding: '0.375rem 2rem 0.375rem 0.75rem' }}>
 
 
                                                 <option style={{ color: 'grey' }}> {i18.t('paymentMethod')}</option>

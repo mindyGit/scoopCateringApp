@@ -139,7 +139,7 @@ export function Checkout(props) {
             </div>
             <div className="page_content justify-content-center pt-5 " style={{ width: '65%', margin: 'auto' }}>
 
-                <h2 className="swithSide mb-5 font-weight-bold mt-5 pt-5 ml-5">{i18.t('checkout')} </h2>
+                <h2 className="swithSide mb-5 font-weight-bold  pt-5 ml-5">{i18.t('checkout')} </h2>
                 <div className="row justify-content-start swithDir">
                     <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}>
 
@@ -276,7 +276,7 @@ export function Checkout(props) {
 
 
 
-                        <button className=" mt-5 goldButton px-3 py-2 mb-5  mr71" onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
+                        <button className=" mt-5 goldButton px-3 py-2 mb-5  mr61" onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
                             {/* <img src={arrow_left_white} style={{ paddingRight: '5px',width: '25px'}} /> */}
                         </button>
                     </div>
