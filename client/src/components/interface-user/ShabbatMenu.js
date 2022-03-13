@@ -353,7 +353,7 @@ function ShabbatMenu(props) {
 
                     <div className='col-md-2 '>
                         <div className='' >
-                            <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm  m-auto border-0 border-dark font-weight-bold border-bottom" aria-label=".form-select-sm example" style={{
+                            <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom" aria-label=".form-select-sm example" style={{
                                 width: '100%', fontSize: '15px'
                             }}>
 
@@ -427,15 +427,16 @@ function ShabbatMenu(props) {
                                                     <div className='col-5 p-0 ' id={product._id}>
                                                         <div className='h-75'>
                                                             <div className='productName font-weight-bold ' style={{ fontSize: '22px' }}>  {language == "he" ? product.hebrewName : product.name}</div>
-                                                            <div className='amountOption   pb-1 pt-1 pl-0 ' id={product._id}>
 
-                                                                {/* <div > {i18.t('SelectAnOption')}:</div> */}
-                                                                <select class=" amountOption_select form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
-                                                                    {/* <option selected> 1 יחידה</option> */}
-                                                                    <option value=" ">500 גר'</option>
-                                                                    <option value="2">One</option>
-                                                                    <option value="3">Two</option>
-                                                                    <option value="4">Three</option>
+
+                                                            <div class="amountOption   pb-1 pt-1 pl-0 " id={product._id}>
+                                                                <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
+                                                                    <option value=" ">{i18.t('selectAmount')}</option>
+
+                                                                    <option value="1">500 גר'</option>
+                                                                    <option value="2">חצי ליטר</option>
+                                                                    <option value="3">250 מל'</option>
+                                                                    <option value="4">6 יחידות</option>
                                                                 </select>
                                                             </div>
                                                         </div>

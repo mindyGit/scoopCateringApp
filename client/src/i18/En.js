@@ -134,6 +134,7 @@ export const En = {
         MakePayment: 'Make payment',
         // shopping cart
         ProductName: 'Item Name',
+        selectAmount: 'select amount',
         Amount: 'Amount',
         price: 'Price',
         //events page

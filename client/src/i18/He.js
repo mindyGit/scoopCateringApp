@@ -152,6 +152,7 @@ export const He = {
         MakePayment: 'בצע תשלום',
         // shopping cart
         ProductName: 'שם המוצר',
+        selectAmount: 'בחר כמות',
         Amount: 'כמות',
         price: 'מחיר',
 

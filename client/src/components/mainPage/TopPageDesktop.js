@@ -121,6 +121,7 @@ export function TopPageDesktop(props) {
                 $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
                 $('.location').removeClass('text-start').addClass('text-end')
                 $('.linksNuv').css({ "margin-right": '10%' })
+                $('.amountOption_select').addClass('rtl-form-select').removeClass('pl-1')
                 // $(".inputOfSearch").attr("placeholder", " הזן/י מוצר לחיפוש...")
                 $('.swithSide').css('text-align', 'right')
                 $('.productLine').addClass('rtl')
@@ -138,6 +139,7 @@ export function TopPageDesktop(props) {
             }
             else {
                 // $(".inputOfSearch").css('plach')
+
                 $('.HeLanguage').removeClass('d-none')
                 $('.EnLanguage').addClass('d-none')
                 $('.linksNuv').removeClass('rtl')
@@ -151,6 +153,7 @@ export function TopPageDesktop(props) {
                 $('.swithSide').css('text-align', 'left')
                 $('.productLine').removeClass('rtl')
                 $('.productName').css('text-align', 'left')
+                $('.amountOption_select').removeClass('rtl-form-select').addClass('pl-1')
                 // $('.productLine').css({ "border-right": "0px solid #C59950", "border-left": '8px solid #C59950' })
                 $('.swithDir').css('direction', 'ltr ')
                 // shoppingCart
