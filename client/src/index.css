@@ -128,7 +128,7 @@ padding: 3%;
 }
 .navbar.navbar-light .navbar-nav .nav-item .nav-link.active{
   color: #C59950 !important;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 
 
@@ -137,7 +137,7 @@ padding: 3%;
 }
 .navbar-dark .navbar-nav .nav-link.active{
   color: #C59950 !important;
-  /* font-weight: bold; */
+  font-weight: bold;
 }
 .footer {
   padding: 1.125rem 0;
@@ -349,6 +349,10 @@ text-align: center;
   font-weight: bold;
 
 
+}
+.hoverLink.active{
+  color: #C59950 !important;
+  font-weight: bold;
 }
 .grad1 {
   height: 15px;

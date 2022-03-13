@@ -552,7 +552,7 @@ function ShabbatMenu(props) {
                                     <div className='row d-flex  px-0'>
 
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
 
                                             <img className=' w-100 ' src={image1} /></div>
 
@@ -578,7 +578,7 @@ function ShabbatMenu(props) {
                                     <div className='row d-flex px-0'>
 
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
 
                                             <img className=' w-100 ' src={image1} />
                                         </div>
@@ -606,7 +606,7 @@ function ShabbatMenu(props) {
                                     <div className='row d-flex px-0'>
 
                                         <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
 
                                             <img className=' w-100 ' src={image1} />
                                         </div>
