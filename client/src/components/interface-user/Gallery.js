@@ -36,7 +36,7 @@ import { useTranslation } from 'react-i18next';
 
 
 export function Gallery(props) {
-    $('#gallery').addClass('active');
+
     const { t, i18n } = useTranslation();
 
     const isMobile = useMediaQuery(768);
@@ -44,7 +44,7 @@ export function Gallery(props) {
 
     useEffect(() => {
         if ($) {
-
+            $('#gallery').addClass('active');
         }
     }, [$])
     return (

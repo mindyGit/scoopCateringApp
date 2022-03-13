@@ -33,7 +33,6 @@ let currentClass
 function ShabbatMenu(props) {
 
     const url = window.location.href
-    $('#shop').addClass('active');
     // const [cart, setCart] = useLocalStorage("cart", []);
     const lastSegment = decodeURI(url.split("/").pop().toString());
     const { language } = props
@@ -307,7 +306,10 @@ function ShabbatMenu(props) {
     }
     useEffect(() => {
 
-        if ($) { }
+        if ($) {
+            $('#shop').addClass('active');
+
+        }
     }, [$, props, language, totalRedux, numItemsRedux, cartRedux, total]);
 
 

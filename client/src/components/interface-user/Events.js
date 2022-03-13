@@ -38,13 +38,13 @@ import EventBg from '../../data/imges/drinks.png'
 import Form from 'react-bootstrap/Form'
 
 export function Events(props) {
-    $('#events').addClass('active');
     const { t, i18n } = useTranslation();
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
 
     useEffect(() => {
         if ($) {
+            $('#events').addClass('active');
 
         }
     }, [$])

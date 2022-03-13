@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+
 import '../../App.css';
 import { connect } from 'react-redux';
 import Store from '../../redux/store'
@@ -29,11 +30,15 @@ import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 
 export function OurCustomers(props) {
-    $('#navbarScrollingDropdown').addClass('active');
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { t, i18n } = useTranslation();
+    useEffect(() => {
+        if ($) {
+            $('#navbarScrollingDropdown').addClass('active');
+        }
+    }, [$])
 
     return (
 

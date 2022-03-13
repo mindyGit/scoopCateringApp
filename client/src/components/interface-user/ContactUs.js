@@ -36,13 +36,13 @@ import { useTranslation } from 'react-i18next';
 
 
 export function ContactUs(props) {
-    $('#contact-us').addClass('active');
     const { t, i18n } = useTranslation();
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
 
     useEffect(() => {
         if ($) {
+            $('#contact-us').addClass('active');
 
         }
     }, [$])
