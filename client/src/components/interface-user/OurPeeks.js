@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import Store from '../../redux/store'
 import { actions } from '../../redux/actions/action';
 import blog3 from '../../data/imges/blog3.png'
-
+import $ from 'jquery'
 import Section from '../mainPage/Section';
 
 import Footer from '../mainPage/Footer';
@@ -25,6 +25,7 @@ import TopPageDesktop from '../mainPage/TopPageDesktop'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 export function OurPeeks(props) {
+    $('#navbarScrollingDropdown').addClass('active');
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);

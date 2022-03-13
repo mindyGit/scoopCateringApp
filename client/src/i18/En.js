@@ -28,6 +28,8 @@ export const En = {
         soon: 'comming soon...',
         ContactUs: 'Contact Us',
         shabatMenu: 'shabbat menu',
+        menuTitle: `Hi you have arrived at Scoop's ordering system
+        Feel free to choose your favorite food`,
         EventBooking: 'Event booking',
         ScoopCatering: 'Scoop Catering',
         OurStory: 'Our story',

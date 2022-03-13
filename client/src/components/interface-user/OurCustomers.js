@@ -19,7 +19,7 @@ import teamImages from '../../data/imges/teamImages.png'
 import profile from '../../data/imges/profile.png'
 import { Form, FormControl, Nav, Button, NavDropdown, Image, Container, Dropdown, DropdownButton, ButtonGroup } from "react-bootstrap";
 
-
+import $ from 'jquery'
 import headerBgImag from '../../data/imges/headerBgImag.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 
@@ -29,6 +29,8 @@ import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 
 export function OurCustomers(props) {
+    $('#navbarScrollingDropdown').addClass('active');
+
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { t, i18n } = useTranslation();

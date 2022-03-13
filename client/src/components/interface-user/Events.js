@@ -38,6 +38,7 @@ import EventBg from '../../data/imges/drinks.png'
 import Form from 'react-bootstrap/Form'
 
 export function Events(props) {
+    $('#events').addClass('active');
     const { t, i18n } = useTranslation();
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
@@ -78,7 +79,7 @@ export function Events(props) {
                         backgroundSize: 'cover'
 
                     }}>
-                    <div className='location  text-end px-5' style={{ paddingTop: '4rem' }}>
+                    <div className='location  text-end px-5' style={{ paddingTop: '6rem' }}>
                         <div className='d-inline text-white' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                         <div className='goldColorWithShadow d-inline'> /{i18.t('EventBooking')}</div>
                     </div>

@@ -21,18 +21,15 @@ import $ from 'jquery'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 
-
-
-
 export function Kashrut(props) {
+    $('#navbarScrollingDropdown').addClass('active');
+
 
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { t, i18n } = useTranslation();
     useEffect(() => {
-        if ($) {
-
-        }
+        if ($) { }
     }, [$])
     return (
         <>

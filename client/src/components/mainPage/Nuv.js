@@ -15,6 +15,8 @@ import i18 from '../../i18/i18';
 
 import Navbar from 'react-bootstrap/Navbar'
 import { useEffect } from 'react';
+let previousClick = 'empty'
+let currentClass
 export function Nuv(props) {
     const { language } = props
     let url = window.location.pathname.split('/');
@@ -37,6 +39,34 @@ export function Nuv(props) {
 
     const { t, i18n } = useTranslation();
     const { products } = props;
+
+
+    function Selection(id) {
+        // $('.categoryList').removeClass('px-3')
+        currentClass = "#" + id
+        // if (id == 'pageOne')
+        //     currentClass = "." + id
+
+        if ($(currentClass).hasClass('active')) {
+
+        }
+        else {
+            props.history.push('/' + id)
+            $(currentClass).addClass('active');
+
+            console.log(previousClick);
+            if (previousClick != "empty" && previousClick != id) {
+                $("#" + previousClick).removeClass('active');
+
+            }
+            else {
+                $("#" + previousClick).addClass('active');
+
+            }
+            previousClick = id
+        }
+    }
+
     useEffect(() => {
         if ($) {
 
@@ -101,6 +131,7 @@ export function Nuv(props) {
                         }}
                         navbarScroll
                     >
+
                         <NavDropdown className=" hoverLink scoopButton" title={i18.t('ScoopCatering')}
                             id="navbarScrollingDropdown" style={{ direction: "ltr" }}>
                             <div className='row d-flex align-content-center justify-content-center h-100 w-100 m-0'>
@@ -121,10 +152,10 @@ export function Nuv(props) {
                                 <div className='col-md-6   CustomerItem p-0'> <img className='h-100 w-100' src={img1} /></div>
                             </div>
                         </NavDropdown>
-                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/events')} >{i18.t('EventBooking')}</Nav.Link>
-                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/shop')} >{i18.t('shabatMenu')}</Nav.Link>
-                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/gallery')}>{i18.t('gallery')}</Nav.Link>
-                        <Nav.Link className="active hoverLink" onClick={() => props.history.push('/contact-us')} >{i18.t('ContactUs')} </Nav.Link>
+                        <Nav.Link id="events" className=" hoverLink" onClick={() => { Selection('events') }} >{i18.t('EventBooking')}</Nav.Link>
+                        <Nav.Link id="shop" className=" hoverLink" onClick={() => { Selection('shop') }} >{i18.t('shabatMenu')}</Nav.Link>
+                        <Nav.Link id="gallery" className=" hoverLink" onClick={() => { Selection('gallery') }}>{i18.t('gallery')}</Nav.Link>
+                        <Nav.Link id="contact-us" className=" hoverLink" onClick={() => { Selection('contact-us') }} >{i18.t('ContactUs')} </Nav.Link>
                         {/* <Nav.Link className="active hoverLink" onClick={() => props.history.push('/OrderSummary')} >Orders </Nav.Link> */}
 
 

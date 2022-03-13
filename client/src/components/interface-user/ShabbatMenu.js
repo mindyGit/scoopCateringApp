@@ -33,7 +33,7 @@ let currentClass
 function ShabbatMenu(props) {
 
     const url = window.location.href
-
+    $('#shop').addClass('active');
     // const [cart, setCart] = useLocalStorage("cart", []);
     const lastSegment = decodeURI(url.split("/").pop().toString());
     const { language } = props
@@ -63,6 +63,8 @@ function ShabbatMenu(props) {
     //   debugger
     //   props.setCartRedux(cart)
     // }
+
+
     function categorySelection(id) {
         $('.categoryList').removeClass('px-3')
         currentClass = "#" + id
@@ -265,35 +267,43 @@ function ShabbatMenu(props) {
     // }
 
     const AddToCart = async (product) => {
-        let amountToAdd = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
-        props.setTotalRedux(total + (amountToAdd * 14.90))
-        setTotal(total + (amountToAdd * 14.90))//product.price
-        props.setNumItemsRedux(numItems + amountToAdd)
-        setNumItems(numItems + amountToAdd)
-        let flag = 0
-        let shoppingCart = []
-        if (cart != undefined)
-            shoppingCart = cart
-        shoppingCart.map(item => {
-            if (item.product._id == product._id) {
-                debugger
-                item.Amount = item.Amount + amountToAdd
-                item.Total = item.Total + (amountToAdd * 14.90)//item.product.price
-                flag = 1
-            }
-        })
-        if (flag == 0) {
-            let newItem = {
-                product: product,
-                Amount: amountToAdd,
-                Total: amountToAdd * 14.90//product.price
-            }
-            await shoppingCart.push(newItem)
+        // alert($("#" + product._id + ' .amountOption_select').select().val)
+        if ($("#" + product._id + ' .amountOption_select').val() == " ") {
+            $("#" + product._id + ' .errorSelect').removeClass('d-none')
+            setTimeout(function () {
+                $("#" + product._id + ' .errorSelect').addClass('d-none')
+            }, 2000);
         }
-        await setCart(shoppingCart)
-        // await props.setCartRedux(cart)
+        else {
+            let amountToAdd = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
+            props.setTotalRedux(total + (amountToAdd * 14.90))
+            setTotal(total + (amountToAdd * 14.90))//product.price
+            props.setNumItemsRedux(numItems + amountToAdd)
+            setNumItems(numItems + amountToAdd)
+            let flag = 0
+            let shoppingCart = []
+            if (cart != undefined)
+                shoppingCart = cart
+            shoppingCart.map(item => {
+                if (item.product._id == product._id) {
+                    debugger
+                    item.Amount = item.Amount + amountToAdd
+                    item.Total = item.Total + (amountToAdd * 14.90)//item.product.price
+                    flag = 1
+                }
+            })
+            if (flag == 0) {
+                let newItem = {
+                    product: product,
+                    Amount: amountToAdd,
+                    Total: amountToAdd * 14.90//product.price
+                }
+                await shoppingCart.push(newItem)
+            }
+            await setCart(shoppingCart)
+            // await props.setCartRedux(cart)
 
-
+        }
     }
     useEffect(() => {
 
@@ -332,8 +342,11 @@ function ShabbatMenu(props) {
 
             </div>
            */}
+            {/* <div className='row col-6 m-auto     justify-content-center'> */}
+            <h4 className=' goldColor mt-2'>{i18.t('menuTitle')}</h4>
+            {/* </div> */}
 
-            <div className='row  swithDir   ' style={{ paddingLeft: '10%', paddingRight: '10%', paddingTop: '1.5%' }}>
+            <div className='row  swithDir   col-10  m-auto' style={{ paddingTop: '1.5%' }}>
                 {!isMobile && !isTablet && (
 
                     <div className='col-md-2 '>
@@ -380,10 +393,10 @@ function ShabbatMenu(props) {
 
                     </div>
                 )}
-                <div className=' col-md-7   col-sm-12  pageContent swithSide   pb-5 ' >
+                <div className=' col-md-7   col-sm-12  pageContent swithSide    ' >
 
 
-                    <div className='shabatMenu overflow-auto ' style={{ height: '570px' }} onScroll={myFunction}>
+                    <div className='shabatMenu overflow-auto pb-3' style={{ height: '590px' }} onScroll={myFunction}>
 
 
                         {categories && categories.map((category) =>
@@ -406,27 +419,27 @@ function ShabbatMenu(props) {
                                         category[key].map(product =>
                                             <>
                                                 <div className=' productLine w-100  row  rounded    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
-                                                    <div className='col-2  productPic d-flex align-items-center px-2  '><img className=' w-100' src={image1} /></div>
-                                                    <div className='col-5 p-0 '>
+                                                    <div className='col-2  productPic d-flex align-items-center px-2  '>
+                                                        <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
+                                                        <img className=' w-100' src={image1} /></div>
+                                                    <div className='col-5 p-0 ' id={product._id}>
                                                         <div className='h-75'>
                                                             <div className='productName font-weight-bold ' style={{ fontSize: '22px' }}>  {language == "he" ? product.hebrewName : product.name}</div>
-                                                            <div className='amountOption   pb-1 pt-1 pl-0 ' >
+                                                            <div className='amountOption   pb-1 pt-1 pl-0 ' id={product._id}>
 
                                                                 {/* <div > {i18.t('SelectAnOption')}:</div> */}
                                                                 <select class=" amountOption_select form-select form-select-x-sm rtl pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
                                                                     {/* <option selected> 1 יחידה</option> */}
-                                                                    <option value="1">500 גר'</option>
-                                                                    <option value="1">One</option>
-                                                                    <option value="2">Two</option>
-                                                                    <option value="3">Three</option>
+                                                                    <option value=" ">500 גר'</option>
+                                                                    <option value="2">One</option>
+                                                                    <option value="3">Two</option>
+                                                                    <option value="4">Three</option>
                                                                 </select>
                                                             </div>
                                                         </div>
                                                         {/* <div className='h-25'></div> */}
-                                                        <div className='row d-flex align-items-end  h-25 pb-2 d-none' style={{ fontSize: 'xx-small' }}>
-                                                            <div className='col-3 d-flex '><input type="radio" name="option" /><p className='px-1 m-0'>true</p></div>
-
-                                                            <div className='col-3 d-flex '><input type="radio" name="option" /><p className='px-1 m-0'>false</p></div>
+                                                        <div className='row d-flex align-items-end  h-25 pb-2 d-none errorSelect' style={{ fontSize: 'xx-small' }}>
+                                                            <h6 className='' style={{ color: 'red' }}>* יש לבחור כמות או אופציה</h6>
                                                         </div>
                                                     </div>
 
@@ -485,7 +498,7 @@ function ShabbatMenu(props) {
                 </div>
                 {!isMobile && !isTablet && (
                     <div className='col-md-3 '  >
-                        <div className='  ' style={{ height: '570px', overflowY: 'scroll' }}>
+                        <div className=' pb-4 ' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >
                                     <div className='py-2 col-12'>שלום,<a className='px-2 text-black' href="#login"> התחבר </a></div>
@@ -536,7 +549,10 @@ function ShabbatMenu(props) {
                                 <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
                                     <div className='row d-flex  px-0'>
 
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
+                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+
+                                            <img className=' w-100 ' src={image1} /></div>
 
                                         <div className='col-8' >
                                             <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
@@ -559,7 +575,11 @@ function ShabbatMenu(props) {
                                 <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }}  >
                                     <div className='row d-flex px-0'>
 
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
+                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+
+                                            <img className=' w-100 ' src={image1} />
+                                        </div>
 
                                         <div className='col-8' >
                                             <div className={`productName col-12   p-0  ${align} font-medium`}> תבנית חד"פ</div>
@@ -583,7 +603,11 @@ function ShabbatMenu(props) {
                                 <div className={`productItem row justify-content-around    py-2 px-2 ${side} `}   >
                                     <div className='row d-flex px-0'>
 
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' ><img className=' w-100 ' src={image1} /></div>
+                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                            <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.45rem' }}>מומלץ השבוע!</p></div>
+
+                                            <img className=' w-100 ' src={image1} />
+                                        </div>
 
                                         <div className='col-8' >
                                             <div className={`productName col-12   p-0  ${align} font-medium `}> תבנית חד"פ</div>
