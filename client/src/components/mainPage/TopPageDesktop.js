@@ -49,6 +49,10 @@ export function TopPageDesktop(props) {
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
+    const { totalRedux, numItemsRedux, cartRedux } = props
+    if (totalRedux == 0) {
+        props.setTotalRedux(total)
+    }
     // const [error, setError] = useState("")
     // const { currentUser, logout } = useAuth()
     // const history = useHistory()
@@ -118,6 +122,9 @@ export function TopPageDesktop(props) {
                 $('.linksNuv').addClass('rtl')
                 $('.linksNuv').css({ "right": '3%', "position": 'absolute' })
                 $('.svgSize').css({ "right": '', "left": '200px' })
+                $('.svgSize_').css({ "right": '', "left": '210px' })
+
+
                 $('.logoSide').css({ 'border-radius': '50px 0px 0px 50px', right: '0px', left: '' })
                 $('.location').removeClass('text-start').addClass('text-end')
                 $('.linksNuv').css({ "margin-right": '10%' })
@@ -147,6 +154,10 @@ export function TopPageDesktop(props) {
                 $('.linksNuv').css({ "right": '', "position": '' })
                 $('.location').removeClass('text-end').addClass('text-start')
                 $('.svgSize').css({ "right": '200px', "left": '' })
+                $('.svgSize_').css({ "right": '210px', "left": '' })
+
+
+
                 $('.logoSide').css({ 'border-radius': '0px 50px 50px 0px', right: '', left: '0px' })
                 $('.linksNuv').css({ "margin-left": '10%' })
                 // $(".inputOfSearch").attr("placeholder", " ")
@@ -165,7 +176,7 @@ export function TopPageDesktop(props) {
 
             }
         }
-    }, [$, language, cart, setCart])
+    }, [$, language, cart, setCart, totalRedux])
 
     useEffect(() => {
 
@@ -252,6 +263,12 @@ export function TopPageDesktop(props) {
 
                 </div>
                 <div className='topPage'>
+                    <div className=" registerSection col-6 h6 mb-0 d-none  whiteColor d-flex align-items-center justify-content-center" ><div className="mx-5 fontNumber totalReduxUp"> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
+                        {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div> */}
+
+                    </div>
+
+                    <div className="mx-5 fontNumber totalReduxUp svgSize_ whiteColor d-flex "> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
                     <YourSvg className="svgSize searchButton" />
                     <Image className='logoSide' onClick={e => goHome()} style={{
                         backgroundImage: `url(${underLogo})`,
@@ -293,15 +310,17 @@ export function TopPageDesktop(props) {
 }
 const mapStateToProps = (state) => {
     return {
-        language: state.languageReducer.language
-
+        language: state.languageReducer.language,
+        totalRedux: state.totalReducer.totalRedux
 
     };
 }
 
 const mapDispatchToProps = (dispatch) => ({
     setSearchWord: (word) => dispatch(actions.setSearchWord(word)),
-    setLanguage: (lan) => dispatch(actions.setLanguage(lan))
+    setLanguage: (lan) => dispatch(actions.setLanguage(lan)),
+    setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total))
+
 
 
 })

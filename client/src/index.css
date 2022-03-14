@@ -380,6 +380,14 @@ text-align: center;
   height: 30px!important;
   position: absolute;
   right: 200px;
+  top:50px;
+  z-index: 99999;
+}
+.svgSize_{
+  width: 70px!important;
+  height: 30px!important;
+  position: absolute;
+  right: 210px;
   top:55px;
   z-index: 99999;
 }
@@ -916,7 +924,7 @@ outline: none !important;
 .categoryButton{
   width: 100%;
   border:none;
-border-top: 1px solid rgb(0 0 0 / 25%) !important;
+border-top: 1px solid rgb(0 0 0 / 25%) ;
 border-radius: 0% !important;
 
 

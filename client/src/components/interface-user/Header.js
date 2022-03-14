@@ -47,9 +47,9 @@ export function Header(props) {
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
     const { totalRedux, numItemsRedux, cartRedux } = props
-    if (totalRedux == 0) {
-        props.setTotalRedux(total)
-    }
+    // if (totalRedux == 0) {
+    //     props.setTotalRedux(total)
+    // }
     if (numItemsRedux == 0) {
         props.setNumItemsRedux(numItems)
     }
@@ -294,6 +294,8 @@ export function Header(props) {
                         {/* <div className="ml-5 mr-5" onClick={() => props.history.push('/login')}><a >{i18.t('Login')}</a>/<a >{i18.t('Register')}</a></div> */}
 
                     </div>
+
+
 
 
                 </div>
