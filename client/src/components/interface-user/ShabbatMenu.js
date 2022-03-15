@@ -400,16 +400,14 @@ function ShabbatMenu(props) {
                 <div className=' col-md-7   col-sm-12  pageContent swithSide    ' >
 
 
-                    <div className='shabatMenu overflow-auto pb-3' style={{ height: '790px' }} onScroll={myFunction}>
+                    <div className='shabatMenu overflow-auto pb-3 sidColumn' style={{ height: '590px' }} onScroll={myFunction}>
 
 
                         {categories && categories.map((category) =>
 
                             <>
 
-                                {/* <div className=' ' id={category.name} style={{ paddingTop: '20%' }} > */}
-                                <div className=' ' id={category.name} >
-
+                                <div className=' ' id={category.name}  >
                                     <div className=' h-100 w-100'>
                                         <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : salads} />
                                     </div>
@@ -505,9 +503,7 @@ function ShabbatMenu(props) {
                 </div>
                 {!isMobile && !isTablet && (
                     <div className='col-md-3 '  >
-                        {/* <div className=' pb-4 ' style={{ height: '590px', overflowY: 'scroll' }}> */}
-                        <div className=' pb-4 ' >
-
+                        <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >
                                     <div className='py-2 col-12'>שלום,<a className='px-2 text-black' href="#login"> התחבר </a></div>

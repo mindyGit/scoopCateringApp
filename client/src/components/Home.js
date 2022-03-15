@@ -201,12 +201,12 @@ export function Home(props) {
 
                             <div className="foodCategories">
 
-                                <div className='container col-10 mb-3'>
+                                <div className='container col-md-10 mb-3'>
                                     <div className="row    " >
                                         {categories && categories.map((category, index) => (
                                             <>
                                                 {index < 4 ?
-                                                    <div className="categoryItem  col-xs-6 col-sm-4 col-md-3 item-audio  rounded  mb-3" ><div className="categoryHover" onClick={() => props.history.push(`/shop/${language == "he" ? category.hebrewName : category.name}`)}>
+                                                    <div className="categoryItem  col-xs-6 col-sm-4 col-md-3 item-audio  rounded  mb-3" style={{ height: '300px' }}><div className="categoryHover" onClick={() => props.history.push(`/shop/${language == "he" ? category.hebrewName : category.name}`)}>
                                                         <div className=" d-flex  categoryTitle d-none  p-3"><h5 className=" font-weight-bold mb-0">{language == "he" ? category.hebrewName : category.name}</h5>
                                                             {/* <div className="row d-flex swithDir  ">
                                                             <h6 className="col-2 mb-0 p-0">{category.products.length}</h6>

@@ -272,8 +272,10 @@ export function TopPageDesktop(props) {
 
                     </div>
 
-                    <div className="mx-5 fontNumber totalReduxUp svgSize_ whiteColor d-flex "> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
+                    {/* <div className="mx-5 fontNumber totalReduxUp svgSize_ whiteColor d-flex "> {totalRedux ? parseFloat(totalRedux).toFixed(2) : parseFloat(0).toFixed(2)} &#8362;</div>
                     <YourSvg className="svgSize searchButton" />
+
+                     */}
                     <Image className='logoSide' onClick={e => goHome()} style={{
                         backgroundImage: `url(${underLogo})`,
                         maxHeight: "80px",

@@ -384,7 +384,7 @@ text-align: center;
   z-index: 99999;
 }
 .svgSize_{
-  width: 70px!important;
+  width: 120px!important;
   height: 30px!important;
   position: absolute;
   right: 210px;
