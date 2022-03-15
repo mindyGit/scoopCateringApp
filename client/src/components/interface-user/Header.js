@@ -165,6 +165,8 @@ export function Header(props) {
 
 
     useEffect(() => {
+
+
         if (language == 'he') {
             // $('.navbar-toggler').click()
             setSide('rtl')
@@ -178,7 +180,7 @@ export function Header(props) {
 
 
 
-    }, [language, totalRedux, numItemsRedux, cartRedux])
+    }, [total, language, totalRedux, numItemsRedux, cartRedux])
 
     return (
         <>

@@ -176,7 +176,11 @@ export function TopPageDesktop(props) {
 
             }
         }
-    }, [$, language, cart, setCart, totalRedux])
+        if (total == 0) {
+            props.setTotalRedux(total)
+        }
+
+    }, [$, language, cart, setCart, totalRedux, total])
 
     useEffect(() => {
 

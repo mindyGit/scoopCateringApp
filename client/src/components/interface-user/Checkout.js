@@ -111,9 +111,9 @@ export function Checkout(props) {
         }
     }, [$])
     return (
-        <>
+        <div onScroll={() => alert('bgvf')}>
             {/* <Search details={products} /> */}
-            <div className="pageNuv">
+            <div className="pageNuv" onScroll={() => alert('bgvf')}>
                 {isTablet && (
                     <Hamborger />
 
@@ -141,7 +141,9 @@ export function Checkout(props) {
 
                 <h2 className="swithSide mb-5 font-weight-bold  pt-5 ml-5">{i18.t('checkout')} </h2>
                 <div className="row justify-content-start swithDir">
-                    <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}>
+                    {/* <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}> */}
+                    <div className="  col-6 ml-5 p-0 swithSide  overflow-checkout" >
+
 
                         <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
@@ -282,7 +284,7 @@ export function Checkout(props) {
                     </div>
                     <div className="  col-4 ml-5 p-0 pb-5">
                         {/* <label className="    font-weight-bolder w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label> */}
-                        <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 "> {i18.t('OrderSummary')}  </label>
+                        <label className="  w-100 pt-1  swithSide  goldbgColor px-3 "> {i18.t('OrderSummary')}  </label>
 
 
                         <div className="px-4 p-3 mb-3 bg-grey">
@@ -328,7 +330,7 @@ export function Checkout(props) {
                 <Footer />
                 <UnderFooter />
             </div>
-        </>
+        </div>
 
     );
 }

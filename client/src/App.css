@@ -51,10 +51,10 @@ background-color: greenyellow;
 .hide{
   display: none;
 }
-*::-webkit-scrollbar {
-  width: 0px
+/* *::-webkit-scrollbar {
+  width: 5px
 
-}
+} */
 
 h5.title{
   font-weight: bolder;
