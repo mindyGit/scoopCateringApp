@@ -17,7 +17,7 @@ import allVectorSmart from '../../data/imges/allVectorSmart.png'
 import Navbar from 'react-bootstrap/Navbar'
 import Cart from '../../data/imges/cart.png'
 // import { withRouter, Link, useHistory } from 'react-router-dom';
-
+import UserLogin from '../Firebase/UserLogin'
 import $ from 'jquery'
 import { useTranslation } from 'react-i18next';
 import i18 from '../../i18/i18';
@@ -25,7 +25,7 @@ export function Header(props) {
     const { t, i18n } = useTranslation();
     const [side, setSide] = useState('');
     const [align, setAlign] = useState('');
-    const history = useHistory()
+    // const history = useHistory()
     // const [error, setError] = useState("")
     // const { currentUser, logout } = useAuth()
     // const history = useHistory()

@@ -1066,7 +1066,10 @@ border:none !important;
     background: rgb(197, 153, 80); 
     /* border-radius: 20px; */
   }
-
+  .inputOf_Search::-webkit-search-cancel-button{
+    position:relative;
+    right:20px;    
+}
 
 
 

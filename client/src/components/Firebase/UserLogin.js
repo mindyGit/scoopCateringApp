@@ -4,8 +4,9 @@ import { useAuth } from "../../contexts/AuthContext"
 
 import { Link, useHistory } from "react-router-dom"
 
-export default function Home() {
+export function UserLogin() {
     const [error, setError] = useState("")
+    debugger
     const { currentUser, logout } = useAuth()
     const history = useHistory()
 
@@ -31,3 +32,5 @@ export default function Home() {
         </>
     )
 }
+
+export default UserLogin

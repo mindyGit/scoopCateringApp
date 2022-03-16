@@ -52,7 +52,7 @@ import Login from "./components/Firebase/Login"
 import PrivateRoute from "./components/Firebase/PrivateRoute"
 import ForgotPassword from "./components/Firebase/ForgotPassword"
 import UpdateProfile from "./components/Firebase/UpdateProfile"
-import Homep from './components/Firebase/Home'
+import UserLogin from './components/Firebase/UserLogin'
 
 
 
@@ -121,18 +121,19 @@ function App(props) {
   return (
     <>
       <Router history={history}>
-        {/* <AuthProvider>
+        <AuthProvider>
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <PrivateRoute path="/Home" component={Home} />
+            {/* <PrivateRoute path="/Home" component={Home} /> */}
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
           </Switch>
-        </AuthProvider> */}
+        </AuthProvider>
         <div className="App" >
           <Switch>
+
             <Route exact path="home/ProductList" component={ProductList} />
             <Route exact path="/" component={Home} />
             {/* <Route exact path="/ShabbatMenu" component={ShabbatMenu} /> */}

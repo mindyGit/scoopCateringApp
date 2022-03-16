@@ -15,7 +15,10 @@ import { connect } from 'react-redux';
 import { actions } from '../redux/actions/action';
 import Search from './Search';
 import initialDetails from './../data/initialDetails';
-import background_image from '../data/imges/backgroundImg.jpg'
+// import background_image from '../data/imges/backgroundImg.jpg'
+import background_image from '../data/imges/EventsImage_.png'
+
+
 import { Container, Row, Col } from 'react-grid-system';
 import { Form, FormControl, Nav, Button, NavDropdown, Image } from "react-bootstrap";
 import logo from '../data/imges/logo.png'
@@ -101,11 +104,12 @@ export function Home(props) {
                     backgroundImage: `url(${background_image})`,
                     width: '100%',
                     height: '100%',
-                    backgroundColor: 'black',
-                    backgroundPosition: 'center',
-                    backgroundSize: 'cover'
+                    // backgroundColor: 'black',
+                    // backgroundPosition: 'center',
+                    // backgroundSize: 'cover'
 
                 }} >
+                    {/* <img className='w-100 h-100' src={background_image}/> */}
                     <div>
                         {isTablet && (
                             <Hamborger />

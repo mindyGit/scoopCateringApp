@@ -8,7 +8,7 @@ import Login from "./Login"
 import PrivateRoute from "./PrivateRoute"
 import ForgotPassword from "./ForgotPassword"
 import UpdateProfile from "./UpdateProfile"
-import Home from './Home'
+import Home from '../Home'
 
 
 function AppFirebase() {
