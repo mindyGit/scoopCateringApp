@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/static/css/main.ddfe262b.chunk.css",
-    "main.js": "/static/js/main.f5c36f54.chunk.js",
-    "main.js.map": "/static/js/main.f5c36f54.chunk.js.map",
+    "main.css": "/static/css/main.9ca96307.chunk.css",
+    "main.js": "/static/js/main.ad30cf51.chunk.js",
+    "main.js.map": "/static/js/main.ad30cf51.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.c0c28d86.js",
     "runtime-main.js.map": "/static/js/runtime-main.c0c28d86.js.map",
     "static/css/2.70c2dce5.chunk.css": "/static/css/2.70c2dce5.chunk.css",
@@ -12,14 +12,15 @@
     "static/js/3.660103b7.chunk.js.map": "/static/js/3.660103b7.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.70c2dce5.chunk.css.map": "/static/css/2.70c2dce5.chunk.css.map",
-    "static/css/main.ddfe262b.chunk.css.map": "/static/css/main.ddfe262b.chunk.css.map",
+    "static/css/main.9ca96307.chunk.css.map": "/static/css/main.9ca96307.chunk.css.map",
     "static/js/2.c81fa6d4.chunk.js.LICENSE.txt": "/static/js/2.c81fa6d4.chunk.js.LICENSE.txt",
     "static/media/EventsImage.cb7c971d.png": "/static/media/EventsImage.cb7c971d.png",
-    "static/media/EventsImage_.7ed3b8d2.png": "/static/media/EventsImage_.7ed3b8d2.png",
+    "static/media/EventsImage_.5e567ecd.png": "/static/media/EventsImage_.5e567ecd.png",
     "static/media/Extras.f52ce4ed.png": "/static/media/Extras.f52ce4ed.png",
     "static/media/Rectangle.641194c7.jpg": "/static/media/Rectangle.641194c7.jpg",
     "static/media/mdb.css": "/static/media/arrow_right.f7c6ac6d.svg",
     "static/media/backgroundImg.a84872f7.jpg": "/static/media/backgroundImg.a84872f7.jpg",
+    "static/media/bakery.6da24a39.png": "/static/media/bakery.6da24a39.png",
     "static/media/bgImagOurPeeks.c1809f7a.png": "/static/media/bgImagOurPeeks.c1809f7a.png",
     "static/media/blog1.4802ec40.png": "/static/media/blog1.4802ec40.png",
     "static/media/blog2.4b237c47.png": "/static/media/blog2.4b237c47.png",
@@ -45,7 +46,7 @@
     "static/media/searchIcon_Black.11a787f2.svg": "/static/media/searchIcon_Black.11a787f2.svg",
     "static/media/shabat.c8ac457b.png": "/static/media/shabat.c8ac457b.png",
     "static/media/shabatTimes.3382e1e0.svg": "/static/media/shabatTimes.3382e1e0.svg",
-    "static/media/shabbat.6da24a39.png": "/static/media/shabbat.6da24a39.png",
+    "static/media/shabbat.51bffc2a.png": "/static/media/shabbat.51bffc2a.png",
     "static/media/shoppingCart.0f59e173.svg": "/static/media/shoppingCart.0f59e173.svg",
     "static/media/soops_.630c9e68.jpg": "/static/media/soops_.630c9e68.jpg",
     "static/media/taglitImage.34b37cb7.png": "/static/media/taglitImage.34b37cb7.png",
@@ -55,7 +56,7 @@
     "static/js/runtime-main.c0c28d86.js",
     "static/css/2.70c2dce5.chunk.css",
     "static/js/2.c81fa6d4.chunk.js",
-    "static/css/main.ddfe262b.chunk.css",
-    "static/js/main.f5c36f54.chunk.js"
+    "static/css/main.9ca96307.chunk.css",
+    "static/js/main.ad30cf51.chunk.js"
   ]
 }

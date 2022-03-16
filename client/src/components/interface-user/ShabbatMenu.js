@@ -15,6 +15,8 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import Cart from '../../data/imges/cart.png'
 import salads from '../../data/imges/foodCategories/Pictures/fishh.png'
 import appetizers from '../../data/imges/foodCategories/Pictures/shabbat.png'
+import bakery from '../../data/imges/foodCategories/Pictures/bakery.png'
+
 import searchIcom_ from '../../data/imges/searchIcom_.png';
 import desserts from '../../data/imges/foodCategories/Pictures/desserts.png'
 import image1 from '../../data/imges/foodCategories/Pictures/image1.png'
@@ -353,6 +355,12 @@ function ShabbatMenu(props) {
 
         if ($) {
             $('#shop').addClass('active');
+            $('textarea').each(function () {
+                this.setAttribute('style', 'height:' + (this.scrollHeight) + 'px;overflow-y:hidden;');
+            }).on('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
 
         }
     }, [$, props, language, totalRedux, numItemsRedux, cartRedux, total]);
@@ -383,7 +391,7 @@ function ShabbatMenu(props) {
             <h4 className=' goldColor mt-2'>{i18.t('menuTitle')}</h4>
 
 
-            <div className='row  swithDir   col-10  m-auto' style={{ paddingTop: '1.5%' }}>
+            <div className='row  swithDir    col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
                 {!isMobile && !isTablet && (
 
                     <div className='col-md-2 '>
@@ -393,16 +401,11 @@ function ShabbatMenu(props) {
                             }}>
 
                                 <option value="1">{i18.t('shabatMenu')}</option>
-                                <option value="1">חנוכה</option>
-                                <option value="2">פסח</option>
-                                <option value="3">שבועות</option>
+                                <option value="2">{i18.t('passover')}</option>
                             </select>
                             <div class="mb-3 d-flex row px-2" style={{ fontSize: 'medium' }}>
                                 <div className='col-10 '>
-                                    <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 p-0" onInput={(e) => {
-
-                                        searchProduct(e.target.value)
-                                    }} onKeyPress={(e) => searchProduct(e.target.value)} />
+                                    <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 p-0" onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
 
                                 </div>
 
@@ -516,7 +519,7 @@ function ShabbatMenu(props) {
 
                                     <div className=' ' id={category.name}  >
                                         <div className=' h-100 w-100'>
-                                            <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : salads} />
+                                            <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
                                         </div>
 
                                         <div className='d-flex align-items-center my-3 ' >
@@ -616,7 +619,7 @@ function ShabbatMenu(props) {
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >
-                                    <div className='py-2 col-12'>שלום,<a className='px-2 text-black' href="#login"> התחבר </a></div>
+                                    <div className='py-2 col-12'>שלום,<a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a></div>
 
                                     <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
                                         <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
@@ -750,7 +753,15 @@ function ShabbatMenu(props) {
                             <div className='  col-12 rounded px-4 py-2 mb-3' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
                                 <div>   <label className='font-medium'>הערות להזמנה </label></div>
 
-                                <textarea className='w-100 border-0 border-bottom border-dark'></textarea>
+                                <textarea className='w-100 border-0 border-bottom border-dark' maxlength="250" ng-trim="false" ></textarea>
+
+
+                                {/* <textarea auto-grow="" ng-model="vm.order.comment" name="" id="orderComments" translate-once-placeholder="orderCart.ADD_COMMENT" rows="1" cols="10" class="comment-textarea-cart change ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" maxlength="250" style="height: 55px;" ng-trim="false" placeholder="הקלידו כאן..."></textarea> */}
+
+
+
+
+
                             </div>
 
                             <div className='rounded  col-12 p-0' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>

@@ -27,7 +27,8 @@ export const En = {
         gallery: 'gallery',
         soon: 'comming soon...',
         ContactUs: 'Contact Us',
-        shabatMenu: 'shabbat menu',
+        shabatMenu: 'Shabbat menu',
+        passover: 'Passover',
         menuTitle: `Hi you have arrived at Scoop's ordering system
         Feel free to choose your favorite food`,
         EventBooking: 'Event booking',

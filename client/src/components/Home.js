@@ -97,7 +97,7 @@ export function Home(props) {
     return (
         <>
             <div style={{
-                height: '1000px',
+                height: '700px',
                 width: '100vw'
             }}>
                 <div className='' style={{

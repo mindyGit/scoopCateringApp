@@ -65,7 +65,7 @@ export function Section() {
 
 
             <div class="container_" style={{
-                width: '100vw', height: "750px",
+                width: '100vw', height: "580px",
             }}>
                 {/* 
                 <div className="searchBox btnOne bc-white centerItems flex-column d-none" style={{ width: '60%', height: "40%", zIndex: '9', position: 'absolute', left: '15%', top: "20%", opacity: "0.9" }}>

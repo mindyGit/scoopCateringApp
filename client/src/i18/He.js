@@ -40,6 +40,7 @@ export const He = {
         soon: '....בקרוב',
         ContactUs: ' צור קשר',
         shabatMenu: 'תפריט שבת',
+        passover: 'פסח',
         menuTitle: `היי הגעתם למערכת ההזמנות של סקופ
         מוזמנים לבחור את האוכל האהוב עליכם`,
         EventBooking: 'הזמנת אירועים',
