@@ -125,7 +125,10 @@ function App(props) {
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            {/* <PrivateRoute path="/Home" component={Home} /> */}
+            <PrivateRoute path="/Home" component={UserLogin} />
+            <PrivateRoute exact path="/shop" component={ShabbatMenu} />
+            <PrivateRoute exact path="/shop/*" component={ShabbatMenu} />
+            <PrivateRoute exact path="/" component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
@@ -135,11 +138,9 @@ function App(props) {
           <Switch>
 
             <Route exact path="home/ProductList" component={ProductList} />
-            <Route exact path="/" component={Home} />
             {/* <Route exact path="/ShabbatMenu" component={ShabbatMenu} /> */}
             {/* <Route exact path="/shop" component={Shop} /> */}
-            <Route exact path="/shop" component={ShabbatMenu} />
-            <Route exact path="/shop/*" component={ShabbatMenu} />
+
             <Route exact path="/shop/relatedProducts" component={RelatedProducts} />
             {/* <Route exact path="/shop/*" component={ProductList} /> */}
             <Route exact path="/Nuv/" component={Nuv} />

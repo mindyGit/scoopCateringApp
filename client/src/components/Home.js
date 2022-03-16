@@ -14,6 +14,7 @@ import UnderFooter from './mainPage/UnderFooter'
 import { connect } from 'react-redux';
 import { actions } from '../redux/actions/action';
 import Search from './Search';
+import UserLogin from '../components/Firebase/UserLogin'
 import initialDetails from './../data/initialDetails';
 // import background_image from '../data/imges/backgroundImg.jpg'
 import background_image from '../data/imges/EventsImage_.png'
@@ -52,7 +53,10 @@ import EventsImage from '../data/imges/EventsImage.png'
 import { useTranslation } from 'react-i18next';
 import i18 from '../i18/i18';
 
+
+
 export function Home(props) {
+
     const { t, i18n } = useTranslation();
     const [modalShow, setModalShow] = useState(false);
     const isMobile = useMediaQuery(768);
@@ -62,6 +66,22 @@ export function Home(props) {
     if (!categories || !categories.length) {
         props.getAllCategories()
     }
+    const [error, setError] = useState("")
+
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+
+    async function handleLogout() {
+        setError("")
+
+        try {
+            await logout()
+            history.push("/login")
+        } catch {
+            setError("Failed to log out")
+        }
+    }
+
     // const [error, setError] = useState("")
     // const { currentUser, logout } = useAuth()
     // const history = useHistory()
@@ -128,6 +148,7 @@ export function Home(props) {
 
                         }} />
                         <div className="sectionTwo text-center bg-black" >
+
 
 
 

@@ -30,6 +30,9 @@ import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 import { Sync } from '@material-ui/icons';
 import zIndex from '@mui/material/styles/zIndex';
+import { useAuth } from "../../contexts/AuthContext"
+
+import { Link, useHistory } from "react-router-dom"
 let previousClick = 'empty'
 let currentClass
 function ShabbatMenu(props) {
@@ -54,7 +57,21 @@ function ShabbatMenu(props) {
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
     const { totalRedux, numItemsRedux, cartRedux } = props
+    const [error, setError] = useState("")
 
+    const { currentUser, logout } = useAuth()
+    const history = useHistory()
+
+    async function handleLogout() {
+        setError("")
+
+        try {
+            await logout()
+            history.push("/login")
+        } catch {
+            setError("Failed to log out")
+        }
+    }
     function myFunction() {
         // alert("gbvf")
     }
@@ -351,6 +368,10 @@ function ShabbatMenu(props) {
 
         }
     }
+    function hoverCategory(categoryId) {
+        $('#' + categoryId).click()
+
+    }
     useEffect(() => {
 
         if ($) {
@@ -361,6 +382,8 @@ function ShabbatMenu(props) {
                 this.style.height = 'auto';
                 this.style.height = (this.scrollHeight) + 'px';
             });
+
+
 
         }
     }, [$, props, language, totalRedux, numItemsRedux, cartRedux, total]);
@@ -418,16 +441,16 @@ function ShabbatMenu(props) {
 
                                 {categories && categories.map((category, index) => (
                                     <>
-                                        {index == 0 ?
-                                            <a className='' href={'#' + category.name}>
-                                                <button className='bg-white categoryButton border-0 ' onClick={() => categorySelection(category._id)} style={{ height: '60px' }} id={category._id} >{language == "he" ? category.hebrewName : category.name}</button>
 
-                                            </a>
-                                            : <a className='' href={'#' + category.name}>
-                                                <button className='bg-white categoryButton  ' onClick={() => categorySelection(category._id)} style={{ height: '60px' }} id={category._id} >{language == "he" ? category.hebrewName : category.name}</button>
 
-                                            </a>
-                                        }
+                                        <a className='' href={'#' + category.name}>
+
+                                            <button className={index == 0 ? 'bg-white categoryButton border-0' : 'bg-white categoryButton'} id={category._id} onClick={() => categorySelection(category._id)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
+
+
+                                        </a>
+
+
                                     </>
                                 ))}
                             </div>
@@ -517,17 +540,18 @@ function ShabbatMenu(props) {
 
                                 <>
 
-                                    <div className=' ' id={category.name}  >
-                                        <div className=' h-100 w-100'>
-                                            <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
+                                    <div className='' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
+                                        <div >
+                                            <div className=' h-100 w-100'>
+                                                <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
+                                            </div>
+
+                                            <div className='d-flex align-items-center my-3 ' >
+                                                <h1 className='font-weight-bold '>{language == "he" ? category.hebrewName : category.name}</h1>
+
+
+                                            </div>
                                         </div>
-
-                                        <div className='d-flex align-items-center my-3 ' >
-                                            <h1 className='font-weight-bold '>{language == "he" ? category.hebrewName : category.name}</h1>
-
-
-                                        </div>
-
 
                                         {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                             category[key].map(product =>
@@ -619,7 +643,21 @@ function ShabbatMenu(props) {
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >
-                                    <div className='py-2 col-12'>שלום,<a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a></div>
+                                    <div className='py-2 col-12'>שלום,
+                                        {currentUser ?
+                                            <>
+
+                                                {currentUser.firstName}
+
+                                                <div className="w-100 text-center mt-2">
+                                                    <Button variant="link" onClick={handleLogout}>
+                                                        Log Out
+                                                    </Button>
+                                                </div>
+                                            </> :
+                                            <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a>
+                                        }
+                                    </div>
 
                                     <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
                                         <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
@@ -769,7 +807,6 @@ function ShabbatMenu(props) {
 
                                     <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
                                     <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
-
                                 </div>
                                 <div className="d-flex mb-5  pt-3 pb-2 px-4" >
 

@@ -3,7 +3,9 @@ const validator = require('validator')
 
 const userSchema = new mongoose.Schema({
 
-
+    uid: {
+        type: String
+    },
     createDate: {
         type: Date,
         default: Date.now()

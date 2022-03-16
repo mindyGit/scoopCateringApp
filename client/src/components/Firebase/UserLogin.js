@@ -6,7 +6,7 @@ import { Link, useHistory } from "react-router-dom"
 
 export function UserLogin() {
     const [error, setError] = useState("")
-    debugger
+
     const { currentUser, logout } = useAuth()
     const history = useHistory()
 
