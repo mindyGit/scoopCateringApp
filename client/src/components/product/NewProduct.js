@@ -19,7 +19,7 @@ import Modal from 'react-bootstrap/Modal'
 
 
 export function NewProduct(props, { product }) {
-    debugger
+    //debugger
     const [picture, setPicture] = useState(null);
     const [imgData, setImgData] = useState(null);
     const [prices, setPrices] = useState([]);
@@ -119,7 +119,7 @@ export function NewProduct(props, { product }) {
     // const { createProduct } = props
     const handleSubmit = async (values) => {
         alert(values.name)
-        debugger
+        //debugger
         if (values.Id == "")
             alert("add")
         else

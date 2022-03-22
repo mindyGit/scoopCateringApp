@@ -33,7 +33,7 @@ function MyCard({ list, lang }, props) {
 
 
     function useLocalStorage(key, initialValue) {
-        debugger
+        //debugger
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {
@@ -67,7 +67,7 @@ function MyCard({ list, lang }, props) {
         return [storedValue, setValue];
     }
     const changeAmount = async (id, action) => {
-        debugger
+        //debugger
         let amount = parseInt($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
         // cart.map(item => {
@@ -112,7 +112,7 @@ function MyCard({ list, lang }, props) {
         shoppingCart.map(item => {
 
             if (item.product._id == product._id) {
-                debugger
+                //debugger
                 item.Amount = parseInt(item.Amount) + parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val())
                 item.Total = parseInt($('#' + product._id + ' ' + '.amountToBuy' + ' ' + 'input').val()) * 14.90//item.product.price
                 flag = 1

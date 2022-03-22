@@ -13,7 +13,7 @@ import Tab from 'react-bootstrap/Tab'
 import '../../App.css'
 import $ from 'jquery'
 function OrderSummary(props) {
-    debugger
+    //debugger
     let filterCetegories
     const { productsOnOrder } = props;
     const [data, setData] = useState([]);
@@ -30,7 +30,7 @@ function OrderSummary(props) {
     useEffect(() => {
         // console.log(productsOnOrder[0].productId.name);
         const sortArray = type => {
-            debugger
+            //debugger
             const types = {
                 productId: 'productId',
                 amount: 'amount',
@@ -40,7 +40,7 @@ function OrderSummary(props) {
                 var regex = /^[a-zA-Z]+$/;
                 if ([sortProperty] != "" && [sortProperty] != undefined) {
                     console.log("::" + a[sortProperty] + b[sortProperty]);
-                    debugger
+                    //debugger
 
                     if (sortProperty == "productId") {
                         return a[sortProperty].hebrewName.localeCompare(b[sortProperty].hebrewName);

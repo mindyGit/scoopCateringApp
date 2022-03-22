@@ -37,7 +37,7 @@ export function Payment(props) {
     const [total, setTotal] = useLocalStorage("total", 0);
 
     function useLocalStorage(key, initialValue) {
-        debugger
+        //debugger
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {

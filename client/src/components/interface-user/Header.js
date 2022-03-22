@@ -54,11 +54,11 @@ export function Header(props) {
         props.setNumItemsRedux(numItems)
     }
     if (!cartRedux.length) {
-        debugger
+        //debugger
         props.setCartRedux(cart)
     }
     function useLocalStorage(key, initialValue) {
-        debugger
+        //debugger
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {
@@ -93,7 +93,7 @@ export function Header(props) {
     }
 
     const changeAmount = async (id, action) => {
-        debugger
+        //debugger
         let amount = parseInt($('.' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
         cartRedux && cartRedux.map(item => {
@@ -129,7 +129,7 @@ export function Header(props) {
 
 
     const deleteItem = async (id) => {
-        debugger
+        //debugger
         let totalTodel
 
 

@@ -18,10 +18,10 @@ import ProductList_manager from './ProductList_manager'
 import { useTranslation } from 'react-i18next';
 import i18 from '../../i18/i18';
 import OrderSummary from './OrderSummary'
-import Orders from './Orders'
+import Orders from './orders'
 // import Example from '../Example';
 export function ManagerInterface(props) {
-
+ 
     const { t, i18n } = useTranslation();
 
 
