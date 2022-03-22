@@ -67,16 +67,17 @@ export function AuthProvider({ children }, props) {
     // auth.signOut()
     let result = auth
       .createUserWithEmailAndPassword(email, password)
-      .then(
+      .then((v) => {
+        console.log(v.user.multiFactor.uid);
         createNewUser({
-          uid: currentUser.uid,
+          uid: v.user.multiFactor.uid,
           email: email,
           password: password,
           firstName: firstName,
           lastName: lastName,
           phone: phoneNumber,
-        })
-      );
+        });
+      });
     return result;
   }
 
