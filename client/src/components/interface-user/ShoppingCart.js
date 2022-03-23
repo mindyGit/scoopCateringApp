@@ -47,12 +47,12 @@ export function ShoppingCart(props) {
         props.setNumItemsRedux(numItems)
     }
     if (cartRedux.length) {
-        debugger
+        //debugger
         props.setCartRedux(cart)
     }
 
     function useLocalStorage(key, initialValue) {
-        debugger
+        //debugger
         // State to store our value
         // Pass initial state function to useState so logic is only executed once
         const [storedValue, setStoredValue] = useState(() => {
@@ -98,7 +98,7 @@ export function ShoppingCart(props) {
 
 
     const changeAmount = async (id, action) => {
-        debugger
+        //debugger
         let amountTocart = parseInt($('.' + id + ' ' + '.Am' + ' ' + 'input').val())
 
         if (action == 'minusToCart' || action == 'plusToCart') {
@@ -147,7 +147,7 @@ export function ShoppingCart(props) {
 
 
     const deleteItem = async (id) => {
-        debugger
+        //debugger
         // console.log($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val());
         let totalTodel
         let less
@@ -187,7 +187,7 @@ export function ShoppingCart(props) {
 
 
     // const deleteItem = async (id) => {
-    //     debugger
+    //     //debugger
     //     let totalTodel
 
 

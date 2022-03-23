@@ -17,7 +17,7 @@ export default function Signup() {
   const history = useHistory()
 
   async function handleSubmit(e) {
-    debugger
+    //debugger
 
     e.preventDefault()
     if (passwordRef.current.value.length < 6) {
@@ -32,7 +32,8 @@ export default function Signup() {
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.current.value, lastNameRef.current.value, phoneNumberRef.current.value)
       history.push("/home")
-    } catch {
+    } catch (e){
+      console.error(e);
       setError("Failed to create an account")
     }
 

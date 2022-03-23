@@ -63,7 +63,7 @@ function Orders(props) {
                 var regex = /^[a-zA-Z]+$/;
                 if ([sortProperty] != "" && [sortProperty] != undefined) {
 
-                    debugger
+                    //debugger
                     if (a[sortProperty] === true || b[sortProperty] === true || b[sortProperty] === false || a[sortProperty] === false) {
                         return a[sortProperty] - b[sortProperty];
                     }
@@ -130,7 +130,7 @@ function Orders(props) {
 
 
     const editItem = async (product) => {
-        debugger
+        //debugger
         await setProductToEdit(product)
         alert(productToEdit ? productToEdit._id : "jj")
         // $('#newId').val(productToEdit._id)

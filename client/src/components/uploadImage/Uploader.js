@@ -9,7 +9,7 @@ import axios from '../../axios';
 
 
 function Uploader(props) {
-	debugger
+	//debugger
 	const {
 		_uploadedUrl,
 		_setUploadedUrl
@@ -26,7 +26,7 @@ function Uploader(props) {
 	}
 
 	const setUpload = async (image = {}) => {
-		debugger
+		//debugger
 		const formData = new FormData() //Sends image as part of from data to avoid wierd Boundry issues when sending multipart/form data when not part of an actual form
 		formData.append('file', image)
 		const response = await axios.post('/upload', formData);

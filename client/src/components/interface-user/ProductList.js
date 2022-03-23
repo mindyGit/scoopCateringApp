@@ -44,11 +44,11 @@ function ProductList(props) {
   //   props.setNumItemsRedux(numItems)
   // }
   // if (!cartRedux.length) {
-  //   debugger
+  //   //debugger
   //   props.setCartRedux(cart)
   // }
   function useLocalStorage(key, initialValue) {
-    debugger
+    //debugger
     // State to store our value
     // Pass initial state function to useState so logic is only executed once
     const [storedValue, setStoredValue] = useState(() => {
@@ -92,7 +92,7 @@ function ProductList(props) {
 
   }
   const changeAmount = async (id, action) => {
-    debugger
+    //debugger
     let amount = parseInt($('#' + id + ' ' + '.amountToBuy' + ' ' + 'input').val())
 
     // cart.map(item => {
@@ -136,7 +136,7 @@ function ProductList(props) {
       shoppingCart = cart
     shoppingCart.map(item => {
       if (item.product._id == product._id) {
-        debugger
+        //debugger
         item.Amount = item.Amount + amountToAdd
         item.Total = item.Total + (amountToAdd * 14.90)//item.product.price
         flag = 1
