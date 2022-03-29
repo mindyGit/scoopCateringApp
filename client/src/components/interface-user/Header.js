@@ -17,7 +17,7 @@ import allVectorSmart from '../../data/imges/allVectorSmart.png'
 import Navbar from 'react-bootstrap/Navbar'
 import Cart from '../../data/imges/cart.png'
 // import { withRouter, Link, useHistory } from 'react-router-dom';
-import UserLogin from '../Firebase/UserLogin'
+// import UserLogin from '../Firebase/UserLogin'
 import $ from 'jquery'
 import { useTranslation } from 'react-i18next';
 import i18 from '../../i18/i18';

@@ -14,7 +14,7 @@ import UnderFooter from './mainPage/UnderFooter'
 import { connect } from 'react-redux';
 import { actions } from '../redux/actions/action';
 import Search from './Search';
-import UserLogin from '../components/Firebase/UserLogin'
+// import UserLogin from '../components/Firebase/UserLogin'
 import initialDetails from './../data/initialDetails';
 // import background_image from '../data/imges/backgroundImg.jpg'
 import background_image from '../data/imges/EventsImage_.png'

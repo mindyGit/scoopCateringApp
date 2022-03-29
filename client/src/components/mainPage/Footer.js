@@ -22,10 +22,33 @@ import { alpha } from "@material-ui/core";
 
 export function Footer() {
     const { t, i18n } = useTranslation();
+    function sendingEmail(emailToSent) {
+        return fetch(`http://localhost:3000/sendEmail`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(emailToSent),
+        })
+            .then((res) => {
+                return res.json();
+            })
+            .then((res) => {
+                console.log(res);
+                return res;
+            });
+    }
     function sendEmail() {
 
         var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
         if ($('#emailToSend').val().match(mailformat)) {
+
+            let emailToSent = {
+                to: $('#emailToSend').val(),
+                subject: "צורפת בהצלחה לרשימת תפוצה של עידכונים",
+                text: "מהיום כל עדכון "
+            }
+            sendingEmail(emailToSent)
             $('.successEmail').removeClass('d-none')
             setTimeout(function () {
                 $('.successEmail').addClass('d-none')

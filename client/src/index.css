@@ -54,13 +54,13 @@ h1 {
 	font-size: 3em; 
 }
 
-textarea
+.customTextarea
 {
    line-height: 1 !important;
     font-size: 16px !important;
      font-weight: 400; 
   }
-  textarea:focus-visible{
+  .customTextarea:focus-visible{
     border:none!important;
     outline: none !important;
     border-bottom: 2px solid #212529!important;
@@ -936,18 +936,19 @@ outline: none !important;
   border:none;
 border-top: 1px solid rgb(0 0 0 / 25%) ;
 border-radius: 0% !important;
+font-weight: 400 !important;
 
 
 }
 .categoryButton:hover{
-  font-weight: 700;
+  font-weight: 700 !important;
 }
 .categoryButton.active{
   width: 100%;
   background-color:#C59950 !important;
   color: white;
   border:none !important;
-  font-weight: 700;
+  font-weight: 700 !important;
   /* border-radius: 0.25rem!important; */
  }
 
@@ -987,7 +988,12 @@ border-radius: 0% !important;
   background-color: #C39957 !important;
   color: #FFFFFF !important;
   border-radius: 1.5rem!important;
+  font-weight: 400 !important;
 
+}
+.goldButton:hover{
+
+background: black !important;
 }
 .roundButton{
  

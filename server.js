@@ -103,7 +103,7 @@ let messageOptions = {
     subject: 'Scheduled Email',
     text: 'Hi there. This email was automatically sent by us.'
 };
-//send email every monday at 10:00 automatically
+//send email every monday at 11:00 automatically
 cron.schedule('0 11 * * Monday', function () {
     console.log('---------------------');
     console.log('Running Cron Job');

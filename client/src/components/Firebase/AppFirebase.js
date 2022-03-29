@@ -15,19 +15,23 @@ function AppFirebase() {
   return (
     <Container
       className="d-flex align-items-center justify-content-center"
-      style={{ minHeight: "100vh" }}
+    // style={{ minHeight: "100vh" }}
     >
-      <div className="w-100" style={{ maxWidth: "400px" }}>
+      {/* <div className="w-100" style={{ maxWidth: "400px" }}> */}
+      <div className="w-100" >
+
         <Router>
           <AuthProvider>
             <Switch>
               {/* <PrivateRoute exact path="/" component={Login} /> */}
-              <PrivateRoute exact path="/" component={Dashboard} />
+              {/* <PrivateRoute exact path="/" component={Login} /> */}
               <PrivateRoute path="/update-profile" component={UpdateProfile} />
               <PrivateRoute path="/Home" component={Home} />
               <Route path="/signup" component={Signup} />
-              <Route path="/login" component={Login} />
               <Route path="/forgot-password" component={ForgotPassword} />
+              <Route path="/" component={Login} />
+              {/* <Route path="/login" component={Login} /> */}
+
             </Switch>
           </AuthProvider>
         </Router>

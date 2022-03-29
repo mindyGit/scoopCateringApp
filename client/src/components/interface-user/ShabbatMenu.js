@@ -2,7 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { actions } from '../../redux/actions/action';
+
 import { Table, Button } from 'react-bootstrap'
+import AppFirebase from '../Firebase/AppFirebase';
 import { Formik, Field, Select, Form } from 'formik';
 import NewProduct from '../product/NewProduct';
 import Scroll from '../Scroll';
@@ -22,6 +24,9 @@ import desserts from '../../data/imges/foodCategories/Pictures/desserts.png'
 import image1 from '../../data/imges/foodCategories/Pictures/image1.png'
 import deleteIcom from '../../data/imges/delete.png'
 
+import Modal from "../Popup/Modal";
+import useModal from '../Popup/useModal';
+import '../Popup/Modal.css'
 
 import '../../App.css'
 import $ from 'jquery'
@@ -34,8 +39,13 @@ import { useAuth } from "../../contexts/AuthContext"
 
 import { Link, useHistory } from "react-router-dom"
 let previousClick = 'empty'
+
 let currentClass
 function ShabbatMenu(props) {
+
+
+
+    const { isShowing, toggle } = useModal();
 
     const url = window.location.href
     // const [cart, setCart] = useLocalStorage("cart", []);
@@ -67,7 +77,8 @@ function ShabbatMenu(props) {
 
         try {
             await logout()
-            history.push("/login")
+            history.push("/shop")
+
         } catch {
             setError("Failed to log out")
         }
@@ -86,6 +97,26 @@ function ShabbatMenu(props) {
     //   props.setCartRedux(cart)
     // }
 
+    function hoverCategory(categoryId) {
+        currentClass = "#" + categoryId
+        if ($(currentClass).hasClass('active')) {
+
+        }
+        else {
+            $(currentClass).addClass('active');
+            console.log(previousClick);
+            if (previousClick != "empty" && previousClick != categoryId) {
+                $("#" + previousClick).removeClass('active');
+
+            }
+            else {
+                $("#" + previousClick).addClass('active');
+
+            }
+            previousClick = categoryId
+        }
+        // $('#' + categoryId).addClass('active')
+    }
 
     function categorySelection(id) {
         $('.searchResults').addClass('d-none')
@@ -368,10 +399,7 @@ function ShabbatMenu(props) {
 
         }
     }
-    function hoverCategory(categoryId) {
-        $('#' + categoryId).click()
 
-    }
     useEffect(() => {
 
         if ($) {
@@ -391,11 +419,16 @@ function ShabbatMenu(props) {
 
 
     return (
-        <>
+        < >
+
+            <Modal
+                isShowing={isShowing}
+                hide={toggle}
+            />
+
             <div className="pageNuv ">
                 {isTablet && (
                     <Hamborger />
-
                 )}
 
                 {!isMobile && !isTablet && (
@@ -411,7 +444,7 @@ function ShabbatMenu(props) {
 
 
 
-            <h4 className=' goldColor mt-2'>{i18.t('menuTitle')}</h4>
+            <h4 className=' goldColor mt-2 text-center'>{i18.t('menuTitle')}</h4>
 
 
             <div className='row  swithDir    col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
@@ -437,7 +470,7 @@ function ShabbatMenu(props) {
                                 </div>
 
                             </div>
-                            <div className='categoryList rounded  d-flex flex-column  py-2 px-3'>
+                            <div className='categoryList rounded  d-flex flex-column  py-2 '>
 
                                 {categories && categories.map((category, index) => (
                                     <>
@@ -643,7 +676,7 @@ function ShabbatMenu(props) {
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >
-                                    <div className='py-2 col-12'>שלום,
+                                    <div className='py-2 col-12 text-center'>שלום,
                                         {currentUser ?
                                             <>
 
@@ -655,7 +688,10 @@ function ShabbatMenu(props) {
                                                     </Button>
                                                 </div>
                                             </> :
-                                            <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a>
+                                            // <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a>
+                                            <a className='px-2 text-black ' onClick={toggle} > התחבר </a>
+
+
                                         }
                                     </div>
 
@@ -680,7 +716,7 @@ function ShabbatMenu(props) {
 
 
 
-                                                    <div className='col-7 p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                    <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
 
 
 
@@ -701,7 +737,7 @@ function ShabbatMenu(props) {
                                 </div>
                             </div>
                             <div className=' col-12 rounded px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)', boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
-                                <h5 className='font-weight-bold'>אולי תרצו גם...</h5>
+                                <h5 className='font-weight-bold '>אולי תרצו גם...</h5>
                                 <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
                                     <div className='row d-flex  px-0'>
 
@@ -789,9 +825,9 @@ function ShabbatMenu(props) {
                             </div>
 
                             <div className='  col-12 rounded px-4 py-2 mb-3' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
-                                <div>   <label className='font-medium'>הערות להזמנה </label></div>
+                                <div className=' text-center'>   <label className='font-medium '>הערות להזמנה </label></div>
 
-                                <textarea className='w-100 border-0 border-bottom border-dark' maxlength="250" ng-trim="false" ></textarea>
+                                <textarea className='w-100 border-0 border-bottom border-dark customTextarea' maxlength="250" ng-trim="false" ></textarea>
 
 
                                 {/* <textarea auto-grow="" ng-model="vm.order.comment" name="" id="orderComments" translate-once-placeholder="orderCart.ADD_COMMENT" rows="1" cols="10" class="comment-textarea-cart change ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" maxlength="250" style="height: 55px;" ng-trim="false" placeholder="הקלידו כאן..."></textarea> */}

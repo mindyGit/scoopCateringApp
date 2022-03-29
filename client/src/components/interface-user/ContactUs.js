@@ -32,6 +32,7 @@ import SearchList from '../SearchList';
 import $ from 'jquery'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
+import EventBg from '../../data/imges/drinks.png'
 
 
 
@@ -60,7 +61,7 @@ export function ContactUs(props) {
                 )}
             </div>
 
-            <div className="pageHeader">
+            {/* <div className="pageHeader">
                 <label >{i18.t('ContactUs')} </label>
                 {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
             </div>
@@ -69,13 +70,94 @@ export function ContactUs(props) {
                 <div className='d-inline' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
                 <div className='goldColor d-inline'> /{i18.t('ContactUs')}     </div>
             </div>
-            <div className="pageContent pt-3">
+             */}
+            <div className="pageContent">
+
+
+                <div className="pageContent EventPageContent">
+                    <div
+                        style={{
+                            backgroundImage: `url(${EventBg})`,
+                            width: '100%',
+                            height: '100%',
+                            backgroundColor: 'black',
+                            backgroundPosition: 'center',
+                            backgroundSize: 'cover'
+
+                        }}>
+                        <div className='location  text-end px-5' style={{ paddingTop: '6rem' }}>
+                            <div className='d-inline text-white' onClick={() => props.history.push('/')}>{i18.t('ScoopCatering')}</div>
+                            <div className='goldColorWithShadow d-inline'> /{i18.t('ContactUs')}</div>
+                        </div>
+                        <div className="row justify-content-center ">
+                            <div className="EventsDiv  bg-white p-5 mt-2  col-md-5 col-sm-12 " >
+
+                                <Form.Label className="font-weight-bold h1"> {i18.t('ContactUs')}</Form.Label>
+                                <br />
+
+                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black">מחכים לשמוע אותכם</Form.Text>
+                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black mt-0">צוות סקופ קייטרינג</Form.Text>
+                                <br />
+                                <Form className="px-3">
+                                    <div className="swithSide">
+                                        <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                            <Form.Label class="mb-1 lableForm"> *{i18.t('name')}</Form.Label>
+                                            <Form.Control className="rounded-custom " type="text" required />
+                                        </Form.Group>
+                                        <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                            <Form.Label class="mb-1 lableForm"> *{i18.t('phone')}</Form.Label>
+                                            <Form.Control className="rounded-custom " type="text" required />
+                                        </Form.Group>
+                                        <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                            <Form.Label class="mb-1 lableForm"> *{i18.t('email')}</Form.Label>
+                                            <Form.Control className="rounded-custom " type="email" required />
+                                        </Form.Group>
+
+                                        <Form.Group className="mb-2 row swithDir" controlId="formBasicPhone">
+                                            <div className="">
+                                                <Form.Label class="mb-1 lableForm"> {i18.t('EventType')}</Form.Label>
+                                                <Form.Select aria-label="Default select example" className="rounded-custom" required>
+                                                    <option></option>
+                                                    <option value={i18.t('EventOption1')}>{i18.t('EventOption1')}</option>
+                                                    <option value={i18.t('EventOption2')}>{i18.t('EventOption2')}</option>
+                                                    <option value={i18.t('EventOption3')}>{i18.t('EventOption3')}</option>
+                                                    <option value={i18.t('EventOption4')}>{i18.t('EventOption4')}</option>
+                                                    <option value={i18.t('EventOption5')}>{i18.t('EventOption5')}</option>
+                                                    <option value={i18.t('EventOption6')}>{i18.t('EventOption6')}</option>
+                                                    <option value={i18.t('EventOption7')}>{i18.t('EventOption7')}</option>
+                                                    <option value={i18.t('EventOption8')}>{i18.t('EventOption8')}</option>
+                                                    <option value={i18.t('EventOption9')}>{i18.t('EventOption9')}</option>
+                                                </Form.Select>
+                                            </div>
+
+
+                                        </Form.Group>
+                                        <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
+                                            <Form.Label class="mb-1 lableForm">יש לכם משהו לספר לנו?</Form.Label>
+                                            <Form.Control as="textarea"
+                                                placeholder=""
+                                                style={{ height: '100px' }} className="rounded-custom " />
+                                        </Form.Group>
+                                    </div>
+                                    <Button variant="primary" type="submit" className=" goldButton px-5 py-2 my-5">
+                                        {i18.t('send')}
+                                        {/* &#8594; */}
+                                    </Button>
+                                    <div className="swithSide">
+                                        <p className="swithDir small mb-0">*{i18.t('Required')}</p>
+                                    </div>
+                                </Form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
 
 
 
             </div>
 
-            <div className="PageFooter mt-5">
+            <div className="PageFooter ">
                 <Footer />
                 <UnderFooter />
             </div>

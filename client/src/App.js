@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import { actions } from './redux/actions/action';
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+
 import Home from './components/Home'
 import ContactUs from './components/interface-user/ContactUs'
 import Menu from './components/interface-user/Shop'
@@ -52,7 +54,7 @@ import Login from "./components/Firebase/Login"
 import PrivateRoute from "./components/Firebase/PrivateRoute"
 import ForgotPassword from "./components/Firebase/ForgotPassword"
 import UpdateProfile from "./components/Firebase/UpdateProfile"
-import UserLogin from './components/Firebase/UserLogin'
+
 
 
 
@@ -63,6 +65,7 @@ function App(props) {
   const [numItems, setNumItems] = useLocalStorage("numItems", 0);
   const [total, setTotal] = useLocalStorage("total", 0);
   const { totalRedux, numItemsRedux, cartRedux } = props
+
   // if (totalRedux == 0) {
   //   props.setTotalRedux(total)
   // }
@@ -120,20 +123,24 @@ function App(props) {
   }, []);
   return (
     <>
+
       <Router history={history}>
         <AuthProvider>
           <Switch>
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
-            <PrivateRoute path="/Home" component={UserLogin} />
+
             <PrivateRoute exact path="/shop" component={ShabbatMenu} />
             <PrivateRoute exact path="/shop/*" component={ShabbatMenu} />
             <PrivateRoute exact path="/" component={Home} />
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
-            <Route path="/forgot-password" component={ForgotPassword} />
+            {/* <Route path="/forgot-password" component={ForgotPassword} /> */}
           </Switch>
         </AuthProvider>
+
+
+
         <div className="App" >
           <Switch>
 
@@ -161,6 +168,7 @@ function App(props) {
           </Switch>
         </div>
       </Router>
+
     </>
   );
 }

@@ -25,11 +25,18 @@ import mainCourses from '../../data/imges/foodCategories/mainCourses.png'
 import products_ from '../../data/imges/foodCategories/products.png'
 import Hamborger from '../mainPage/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
+import { useAuth } from "../../contexts/AuthContext"
+
+
+import { Link, useHistory } from "react-router-dom"
 import arrow_left_white from '../../data/imges/arrow-left-white.png'
 import $ from 'jquery'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
 export function Checkout(props) {
+    // const { currentUser, logout } = useAuth()
+    const history = useHistory()
+
     const isMobile = useMediaQuery(768);
     const isTablet = useMediaQuery(1024);
     const { t, i18n } = useTranslation();
@@ -73,8 +80,10 @@ export function Checkout(props) {
         return [storedValue, setValue];
     }
 
+    function loadingUser() {
+        // currentUser ? $('#EmailInput').val(currentUser.email) : alert("vghbjnk")
 
-
+    }
     useEffect(() => {
         if ($) {
             $("button").click(function () {
@@ -147,10 +156,10 @@ export function Checkout(props) {
 
                         <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
-                            <Form className="px-3 swithSide w-75 py-3 mb-3  ">
+                            <Form className="px-3 swithSide w-75 py-3 mb-3 " onLoad={loadingUser}>
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
                                     <Form.Label class="mb-1"> {i18.t('mailAdress')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber" type="email" />
+                                    <Form.Control className="rounded-custom fontNumber" type="email" id="EmailInput" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicName">
                                     <Form.Label class="mb-1"> {i18.t('FirstName')}</Form.Label>

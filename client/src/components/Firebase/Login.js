@@ -2,8 +2,10 @@ import React, { useRef, useState } from "react"
 import { Form, Button, Card, Alert } from "react-bootstrap"
 import { useAuth } from "../../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
-
+import Modal from "../Popup/Modal";
+import useModal from '../Popup/useModal';
 export default function Login() {
+  const { isShowing, toggle } = useModal();
   const emailRef = useRef()
   const passwordRef = useRef()
   const { login } = useAuth()
@@ -18,7 +20,9 @@ export default function Login() {
       setError("")
       setLoading(true)
       await login(emailRef.current.value, passwordRef.current.value)
+
       history.push("/shop")
+
     } catch {
       setError("Failed to log in")
     }

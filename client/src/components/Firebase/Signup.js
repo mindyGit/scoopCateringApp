@@ -31,8 +31,8 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value, firstNameRef.current.value, lastNameRef.current.value, phoneNumberRef.current.value)
-      history.push("/home")
-    } catch (e){
+      history.push("/shop")
+    } catch (e) {
       console.error(e);
       setError("Failed to create an account")
     }

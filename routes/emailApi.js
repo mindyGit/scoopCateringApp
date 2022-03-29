@@ -82,14 +82,14 @@ router.get('/email/:id', async (req, res) => {
 })
 router.post('/api/sendEmail', (req, res) => {
     console.log("send email");
-    // let transporter = nodemailer.createTransport({
-    //     service: 'gmail',
-    //     auth: {
-    //         user: 'mindysahar@gmail.com',
-    //         pass: '0548440106'
-    //     }
-    // });
-    var transporter = nodemailer.createTransport('smtps://benchamo.scoop.catering%40gmail.com:0584505023@smtp.gmail.com');
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mindysahar@gmail.com',
+            pass: '0583233770'
+        }
+    });
+    //let transporter = nodemailer.createTransport('smtps://benchamo.scoop.catering%40gmail.com:0584505023@smtp.gmail.com');
     let mailList = [
         'shimonsahar@gmail.com',
         'mindifr@gmail.com',
@@ -102,6 +102,7 @@ router.post('/api/sendEmail', (req, res) => {
             subject: dataMail.subject,
             text: dataMail.text,
             html: dataMail.html,
+            to: dataMail.to,
             cc: "*******",
             // bcc: mailList,//עותק מוסתר וב to:[]
             // html: '<p>Click <a href="http://134.209.41.196' + '">here</a> to show more details in site</p>',
@@ -125,6 +126,46 @@ router.post('/api/sendEmail', (req, res) => {
         });
     })
 });
+router.post('/sendEmail', (req, res) => {
+    console.log("send email");
+    let transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: 'mindysahar@gmail.com',
+            pass: '0583233770'
+        }
+    });
 
+    let dataMail = req.body
+
+    let mailOptions = {
+        from: 'ScoopCatering 👥 <foo@blurdybloop.com>',
+        subject: dataMail.subject,
+        text: dataMail.text,
+        html: dataMail.html,
+        to: dataMail.to,
+        cc: "*******",
+        // bcc: mailList,//עותק מוסתר וב to:[]
+        // html: '<p>Click <a href="http://134.209.41.196' + '">here</a> to show more details in site</p>',
+        // attachments: [
+        //     {
+        //         filename: dataMail.filename,
+        //         filename: 'image1.jpg',
+        //         path: dataMail.image,
+        //         path: "https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=350"
+        //     }
+        // ]
+    };
+
+
+    transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+            throw error;
+        } else {
+            console.log('Email successfully sent!');
+        }
+    });
+
+});
 
 module.exports = router

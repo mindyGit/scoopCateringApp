@@ -129,20 +129,7 @@ export function Events(props) {
                                     </Form.Group>
                                     <Form.Group className="mb-2 row  swithDir pl-1" controlId="formBasicPhone">
                                         <div className="col-6 row ">
-                                            {/* <Form.Check
-                                            className="col-6"
-                                            label={i18.t('fleshy')}
-                                            name="group1"
-                                            type="radio"
 
-                                        />
-                                        <Form.Check
-                                            className="col-6"
-                                            label={i18.t('milky')}
-                                            name="group1"
-                                            type="radio"
-
-                                        /> */}
                                             <div className="d-flex align-items-center col-6">
                                                 <input type="radio" id="vehicle1" name="vehicle1" value="Bike" checked />
                                                 <label className="mr-2 ml-1  mb-0 lableForm" for="vehicle1 " >{i18.t('fleshy')}</label>
@@ -170,6 +157,9 @@ export function Events(props) {
                     </div>
                 </div>
             </div>
+
+
+
 
             <div className="PageFooter ">
                 <Footer />
