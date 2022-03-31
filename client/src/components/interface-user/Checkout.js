@@ -144,7 +144,7 @@ export function Checkout(props) {
             </div>
 
             <div className="page_content row pt-5 offset-md-2 col-md-8  offset-sm-0 col-sm-12 " >
-                <h2 className="mb-5 font-weight-bold  pt-5">{i18.t('checkout')} </h2>
+                <h2 className="mb-5 font-weight-bold  ">{i18.t('checkout')} </h2>
                 <div className="swithDir row">
                     {/* <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}> */}
                     <div className="swithSide  overflow-checkout col-md-6 col-sm-12" >
