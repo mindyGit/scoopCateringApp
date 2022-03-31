@@ -61,12 +61,13 @@ function ShabbatMenu(props) {
 
     const [serchResults, setSerchResults] = useState();
     const [searchWord, setSearchWord] = useState();
+    const [userDetails, setUserDetails] = useLocalStorage("userDetails", []);
 
 
     const [cart, setCart] = useLocalStorage("cart", []);
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
-    const { totalRedux, numItemsRedux, cartRedux } = props
+    const { totalRedux, numItemsRedux, cartRedux, currentUser_ } = props
     const [error, setError] = useState("")
 
     const { currentUser, logout } = useAuth()
@@ -97,6 +98,12 @@ function ShabbatMenu(props) {
     //   props.setCartRedux(cart)
     // }
 
+    function set_user() {
+        debugger
+
+        props.setUser("bhnj")
+        console.log(currentUser_);
+    }
     function hoverCategory(categoryId) {
         currentClass = "#" + categoryId
         if ($(currentClass).hasClass('active')) {
@@ -268,34 +275,31 @@ function ShabbatMenu(props) {
 
 
     function useLocalStorage(key, initialValue) {
-        //debugger
-        // State to store our value
-        // Pass initial state function to useState so logic is only executed once
+
         const [storedValue, setStoredValue] = useState(() => {
             try {
-                // Get from local storage by key
+
                 const item = window.localStorage.getItem(key);
-                // Parse stored json or if none return initialValue
+
                 return item ? JSON.parse(item) : initialValue;
             } catch (error) {
-                // If error also return initialValue
+
                 console.log(error);
                 return initialValue;
             }
         });
-        // Return a wrapped version of useState's setter function that ...
-        // ... persists the new value to localStorage.
+
         const setValue = (value) => {
             try {
-                // Allow value to be a function so we have same API as useState
+
                 const valueToStore =
                     value instanceof Function ? value(storedValue) : value;
-                // Save state
+
                 setStoredValue(valueToStore);
-                // Save to local storage
+
                 window.localStorage.setItem(key, JSON.stringify(valueToStore));
             } catch (error) {
-                // A more advanced implementation would handle the error case
+
                 console.log(error);
             }
         };
@@ -680,7 +684,7 @@ function ShabbatMenu(props) {
                                         {currentUser ?
                                             <>
 
-                                                {currentUser.email}
+                                                {currentUser.uid}
 
                                                 <div className="w-100 text-center mt-2">
                                                     <Button variant="link" onClick={handleLogout}>
@@ -688,9 +692,11 @@ function ShabbatMenu(props) {
                                                     </Button>
                                                 </div>
                                             </> :
-                                            // <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a>
-                                            <a className='px-2 text-black ' onClick={toggle} > התחבר </a>
-
+                                            <>
+                                                {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
+                                                <a className='px-2 text-black ' onClick={toggle} > התחבר </a>
+                                                {/* <button onClick={set_user} >click</button> */}
+                                            </>
 
                                         }
                                     </div>
@@ -870,7 +876,9 @@ const mapStateToProps = (state) => {
         language: state.languageReducer.language,
         cartRedux: state.cartReducer.cartRedux,
         numItemsRedux: state.numItemsReducer.numItemsRedux,
-        totalRedux: state.totalReducer.totalRedux
+        totalRedux: state.totalReducer.totalRedux,
+        currentUser_: state.userReducer.currentUser_
+
     };
 }
 const mapDispatchToProps = (dispatch) => ({
@@ -878,7 +886,9 @@ const mapDispatchToProps = (dispatch) => ({
     getAllCategories: () => dispatch(actions.getAllCategories()),
     setCartRedux: (x) => dispatch(actions.setCartRedux(x)),
     setNumItemsRedux: (x) => dispatch(actions.setNumItemsRedux(x)),
-    setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total))
+    setTotalRedux: (Total) => dispatch(actions.setTotalRedux(Total)),
+    setUser: (user) => dispatch(actions.setUser(user))
+
 })
 export default connect(mapStateToProps, mapDispatchToProps)(ShabbatMenu)
 // export default connect(mapStateToProps, mapDispatchToProps)(withRouter(ProductList))

@@ -75,7 +75,7 @@ function OurStory(props) {
 
 
                 <div className="d-flex justify-content-center mt-3">
-                    <div className="theContent  mt-5 pt-5 mb-5" >
+                    <div className="theContent  mt-5 pt-5 mb-5 " >
                         <h3 className="Title mb-3 font-weight-bold">{i18.t('ourStoryLable1')}</h3>
                         <hr className=" mb-5 goldColor" style={{ width: '6%', height: '2px', opacity: '1', marginLeft: '49%' }} ></hr>
                         <span className="swithSide ">

@@ -98,6 +98,18 @@ router.get('/user/:id', async (req, res) => {
     }
 })
 
+router.get('/userByUid/:uid', async (req, res) => {
+    console.log(req.params.uid);
+    try {
+        const user = await User.findOne({ uid: req.params.uid }).populate("orders")
+        res.status(200).json({ message: "find user", myuser: user })
+
+    }
+    catch (error) {
+        res.status(400).send("error")
+    }
+})
+
 
 
 

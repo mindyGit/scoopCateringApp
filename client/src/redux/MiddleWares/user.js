@@ -8,7 +8,7 @@ export const getAllUsers = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_ALL_USERS') {
 
         return new Promise((resolve, reject) => {
-            return axios.get('http://scoopcatering.co.il/users/')
+            return axios.get('https://scoopcatering.co.il/users/')
                 .then(resJson => {
                     dispatch(actions.setAllUsers(resJson.data))
                     resolve()
@@ -33,7 +33,7 @@ export const createUser = ({ dispatch, getState }) => next => action => {
         console.log("fgvhjk");
 
         return new Promise((resolve, reject) => {
-            axios.post('http://scoopcatering.co.il/user/', action.payload)
+            axios.post('https://scoopcatering.co.il/user/', action.payload)
                 .then(res => {
                     dispatch(actions.setUser(res.data))
 
@@ -59,7 +59,7 @@ export const updateUserPassword = ({ dispatch, getState }) => next => action => 
         console.log("updateUserPassword");
 
         return new Promise((resolve, reject) => {
-            axios.post('http://scoopcatering.co.il/updateUserPassword/', action.payload)
+            axios.post('https://scoopcatering.co.il/updateUserPassword/', action.payload)
                 .then(res => {
                     dispatch(actions.setUser(res.data))
 

@@ -23,7 +23,7 @@ import { alpha } from "@material-ui/core";
 export function Footer() {
     const { t, i18n } = useTranslation();
     function sendingEmail(emailToSent) {
-        return fetch(`http://localhost:3000/sendEmail`, {
+        return fetch(`https://scoopcatering.co.il/sendEmail`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

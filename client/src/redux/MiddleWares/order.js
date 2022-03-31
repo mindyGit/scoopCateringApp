@@ -9,7 +9,7 @@ export const getAllOrders = ({ dispatch, getState }) => next => action => {
     if (action.type === 'GET_ALL_ORDERS') {
 
         return new Promise((resolve, reject) => {
-            return axios.get('http://scoopcatering.co.il/orders/')
+            return axios.get('https://scoopcatering.co.il/orders/')
                 .then(resJson => {
 
                     dispatch(actions.setAllOrders(resJson.data))
@@ -33,7 +33,7 @@ export const createOrder = ({ dispatch, getState }) => next => action => {
         console.log("fgvhjk");
 
         return new Promise((resolve, reject) => {
-            axios.post('http://scoopcatering.co.il/order/', action.payload)
+            axios.post('https://scoopcatering.co.il/order/', action.payload)
                 .then(res => {
                     dispatch(actions.setOrder(res.data))
 
@@ -55,7 +55,7 @@ export const updateOrder = ({ dispatch, getState }) => next => action => {
 
 
 
-        axios.patch(`http://scoopcatering.co.il/orders/${orderId}`, action.payload)
+        axios.patch(`https://scoopcatering.co.il/orders/${orderId}`, action.payload)
 
             .then(res => {
                 dispatch(actions.setOrder(res.data))
@@ -79,7 +79,7 @@ export const deleteOrder = ({ dispatch, getState }) => next => action => {
         order = action.payload;
         if (order !== undefined)
             orderId = order._id;
-        axios.delete(`http://scoopcatering.co.il/order/${orderId}`)
+        axios.delete(`https://scoopcatering.co.il/order/${orderId}`)
             .then(res => {
                 dispatch(actions.deleteOrderFromOrders(orderId))
 

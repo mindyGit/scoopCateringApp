@@ -5,7 +5,7 @@ import createReducer from "./reducerUtils";
 // import { User } from '../../../src'
 
 const initialState = {
-    currentUser: {},
+    currentUser_: {},
     users: []
 }
 
@@ -19,7 +19,7 @@ const userReducer = {
 
     setUser(state, action) {
 
-        state.currentUser = action.payload;
+        state.currentUser_ = action.payload;
 
     },
 }

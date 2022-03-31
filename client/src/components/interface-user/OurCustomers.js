@@ -119,7 +119,7 @@ export function OurCustomers(props) {
                         </div>
                         <div className="row mb-3 d-flex justify-content-around ">
                             <div className="col-md-3  d-flex  align-items-center flex-column x-smallFont font-weight-bold mr-3"> בני עקיבא העולמית</div>
-                            <div className="col-md-3  d-flex  align-items-center flex-column x-smallFont font-weight-bold mr-3">בני עקיבה TVA</div>
+                            <div className="col-md-3  d-flex  align-items-center flex-column x-smallFont font-weight-bold mr-3">בני עקיבא TVA</div>
                             <div className="col-md-3  d-flex  align-items-center flex-column "> </div>
                         </div>
                         {/* <div className="row">

@@ -17,7 +17,7 @@ const fileupload = require("express-fileupload");
 const cors = require('cors')
 // const helmet = require('helmet');
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 3000;
 let emails
 
 // const { db } = require('./models')
@@ -44,7 +44,7 @@ app.use(fileupload());
 // app.use(helmet());
 // app.get('/', (req, res) => { res.send('hello world') })
 
-// if(req.get('host')=="http://scoopcatering.co.il/")
+// if(req.get('host')=="https://scoopcatering.co.il/")
 app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.get('*', (req, res) => {

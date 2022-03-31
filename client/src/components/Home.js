@@ -242,7 +242,7 @@ export function Home(props) {
 
                                                         </div>
                                                     </div>
-                                                        <img className="h-100 w-100" src={'http://scoopcatering.co.il/images/foodCategories/' + category.picUrl} />
+                                                        <img className="h-100 w-100" src={'https://scoopcatering.co.il/images/foodCategories/' + category.picUrl} />
                                                     </div>
                                                     : ''}
                                             </>
