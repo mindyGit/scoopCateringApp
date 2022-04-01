@@ -149,7 +149,7 @@ export function AuthProvider({ children }, props) {
 
           .then((item) => {
             // props.setUser("מינדי")
-            alert(item.myuser.firstName)
+            // alert(item.myuser.firstName)
             console.log(item.myuser.firstName)
             setUserDetails(item.myuser)
           })
