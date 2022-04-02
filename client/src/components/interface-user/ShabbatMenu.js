@@ -506,7 +506,7 @@ function ShabbatMenu(props) {
 
                             {serchResults && serchResults.map((product) =>
                                 <>
-                                    <div className=' productLine w-100  row  rounded    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
+                                    <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
                                         <div className='col-2  productPic d-flex align-items-center px-2  '>
                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                             <img className=' w-100' src={image1} /></div>
@@ -593,7 +593,7 @@ function ShabbatMenu(props) {
                                         {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                             category[key].map(product =>
                                                 <>
-                                                    <div className=' productLine w-100  row  rounded    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
+                                                    <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
                                                         <div className='col-2  productPic d-flex align-items-center px-2  '>
                                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                             <img className=' w-100' src={image1} /></div>
