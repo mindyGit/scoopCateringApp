@@ -474,7 +474,7 @@ function ShabbatMenu(props) {
                                 </div>
 
                             </div>
-                            <div className='categoryList rounded  d-flex flex-column  py-2 '>
+                            <div className='categoryList   d-flex flex-column  py-2 '>
 
                                 {categories && categories.map((category, index) => (
                                     <>
