@@ -451,10 +451,10 @@ function ShabbatMenu(props) {
             <h4 className=' goldColor mt-2 text-center'>{i18.t('menuTitle')}</h4>
 
 
-            <div className='row  swithDir    col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
+            <div className='row  swithDir  justify-content-center  col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
                 {!isMobile && !isTablet && (
 
-                    <div className='col-md-2 '>
+                    <div className='  leftColumn'>
                         <div className='' >
                             <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom" aria-label=".form-select-sm example" style={{
                                 width: '100%', fontSize: '15px'
@@ -496,7 +496,7 @@ function ShabbatMenu(props) {
 
                     </div>
                 )}
-                <div className=' col-md-7   col-sm-12  pageContent swithSide    ' >
+                <div className='    col-sm-12  pageContent swithSide   middleColumn ' >
                     <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}>
                         <div className='searchResults d-none' >
 
@@ -676,7 +676,7 @@ function ShabbatMenu(props) {
 
                 </div>
                 {!isMobile && !isTablet && (
-                    <div className='col-md-3 '  >
+                    <div className=' rightColumn'  >
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
                             <div className='  mb-3 '  >
                                 <div className='actionSection rounded  ' >

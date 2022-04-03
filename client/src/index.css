@@ -663,6 +663,20 @@ button.outSvgSize:hover {
   border-radius: 10px !important;
 }
 
+.leftColumn {
+  width: 14% !important;
+}
+
+.middleColumn {
+  width: 55% !important;
+
+}
+
+.rightColumn {
+  width: 23% !important;
+
+}
+
 .actionSection {
   border: 2px solid rgb(0, 0, 0, 0.05);
   box-shadow: 0 3px 8px 0 rgb(0 0 0 / 8%);
