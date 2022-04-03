@@ -532,7 +532,7 @@ function ShabbatMenu(props) {
                                             </div>
                                         </div>
 
-                                        <div className='col-4 px-4 h-100'>
+                                        <div className='col-4 px-3 h-100'>
                                             <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
                                                 <div className='col-5'></div>
                                                 <div className='price productPrice font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber ' >14.90 &#8362; </div>
@@ -752,18 +752,21 @@ function ShabbatMenu(props) {
 
                                             <img className=' w-100 ' src={image1} /></div>
 
-                                        <div className='col-8' >
+                                        <div className='col-8 px-2' >
                                             <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
-                                            <div className='d-flex row  align-items-center'>
+                                            <div className='d-flex row justify-content-between  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
                                                     <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                     <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                 </div>
-                                                <div className='col-6 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                             </div>
 
                                         </div>
+
+
+
                                     </div>
 
 
@@ -779,18 +782,20 @@ function ShabbatMenu(props) {
                                             <img className=' w-100 ' src={image1} />
                                         </div>
 
-                                        <div className='col-8' >
-                                            <div className={`productName col-12   p-0  ${align} font-medium`}> תבנית חד"פ</div>
-                                            <div className='d-flex row  align-items-center'>
+                                        <div className='col-8 px-2' >
+                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
+                                            <div className='d-flex row justify-content-between  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
                                                     <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                     <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                 </div>
-                                                <div className='col-6 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                             </div>
 
                                         </div>
+
+
                                     </div>
 
 
@@ -807,19 +812,21 @@ function ShabbatMenu(props) {
                                             <img className=' w-100 ' src={image1} />
                                         </div>
 
-                                        <div className='col-8' >
-                                            <div className={`productName col-12   p-0  ${align} font-medium `}> תבנית חד"פ</div>
-                                            <div className='d-flex row  align-items-center'>
+                                        <div className='col-8 px-2' >
+                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
+                                            <div className='d-flex row justify-content-between  align-items-center'>
                                                 <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
                                                     <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
                                                     <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                     <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                 </div>
-                                                <div className='col-6 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                             </div>
-                                            {/* <div className="col-1" onClick={() => deleteItem(item.product._id)}> <i class="fas fa-trash-alt "></i></div> */}
-                                            {/* <div className="col-1"> <img style={{ width: '17px' }} src={deleteIcom} /></div> */}
+
                                         </div>
+
+
+
                                     </div>
 
 
