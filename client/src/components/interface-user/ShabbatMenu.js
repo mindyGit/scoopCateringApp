@@ -463,9 +463,9 @@ function ShabbatMenu(props) {
                                 <option value="1">{i18.t('shabatMenu')}</option>
                                 <option value="2">{i18.t('passover')}</option>
                             </select>
-                            <div class="mb-3 d-flex row px-2" style={{ fontSize: 'medium' }}>
-                                <div className='col-10 '>
-                                    <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 p-0" onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
+                            <div class="mb-3 d-flex row justify-content-center" style={{ fontSize: '16px' }}>
+                                <div className='col-9 p-0 '>
+                                    <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 " onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
 
                                 </div>
 
