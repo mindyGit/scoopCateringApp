@@ -619,7 +619,7 @@ function ShabbatMenu(props) {
                                                             </div>
                                                         </div>
 
-                                                        <div className='col-4 px-4 h-100'>
+                                                        <div className='col-4 px-3 h-100'>
                                                             <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
                                                                 <div className='col-5'></div>
                                                                 <div className='price productPrice font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber ' >14.90 &#8362; </div>
