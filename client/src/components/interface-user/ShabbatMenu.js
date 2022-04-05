@@ -194,40 +194,6 @@ function ShabbatMenu(props) {
     }
 
 
-    // function searchProduct(e) {
-    //     let searchWord_ = e.target.value
-    //     $('.shabatMenu').addClass('d-none')
-    //     let filteredProducts = []
-    //     filteredProducts = products && products.filter(
-    //         product => {
-    //             if (language != "he")
-    //                 return (
-    //                     product && product
-    //                         .name
-    //                         .toLowerCase()
-    //                         .includes(searchWord_.toLowerCase())
-    //                 );
-    //             else
-    //                 return (
-    //                     product && product
-    //                         .hebrewName
-    //                         .toLowerCase()
-    //                         .includes(searchWord_.toLowerCase())
-    //                 );
-    //         }
-    //     );
-    //     if (searchWord_ == '') {
-    //         setSerchResults([])
-    //         $('.shabatMenu').removeClass('d-none')
-    //     }
-
-    //     else
-    //         setSerchResults(filteredProducts)
-
-    // }
-
-
-
     function searchProduct(searchWord_) {
         // let searchWord_ = e.target.value
 
@@ -456,7 +422,7 @@ function ShabbatMenu(props) {
 
                     <div className='  leftColumn'>
                         <div className='' >
-                            <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom" aria-label=".form-select-sm example" style={{
+                            <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
                                 width: '100%', fontSize: '15px'
                             }}>
 
@@ -480,9 +446,9 @@ function ShabbatMenu(props) {
                                     <>
 
 
-                                        <a className='' href={'#' + category.name}>
+                                        <a className='text-center' href={'#' + category.name}>
 
-                                            <button className={index == 0 ? 'bg-white categoryButton border-0' : 'bg-white categoryButton'} id={category._id} onClick={() => categorySelection(category._id)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
+                                            <button className={index == 0 ? 'bg-white categoryButton border-0 ' : 'bg-white categoryButton '} id={category._id} onClick={() => categorySelection(category._id)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
 
 
                                         </a>
@@ -515,8 +481,8 @@ function ShabbatMenu(props) {
                                                 <div className='productName font-weight-bold ' style={{ fontSize: '22px' }}>  {language == "he" ? product.hebrewName : product.name}</div>
 
 
-                                                <div class="amountOption   pb-1 pt-1 pl-0 " id={product._id}>
-                                                    <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
+                                                <div class="amountOption pl-0 " id={product._id}>
+                                                    <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom  font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
                                                         <option value=" ">{i18.t('selectAmount')}</option>
 
                                                         <option value="1">500 גר'</option>
@@ -535,7 +501,7 @@ function ShabbatMenu(props) {
                                         <div className='col-4 px-3 h-100'>
                                             <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
                                                 <div className='col-5'></div>
-                                                <div className='price productPrice font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber ' >14.90 &#8362; </div>
+                                                <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
                                             </div>
 
@@ -577,7 +543,7 @@ function ShabbatMenu(props) {
 
                                 <>
 
-                                    <div className='' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
+                                    <div className='rounded-custom customShadow' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
                                         <div >
                                             <div className=' h-100 w-100'>
                                                 <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
@@ -602,8 +568,8 @@ function ShabbatMenu(props) {
                                                                 <div className='productName font-weight-bold ' style={{ fontSize: '22px' }}>  {language == "he" ? product.hebrewName : product.name}</div>
 
 
-                                                                <div class="amountOption   pb-1 pt-1 pl-0 " id={product._id}>
-                                                                    <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
+                                                                <div class="amountOption  pl-0 " id={product._id}>
+                                                                    <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom  font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
                                                                         <option value=" ">{i18.t('selectAmount')}</option>
 
                                                                         <option value="1">500 גר'</option>
@@ -622,7 +588,7 @@ function ShabbatMenu(props) {
                                                         <div className='col-4 px-3 h-100'>
                                                             <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
                                                                 <div className='col-5'></div>
-                                                                <div className='price productPrice font-weight-bold  goldColor p-0 mr-0 col-6 fontNumber ' >14.90 &#8362; </div>
+                                                                <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
                                                             </div>
 
@@ -678,71 +644,71 @@ function ShabbatMenu(props) {
                 {!isMobile && !isTablet && (
                     <div className=' rightColumn'  >
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
-                            <div className='  mb-3 '  >
-                                <div className='actionSection rounded  ' >
-                                    <div className='py-2 col-12 text-center'>שלום,
-                                        {currentUser ?
-                                            <>
+                            <div className='  mb-3 actionSection col-12 p-0'  >
 
-                                                {currentUser.email}
+                                <div className='py-2 col-12 text-center'>שלום,
+                                    {currentUser ?
+                                        <>
 
-                                                <div className="w-100 text-center mt-2">
-                                                    <Button variant="link" onClick={handleLogout}>
-                                                        Log Out
-                                                    </Button>
-                                                </div>
-                                            </> :
-                                            <>
-                                                {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
-                                                <a className='px-2 text-black ' onClick={toggle} > התחבר </a>
-                                                {/* <button onClick={set_user} >click</button> */}
-                                            </>
+                                            {currentUser.email}
 
-                                        }
-                                    </div>
+                                            <div className="w-100 text-center mt-2">
+                                                <Button variant="link" onClick={handleLogout}>
+                                                    Log Out
+                                                </Button>
+                                            </div>
+                                        </> :
+                                        <>
+                                            {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
+                                            <a className='px-2 text-black ' onClick={toggle} style={{ textDecoration: "underline" }} > התחבר </a>
+                                            {/* <button onClick={set_user} >click</button> */}
+                                        </>
 
-                                    <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
-                                        <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
-                                        <div className='  fontNumber'> (<span className="numItems mx-1">{numItems}</span>)</div>
+                                    }
+                                </div>
 
-                                    </div>
+                                <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
+                                    <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
+                                    <div className='  '> (<span className="numItems mx-1">{numItems}</span>)</div>
 
-                                    <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
-                                        {cart && cart.map(item =>
-                                            <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
+                                </div>
 
-                                                <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
-                                                <div className='col-12 row  align-items-end     justify-content-between'>
-                                                    <div className=' col-4 p-0 amountToBuy  goldColor d-flex  p-0  align-items-end' style={{ width: 'fit-content' }}>
-                                                        <span class=" px-1 " onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ fontSize: '25px', height: '27px' }}>+</span>
-                                                        <input type="text" value={item.Amount} className=' text-black bg-white pt-0 pb-0    small_input_number fontNumber gold-border' />
-                                                        <span class=" px-1 " onClick={() => changeAmount(item.product._id, "minusToCart")} style={{ fontSize: '25px', height: '27px' }}>-</span>
-                                                    </div>
+                                <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
+                                    {cart && cart.map(item =>
+                                        <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
 
-
-
-
-                                                    <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
-
-
-
-
-
-                                                    <div className="col-1 d-flex align-items-center" onClick={() => deleteItem(item.product._id)}> <img style={{ width: '17px' }} src={deleteIcom} /></div>
+                                            <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
+                                            <div className='col-12 row  align-items-end     justify-content-between'>
+                                                <div className=' col-4 p-0 amountToBuy  goldColor d-flex  p-0  align-items-end' style={{ width: 'fit-content' }}>
+                                                    <span class=" px-1 " onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ fontSize: '25px', height: '27px' }}>+</span>
+                                                    <input type="text" value={item.Amount} className=' text-black bg-white pt-0 pb-0    small_input_number fontNumber gold-border' />
+                                                    <span class=" px-1 " onClick={() => changeAmount(item.product._id, "minusToCart")} style={{ fontSize: '25px', height: '27px' }}>-</span>
                                                 </div>
 
+
+
+
+                                                <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+
+
+
+
+
+                                                <div className="col-1 d-flex align-items-center" onClick={() => deleteItem(item.product._id)}> <img style={{ width: '17px' }} src={deleteIcom} /></div>
                                             </div>
 
-                                        )}
+                                        </div>
 
+                                    )}
 
-
-                                    </div>
 
 
                                 </div>
+
+
+
                             </div>
-                            <div className=' col-12 rounded px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)', boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
+                            <div className=' col-12 rounded-custom customShadow px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)' }}>
                                 <h5 className='font-weight-bold '>אולי תרצו גם...</h5>
                                 <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
                                     <div className='row d-flex  px-0'>
@@ -837,7 +803,7 @@ function ShabbatMenu(props) {
 
                             </div>
 
-                            <div className='  col-12 rounded px-4 py-2 mb-3' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
+                            <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
                                 <div className=' text-center'>   <label className='font-medium '>הערות להזמנה </label></div>
 
                                 <textarea className='w-100 border-0 border-bottom border-dark customTextarea' maxlength="250" ng-trim="false" ></textarea>
@@ -851,8 +817,8 @@ function ShabbatMenu(props) {
 
                             </div>
 
-                            <div className='rounded  col-12 p-0' style={{ boxShadow: '0 3px 8px 0 rgb(0 0 0 / 8%)' }}>
-                                <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '0.25rem 0.25rem 0rem 0rem' }}>
+                            <div className='rounded-custom customShadow  col-12 p-0' >
+                                <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)' }}>
 
                                     <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
                                     <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
@@ -866,7 +832,7 @@ function ShabbatMenu(props) {
 
                             </div>
 
-                            <button className=" d-block col-12 actionSection rounded text-white bg-gold px-3 py-2  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
+                            <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-2  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
 
 
                         </div>
