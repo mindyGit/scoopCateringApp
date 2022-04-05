@@ -420,7 +420,7 @@ function ShabbatMenu(props) {
             <div className='row  swithDir  justify-content-center  col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
                 {!isMobile && !isTablet && (
 
-                    <div className='  leftColumn'>
+                    <div className='   leftColumn'>
                         <div className='' >
                             <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
                                 width: '100%', fontSize: '15px'
@@ -462,11 +462,11 @@ function ShabbatMenu(props) {
 
                     </div>
                 )}
-                <div className='    col-sm-12  pageContent swithSide   middleColumn ' >
+                <div className='   mt-1 col-sm-12  pageContent swithSide   middleColumn ' >
                     <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}>
-                        <div className='searchResults d-none' >
+                        <div className='searchResults d-none mt-1' >
 
-                            <h4 className='swithSide'><span className='notFound '> לא נמצאו </span>תוצאות עבור : {searchWord}</h4>
+                            {/* <h4 className='swithSide'><span className='notFound '> לא נמצאו </span>תוצאות עבור : {searchWord}</h4> */}
 
 
 
@@ -499,7 +499,7 @@ function ShabbatMenu(props) {
                                         </div>
 
                                         <div className='col-4 px-3 h-100'>
-                                            <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
+                                            <div className='d-flex col-12 mx-0 align-items-start row justify-content-between h-50 mt-1'>
                                                 <div className='col-5'></div>
                                                 <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
@@ -586,7 +586,7 @@ function ShabbatMenu(props) {
                                                         </div>
 
                                                         <div className='col-4 px-3 h-100'>
-                                                            <div className='d-flex align-items-start row justify-content-between h-50 mt-1'>
+                                                            <div className='d-flex align-items-start col-12 mx-0 row justify-content-between h-50 mt-1'>
                                                                 <div className='col-5'></div>
                                                                 <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
@@ -642,9 +642,9 @@ function ShabbatMenu(props) {
 
                 </div>
                 {!isMobile && !isTablet && (
-                    <div className=' rightColumn'  >
+                    <div className='  rightColumn'  >
                         <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
-                            <div className='  mb-3 actionSection col-12 p-0'  >
+                            <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
                                 <div className='py-2 col-12 text-center'>שלום,
                                     {currentUser ?
