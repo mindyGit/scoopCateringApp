@@ -18,7 +18,7 @@ import Cart from '../../data/imges/cart.png'
 import salads from '../../data/imges/foodCategories/Pictures/fishh.png'
 import appetizers from '../../data/imges/foodCategories/Pictures/shabbat.png'
 import bakery from '../../data/imges/foodCategories/Pictures/bakery.png'
-
+import commentIcon from '../../data/imges/comment.png'
 import searchIcom_ from '../../data/imges/searchIcom_.png';
 import desserts from '../../data/imges/foodCategories/Pictures/desserts.png'
 import image1 from '../../data/imges/foodCategories/Pictures/image1.png'
@@ -97,7 +97,29 @@ function ShabbatMenu(props) {
     //   //debugger
     //   props.setCartRedux(cart)
     // }
+    function scrollTopFunc() {
+        window.scrollTo(0, 0)
+        // var windowScrollHeight = $(window).scrollTop()
+        // $('#myDiv').scrollTop = $('#myDiv').scrollTop - windowScrollHeight
+    }
+    $(window).bind('scroll', function () {
+        var windowScrollHeight = $(window).scrollTop()
+        if (windowScrollHeight > 100)
+            $('.scrollTopButton').removeClass('d-none')
+        else
+            $('.scrollTopButton').addClass('d-none')
+        // console.log(windowScrollHeight);
+        // $("div.fixed").offset().top
+        // var scrollPlusWindowHeight = $(window).scrollTop() + $(window).height();
+        var scrollPlusWindowHeight = $(".fixed-content").offset().top
 
+        var fixedContentHeight = $(".fixed-content").height();
+        if (windowScrollHeight > fixedContentHeight) {
+            $(".fixed-content").addClass("fixed");
+        } else {
+            $(".fixed-content").removeClass("fixed");
+        }
+    });
     function set_user() {
         debugger
 
@@ -239,7 +261,10 @@ function ShabbatMenu(props) {
 
     }
 
-
+    function clearSearch() {
+        $('.inputOf_Search').val('')
+        searchProduct('')
+    }
     function useLocalStorage(key, initialValue) {
 
         const [storedValue, setStoredValue] = useState(() => {
@@ -389,8 +414,10 @@ function ShabbatMenu(props) {
 
 
     return (
-        < >
+        <div id="myDiv">
 
+
+            <button className='bg-black text-white d-none scrollTopButton' style={{ position: 'fixed', top: '90%', left: '4%' }} onClick={scrollTopFunc}>Top</button>
             <Modal
                 isShowing={isShowing}
                 hide={toggle}
@@ -421,9 +448,9 @@ function ShabbatMenu(props) {
                 {!isMobile && !isTablet && (
 
                     <div className='   leftColumn'>
-                        <div className='' >
-                            <select class="text-center  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
-                                width: '100%', fontSize: '15px'
+                        <div className='fixed-content h-100' >
+                            <select class="text-center   mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
+                                fontSize: '15px'
                             }}>
 
                                 <option value="1">{i18.t('shabatMenu')}</option>
@@ -462,11 +489,13 @@ function ShabbatMenu(props) {
 
                     </div>
                 )}
-                <div className='   mt-1 col-sm-12  pageContent swithSide   middleColumn ' >
-                    <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}>
+                <div className='  mt-1 col-sm-12 mx-4 pageContent swithSide   middleColumn ' >
+                    {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
+                    <div className='overflow-auto pb-3 sidColumn scrollable-content ' id='xxl' >
+
                         <div className='searchResults d-none mt-1' >
 
-                            {/* <h4 className='swithSide'><span className='notFound '> לא נמצאו </span>תוצאות עבור : {searchWord}</h4> */}
+                            <h4 className='swithSide notFound'><span className=' '> לא נמצאו </span>תוצאות עבור : {searchWord} <button onClick={clearSearch}>clear</button></h4>
 
 
 
@@ -560,7 +589,7 @@ function ShabbatMenu(props) {
                                             category[key].map(product =>
                                                 <>
                                                     <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
-                                                        <div className='col-2  productPic d-flex align-items-center px-2  '>
+                                                        <div className='col-2  productPic d-flex align-items-center px-2  ' style={{ width: '140px' }}>
                                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                             <img className=' w-100' src={image1} /></div>
                                                         <div className='col-5 p-0 ' id={product._id}>
@@ -642,92 +671,158 @@ function ShabbatMenu(props) {
 
                 </div>
                 {!isMobile && !isTablet && (
-                    <div className='  rightColumn'  >
-                        <div className=' pb-4  sidColumn' style={{ height: '590px', overflowY: 'scroll' }}>
-                            <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
+                    <div className='  rightColumn px-0' >
+                        <div className='fixed-content'>
+                            <div className=' pb-4  sidColumn ' style={{ overflowY: 'scroll' }}>
 
-                                <div className='py-2 col-12 text-center'>שלום,
-                                    {currentUser ?
-                                        <>
+                                <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
-                                            {currentUser.email}
+                                    <div className='py-2 col-12 text-center'>שלום,
+                                        {currentUser ?
+                                            <>
 
-                                            <div className="w-100 text-center mt-2">
-                                                <Button variant="link" onClick={handleLogout}>
-                                                    Log Out
-                                                </Button>
-                                            </div>
-                                        </> :
-                                        <>
-                                            {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
-                                            <a className='px-2 text-black ' onClick={toggle} style={{ textDecoration: "underline" }} > התחבר </a>
-                                            {/* <button onClick={set_user} >click</button> */}
-                                        </>
+                                                {currentUser.email}
 
-                                    }
-                                </div>
+                                                <div className="w-100 text-center mt-2">
+                                                    <Button variant="link" onClick={handleLogout}>
+                                                        Log Out
+                                                    </Button>
+                                                </div>
+                                            </> :
+                                            <>
+                                                {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
+                                                <a className='px-2 text-black ' onClick={toggle} style={{ textDecoration: "underline" }} > התחבר </a>
+                                                {/* <button onClick={set_user} >click</button> */}
+                                            </>
 
-                                <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
-                                    <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
-                                    <div className='  '> (<span className="numItems mx-1">{numItems}</span>)</div>
+                                        }
+                                    </div>
 
-                                </div>
+                                    <div className='bg-gold py-3  text-white d-flex  justify-content-center  '>
+                                        <div className='mx-2 font-medium'>{i18.t('ShoppingCart')}</div>
+                                        <div className='  '> (<span className="numItems mx-1">{numItems}</span>)</div>
 
-                                <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
-                                    {cart && cart.map(item =>
-                                        <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
+                                    </div>
 
-                                            <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
-                                            <div className='col-12 row  align-items-end     justify-content-between'>
-                                                <div className=' col-4 p-0 amountToBuy  goldColor d-flex  p-0  align-items-end' style={{ width: 'fit-content' }}>
-                                                    <span class=" px-1 " onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ fontSize: '25px', height: '27px' }}>+</span>
-                                                    <input type="text" value={item.Amount} className=' text-black bg-white pt-0 pb-0    small_input_number fontNumber gold-border' />
-                                                    <span class=" px-1 " onClick={() => changeAmount(item.product._id, "minusToCart")} style={{ fontSize: '25px', height: '27px' }}>-</span>
+                                    <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
+                                        {cart && cart.map(item =>
+                                            <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
+
+                                                <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
+                                                <div className='col-12 row  align-items-end     justify-content-between'>
+                                                    <div className=' col-4 p-0 amountToBuy  goldColor d-flex  p-0  align-items-end' style={{ width: 'fit-content' }}>
+                                                        <span class=" px-1 " onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ fontSize: '25px', height: '27px' }}>+</span>
+                                                        <input type="text" value={item.Amount} className=' text-black bg-white pt-0 pb-0    small_input_number fontNumber gold-border' />
+                                                        <span class=" px-1 " onClick={() => changeAmount(item.product._id, "minusToCart")} style={{ fontSize: '25px', height: '27px' }}>-</span>
+                                                    </div>
+
+
+
+
+                                                    <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+
+
+
+
+
+                                                    <div className="col-1 d-flex align-items-center" onClick={() => deleteItem(item.product._id)}> <img style={{ width: '17px' }} src={deleteIcom} /></div>
                                                 </div>
 
-
-
-
-                                                <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
-
-
-
-
-
-                                                <div className="col-1 d-flex align-items-center" onClick={() => deleteItem(item.product._id)}> <img style={{ width: '17px' }} src={deleteIcom} /></div>
                                             </div>
+
+                                        )}
+
+
+
+                                    </div>
+
+
+
+                                </div>
+                                <div className=' col-12 rounded-custom customShadow px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)' }}>
+                                    <h5 className='font-weight-bold '>אולי תרצו גם...</h5>
+                                    <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
+                                        <div className='row d-flex  px-0'>
+
+                                            <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                                {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
+
+                                                <img className=' w-100 ' src={image1} /></div>
+
+                                            <div className='col-8 px-2' >
+                                                <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
+                                                <div className='d-flex row justify-content-between  align-items-center'>
+                                                    <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
+                                                        <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
+                                                        <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
+                                                        <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
+                                                    </div>
+                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                </div>
+
+                                            </div>
+
+
 
                                         </div>
 
-                                    )}
 
 
+                                    </div>
 
-                                </div>
+                                    <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }}  >
+                                        <div className='row d-flex px-0'>
 
+                                            <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                                {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
 
-
-                            </div>
-                            <div className=' col-12 rounded-custom customShadow px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)' }}>
-                                <h5 className='font-weight-bold '>אולי תרצו גם...</h5>
-                                <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
-                                    <div className='row d-flex  px-0'>
-
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
-
-                                            <img className=' w-100 ' src={image1} /></div>
-
-                                        <div className='col-8 px-2' >
-                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
-                                            <div className='d-flex row justify-content-between  align-items-center'>
-                                                <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
-                                                    <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
-                                                    <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
-                                                    <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
-                                                </div>
-                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                <img className=' w-100 ' src={image1} />
                                             </div>
+
+                                            <div className='col-8 px-2' >
+                                                <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
+                                                <div className='d-flex row justify-content-between  align-items-center'>
+                                                    <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
+                                                        <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
+                                                        <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
+                                                        <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
+                                                    </div>
+                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                </div>
+
+                                            </div>
+
+
+                                        </div>
+
+
+
+                                    </div>
+
+
+                                    <div className={`productItem row justify-content-around    py-2 px-2 ${side} `}   >
+                                        <div className='row d-flex px-0'>
+
+                                            <div className='product_Pic col-4 d-flex align-items-center px-2' >
+                                                {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
+
+                                                <img className=' w-100 ' src={image1} />
+                                            </div>
+
+                                            <div className='col-8 px-2' >
+                                                <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
+                                                <div className='d-flex row justify-content-between  align-items-center'>
+                                                    <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
+                                                        <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
+                                                        <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
+                                                        <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
+                                                    </div>
+                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                </div>
+
+                                            </div>
+
+
 
                                         </div>
 
@@ -739,107 +834,47 @@ function ShabbatMenu(props) {
 
                                 </div>
 
-                                <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }}  >
-                                    <div className='row d-flex px-0'>
-
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
-
-                                            <img className=' w-100 ' src={image1} />
-                                        </div>
-
-                                        <div className='col-8 px-2' >
-                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
-                                            <div className='d-flex row justify-content-between  align-items-center'>
-                                                <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
-                                                    <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
-                                                    <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
-                                                    <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
-                                                </div>
-                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
-                                            </div>
-
-                                        </div>
+                                <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
+                                    <div className=' text-center'>   <label className='font-medium '>{i18.t('orderComment')} </label></div>
+                                    <div className='m-auto'>
+                                        <img className='mb-3' style={{ width: '15px' }} src={commentIcon} />
+                                        <textarea className='  m-auto w94 px-4   customTextarea ' rows={1} maxlength="250" ng-trim="false"></textarea>
 
 
                                     </div>
+                                    {/* <textarea auto-grow="" ng-model="vm.order.comment" name="" id="orderComments" translate-once-placeholder="orderCart.ADD_COMMENT" rows="1" cols="10" class="comment-textarea-cart change ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" maxlength="250" style="height: 55px;" ng-trim="false" placeholder="הקלידו כאן..."></textarea> */}
+
+
 
 
 
                                 </div>
 
+                                <div className='rounded-custom customShadow  col-12 p-0' >
+                                    <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '10px 10px 0px 0px' }}>
 
-                                <div className={`productItem row justify-content-around    py-2 px-2 ${side} `}   >
-                                    <div className='row d-flex px-0'>
+                                        <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
+                                        <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
+                                    </div>
+                                    <div className="d-flex mb-5  pt-3 pb-2 px-4" >
 
-                                        <div className='product_Pic col-4 d-flex align-items-center px-2' >
-                                            {/* <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '15px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.4rem' }}>מומלץ השבוע!</p></div> */}
-
-                                            <img className=' w-100 ' src={image1} />
-                                        </div>
-
-                                        <div className='col-8 px-2' >
-                                            <div className={`productName col-12  p-0  ${align} font-medium`}> תבנית חד"פ</div>
-                                            <div className='d-flex row justify-content-between  align-items-center'>
-                                                <div className='amountToBuy col-6 goldColor d-flex    align-items-center' style={{ width: 'fit-content' }}>
-                                                    <span className="mt-2" onClick={() => changeAmount("plus")} style={{ fontSize: '25px', height: '44px' }}>+</span>
-                                                    <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
-                                                    <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
-                                                </div>
-                                                <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
-                                            </div>
-
-                                        </div>
-
-
+                                        <div className="col-9 swithSide font-medium">סה"כ:</div>
+                                        <div className="col-3 numItems fontNumber font-weight-bold">{parseFloat(total).toFixed(2)}</div>
 
                                     </div>
 
-
-
                                 </div>
+
+                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-2  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
 
 
 
                             </div>
-
-                            <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
-                                <div className=' text-center'>   <label className='font-medium '>הערות להזמנה </label></div>
-
-                                <textarea className='w-100 border-0 border-bottom border-dark customTextarea' maxlength="250" ng-trim="false" ></textarea>
-
-
-                                {/* <textarea auto-grow="" ng-model="vm.order.comment" name="" id="orderComments" translate-once-placeholder="orderCart.ADD_COMMENT" rows="1" cols="10" class="comment-textarea-cart change ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" maxlength="250" style="height: 55px;" ng-trim="false" placeholder="הקלידו כאן..."></textarea> */}
-
-
-
-
-
-                            </div>
-
-                            <div className='rounded-custom customShadow  col-12 p-0' >
-                                <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)' }}>
-
-                                    <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
-                                    <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
-                                </div>
-                                <div className="d-flex mb-5  pt-3 pb-2 px-4" >
-
-                                    <div className="col-9 swithSide font-medium">סה"כ:</div>
-                                    <div className="col-3 numItems fontNumber font-weight-bold">{parseFloat(total).toFixed(2)}</div>
-
-                                </div>
-
-                            </div>
-
-                            <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-2  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
-
-
                         </div>
                     </div>
                 )}
             </div>
-        </>
+        </div>
     )
 }
 const mapStateToProps = (state) => {

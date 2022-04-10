@@ -105,6 +105,7 @@ export const He = {
         anotherPhone: 'טלפון נוסף',
         address: 'כתובת',
         OrderSummary: 'סיכום הזמנה',
+        orderComment: 'הערות להזמנה',
         Items: 'פריטים',
         InterimTotal: 'סך ביניים',
         ShippingCost: 'עלות המשלוח',

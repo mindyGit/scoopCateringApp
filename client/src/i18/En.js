@@ -90,6 +90,7 @@ export const En = {
         anotherPhone: 'Another Phone',
         address: 'Address',
         OrderSummary: 'Order Summary',
+        orderComment: 'Comments to order',
         Items: 'Items',
         InterimTotal: 'Interim Total',
         ShippingCost: 'Shipping Cost',

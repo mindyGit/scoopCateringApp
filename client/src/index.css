@@ -28,6 +28,34 @@
     url('../src/data/fonts/webfont_files/ploni-medium-aaa.woff') format('woff');
 }
 
+
+
+
+
+
+.fixed-content {
+  position: absolute;
+
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+
+}
+
+/* body{
+  margin:0px;
+  height:100%;
+  width:100%;
+} */
+
+.scrollable-content {
+  position: absolute;
+
+
+}
+
 /* webfonts/ploni-regular-aaa.woff
 webfonts/ploni-regular-aaa.woff2 */
 
@@ -71,12 +99,25 @@ h1 {
   line-height: 1 !important;
   font-size: 16px !important;
   font-weight: 400;
+  resize: none !important;
+  border: none !important;
+  border-bottom: 1px solid #C4C4C4 !important;
+
 }
+
+.w94 {
+  width: 94%;
+}
+
+/* 
+.border-bottomm {
+  
+} */
 
 .customTextarea:focus-visible {
   border: none !important;
   outline: none !important;
-  border-bottom: 2px solid #212529 !important;
+  border-bottom: 2px solid #C4C4C4 !important;
 }
 
 .font-medium {
