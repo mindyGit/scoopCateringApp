@@ -60,7 +60,7 @@
 webfonts/ploni-regular-aaa.woff2 */
 
 body {
-  cursor: pointer;
+  /* cursor: pointer; */
   /* background-image:url('./data/imges/backgroundImg.png') !important; */
 
   /* background: black !important; */
@@ -808,6 +808,7 @@ button.outSvgSize:hover {
 }
 
 .AddToCart {
+  cursor: pointer;
   padding-bottom: 1rem;
   height: 15%;
   padding-right: 2rem;

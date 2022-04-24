@@ -572,7 +572,7 @@ function ShabbatMenu(props) {
 
                                 <>
 
-                                    <div className='rounded-custom customShadow' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
+                                    <div className='' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
                                         <div >
                                             <div className=' h-100 w-100'>
                                                 <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
@@ -836,7 +836,7 @@ function ShabbatMenu(props) {
 
                                 <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
                                     <div className=' text-center'>   <label className='font-medium '>{i18.t('orderComment')} </label></div>
-                                    <div className='d-flex'>
+                                    <div className='d-flex col-12'>
                                         <img className='mx-1' style={{ width: '15px' }} src={commentIcon} />
                                         <textarea className='  m-auto w94    customTextarea ' rows={1} maxlength="250" ng-trim="false"></textarea>
 
@@ -853,13 +853,13 @@ function ShabbatMenu(props) {
                                 <div className='rounded-custom customShadow  col-12 p-0' >
                                     <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '10px 10px 0px 0px' }}>
 
-                                        <div className="col-9 swithSide font-medium"> סה"כ מוצרים:</div>
-                                        <div className="col-3 numItems fontNumber font-weight-bold">{numItems}</div>
+                                        <div className="col-7 swithSide font-medium"> סה"כ מוצרים:</div>
+                                        <div className="col-5 text-start numItems fontNumber font-weight-bold">{numItems}</div>
                                     </div>
                                     <div className="d-flex mb-5  pt-3 pb-2 px-4" >
 
-                                        <div className="col-9 swithSide font-medium">סה"כ:</div>
-                                        <div className="col-3 numItems fontNumber font-weight-bold">{parseFloat(total).toFixed(2)}</div>
+                                        <div className="col-7 swithSide font-medium">סה"כ:</div>
+                                        <div className="col-5 text-start numItems fontNumber font-weight-bold">&#8362; {parseFloat(total).toFixed(2)}</div>
 
                                     </div>
 
