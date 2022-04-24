@@ -467,7 +467,7 @@ function ShabbatMenu(props) {
                                 </div>
 
                             </div>
-                            <div className='categoryList   d-flex flex-column  py-2 '>
+                            <div className='categoryList   d-flex flex-column  pb-2 '>
 
                                 {categories && categories.map((category, index) => (
                                     <>
@@ -501,7 +501,7 @@ function ShabbatMenu(props) {
 
                             {serchResults && serchResults.map((product) =>
                                 <>
-                                    <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
+                                    <div className=' productLine w-100  d-flex      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                         <div className='col-2  productPic d-flex align-items-center px-2  '>
                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                             <img className=' w-100' src={image1} /></div>
@@ -528,7 +528,7 @@ function ShabbatMenu(props) {
                                         </div>
 
                                         <div className='col-4 px-3 h-100'>
-                                            <div className='d-flex col-12 mx-0 align-items-start row justify-content-between h-50 mt-1'>
+                                            <div className='d-flex col-12 mx-0 align-items-end row justify-content-between h-50 mt-1'>
                                                 <div className='col-5'></div>
                                                 <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
@@ -588,7 +588,7 @@ function ShabbatMenu(props) {
                                         {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                             category[key].map(product =>
                                                 <>
-                                                    <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '130px' }}>
+                                                    <div className=' productLine w-100  d-flex      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                                         <div className='col-2  productPic d-flex align-items-center px-2  ' style={{ width: '140px' }}>
                                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                             <img className=' w-100' src={image1} /></div>
@@ -615,7 +615,7 @@ function ShabbatMenu(props) {
                                                         </div>
 
                                                         <div className='col-4 px-3 h-100'>
-                                                            <div className='d-flex align-items-start col-12 mx-0 row justify-content-between h-50 mt-1'>
+                                                            <div className='d-flex align-items-end col-12 mx-0 row justify-content-between h-50 mt-1'>
                                                                 <div className='col-5'></div>
                                                                 <div className='price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ' >14.90 &#8362; </div>
 
@@ -704,12 +704,12 @@ function ShabbatMenu(props) {
 
                                     </div>
 
-                                    <div className="ShoppingCart_itemList  px-4 " style={{ maxWidth: '300px' }}>
+                                    <div className="ShoppingCart_itemList   " >
                                         {cart && cart.map(item =>
-                                            <div className={`productItem row  align-items-end    py-2 ${side} ${item.product._id}`}  >
+                                            <div className={`productItem   align-items-end    py-2 ${side} ${item.product._id}`}  >
 
                                                 <div className={`productName  col-12 font-weight-bold   ${align}`}> {language == "he" ? item.product.hebrewName : item.product.name}</div>
-                                                <div className='col-12 row  align-items-end     justify-content-between'>
+                                                <div className='col-12 d-flex  align-items-end     justify-content-between'>
                                                     <div className=' col-4 p-0 amountToBuy  goldColor d-flex  p-0  align-items-end' style={{ width: 'fit-content' }}>
                                                         <span class=" px-1 " onClick={() => changeAmount(item.product._id, "plusToCart")} style={{ fontSize: '25px', height: '27px' }}>+</span>
                                                         <input type="text" value={item.Amount} className=' text-black bg-white pt-0 pb-0    small_input_number fontNumber gold-border' />
@@ -719,7 +719,7 @@ function ShabbatMenu(props) {
 
 
 
-                                                    <div className='col-7 text-center p-0 price h6 mb-0 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                    <div className='col-7 text-center p-0 price h6 mb-0   goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
 
 
 
@@ -757,7 +757,7 @@ function ShabbatMenu(props) {
                                                         <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                         <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                     </div>
-                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                    <div className='col-6 price h6 mb-0 px-1   goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                                 </div>
 
                                             </div>
@@ -787,7 +787,7 @@ function ShabbatMenu(props) {
                                                         <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                         <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                     </div>
-                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                    <div className='col-6 price h6 mb-0 px-1   goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                                 </div>
 
                                             </div>
@@ -817,7 +817,7 @@ function ShabbatMenu(props) {
                                                         <input type="text" value="1" className='AmountInput p-0 text-black bg-white    m-1 my-0 small_input_number fontNumber gold-border' />
                                                         <span className="mt-2" onClick={() => changeAmount("minus")} style={{ fontSize: '25px', height: '44px' }}>-</span>
                                                     </div>
-                                                    <div className='col-6 price h6 mb-0 px-1 font-weight-bold  goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
+                                                    <div className='col-6 price h6 mb-0 px-1   goldColor fontNumber' >{parseFloat(14.90).toFixed(2)} &#8362; </div>
                                                 </div>
 
                                             </div>
@@ -865,7 +865,7 @@ function ShabbatMenu(props) {
 
                                 </div>
 
-                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-2  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
+                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-1  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
 
 
 
