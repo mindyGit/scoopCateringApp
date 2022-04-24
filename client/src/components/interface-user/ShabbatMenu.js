@@ -501,7 +501,7 @@ function ShabbatMenu(props) {
 
                             {serchResults && serchResults.map((product) =>
                                 <>
-                                    <div className=' productLine w-100  d-flex      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                    <div className=' productLine w-100  row     justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                         <div className='col-2  productPic d-flex align-items-center px-2  '>
                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                             <img className=' w-100' src={image1} /></div>
@@ -588,7 +588,7 @@ function ShabbatMenu(props) {
                                         {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                             category[key].map(product =>
                                                 <>
-                                                    <div className=' productLine w-100  d-flex      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                                    <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                                         <div className='col-2  productPic d-flex align-items-center px-2  ' style={{ width: '140px' }}>
                                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                             <img className=' w-100' src={image1} /></div>
@@ -836,9 +836,9 @@ function ShabbatMenu(props) {
 
                                 <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
                                     <div className=' text-center'>   <label className='font-medium '>{i18.t('orderComment')} </label></div>
-                                    <div className='m-auto'>
-                                        <img className='mb-3' style={{ width: '15px' }} src={commentIcon} />
-                                        <textarea className='  m-auto w94 px-4   customTextarea ' rows={1} maxlength="250" ng-trim="false"></textarea>
+                                    <div className='d-flex'>
+                                        <img className='mx-1' style={{ width: '15px' }} src={commentIcon} />
+                                        <textarea className='  m-auto w94    customTextarea ' rows={1} maxlength="250" ng-trim="false"></textarea>
 
 
                                     </div>
