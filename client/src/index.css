@@ -29,7 +29,9 @@
 }
 
 
-
+.font-weight-bold_ {
+  font-weight: 600 !important;
+}
 
 
 
@@ -808,7 +810,7 @@ button.outSvgSize:hover {
 }
 
 .AddToCart {
-  cursor: pointer;
+
   padding-bottom: 1rem;
   height: 15%;
   padding-right: 2rem;
@@ -1190,7 +1192,7 @@ button.outSvgSize:hover {
 .roundButton {
 
   border-radius: 1.5rem !important;
-
+  cursor: pointer;
 }
 
 .bg-gold {

@@ -449,7 +449,7 @@ function ShabbatMenu(props) {
 
                     <div className='   leftColumn'>
                         <div className='fixed-content h-100' >
-                            <select class="text-center   mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
+                            <select class="text-center w-100  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
                                 fontSize: '15px'
                             }}>
 
@@ -677,7 +677,7 @@ function ShabbatMenu(props) {
 
                                 <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
-                                    <div className='py-2 col-12 text-center'>שלום,
+                                    <div className='py-2 col-12 text-center font-weight-bold_'>שלום,
                                         {currentUser ?
                                             <>
 
@@ -691,7 +691,7 @@ function ShabbatMenu(props) {
                                             </> :
                                             <>
                                                 {/* <a className='px-2 text-black' onClick={() => props.history.push('/login')} href=""> התחבר </a> */}
-                                                <a className='px-2 text-black ' onClick={toggle} style={{ textDecoration: "underline" }} > התחבר </a>
+                                                <button className='px-2 text-black bg-transparent font-weight-bold_' onClick={toggle} style={{ textDecoration: "underline" }} > התחבר </button>
                                                 {/* <button onClick={set_user} >click</button> */}
                                             </>
 
@@ -851,12 +851,12 @@ function ShabbatMenu(props) {
                                 </div>
 
                                 <div className='rounded-custom customShadow  col-12 p-0' >
-                                    <div className="d-flex   pt-3 pb-2 px-4" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '10px 10px 0px 0px' }}>
+                                    <div className="d-flex   pt-3 pb-2 px-2" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '10px 10px 0px 0px' }}>
 
                                         <div className="col-7 swithSide font-medium"> סה"כ מוצרים:</div>
                                         <div className="col-5 text-start numItems fontNumber font-weight-bold">{numItems}</div>
                                     </div>
-                                    <div className="d-flex mb-5  pt-3 pb-2 px-4" >
+                                    <div className="d-flex mb-5  pt-3 pb-2 px-2" >
 
                                         <div className="col-7 swithSide font-medium">סה"כ:</div>
                                         <div className="col-5 text-start numItems fontNumber font-weight-bold">&#8362; {parseFloat(total).toFixed(2)}</div>
@@ -865,7 +865,7 @@ function ShabbatMenu(props) {
 
                                 </div>
 
-                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-1  w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
+                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-1 ml-0 w-100 border-0" onClick={() => props.history.push('/Checkout')} >המשך לתשלום</button>
 
 
 
