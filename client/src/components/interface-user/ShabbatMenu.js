@@ -805,7 +805,7 @@ function ShabbatMenu(props) {
 
 
                                 </div>
-                                <div className=' col-12 rounded-custom customShadow px-4 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)' }}>
+                                <div className=' col-12 rounded-custom customShadow px-3 pb-3 mb-3 pt-2' style={{ backgroundColor: 'rgb(195, 153, 87, 0.16)' }}>
                                     <h5 className='font-weight-bold '>אולי תרצו גם...</h5>
                                     <div className={`productItem row justify-content-around    py-2 px-2 ${side} `} style={{ borderBottom: '2px solid #ddd' }} >
                                         <div className='row d-flex  px-0'>
