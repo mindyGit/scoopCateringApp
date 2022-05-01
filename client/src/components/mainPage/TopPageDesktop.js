@@ -241,7 +241,8 @@ export function TopPageDesktop(props) {
         <>
 
             <div style={{
-                position: 'sticky',
+                width: '100vw',
+                position: 'fixed',
                 top: '0',
                 zIndex: 1020,
                 height: '100px'

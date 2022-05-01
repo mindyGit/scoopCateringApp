@@ -40,6 +40,10 @@
 
 }
 
+.fixed-categoriesContent {
+  position: absolute;
+}
+
 .fixed {
   position: fixed;
   bottom: 0;
@@ -1120,12 +1124,10 @@ button.outSvgSize:hover {
   margin: auto;
   width: 100%;
   border: none;
-  border-top: 1px solid rgb(0 0 0 / 40%);
+  border-bottom: 1px solid rgb(0 0 0 / 40%);
   border-radius: 0% !important;
   font-weight: 400 !important;
   width: 86% !important;
-
-
 }
 
 .categoryButton:hover {
@@ -1141,6 +1143,10 @@ button.outSvgSize:hover {
   border: none !important;
   font-weight: 700 !important;
   /* border-radius: 0.25rem!important; */
+}
+
+.removeBottom {
+  border: none !important;
 }
 
 .categoryItem {

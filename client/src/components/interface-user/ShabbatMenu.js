@@ -39,7 +39,7 @@ import { useAuth } from "../../contexts/AuthContext"
 
 import { Link, useHistory } from "react-router-dom"
 let previousClick = 'empty'
-
+let previousClickIndex;
 let currentClass
 function ShabbatMenu(props) {
 
@@ -85,88 +85,154 @@ function ShabbatMenu(props) {
         }
     }
     function myFunction() {
-        // alert("gbvf")
+
     }
-    // if (totalRedux == 0) {
-    //   props.setTotalRedux(total)
-    // }
-    // if (numItemsRedux == 0) {
-    //   props.setNumItemsRedux(numItems)
-    // }
-    // if (!cartRedux.length) {
-    //   //debugger
-    //   props.setCartRedux(cart)
-    // }
+
     function scrollTopFunc() {
         window.scrollTo(0, 0)
-        // var windowScrollHeight = $(window).scrollTop()
-        // $('#myDiv').scrollTop = $('#myDiv').scrollTop - windowScrollHeight
     }
-    $(window).bind('scroll', function () {
-        var windowScrollHeight = $(window).scrollTop()
-        if (windowScrollHeight > 100)
-            $('.scrollTopButton').removeClass('d-none')
-        else
-            $('.scrollTopButton').addClass('d-none')
-        // console.log(windowScrollHeight);
-        // $("div.fixed").offset().top
-        // var scrollPlusWindowHeight = $(window).scrollTop() + $(window).height();
-        var scrollPlusWindowHeight = $(".fixed-content").offset().top
+    function scrollDetect() {
+        var lastScroll = 0;
+        let top = $(".fixed-content").css("top")
+        window.onscroll = function () {
+            // alert($(".fixed-content").css("top"))
+            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
+            let fixedContentHeightRight = $(".fixed-content").height();
+            let fixedContentHeightLeft = $(".fixed-categoriesContent").height();
+            console.log("currentScroll:: ", currentScroll);
+            if (currentScroll > 0 && lastScroll <= currentScroll) {
+                lastScroll = currentScroll;
+                console.log("Scrolling DWON");
+                if (currentScroll > fixedContentHeightRight - 720 + 112 + 30) {
+                    $(".fixed-content").css("top", currentScroll - fixedContentHeightRight + 550);
+                    $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft - 50);
+                }
+            } else {
 
-        var fixedContentHeight = $(".fixed-content").height();
-        if (windowScrollHeight > fixedContentHeight) {
-            $(".fixed-content").addClass("fixed");
-        } else {
-            $(".fixed-content").removeClass("fixed");
-        }
-    });
+                lastScroll = currentScroll;
+                console.log("Scrolling UP");
+                console.log($(".fixed-content").css("top"));
+
+
+
+                if (currentScroll == 99) {
+                    $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft + 46);
+                    //$(".fixed-content").css("top", currentScroll + fixedContentHeightRight - 700);
+                }
+                else
+                    if (currentScroll > 99) {
+                        $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft - 50);
+                        // if (currentScroll > fixedContentHeightRight - 720 + 112 + 30) { }
+                        // else
+                        $(".fixed-content").css("top", currentScroll - fixedContentHeightRight + 700);
+
+                        if (currentScroll == 114)
+                            $(".fixed-content").css("top", currentScroll + fixedContentHeightRight - 700);
+                    }
+
+                // }
+            }
+        };
+    }
+
+
+    scrollDetect();
+    // $(window).bind('scroll', function () {
+    //     let currentScroll = 0;
+    //     var windowScrollHeight = $(window).scrollTop()
+    //     console.log("windowScrollHeight:: ", windowScrollHeight)
+    //     if (windowScrollHeight > 100)
+    //         $('.scrollTopButton').removeClass('d-none')
+    //     else
+    //         $('.scrollTopButton').addClass('d-none')
+    //     if (windowScrollHeight > 0 && currentScroll <= windowScrollHeight)
+    //         currentScroll = windowScrollHeight
+    //     else {
+    //         console.log("down");
+    //         currentScroll = windowScrollHeight
+    //     }
+
+    //     var top = $(".fixed-content").css("top")
+    //     var fixedContentHeight = $(".fixed-content").height();
+    //     if (windowScrollHeight > 150) {
+    //         if (windowScrollHeight > 0 && currentScroll <= windowScrollHeight) {
+    //             currentScroll = windowScrollHeight
+    //             if (windowScrollHeight > fixedContentHeight - 720 + 112 + 30) {
+    //                 // $(".fixed-content").addClass("fixed");
+    //                 //$(".fixed-content").css("top", windowScrollHeight+fixedContentHeight - 720);
+    //                 $(".fixed-content").css("top", windowScrollHeight - fixedContentHeight + 550);
+
+    //             }
+    //         }
+    //         else {
+
+    //             console.log("dwon")
+    //             alert("dwon")
+    //             currentScroll = windowScrollHeight
+    //         }
+    //         $(".fixed-categoriesContent").css("top", windowScrollHeight - 80);
+    //     } else
+    //         if (windowScrollHeight < 150) {
+
+    //             console.log("jkjkk")
+    //             // $(".fixed-content").removeClass("fixed");
+    //             //   $(".fixed-content").css("top", (windowScrollHeight + 25));
+    //             //  $(".fixed-categoriesContent").css("top", (windowScrollHeight + 30));
+
+    //         }
+    // });
     function set_user() {
         debugger
 
         props.setUser("bhnj")
         console.log(currentUser_);
     }
-    function hoverCategory(categoryId) {
+    function hoverCategory(categoryId, index) {
         currentClass = "#" + categoryId
         if ($(currentClass).hasClass('active')) {
 
         }
         else {
             $(currentClass).addClass('active');
+            $('.' + (index - 1)).addClass('removeBottom')
             console.log(previousClick);
             if (previousClick != "empty" && previousClick != categoryId) {
                 $("#" + previousClick).removeClass('active');
-
+                $('.' + (previousClickIndex - 1)).removeClass('removeBottom')
             }
             else {
                 $("#" + previousClick).addClass('active');
-
+                $('.' + (previousClickIndex - 1)).addClass('removeBottom')
             }
             previousClick = categoryId
+            previousClickIndex = index
         }
         // $('#' + categoryId).addClass('active')
     }
 
-    function categorySelection(id) {
+    function categorySelection(id, index) {
         $('.searchResults').addClass('d-none')
         $('.shabatMenu').removeClass('d-none')
         $('.categoryList').removeClass('px-3')
         currentClass = "#" + id
         if ($(currentClass).hasClass('active')) {
-
         }
         else {
             $(currentClass).addClass('active');
+
+            $('.' + (index - 1)).addClass('removeBottom')
             console.log(previousClick);
             if (previousClick != "empty" && previousClick != id) {
                 $("#" + previousClick).removeClass('active');
-
+                $('.' + (previousClickIndex - 1)).removeClass('removeBottom')
             }
             else {
                 $("#" + previousClick).addClass('active');
+                $('.' + (previousClickIndex - 1)).addClass('removeBottom')
 
             }
             previousClick = id
+            previousClickIndex = index
         }
     }
 
@@ -447,9 +513,9 @@ function ShabbatMenu(props) {
             <div className='row  swithDir  justify-content-center  col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
                 {!isMobile && !isTablet && (
 
-                    <div className='   leftColumn'>
-                        <div className='fixed-content h-100' >
-                            <select class="text-center w-100  mb-3 form-select rounded-0 form-select-x-sm ltr m-auto border-0 border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
+                    <div className=' mx-4  leftColumn'>
+                        <div className='fixed-categoriesContent h-100' >
+                            <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto  border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
                                 fontSize: '15px'
                             }}>
 
@@ -467,7 +533,7 @@ function ShabbatMenu(props) {
                                 </div>
 
                             </div>
-                            <div className='categoryList   d-flex flex-column  pb-2 '>
+                            <div className='categoryList   d-flex flex-column  pb-5 '>
 
                                 {categories && categories.map((category, index) => (
                                     <>
@@ -475,7 +541,7 @@ function ShabbatMenu(props) {
 
                                         <a className='text-center' href={'#' + category.name}>
 
-                                            <button className={index == 0 ? 'bg-white categoryButton border-0 ' : 'bg-white categoryButton '} id={category._id} onClick={() => categorySelection(category._id)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
+                                            <button className={`bg-white categoryButton ${index}`} id={category._id} onClick={() => categorySelection(category._id, index)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
 
 
                                         </a>
@@ -489,7 +555,7 @@ function ShabbatMenu(props) {
 
                     </div>
                 )}
-                <div className='  mt-1 col-sm-12 mx-4 pageContent swithSide   middleColumn ' >
+                <div className='  mt-1 col-sm-12 mx-0  pageContent swithSide   middleColumn ' >
                     {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
                     <div className='overflow-auto pb-3 sidColumn scrollable-content ' id='xxl' >
 
@@ -501,7 +567,7 @@ function ShabbatMenu(props) {
 
                             {serchResults && serchResults.map((product) =>
                                 <>
-                                    <div className=' productLine w-100  row     justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                    <div className=' productLine w-100  row    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                         <div className='col-2  productPic d-flex align-items-center px-2  '>
                                             <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                             <img className=' w-100' src={image1} /></div>
@@ -568,14 +634,14 @@ function ShabbatMenu(props) {
 
 
 
-                            {categories && categories.map((category) =>
+                            {categories && categories.map((category, index) =>
 
                                 <>
 
-                                    <div className='' id={category.name} onMouseEnter={() => hoverCategory(category._id)}>
+                                    <div id={category.name} onMouseEnter={() => hoverCategory(category._id, index)}>
                                         <div >
                                             <div className=' h-100 w-100'>
-                                                <img className="h-100 w-100 " src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
+                                                <img className="h-100 w-100 row" src={category.name == "Salads" ? appetizers : category.name == "Appetizers" ? salads : category.name == "Desserts" ? desserts : category.name == "Bakery" ? bakery : salads} />
                                             </div>
 
                                             <div className='d-flex align-items-center my-3 ' >
@@ -652,7 +718,7 @@ function ShabbatMenu(props) {
 
                                         ))}
                                     </div>
-                                    <hr className='goldColor mt-0 mb-2' style={{ height: '2.5px', opacity: '1' }} />
+                                    <hr className='goldColor mt-0 mb-2 w-100 row' style={{ height: '2.5px', opacity: '1' }} />
                                 </>
                             )}
                         </div>
@@ -673,7 +739,7 @@ function ShabbatMenu(props) {
                 {!isMobile && !isTablet && (
                     <div className='  rightColumn px-0' >
                         <div className='fixed-content'>
-                            <div className=' pb-4  sidColumn ' style={{ overflowY: 'scroll' }}>
+                            <div className=' pb-4 px-2 sidColumn col-12' style={{ overflowY: 'scroll' }}>
 
                                 <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
@@ -836,18 +902,10 @@ function ShabbatMenu(props) {
 
                                 <div className='  col-12 rounded-custom customShadow px-4 py-2 mb-3' >
                                     <div className=' text-center'>   <label className='font-medium '>{i18.t('orderComment')} </label></div>
-                                    <div className='d-flex col-12'>
-                                        <img className='mx-1' style={{ width: '15px' }} src={commentIcon} />
+                                    <div className='d-flex col-12 align-items-end p-0'>
+                                        <img className='mx-1' style={{ width: '15px', maxHeight: '15px' }} src={commentIcon} />
                                         <textarea className='  m-auto w94    customTextarea ' rows={1} maxlength="250" ng-trim="false"></textarea>
-
-
                                     </div>
-                                    {/* <textarea auto-grow="" ng-model="vm.order.comment" name="" id="orderComments" translate-once-placeholder="orderCart.ADD_COMMENT" rows="1" cols="10" class="comment-textarea-cart change ng-pristine ng-untouched ng-valid ng-not-empty ng-valid-maxlength" maxlength="250" style="height: 55px;" ng-trim="false" placeholder="הקלידו כאן..."></textarea> */}
-
-
-
-
-
                                 </div>
 
                                 <div className='rounded-custom customShadow  col-12 p-0' >
@@ -858,8 +916,8 @@ function ShabbatMenu(props) {
                                     </div>
                                     <div className="d-flex mb-5  pt-3 pb-2 px-2" >
 
-                                        <div className="col-7 swithSide font-medium">סה"כ:</div>
-                                        <div className="col-5 text-start numItems fontNumber font-weight-bold">&#8362; {parseFloat(total).toFixed(2)}</div>
+                                        <div className="col-5 swithSide font-medium">סה"כ:</div>
+                                        <div className="col-7 text-start numItems fontNumber font-weight-bold">&#8362; {parseFloat(total).toFixed(2)}</div>
 
                                     </div>
 
