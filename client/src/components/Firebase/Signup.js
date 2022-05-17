@@ -76,7 +76,7 @@ export default function Signup() {
               <Form.Control type="text" ref={phoneNumberRef} required />
             </Form.Group>
 
-            <Button disabled={loading} className="w-100" type="submit">
+            <Button disabled={loading} className="w-100 mt-3" type="submit">
               Sign Up
             </Button>
           </Form>

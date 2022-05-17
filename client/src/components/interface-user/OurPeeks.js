@@ -21,7 +21,7 @@ import headerBgImag from '../../data/imges/headerBgImag.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
@@ -45,7 +45,7 @@ export function OurPeeks(props) {
 
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
 
                 )}
 
@@ -80,7 +80,7 @@ export function OurPeeks(props) {
                         <h1 className="font-weight-bold mb-0">{i18.t('OurTeam')}</h1>
                     </div>
                     <hr className="hrStyle " style={{ width: '10%' }} />
-                    <div className="content mt-5  ">
+                    <div className="content mt-5  px-4">
                         <span className="swithSide ">
                             <p className="preStyle font-weight-bold h5" >{i18.t('ourTeamTitle1')}</p>
                             <p className="preStyle h5">{i18.t('ourTeamTitle2')}</p>
@@ -95,23 +95,23 @@ export function OurPeeks(props) {
                         </span>
 
                         <div className="teamList mt-5" >
-                            <div className="row mb-3">
+                            <div className="d-flex mb-3">
 
-                                <div className="col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className="col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
                                     <hr className="hrS m-0 " />
                                     <button className="border-0 bg-transparent readMore x-smallFont goldColor">...קראו עוד</button>
                                 </div>
-                                <div className=" col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className=" col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
                                     <hr className="hrS m-0 " />
                                     <button className="border-0 bg-transparent readMore x-smallFont goldColor">...קראו עוד</button>
                                 </div>
-                                <div className="col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className="col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
@@ -120,23 +120,23 @@ export function OurPeeks(props) {
                                 </div>
                             </div>
 
-                            <div className="row">
+                            <div className="d-flex">
 
-                                <div className="col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className="col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
                                     <hr className="hrS m-0 " />
                                     <button className="border-0 bg-transparent readMore x-smallFont goldColor">...קראו עוד</button>
                                 </div>
-                                <div className=" col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className=" col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
                                     <hr className="hrS m-0 " />
                                     <button className="border-0 bg-transparent readMore x-smallFont goldColor">...קראו עוד</button>
                                 </div>
-                                <div className="col-md-4 teamItem d-flex  align-items-center flex-column">
+                                <div className="col-md-4 col-sm-6 teamItem d-flex  align-items-center flex-column">
                                     <Image className="rounded-circle border" src={profile} />
                                     <div className="workerName h4 font-weight-bold "> מייקל סמייגל</div>
                                     <div className="role h6  font-weight-bold">.אחראי אירועי חוץ ומוסדות</div>
@@ -153,20 +153,20 @@ export function OurPeeks(props) {
                             <div className="imgContainer mb-5  mt-5 ">
                                 <div className="row ">
 
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
                                 </div>
 
 
 
                                 <div className="row mt-3">
 
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
-                                    <div className="col-md-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
+                                    <div className="col-3"> <Image src={teamImages} style={{ width: '150px', height: "150px" }} /></div>
 
                                 </div>
                             </div>

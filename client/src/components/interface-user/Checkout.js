@@ -23,7 +23,7 @@ import shabat from '../../data/imges/foodCategories/shabat.png'
 import desserts from '../../data/imges/foodCategories/desserts.png'
 import mainCourses from '../../data/imges/foodCategories/mainCourses.png'
 import products_ from '../../data/imges/foodCategories/products.png'
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import { useAuth } from "../../contexts/AuthContext"
 
@@ -42,6 +42,8 @@ export function Checkout(props) {
     const { t, i18n } = useTranslation();
     const [numItems, setNumItems] = useLocalStorage("numItems", 0);
     const [total, setTotal] = useLocalStorage("total", 0);
+    const [userDetails, setUserDetails] = useLocalStorage("userDetails", []);
+
     let previousClick = "empty"
     let currentClass
 
@@ -81,10 +83,23 @@ export function Checkout(props) {
     }
 
     function loadingUser() {
+
+
         // currentUser ? $('#EmailInput').val(currentUser.email) : alert("vghbjnk")
 
     }
     useEffect(() => {
+        if (userDetails != []) {
+
+            $('#EmailInput').val(userDetails.email)
+            $('#FirstNameInput').val(userDetails.firstName)
+            $('#LastNameInput').val(userDetails.lastName)
+            $('#phoneInput').val(userDetails.phone)
+
+
+
+        }
+        window.scrollTo(0, 0)
         if ($) {
             $("button").click(function () {
                 if ($(this).attr('id') == "btnOne" || $(this).attr('id') == "btnTwo" || $(this).attr('id') == "btnThree") {
@@ -124,7 +139,7 @@ export function Checkout(props) {
             {/* <Search details={products} /> */}
             <div className="pageNuv" onScroll={() => alert('bgvf')}>
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
 
                 )}
 
@@ -143,38 +158,39 @@ export function Checkout(props) {
                 <div className='goldColor d-inline'> / {i18.t('checkout')} </div>
             </div>
 
-            <div className="page_content row pt-5 offset-md-2 col-md-8  offset-sm-0 col-sm-12 " >
+            <div className="page_content  pt-5 offset-md-2 col-md-8  offset-sm-0 col-sm-12 " >
                 <h2 className="mb-5 font-weight-bold  ">{i18.t('checkout')} </h2>
                 <div className="swithDir row">
                     {/* <div className="  col-6 ml-5 p-0 swithSide overflow-auto overflow-checkout" style={{ height: '550px' }}> */}
-                    <div className="swithSide  overflow-checkout col-md-6 col-sm-12" >
+                    <div className="swithSide  mb-5 overflow-checkout col-md-6 col-sm-12" >
                         <label className="  w-100 pt-1 swithSide  goldbgColor px-3 " >{i18.t('PersonalInformation')} </label>
                         <div className=" bg-grey mb-5">
                             <Form className="p-3" onLoad={loadingUser}>
+
                                 <Form.Group className="mb-2" controlId="formBasicEmail">
-                                    <Form.Label class="mb-1"> {i18.t('mailAdress')}</Form.Label>
+                                    <Form.Label class="mb-1 lableForm"> {i18.t('mailAdress')}</Form.Label>
                                     <Form.Control className="rounded-custom fontNumber" type="email" id="EmailInput" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicName">
-                                    <Form.Label class="mb-1"> {i18.t('FirstName')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber" type="text" />
+                                    <Form.Label class="mb-1 lableForm"> {i18.t('FirstName')}</Form.Label>
+                                    <Form.Control className="rounded-custom fontNumber" type="text" id="FirstNameInput" />
                                 </Form.Group>
 
                                 <Form.Group className="mb-2" controlId="formBasicLastName">
-                                    <Form.Label class="mb-1">{i18.t('LastName')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber" type="text" />
+                                    <Form.Label class="mb-1 lableForm">{i18.t('LastName')}</Form.Label>
+                                    <Form.Control className="rounded-custom fontNumber" type="text" id="LastNameInput" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1"> {i18.t('phone')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber " type="text" />
+                                    <Form.Label class="mb-1 lableForm"> {i18.t('phone')}</Form.Label>
+                                    <Form.Control className="rounded-custom fontNumber " type="text" id="phoneInput" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1"> {i18.t('anotherPhone')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber" type="text" />
+                                    <Form.Label class="mb-1 lableForm"> {i18.t('anotherPhone')}</Form.Label>
+                                    <Form.Control className="rounded-custom fontNumber" type="text" id="anotherPhoneInput" />
                                 </Form.Group>
                                 <Form.Group className="mb-2" controlId="formBasicPhone">
-                                    <Form.Label class="mb-1"> {i18.t('address')}</Form.Label>
-                                    <Form.Control className="rounded-custom fontNumber" type="text" />
+                                    <Form.Label class="mb-1 lableForm"> {i18.t('address')}</Form.Label>
+                                    <Form.Control className="rounded-custom fontNumber" type="text" id="addressInput" />
                                 </Form.Group>
                             </Form>
                         </div>
@@ -194,7 +210,7 @@ export function Checkout(props) {
                                 <option>{i18.t('Raanana')}</option>
                             </select>
  */}
-                            <Form.Label class="mb-2 "> {i18.t('AreaOrCity')}</Form.Label>
+                            <Form.Label class="mb-2  lableForm"> {i18.t('AreaOrCity')}</Form.Label>
                             <Form.Select aria-label="Default select example" className="rounded-custom w-75" required>
                                 <option></option>
 
@@ -205,8 +221,9 @@ export function Checkout(props) {
                                 <option>{i18.t('Raanana')}</option>
                             </Form.Select>
 
-                            <div className="mt-2"><label >{i18.t('shippingMethod')}</label></div>
-                            <div className="row  justify-content-around d-flex" style={{ width: '80%' }}>
+                            <div className="mt-2"><label className="lableForm">{i18.t('shippingMethod')}</label></div>
+
+                            <div className="row  justify-content-around d-flex" style={isTablet ? { width: '100%' } : { width: '80%' }}>
 
                                 <button id="btnOne" className="col-3  shippingOption p-2 text-center"> {i18.t('shippingMethod1')}</button>
                                 <button id="btnTwo" className="col-3  shippingOption p-2 text-center">{i18.t('shippingMethod2')}</button>
@@ -215,27 +232,28 @@ export function Checkout(props) {
 
                                 </button>
                             </div>
-                            <Form.Group className="my-2 row  btnThree d-none" controlId="formBasicAddress" style={{ width: '80%' }}>
+
+                            <Form.Group className="my-2 row  btnThree d-none" controlId="formBasicAddress" style={{ width: '100%' }}>
                                 <div className="col-6">
-                                    <Form.Label class="mb-1 ">{i18.t('Street')}</Form.Label>
+                                    <Form.Label class="mb-1 lableForm">{i18.t('Street')}</Form.Label>
                                     <Form.Control className="rounded-custom fontNumber" type="text" />
                                 </div>
                                 <div className="col-3">
-                                    <Form.Label class="mb-1">{i18.t('buildingNumber')}</Form.Label>
+                                    <Form.Label class="mb-1 lableForm">{i18.t('buildingNumber')}</Form.Label>
                                     <Form.Control className="rounded-custom fontNumber" type="number" min="1" />
                                 </div>
                                 <div className="col-3">
-                                    <Form.Label class="mb-1">{i18.t('ApartmentNumber')}</Form.Label>
+                                    <Form.Label class="mb-1 lableForm">{i18.t('ApartmentNumber')}</Form.Label>
                                     <Form.Control className="rounded-custom fontNumber" type="number" min="1" />
                                 </div>
                             </Form.Group>
 
                         </div>
                         <label className="  w-100  pt-1 swithSide  goldbgColor px-3 " >{i18.t('InvoiceDetails')} </label>
-                        <div className="bg-grey p-3 mb-5">
-                            <div class="form-check">
+                        <div className="bg-grey_ p-3 mb-5">
+                            <div class="form-check d-flex align-items-center">
                                 <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" />
-                                <label class="form-check-label mr-4" for="flexCheckDefault">
+                                <label class="form-check-label mr-4 lableForm" for="flexCheckDefault">
                                     {i18.t('sameShippingAndAccountDetails')}
                                 </label>
                             </div>
@@ -243,24 +261,25 @@ export function Checkout(props) {
                         </div>
                         <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 ">{i18.t('CouponCode')} </label>
                         <div className="bg-grey p-3 mb-5">
-                            <div>{i18.t('EnterCouponCode')}</div>
+                            <div className="lableForm">{i18.t('EnterCouponCode')}</div>
                             <div className="row p-2" >
+                                <Form className=" d-flex">
+                                    <Form.Group className=" col-6 p-0" controlId="formBasicPhone">
 
-                                <Form.Group className=" col-6 p-0" controlId="formBasicPhone">
+                                        <Form.Control className="rounded-custom  h-100 fontNumber" type="text" required />
+                                    </Form.Group>
 
-                                    <Form.Control className="rounded-custom  h-100 fontNumber" type="text" />
-                                </Form.Group>
-
-                                <button className="goldButton px-3 col-4 mx-3" >{i18.t('ActivateCoupon')}</button>
+                                    <button className="goldButton_ px-3 col-4 mx-3" >{i18.t('ActivateCoupon')}</button>
+                                </Form>
                             </div>
 
                         </div>
                         <label className="  w-100 pt-1 pb-1 swithSide  goldbgColor px-3 ">  {i18.t('CommentsToOrder')}  </label>
                         <div className="bg-grey p-3 mb-3">
 
-                            <div className="row p-2" style={{ width: '80%' }}>
+                            <div className="row p-2" style={isTablet ? { width: '100%' } : { width: '80%' }}>
                                 <div class="form-group pr-1">
-                                    <label for="exampleFormControlTextarea1">{i18.t('CommentsToOrder')} </label>
+                                    <label for="exampleFormControlTextarea1 " className="lableForm">{i18.t('CommentsToOrder')} </label>
                                     <textarea class="form-control rounded-custom fontNumber" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
                             </div>
@@ -268,56 +287,71 @@ export function Checkout(props) {
                         </div>
 
                         <div className="">
-                            <div className="d-flex align-items-center"> <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
+                            {/* <div className="d-flex align-items-center"> <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike" />
                                 <label className="mr-2 ml-3  mb-0" for="vehicle1 " style={{ fontSize: 'smaller' }}>{i18.t('ApprovalOfRegulations')}</label>
                             </div>
                             <div className="d-flex align-items-center">  <input type="checkbox" id="vehicle2" name="vehicle1" value="Bike" />
                                 <label className="mr-2 ml-3 mb-0" for="vehicle2   " style={{ fontSize: 'smaller' }}> {i18.t('SaveDetails')}</label>
+                            </div> */}
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input check-height" type="checkbox" value="" id="flexCheckDefault" />
+                                <label class="form-check-label mr-4 " for="flexCheckDefault" style={{ fontSize: 'smaller' }}>
+                                    {i18.t('ApprovalOfRegulations')}
+                                </label>
                             </div>
-
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input check-height" type="checkbox" value="" id="flexCheckDefault" />
+                                <label class="form-check-label mr-4 " for="flexCheckDefault" style={{ fontSize: 'smaller' }}>
+                                    {i18.t('SaveDetails')}
+                                </label>
+                            </div>
 
 
                         </div>
 
 
 
-                        <button className=" mt-5 goldButton px-3 py-2 mb-5  " onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
+                        <button className=" mt-5 goldButton px-3 py-2   " style={isMobile ? { display: 'none' } : { display: 'block' }} onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
                             {/* <img src={arrow_left_white} style={{ paddingRight: '5px',width: '25px'}} /> */}
                         </button>
                     </div>
-                    <div className={`${isMobile ? `fixedDiv ` : ``}col-md-6 col-sm-12`}>
-                        {/* <label className="    font-weight-bolder w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label> */}
-                        <label className="  w-100 pt-1  swithSide  goldbgColor px-3 "> {i18.t('OrderSummary')}  </label>
-                        <div className="px-4 p-3 mb-3 bg-grey">
-                            <div className="row ">
-                                <div className="col-7 swithSide">{i18.t('Items')}</div>
-                                <div className="col-5 numItems fontNumber">{numItems}</div>
+                    <div className="col-md-6 col-sm-12">
+                        <div className="fixedDiv ">
+                            {/* <label className="    font-weight-bolder w-100 pt-1 swithSide px-3">{i18.t('OrderSummary')}</label> */}
+                            <label className="  w-100 pt-1  swithSide  goldbgColor px-3 "> {i18.t('OrderSummary')}  </label>
+                            <div className="px-4 p-3 mb-5 bg-grey">
+                                <div className="row ">
+                                    <div className="col-7 swithSide">{i18.t('Items')}</div>
+                                    <div className="col-5 numItems fontNumber">{numItems}</div>
+                                </div>
+                                <br />
+                                <br />
+                                <div className="row  pb-3">
+
+                                    <div className="col-7 swithSide">{i18.t('InterimTotal')}</div>
+                                    <div className="col-5 fontNumber">{parseFloat(total).toFixed(2)} &#8362;</div>
+
+                                </div>
+                                <div className="row border-bottom border-dark pb-3">
+
+                                    <div className="col-7 swithSide">{i18.t('ShippingCost')}</div>
+                                    <div className="col-5 fontNumber">{parseFloat(25).toFixed(2)} &#8362;</div>
+
+                                </div>
+                                <div className="row pt-2 font-weight-bold ">
+
+                                    <div className="col-7 swithSide">{i18.t('Total')}</div>
+                                    <div className="col-5 fontNumber">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
+
+                                </div>
+                                {/* <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}
+
+
                             </div>
-                            <br />
-                            <br />
-                            <div className="row  pb-3">
-
-                                <div className="col-7 swithSide">{i18.t('InterimTotal')}</div>
-                                <div className="col-5 fontNumber">{parseFloat(total).toFixed(2)} &#8362;</div>
-
-                            </div>
-                            <div className="row border-bottom border-dark pb-3">
-
-                                <div className="col-7 swithSide">{i18.t('ShippingCost')}</div>
-                                <div className="col-5 fontNumber">{parseFloat(25).toFixed(2)} &#8362;</div>
-
-                            </div>
-                            <div className="row pt-2 font-weight-bold ">
-
-                                <div className="col-7 swithSide">{i18.t('Total')}</div>
-                                <div className="col-5 fontNumber">{(parseFloat(parseFloat(total).toFixed(2)) + 25).toFixed(2)} &#8362;</div>
-
-                            </div>
-                            {/* <button className="mt-5 goldButton px-3 mb-5" onClick={() => props.history.push('/Checkout')}> {i18.t('toCheckout')} &#8594; </button> */}
-
-
+                            <button className=" mt-5 goldButton px-3 py-2   " style={isMobile ? { display: 'block' } : { display: 'none' }} onClick={() => props.history.push('/Payment')}> {i18.t('ContinueToPay')}
+                                {/* <img src={arrow_left_white} style={{ paddingRight: '5px',width: '25px'}} /> */}
+                            </button>
                         </div>
-
                     </div>
 
 

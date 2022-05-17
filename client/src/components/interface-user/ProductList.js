@@ -9,7 +9,7 @@ import Scroll from '../Scroll';
 import Carousel from '../Carousel_'
 // import Search from '../Search'
 import headerBgImag from '../../data/imges/headerBgImag.png'
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import useMediaQuery from "../../hooks/useMediaQuery";
 import Cart from '../../data/imges/cart.png'
@@ -167,7 +167,7 @@ function ProductList(props) {
     <>
       <div className="pageNuv">
         {isTablet && (
-          <Hamborger />
+          <Hamborger history={props.history} />
 
         )}
 

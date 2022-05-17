@@ -24,7 +24,7 @@ import $ from 'jquery'
 import headerBgImag from '../../data/imges/headerBgImag.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import i18 from '../../i18/i18';
 import { useTranslation } from 'react-i18next';
@@ -50,7 +50,7 @@ export function OurCustomers(props) {
         }} >
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
                 )}
 
                 {!isMobile && !isTablet && (

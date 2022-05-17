@@ -17,14 +17,14 @@ import Modal from 'react-bootstrap/Modal'
 import '../../App.css'
 import $ from 'jquery'
 function Orders(props) {
-
+    debugger
     // const [isAddMode, setIsAddMode] = useState(true);
 
     const [show, setShow] = useState(false);
     const [idToDelete, setIdToDelete] = useState()
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const { products } = props;
+    const { products, orders } = props;
     const { categories } = props
     const [data, setData] = useState([]);
     const [categoryList, setCategoryList] = useState([]);
@@ -38,7 +38,11 @@ function Orders(props) {
         props.getAllProducts()
 
     }
+    if (!props.orders || !props.orders.length) {
 
+        props.getAllOrders()
+
+    }
     if (!categories || !categories.length) {
 
         props.getAllCategories()
@@ -238,28 +242,37 @@ function Orders(props) {
 
                     <Table className='w-100'>
                         <thead>
-                            <tr className='col-12 w-100' key={"header"}>
-                                <th className='col-2 lableForm ' value='hebrewName' id='hebrewName' onClick={e => setSortType('hebrewName')}>שם מוצר</th>
-                                <th className=' col-2 lableForm' value="price" id="price" onClick={e => setSortType("price")}> מחיר</th>
-                                <th className=' col-2 lableForm' value="available" id="available" onClick={e => setSortType("available")}>מלאי</th>
-                                <th className='col-3 lableForm' value="createDate" id="createDate" onClick={e => setSortType("createDate")}>עדכון אחרון</th>
+                            <tr className=' w-100 col-12' key={"header"}>
+                                <th className=' lableForm col-2' value='orderNum' id='orderNum' >מס' הזמנה</th>
 
-                                <th className='col-1 lableForm  '></th>
-                                <th className='col-1 lableForm  '></th>
+                                <th className=' lableForm col-2' value='userName' id='userName' >שם לקוח</th>
+                                <th className='  lableForm col-2' value="price" id="price" > סכום</th>
+                                <th className=' lableForm col-2' value="available" id="available" >עיר</th>
+                                <th className=' lableForm col-1' value="createDate" id="createDate" >כתובת משלוח</th>
+
+                                <th className=' lableForm  col-3'>תאריך הזמנה</th>
+                                <th className=' lableForm  col-1'>אמצעי תשלום</th>
+                                {/* <th className=' lableForm  col-1'>חשבונית</th> */}
+
+
+
                             </tr>
                         </thead>
 
 
                         <tbody className='table-responsive'>
-                            {categoryList.map((item) => (
+                            {orders.map((item) => (
                                 <>
-                                    <tr className=' bg-white   col-12' >
-                                        <td className=' border-0 col-2'>{item.hebrewName}</td>
-                                        <td className=' border-0 col-2'>{parseFloat(item.price ? item.price : 0).toFixed(2)} &#8362;</td>
-                                        <td className=' border-0 col-2'>{item.available === true ? "במלאי" : "אזל מהמלאי"}</td>
-                                        <td className=' border-0 col-3' >{item.createDate}</td>
-                                        <td className='border-0 bg-transparent col-1' onClick={() => openDeleteMoodal(item._id)}><i class="fas fa-trash-alt "></i></td>
-                                        <td className='border-0 bg-transparent col-1' onClick={() => editItem(item)}>עדכון</td>
+                                    <tr className=' bg-white  col-12 ' >
+                                        <td className=' border-0 col-2'>208090</td>
+                                        <td className=' border-0 col-2'>{item.userId.firstName}</td>
+                                        <td className=' border-0 col-2'>{item.CostToPay} &#8362;</td>
+                                        <td className=' border-0 col-2'>{item.city}</td>
+                                        <td className=' border-0 col-1'>{item.shippingAddress}</td>
+                                        <td className=' border-0 col-3'>{item.date}</td>
+                                        <td className=' border-0 col-1'>{item.MethodsOfPayment}</td>
+                                        {/* <td className=' border-0'>{item.createDate}</td> */}
+
 
                                     </tr>
                                     <tr className='bg-transparent' style={{ height: '15px' }}></tr>
@@ -289,6 +302,8 @@ const mapStateToProps = (state) => {
 
         products: state.productReducer.products,
         categories: state.categoryReducer.categories,
+        orders: state.orderReducer.orders,
+
     };
 }
 const mapDispatchToProps = (dispatch) => ({
@@ -298,6 +313,8 @@ const mapDispatchToProps = (dispatch) => ({
     updateProduct: (product) => dispatch(actions.updateProduct(product)),
     copyProduct: (id) => dispatch(actions.copyProduct(id)),
     getAllCategories: () => dispatch(actions.getAllCategories()),
+    getAllOrders: () => dispatch(actions.getAllOrders()),
+
     getProductByID: (id) => dispatch(actions.getProductByID(id)),
 })
 export default connect(mapStateToProps, mapDispatchToProps)(Orders)

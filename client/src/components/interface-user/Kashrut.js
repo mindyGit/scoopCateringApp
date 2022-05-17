@@ -14,7 +14,7 @@ import headerBgImag from '../../data/imges/headerBgImag.png'
 import useMediaQuery from "../../hooks/useMediaQuery";
 import { Container, Form, FormControl, Nav, Button, NavDropdown, Image, Dropdown, DropdownButton, ButtonGroup } from "react-bootstrap"
 
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 
 import $ from 'jquery'
@@ -38,7 +38,7 @@ export function Kashrut(props) {
 
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
 
                 )}
 

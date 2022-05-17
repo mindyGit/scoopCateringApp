@@ -44,11 +44,22 @@
   position: absolute;
 }
 
+.fixedDiv {
+  top: 120px;
+  bottom: 0;
+  position: sticky;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
 .fixed {
   position: fixed;
-  bottom: 0;
+
 
 }
+
+
+
 
 /* body{
   margin:0px;
@@ -276,9 +287,6 @@ button.btn-danger {
   background-image: url("./data/imges/cart.png") !important;
   width: 23px !important;
   height: 23px !important;
-
-
-
 }
 
 /* .navbar.navbar-light .navbar-toggler{
@@ -732,6 +740,31 @@ button.outSvgSize:hover {
 
 }
 
+#leftShort {
+  /* background: #eee; */
+  float: left;
+  width: 15%;
+  text-align: end;
+  left: 0;
+}
+
+#rightLong {
+  /* background: #ddd; */
+  width: 60%;
+  position: absolute;
+  left: 15%;
+  /* right: 25%; */
+  text-align: center;
+}
+
+#sidebar {
+  right: 0;
+  float: right;
+  width: 25%;
+  text-align: end;
+}
+
+
 .actionSection {
 
   /* border: 2px solid rgb(0, 0, 0, 0.05); */
@@ -948,24 +981,31 @@ button.outSvgSize:hover {
   box-shadow: none !important
 }
 
-.dropdown-menu {
-  border: none !important;
+@media screen and (min-width: 992px) {
+
+
+  /* NUVSTYLE */
+  .dropdown-menu {
+    border: none !important;
+  }
+
+  .dropdown-item {
+    width: 30% !important;
+    display: flex;
+    justify-content: center;
+
+  }
+
+  .dropdown-item:hover {
+
+    padding-right: 2% !important;
+    background: none !important;
+    font-weight: bold !important;
+  }
+
 }
 
-.dropdown-item {
-  width: 30% !important;
-  display: flex;
-  justify-content: center;
-
-}
-
-.dropdown-item:hover {
-
-  padding-right: 2% !important;
-  background: none !important;
-  font-weight: bold !important;
-}
-
+/* endNUVSTYLE */
 .pageNuv {
   position: sticky;
   top: 0px;
@@ -1013,7 +1053,7 @@ button.outSvgSize:hover {
 }
 
 .lableForm {
-  font-weight: bold;
+  font-weight: 700;
   font-size: 16px;
 }
 
@@ -1086,23 +1126,26 @@ button.outSvgSize:hover {
   background-size: cover;
 }
 
-.dropdown-menu {
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  /* border:1px solid black !important; */
-  right: 0;
-  width: 600px;
-  height: 250px;
-  padding-top: 11% !important;
-  border-radius: 0% !important;
+/* NUV STYLE */
+@media screen and (min-width: 992px) {
+  .dropdown-menu {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    right: 0;
+    width: 600px;
+    height: 250px;
+    padding-top: 11% !important;
+    border-radius: 0% !important;
 
-}
+  }
 
-.dropdown-toggle::after {
-  margin-right: 6px;
-}
+  .dropdown-toggle::after {
+    margin-right: 6px;
+  }
 
-.dropdown-menu[data-bs-popper] {
-  margin-top: 1rem !important;
+  .dropdown-menu[data-bs-popper] {
+    margin-top: 1rem !important;
+  }
+
 }
 
 /* css shop */
@@ -1190,6 +1233,20 @@ button.outSvgSize:hover {
 
 }
 
+.goldButton_ {
+  height: 100%;
+  border: none !important;
+  background-color: #C39957 !important;
+  color: #FFFFFF !important;
+  border-radius: 10px !important;
+  font-weight: 400 !important;
+}
+
+.goldButton_:hover {
+
+  background: black !important;
+}
+
 .goldButton:hover {
 
   background: black !important;
@@ -1251,8 +1308,22 @@ button.outSvgSize:hover {
   box-shadow: 0px 4px 4px 0px #00000040;
 }
 
+.bg-grey_ {
+  background-color: #F7F4EF;
+  box-shadow: 0px 4px 4px 0px #00000040;
+}
+
 .bg-grey input {
   height: 50%;
+}
+
+.form-check-input:checked {
+  background-color: #C39957 !important;
+  border-color: #C39957 !important;
+}
+
+.check-height {
+  height: 60% !important;
 }
 
 .customInput {

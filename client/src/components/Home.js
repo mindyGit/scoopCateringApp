@@ -47,7 +47,7 @@ import { withRouter, Link, useHistory } from 'react-router-dom';
 import useMediaQuery from "../hooks/useMediaQuery";
 // import searchIcon from '../data/imges/searchIcon.svg'
 // import { ReactComponent as YourSvg } from '../data/imges/searchIcon.svg';
-import Hamborger from './mainPage/Hamborger'
+import Hamborger from './mainPage/Hamborger/Hamborger'
 import TopPageDesktop from './mainPage/TopPageDesktop'
 import EventsImage from '../data/imges/EventsImage.png'
 import { useTranslation } from 'react-i18next';
@@ -132,14 +132,15 @@ export function Home(props) {
                     {/* <img className='w-100 h-100' src={background_image}/> */}
                     <div>
                         {isTablet && (
-                            <Hamborger />
+                            <Hamborger history={props.history} />
 
                         )}
 
                         {!isMobile && !isTablet && (
                             <>
-
-                                <TopPageDesktop />
+                                <div >
+                                    <TopPageDesktop className='position-sticky' />
+                                </div>
                             </>
                         )}
 

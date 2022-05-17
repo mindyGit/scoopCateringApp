@@ -27,7 +27,7 @@ import { Container, Form, FormControl, Nav, Button, NavDropdown, Image, Dropdown
 
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
-import Hamborger from '../../mainPage/Hamborger'
+import Hamborger from '../../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../../mainPage/TopPageDesktop'
 import $ from 'jquery'
 import i18 from '../../../i18/i18';
@@ -49,7 +49,7 @@ function OurStory(props) {
         <div className="ourStoryPage">
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
                 )}
 
                 {!isMobile && !isTablet && (
@@ -59,7 +59,7 @@ function OurStory(props) {
 
             <div className="pageHeader">
                 <label >{i18.t('OurStory')}</label>
-                {isTablet ? <img className="h-100 " src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
+                {isTablet ? <img className="h-100" src={headerBgImag} /> : <img className="h-100 w-100" src={headerBgImag} />}
                 {/* <img className="h-100 w-100" src={headerBgImag} /> */}
 
             </div>

@@ -25,7 +25,7 @@ import shabat from '../../data/imges/foodCategories/shabat.png'
 import desserts from '../../data/imges/foodCategories/desserts.png'
 import mainCourses from '../../data/imges/foodCategories/mainCourses.png'
 import products_ from '../../data/imges/foodCategories/products.png'
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import Scroll from '../Scroll';
 import SearchList from '../SearchList';
@@ -52,7 +52,7 @@ export function ContactUs(props) {
 
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
 
                 )}
 
@@ -95,8 +95,8 @@ export function ContactUs(props) {
                                 <Form.Label className="font-weight-bold h1"> {i18.t('ContactUs')}</Form.Label>
                                 <br />
 
-                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black">מחכים לשמוע אותכם</Form.Text>
-                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black mt-0">צוות סקופ קייטרינג</Form.Text>
+                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black">{i18.t('ContactUsTitle1')}</Form.Text>
+                                <Form.Text style={{ marginLeft: '10px' }} className=" text-black mt-0">{i18.t('ContactUsTitle2')}</Form.Text>
                                 <br />
                                 <Form className="px-3">
                                     <div className="swithSide">
@@ -133,7 +133,7 @@ export function ContactUs(props) {
 
                                         </Form.Group>
                                         <Form.Group className="mb-2 swithDir" controlId="formBasicPhone">
-                                            <Form.Label class="mb-1 lableForm">יש לכם משהו לספר לנו?</Form.Label>
+                                            <Form.Label class="mb-1 lableForm">{i18.t('ContactUsMore')}</Form.Label>
                                             <Form.Control as="textarea"
                                                 placeholder=""
                                                 style={{ height: '100px' }} className="rounded-custom " />

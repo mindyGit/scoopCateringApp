@@ -175,33 +175,33 @@ export function NewProduct(props, { product }) {
                         <div className='text-end'>
                             <div className="form-group">
 
-                                <Field id="newId" className="form-control rounded-0" type="hidden" name="Id" pl value={product ? product._id : ""} />
+                                <Field id="newId" className="form-control rounded-0 newId_" type="hidden" name="Id" pl />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">שם מוצר:</lable>
-                                <Field id="newName" className="form-control rounded-0" type="text" name="name" pl value={product ? product.name : ""} />
+                                <Field id="newName" className="form-control rounded-0 newName_" type="text" name="name" pl />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">שם מוצר(HE):</lable>
-                                <Field id="newHebrewName" className="form-control rounded-0" type="text" name="hebrewName" pl value={product ? product.hebrewName : ""} />
+                                <Field id="newHebrewName" className="form-control rounded-0 newHebrewName_" type="text" name="hebrewName" pl />
                             </div>
 
                             <div className="form-group">
                                 <lable className="lableForm">תאור מוצר:</lable>
-                                <Field id="newDescription" className="form-control rounded-0" type="text" name="description" value={product ? product.description : ""} />
+                                <Field id="newDescription" className="form-control rounded-0 newDescription_" type="text" name="description" />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">תאור מוצר(HE):</lable>
-                                <Field id="newHebrewDescription" className="form-control rounded-0" type="text" name="hebrewDescription" value={product ? product.hebrewDescription : ""} />
+                                <Field id="newHebrewDescription" className="form-control rounded-0 newHebrewDescription_" type="text" name="hebrewDescription" />
                             </div>
                             <div className="form-group">
                                 <lable className="lableForm">מחיר:</lable>
-                                <Field id="newPrice" className="form-control rounded-0" type="text" name="price" />
+                                <Field id="newPrice" className="form-control rounded-0 newPrice_" type="text" name="price" />
                             </div>
 
                             <div className="form-group">
                                 <lable className="lableForm">קטגוריה:</lable>
-                                <Field as="select" name="category" className="form-control rounded-0" id="newCategory"
+                                <Field as="select" name="category" id="newCategory"
                                     className="browser-default custom-select  rounded-0">
                                     {
                                         categories.map((category) => <option key={category._id} value={category._id}>{category.hebrewName}

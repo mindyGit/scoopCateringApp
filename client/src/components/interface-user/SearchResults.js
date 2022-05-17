@@ -26,7 +26,7 @@ import shabat from '../../data/imges/foodCategories/shabat.png'
 import desserts from '../../data/imges/foodCategories/desserts.png'
 import mainCourses from '../../data/imges/foodCategories/mainCourses.png'
 import products_ from '../../data/imges/foodCategories/products.png'
-import Hamborger from '../mainPage/Hamborger'
+import Hamborger from '../mainPage/Hamborger/Hamborger'
 import TopPageDesktop from '../mainPage/TopPageDesktop'
 import Scroll from '../Scroll';
 import SearchList from '../SearchList';
@@ -89,7 +89,7 @@ export function SearchResults(props) {
             {/* <Search details={products} /> */}
             <div className="pageNuv">
                 {isTablet && (
-                    <Hamborger />
+                    <Hamborger history={props.history} />
 
                 )}
 

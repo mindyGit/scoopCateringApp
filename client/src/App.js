@@ -23,7 +23,6 @@ import NewProduct from './components/product/NewProduct';
 import { connect } from 'react-redux';
 // import Search from './components/Search';
 import initialDetails from './data/initialDetails';
-
 import AppFirebase from './components/Firebase/AppFirebase'
 import OrderSummary from './components/interface-manager/OrderSummary'
 // import Try from './components/try'
@@ -54,7 +53,7 @@ import Login from "./components/Firebase/Login"
 import PrivateRoute from "./components/Firebase/PrivateRoute"
 import ForgotPassword from "./components/Firebase/ForgotPassword"
 import UpdateProfile from "./components/Firebase/UpdateProfile"
-
+import MenuScroll from "./components/interface-user/MenuScroll"
 
 
 
@@ -127,6 +126,7 @@ function App(props) {
       <Router history={history}>
         <AuthProvider>
           <Switch>
+
             <PrivateRoute exact path="/dashboard" component={Dashboard} />
             <PrivateRoute path="/update-profile" component={UpdateProfile} />
 
@@ -165,6 +165,8 @@ function App(props) {
             <Route exact path="/Payment" component={Payment} />
             <Route exact path="/gallery" component={Gallery} />
             <Route exact path="/events" component={Events} />
+            <Route exact path="/menu" component={MenuScroll} />
+
           </Switch>
         </div>
       </Router>

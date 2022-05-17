@@ -1,6 +1,8 @@
 
 const mongoose = require('mongoose')
 const { Product } = require('./Product')
+const { User } = require('./User')
+
 const orderSchema = new mongoose.Schema({
     date: {
         type: Date,
@@ -14,6 +16,9 @@ const orderSchema = new mongoose.Schema({
         type: String
     },
     CostToPay: {
+        type: String
+    },
+    city: {
         type: String
     },
     shippingAddress: {

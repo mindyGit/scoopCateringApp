@@ -131,17 +131,30 @@ function ProductList_manager(props) {
 
   const editItem = async (product) => {
     //debugger
-    await setProductToEdit(product)
-    alert(productToEdit ? productToEdit._id : "jj")
-    // $('#newId').val(productToEdit._id)
-    // $('#newName').val(productToEdit.name)
-    // $('#newHebrewName').val(productToEdit.hebrewName)
-    // $('#newDescription').val(productToEdit.description)
-    // $('#newHebrewDescription').val(productToEdit.hebrewDescription)
-    // $('#newPrice').val(productToEdit.price)
-    // $('#newCategory').val(productToEdit.categoryID)
-    // $('#newAvailable').prop('checked', productToEdit.available == true ? false : true)
-    // $('#newDisplay').prop('checked', productToEdit.display == true ? false : true)
+    // await setProductToEdit(product)
+    // alert(productToEdit ? productToEdit._id : "jj")
+
+
+    // $('.newId_').val(product._id)
+    // $('.newName_').val(product.name)
+    // $('.newHebrewName_').val(product.hebrewName)
+    // $('.newDescription_').val(product.description)
+    // $('.newHebrewDescription_').val(product.hebrewDescription)
+    // $('.newPrice_').val(product.price)
+
+
+
+
+
+    $('#newId').val(product._id)
+    $('#newName').val(product.name)
+    $('#newHebrewName').val(product.hebrewName)
+    $('#newDescription').val(product.description)
+    $('#newHebrewDescription').val(product.hebrewDescription)
+    $('#newPrice').val(product.price)
+    $('#newCategory').val(product.categoryID)
+    $('#newAvailable').prop('checked', product.available == true ? false : true)
+    $('#newDisplay').prop('checked', product.display == true ? false : true)
 
 
 
@@ -310,7 +323,7 @@ function ProductList_manager(props) {
                     <td className=' border-0 col-2'>{item.available === true ? "במלאי" : "אזל מהמלאי"}</td>
                     <td className=' border-0 col-3' >{item.createDate}</td>
                     <td className='border-0 bg-transparent col-1' onClick={() => openDeleteMoodal(item._id)}><i class="fas fa-trash-alt "></i></td>
-                    <td className='border-0 bg-transparent col-1' onClick={() => editItem(item)}>עדכון</td>
+                    <td className='border-0 bg-transparent col-1' onClick={() => editItem(item)}>ערוך</td>
 
                   </tr>
                   <tr className='bg-transparent' style={{ height: '15px' }}></tr>
