@@ -1338,6 +1338,10 @@ button.outSvgSize:hover {
 
 }
 
+.a {
+  max-width: 250px;
+}
+
 .ShoppingCart_itemList::-webkit-scrollbar {
   width: 0px !important;
 
