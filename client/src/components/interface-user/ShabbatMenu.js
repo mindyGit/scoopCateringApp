@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { actions } from '../../redux/actions/action';
-
+import StickyBox from "react-sticky-box";
 import { Table, Button } from 'react-bootstrap'
 import AppFirebase from '../Firebase/AppFirebase';
 import { Formik, Field, Select, Form } from 'formik';
@@ -134,51 +134,8 @@ function ShabbatMenu(props) {
     }
 
 
-    scrollDetect();
-    // $(window).bind('scroll', function () {
-    //     let currentScroll = 0;
-    //     var windowScrollHeight = $(window).scrollTop()
-    //     console.log("windowScrollHeight:: ", windowScrollHeight)
-    //     if (windowScrollHeight > 100)
-    //         $('.scrollTopButton').removeClass('d-none')
-    //     else
-    //         $('.scrollTopButton').addClass('d-none')
-    //     if (windowScrollHeight > 0 && currentScroll <= windowScrollHeight)
-    //         currentScroll = windowScrollHeight
-    //     else {
-    //         console.log("down");
-    //         currentScroll = windowScrollHeight
-    //     }
+    //scrollDetect();
 
-    //     var top = $(".fixed-content").css("top")
-    //     var fixedContentHeight = $(".fixed-content").height();
-    //     if (windowScrollHeight > 150) {
-    //         if (windowScrollHeight > 0 && currentScroll <= windowScrollHeight) {
-    //             currentScroll = windowScrollHeight
-    //             if (windowScrollHeight > fixedContentHeight - 720 + 112 + 30) {
-    //                 // $(".fixed-content").addClass("fixed");
-    //                 //$(".fixed-content").css("top", windowScrollHeight+fixedContentHeight - 720);
-    //                 $(".fixed-content").css("top", windowScrollHeight - fixedContentHeight + 550);
-
-    //             }
-    //         }
-    //         else {
-
-    //             console.log("dwon")
-    //             alert("dwon")
-    //             currentScroll = windowScrollHeight
-    //         }
-    //         $(".fixed-categoriesContent").css("top", windowScrollHeight - 80);
-    //     } else
-    //         if (windowScrollHeight < 150) {
-
-    //             console.log("jkjkk")
-    //             // $(".fixed-content").removeClass("fixed");
-    //             //   $(".fixed-content").css("top", (windowScrollHeight + 25));
-    //             //  $(".fixed-categoriesContent").css("top", (windowScrollHeight + 30));
-
-    //         }
-    // });
     function set_user() {
         debugger
 
@@ -500,66 +457,65 @@ function ShabbatMenu(props) {
             </div>
 
             <div className="small_pageHeader " style={{ backgroundImage: `url(${headerBgImag})` }}>
-
-
-
             </div>
-
-
 
             <h4 className=' goldColor mt-2 text-center'>{i18.t('menuTitle')}</h4>
 
 
-            <div className='row  swithDir  justify-content-center  col-md-10   m-auto' style={{ paddingTop: '1.5%' }}>
+            <div className='  swithDir  justify-content-center  col-md-10   m-auto   ' style={{ paddingTop: '1.5%', display: "flex", alignItems: "flex-start" }}>
+                {/* left column */}
                 {!isMobile && !isTablet && (
+                    <StickyBox offsetTop={100} offsetBottom={10}>
+                        <div className=' mx-4   px-0' >
+                            <div className=' h-100' >
+                                <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto  border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
+                                    fontSize: '15px'
+                                }}>
 
-                    <div className=' mx-4  leftColumn' >
-                        <div className='fixed-categoriesContent h-100' >
-                            <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto  border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
-                                fontSize: '15px'
-                            }}>
+                                    <option value="1">{i18.t('shabatMenu')}</option>
+                                    <option value="2">{i18.t('passover')}</option>
+                                </select>
+                                <div class="mb-3 d-flex row justify-content-center" style={{ fontSize: '16px' }}>
+                                    <div className='col-9 p-0 '>
+                                        <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 " onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
 
-                                <option value="1">{i18.t('shabatMenu')}</option>
-                                <option value="2">{i18.t('passover')}</option>
-                            </select>
-                            <div class="mb-3 d-flex row justify-content-center" style={{ fontSize: '16px' }}>
-                                <div className='col-9 p-0 '>
-                                    <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 " onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
+                                    </div>
+
+                                    <div className='col-1 p-0' onClick={() => searchProduct($('.inputOf_Search').val())}>
+                                        <img style={{ width: '15px' }} src={searchIcom_} />
+                                    </div>
 
                                 </div>
+                                <div className='categoryList   d-flex flex-column  pb-5 '>
 
-                                <div className='col-1 p-0' onClick={() => searchProduct($('.inputOf_Search').val())}>
-                                    <img style={{ width: '15px' }} src={searchIcom_} />
+                                    {categories && categories.map((category, index) => (
+                                        <>
+
+
+                                            <a className='text-center' href={'#' + category.name}>
+
+                                                <button className={`bg-white categoryButton ${index}`} id={category._id} onClick={() => categorySelection(category._id, index)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
+
+
+                                            </a>
+
+
+                                        </>
+                                    ))}
                                 </div>
 
-                            </div>
-                            <div className='categoryList   d-flex flex-column  pb-5 '>
-
-                                {categories && categories.map((category, index) => (
-                                    <>
-
-
-                                        <a className='text-center' href={'#' + category.name}>
-
-                                            <button className={`bg-white categoryButton ${index}`} id={category._id} onClick={() => categorySelection(category._id, index)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
-
-
-                                        </a>
-
-
-                                    </>
-                                ))}
                             </div>
 
                         </div>
-
-                    </div>
+                    </StickyBox>
                 )}
 
+                {/* middle column */}
                 {!isMobile && !isTablet && (
+
                     <div className='  mt-1 col-sm-12 mx-0  pageContent swithSide   middleColumn ' >
                         {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
-                        <div className='overflow-auto pb-3 sidColumn scrollable-content ' id='xxl' >
+                        <div className='overflow-auto pb-3 sidColumn ' id='xxl' >
 
                             <div className='searchResults d-none mt-1' >
 
@@ -738,13 +694,13 @@ function ShabbatMenu(props) {
 
 
                     </div>
+
                 )}
 
                 {isTablet && (
-
                     <div className='  mt-1 col-sm-12 mx-0  w-100 pageContent swithSide    ' >
                         {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
-                        <div className='overflow-auto pb-3 sidColumn scrollable-content ' id='xxl' >
+                        <div className='overflow-auto pb-3 sidColumn ' id='xxl' >
 
                             <div className='searchResults d-none mt-1' >
 
@@ -926,15 +882,17 @@ function ShabbatMenu(props) {
 
                 )}
 
+                {/* middle column */}
 
 
 
 
-
+                {/* right column */}
                 {!isMobile && !isTablet && (
-                    <div className='rightColumn px-0' >
-                        <div className='fixed-content'>
-                            <div className=' pb-4 px-2 sidColumn col-12'>
+                    <StickyBox offsetTop={100} offsetBottom={20}  >
+                        <div className=' px-0' >
+
+                            <div className='  px-2 sidColumn col-12'>
 
                                 <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
@@ -1083,12 +1041,7 @@ function ShabbatMenu(props) {
                                                 </div>
 
                                             </div>
-
-
-
                                         </div>
-
-
 
                                     </div>
 
@@ -1107,13 +1060,13 @@ function ShabbatMenu(props) {
                                 <div className='rounded-custom customShadow  col-12 p-0' >
                                     <div className="d-flex   pt-3 pb-2 px-2" style={{ backgroundColor: 'rgb(195, 153, 87, 0.5)', borderRadius: '10px 10px 0px 0px' }}>
 
-                                        <div className="col-7 swithSide font-medium"> {i18.t('TotalProducts')}:</div>
+                                        <div className="col-7 swithSide font-medium px-2"> {i18.t('TotalProducts')}:</div>
                                         <div className="col-5 text-start numItems fontNumber font-weight-bold">{numItems}</div>
                                     </div>
                                     <div className="d-flex mb-5  pt-3 pb-2 px-2" >
 
-                                        <div className="col-5 swithSide font-medium">{i18.t('Total')}:</div>
-                                        <div className="col-7 text-start numItems fontNumber font-weight-bold">&#8362; {parseFloat(total).toFixed(2)}</div>
+                                        <div className="col-5 swithSide font-medium px-2">{i18.t('Total')}:</div>
+                                        <div className="col-7 text-start numItems fontNumber font-weight-bold ">&#8362; {parseFloat(total).toFixed(2)}</div>
 
                                     </div>
 
@@ -1128,11 +1081,12 @@ function ShabbatMenu(props) {
 
 
 
+
                         </div>
-                    </div>
+                    </StickyBox>
                 )}
             </div>
-        </div>
+        </div >
     )
 }
 const mapStateToProps = (state) => {

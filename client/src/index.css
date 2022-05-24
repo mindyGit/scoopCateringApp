@@ -35,28 +35,17 @@
 
 
 
-.fixed-content {
-  position: absolute;
 
-}
-
-.fixed-categoriesContent {
-  position: absolute;
-}
 
 .fixedDiv {
   top: 120px;
   bottom: 0;
   position: sticky;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
   overflow-x: hidden;
 }
 
-.fixed {
-  position: fixed;
 
-
-}
 
 
 
