@@ -28,6 +28,52 @@
     url('../src/data/fonts/webfont_files/ploni-medium-aaa.woff') format('woff');
 }
 
+html,
+body,
+#root {
+  --rem-size: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 375px) {
+  #root {
+    font-size: 0.5 * 16px !important;
+  }
+}
+
+@media (min-width: 376px) and (max-width: 819px) {
+  #root {
+    font-size: 0.7 * 16px !important;
+  }
+}
+
+@media (min-width: 820px) and (max-width: 1024px) {
+  #root {
+    font-size: 0.9 * 16px !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  #root {
+    font-size: 16px !important;
+  }
+}
+
+.ellipsis-text {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.class-ellipsis-2-lines {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
 
 .font-weight-bold_ {
   font-weight: 600 !important;
@@ -912,7 +958,6 @@ button.outSvgSize:hover {
 
 .second span::after {
   background: #FFFFFF;
-
 }
 
 .swithSide {
@@ -1320,7 +1365,7 @@ button.outSvgSize:hover {
 }
 
 .ShoppingCart_itemList {
-  max-width: 250px;
+  max-width: 270px;
   /* max-height: 400px;
   overflow-y: scroll; */
   /* overflow-x: hidden; */
