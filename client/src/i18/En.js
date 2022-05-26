@@ -82,6 +82,7 @@ export const En = {
         addProductsLable: `Add products to cart`,
         SelectAnOption: 'Select option',
         addToCart: `Add to cart`,
+        addToCartMe: `Add to cart`,
         product1: `Salomon in teriyaki sauce`,
         scoop: 'Scoop',
         OurAddress: 'Our Address',

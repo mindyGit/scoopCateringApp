@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 // import { withRouter } from 'react-router-dom';
 import { actions } from '../../redux/actions/action';
 import StickyBox from "react-sticky-box";
+import FontAwesome from 'react-fontawesome'
 import { Table, Button } from 'react-bootstrap'
 import AppFirebase from '../Firebase/AppFirebase';
 import { Formik, Field, Select, Form } from 'formik';
@@ -165,7 +166,8 @@ function ShabbatMenu(props) {
         // $('#' + categoryId).addClass('active')
     }
 
-    function categorySelection(id, index) {
+    function categorySelection(name, id, index) {
+        // debugger
         $('.searchResults').addClass('d-none')
         $('.shabatMenu').removeClass('d-none')
         $('.categoryList').removeClass('px-3')
@@ -188,6 +190,10 @@ function ShabbatMenu(props) {
             }
             previousClick = id
             previousClickIndex = index
+        }
+
+        if (isTablet) {
+            $('#' + name).css("padding-top", "12vh")
         }
     }
 
@@ -446,7 +452,43 @@ function ShabbatMenu(props) {
                     hide={toggle}
                 />
             </div>
-            <div className="pageNuv ">
+
+
+            {/* //הוספתי */}
+            {isTablet && (
+                <nav
+                    className="swithDir categoryList rounded-0  bg-white d-flex"
+                    style={{
+                        width: "auto",
+                        overflowX: "auto",
+                        overflowY: "hidden",
+                        whiteSpace: "nowrap",
+                        position: 'sticky',
+                        top: '0',
+                        zIndex: '1020'
+                    }}
+                >
+                    {categories &&
+                        categories.map((category, index) => (
+                            <a
+                                className=""
+                                href={"#" + category.name}
+                                style={{ textDecoration: "none" }}
+                            >
+                                <button
+                                    className={`text-center bg-white categoryButton ${index}`}
+                                    id={category._id}
+                                    onClick={() => categorySelection(category.name, category._id, index)}
+                                    style={{ fontSize: "1rem", width: "100% !important" }}
+                                >
+                                    {language == "he" ? category.hebrewName : category.name}
+                                </button>
+                            </a>
+                        ))}
+                </nav>
+            )}
+            {/* //הוספתי סיום*/}
+            <div className="pageNuvMenu ">
                 {isTablet && (
                     <Hamborger history={props.history} />
                 )}
@@ -456,19 +498,248 @@ function ShabbatMenu(props) {
                 )}
             </div>
 
+
             <div className="small_pageHeader " style={{ backgroundImage: `url(${headerBgImag})` }}>
             </div>
 
             <h4 className=' goldColor mt-2 text-center'>{i18.t('menuTitle')}</h4>
 
 
+
+            {/* הוספה */}
+            {/* {isTablet && (
+                <div className="swithDir d-flex justify-content-between align-items-center">
+                    <div
+                        class="mb-3 col-12 d-flex row flex-nowrap pl-1"
+                        style={{ fontSize: "1rem" }}
+                    >
+                        <div className=" p-0 ml-2">
+                            <input
+                                placeholder={i18.t("searchPlaceholder")}
+                                class=" inputOf_Search bg-transparent border-0 w-100 "
+                                onInput={(e) => {
+                                    searchProduct(e.target.value);
+                                }}
+                                onKeyPress={(e) => searchProduct(e.target.value)}
+                            />
+                        </div>
+
+                        <div
+                            className="col-1 p-0"
+                            onClick={() => searchProduct($(".inputOf_Search").val())}
+                        >
+                            <img style={{ width: "15px" }} src={searchIcom_} />
+                        </div>
+                    </div>
+
+                </div>
+            )} */}
+
+            {/* content */}
+            {isTablet && (
+                <div
+                    data-spy="scroll"
+                    data-target="#navbar-example2"
+                    data-offset="0"
+                    id="xxl"
+                    className="swithDir mx-0  w-100 pageContent overflow-auto pb-3 sidColumn scrollable-content"
+                >
+                    <div className="shabatMenu px-2">
+                        {categories &&
+                            categories.map((category, index) => (
+                                <>
+                                    <div
+                                        id={category.name}
+                                        onMouseEnter={() => hoverCategory(category._id, index)}
+
+                                    >
+                                        <div>
+                                            <div className=" h-100 w-100">
+                                                <img
+                                                    className="h-100 w-100"
+                                                    src={
+                                                        category.name == "Salads"
+                                                            ? appetizers
+                                                            : category.name == "Appetizers"
+                                                                ? salads
+                                                                : category.name == "Desserts"
+                                                                    ? desserts
+                                                                    : category.name == "Bakery"
+                                                                        ? bakery
+                                                                        : salads
+                                                    }
+                                                />
+                                            </div>
+
+                                            <div className="d-flex align-items-center m-3 ">
+                                                <h1 className="font-weight-bold ">
+                                                    {language == "he"
+                                                        ? category.hebrewName
+                                                        : category.name}
+                                                </h1>
+                                            </div>
+                                        </div>
+
+                                        {(searchWord !== undefined &&
+                                            searchWord !== "" &&
+                                            serchResults?.length
+                                            ? serchResults
+                                            : category.products
+                                        ).map((product) => (
+                                            <>
+                                                <div
+                                                    className=" productLine w-100  row  m-0  flex-nowrap    justify-content-between   p-2 mb-2"
+                                                    id={product._id}
+                                                    style={{
+                                                        maxHeight: "150px",
+                                                        height: "120px",
+                                                    }}
+                                                >
+                                                    <div className="col-3  productPic d-flex align-items-center px-2  ">
+                                                        <div
+                                                            className=" ml-auto bg-gold d-flex     justify-content-center align-items-center"
+                                                            style={{
+                                                                width: "65%",
+                                                                height: "1.25",
+                                                                position: "absolute",
+                                                                top: 0,
+                                                                right: "1px",
+                                                                textAlign: "center",
+                                                            }}
+                                                        >
+                                                            <p
+                                                                className="m-0 "
+                                                                style={{ fontSize: "0.6rem" }}
+                                                            >
+                                                                מומלץ השבוע!
+                                                            </p>
+                                                        </div>
+                                                        <img className=" w-100" src={image1} />
+                                                    </div>
+                                                    <div className="col-4 p-0 mx-1" id={product._id}>
+                                                        <div className="h-75">
+                                                            <div
+                                                                className="productName font-weight-bold class-ellipsis-2-lines"
+                                                                style={{ fontSize: "1.375rem" }}
+                                                                title={
+                                                                    language == "he"
+                                                                        ? product.hebrewName
+                                                                        : product.name
+                                                                }
+                                                            >
+                                                                {language == "he"
+                                                                    ? product.hebrewName
+                                                                    : product.name}
+                                                            </div>
+
+                                                            <div class="amountOption pl-0 " id={product._id}>
+                                                                <select class=" amountOption_select  form-select form-select-x-sm swithDir pb-0 pt-0 border-0 rounded-custom  font-weight-bold" aria-label=".form-select-sm example" style={{ fontSize: '16px', width: 'fit-content', fontWeight: '600 !important' }}>
+                                                                    <option value=" ">{i18.t('selectAmount')}</option>
+
+                                                                    <option value="1">500 גר'</option>
+                                                                    <option value="2">חצי ליטר</option>
+                                                                    <option value="3">250 מל'</option>
+                                                                    <option value="4">6 יחידות</option>
+                                                                </select>
+                                                            </div>
+
+
+                                                        </div>
+
+                                                        <div
+                                                            className="row d-flex align-items-end  h-25 pb-2 d-none errorSelect"
+                                                            style={{ fontSize: "xx-small" }}
+                                                        >
+                                                            <h6 className="" style={{ color: "red" }}>
+                                                                * יש לבחור כמות או אופציה
+                                                            </h6>
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="col-5 p-0 h-100">
+                                                        <div className="d-flex align-items-end col-12 mx-0 row justify-content-between h-50 mt-1">
+                                                            <div className="col-5"></div>
+                                                            <div className="price productPrice text-center font-weight-bold  goldColor p-0 mr-0 col-7 fontNumber ">
+                                                                14.90 &#8362;{" "}
+                                                            </div>
+                                                        </div>
+                                                        <div
+                                                            className="d-flex align-items-end  row h-50 pb-1 flex-nowrap"
+                                                        // style={{
+                                                        //     justifyContent: "space-evenly",
+                                                        // }}
+                                                        >
+                                                            <div
+                                                                className="amountToBuy  goldColor d-flex  col-6 p-0  align-items-end"
+                                                                style={{
+                                                                    width: "fit-content",
+                                                                }}
+                                                            >
+                                                                <span
+                                                                    class="plus "
+                                                                    onClick={() =>
+                                                                        changeAmount(product._id, "plus")
+                                                                    }
+                                                                >
+                                                                    +
+                                                                </span>
+                                                                <input
+                                                                    type="text"
+                                                                    value="1"
+                                                                    className=" text-black bg-white pt-0 pb-0  ml-1 mt-2 input_number fontNumber gold-border"
+                                                                />
+                                                                <span
+                                                                    class="minus"
+                                                                    onClick={() =>
+                                                                        changeAmount(product._id, "minus")
+                                                                    }
+                                                                >
+                                                                    -
+                                                                </span>
+                                                            </div>
+
+                                                            <div
+                                                                onClick={() => AddToCart(product)}
+                                                                className="addToCart col-5  bg-black text-white align-items-center d-flex h6  mb-0 py-1 px-2 roundButton"
+                                                                style={{
+                                                                    height: "fit-content",
+                                                                    width: "fit-content",
+                                                                }}
+                                                            >
+                                                                {i18.t("addToCart")}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </>
+                                        ))}
+                                    </div>
+                                    <hr
+                                        className="goldColor mt-0 mb-2 w-100 row"
+                                        style={{ height: "2.5px", opacity: "1" }}
+                                    />
+                                </>
+                            ))}
+                    </div>
+
+                    <div className="searchResults d-none mt-1">
+                        <h4 className="swithSide notFound">
+                            <span className=" "> לא נמצאו </span>תוצאות עבור : {searchWord}{" "}
+                            <button onClick={clearSearch}>clear</button>
+                        </h4>
+                    </div>
+                </div>
+            )}
+
+
+
             <div className='  swithDir  justify-content-center  col-md-10   m-auto   ' style={{ paddingTop: '1.5%', display: "flex", alignItems: "flex-start" }}>
                 {/* left column */}
                 {!isMobile && !isTablet && (
                     <StickyBox offsetTop={100} offsetBottom={10}>
-                        <div className=' mx-4   px-0' >
+                        <div className=' mx-3   px-0' >
                             <div className=' h-100' >
-                                <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto  border-dark font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
+                                <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto   font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
                                     fontSize: '15px'
                                 }}>
 
@@ -494,7 +765,7 @@ function ShabbatMenu(props) {
 
                                             <a className='text-center' href={'#' + category.name}>
 
-                                                <button className={`bg-white categoryButton ${index}`} id={category._id} onClick={() => categorySelection(category._id, index)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
+                                                <button className={`bg-white categoryButton ${index}`} id={category._id} onClick={() => categorySelection(category.name, category._id, index)} style={{ height: '60px' }}  >{language == "he" ? category.hebrewName : category.name}</button>
 
 
                                             </a>
@@ -513,7 +784,7 @@ function ShabbatMenu(props) {
                 {/* middle column */}
                 {!isMobile && !isTablet && (
 
-                    <div className='  mt-1 col-sm-12 mx-0  pageContent swithSide   middleColumn ' >
+                    <div className='  mt-1 col-sm-12 mx-0 px-0  pageContent swithSide   middleColumn ' >
                         {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
                         <div className='overflow-auto pb-3 sidColumn ' id='xxl' >
 
@@ -525,7 +796,7 @@ function ShabbatMenu(props) {
 
                                 {serchResults && serchResults.map((product) =>
                                     <>
-                                        <div className=' productLine w-100  row    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                        <div className=' productLine w-100  row    justify-content-between   p-2 mb-4' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                             <div className='col-2  productPic d-flex align-items-center px-2  '>
                                                 <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                 <img className=' w-100' src={image1} /></div>
@@ -603,7 +874,7 @@ function ShabbatMenu(props) {
                                                 </div>
 
                                                 <div className='d-flex align-items-center my-3 ' >
-                                                    <h1 className='font-weight-bold '>{language == "he" ? category.hebrewName : category.name}</h1>
+                                                    <h1 className=' ' style={{ fontWeight: '600' }}>{language == "he" ? category.hebrewName : category.name}</h1>
 
 
                                                 </div>
@@ -612,7 +883,7 @@ function ShabbatMenu(props) {
                                             {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                                 category[key].map(product =>
                                                     <>
-                                                        <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                                        <div className=' productLine w-100  row      justify-content-between   p-2 mb-4' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                                             <div className='col-2  productPic d-flex align-items-center px-2  ' style={{ width: '140px' }}>
                                                                 <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                                 <img className=' w-100' src={image1} /></div>
@@ -697,9 +968,9 @@ function ShabbatMenu(props) {
 
                 )}
 
-                {isTablet && (
+                {/* {isTablet && (
                     <div className='  mt-1 col-sm-12 mx-0  w-100 pageContent swithSide    ' >
-                        {/* <div className='overflow-auto pb-3 sidColumn ' id='xxl' style={{ height: '590px' }}> */}
+        
                         <div className='overflow-auto pb-3 sidColumn ' id='xxl' >
 
                             <div className='searchResults d-none mt-1' >
@@ -710,7 +981,7 @@ function ShabbatMenu(props) {
 
                                 {serchResults && serchResults.map((product) =>
                                     <>
-                                        <div className=' productLine w-100  row    justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                        <div className=' productLine w-100  row    justify-content-between   p-2 mb-4' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                             <div className='col-2  productPic d-flex align-items-center px-2  '>
                                                 <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                 <img className=' w-100' src={image1} /></div>
@@ -772,7 +1043,7 @@ function ShabbatMenu(props) {
                                 )}
                             </div>
 
-                            {/* <div className='shabatMenu overflow-auto pb-3 sidColumn' style={{ height: '590px' }} onScroll={myFunction}> */}
+                           
                             <div className='shabatMenu '>
 
 
@@ -797,7 +1068,7 @@ function ShabbatMenu(props) {
                                             {Object.keys(category).filter(key => key == "products").map((key, val) => (
                                                 category[key].map(product =>
                                                     <>
-                                                        <div className=' productLine w-100  row      justify-content-between   p-2 mb-2' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
+                                                        <div className=' productLine w-100  row      justify-content-between   p-2 mb-4' id={product._id} style={{ maxHeight: '150px', height: '120px' }}>
                                                             <div className='col-2  productPic d-flex align-items-center px-2  ' style={{ width: '140px' }}>
                                                                 <div className=' ml-auto bg-gold d-flex     justify-content-center align-items-center' style={{ width: '60%', height: '20px', position: 'absolute', top: 0, right: '1px' }}><p className='m-0 ' style={{ fontSize: '0.6rem' }}>מומלץ השבוע!</p></div>
                                                                 <img className=' w-100' src={image1} /></div>
@@ -880,7 +1151,7 @@ function ShabbatMenu(props) {
 
                     </div>
 
-                )}
+                )} */}
 
                 {/* middle column */}
 
@@ -892,7 +1163,7 @@ function ShabbatMenu(props) {
                     <StickyBox offsetTop={100} offsetBottom={20}  >
                         <div className=' px-0' >
 
-                            <div className='  px-2 sidColumn col-12'>
+                            <div className='  px-1 sidColumn col-12'>
 
                                 <div className=' mt-1 mb-3 actionSection col-12 p-0'  >
 
@@ -925,6 +1196,12 @@ function ShabbatMenu(props) {
                                     </div>
 
                                     <div className="ShoppingCart_itemList   " >
+                                        <div className='d-flex w-100     justify-content-center '> {numItems == 0 ?
+
+
+                                            <h6 className='addToCartMe py-2 px-3   mt-3' style={{ color: 'gray' }}>{i18.t('addToCartMe')}</h6>
+                                            : <h6></h6>}
+                                        </div>
                                         {cart && cart.map(item =>
                                             <div className={`productItem   align-items-end    py-2 ${side} ${item.product._id}`}  >
 
@@ -1072,7 +1349,7 @@ function ShabbatMenu(props) {
 
                                 </div>
 
-                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-1 ml-0 w-100 border-0" onClick={() => props.history.push('/Checkout')} >{i18.t('continueToPayment')}</button>
+                                <button className=" d-block col-12 actionSection rounded-custom customShadow text-white bg-gold px-3 py-1 ml-0 w-100 border-0" onClick={() => props.history.push('/Checkout')} >{i18.t('continueToPayment')}  {language == "he" ? <i class='fas fa-solid fa-arrow-left mr-2' style={{ fontSize: '17px' }}></i> : <i class='fas fa-solid fa-arrow-right ml-2' style={{ fontSize: '17px' }}></i>} </button>
 
 
 

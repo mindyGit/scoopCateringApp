@@ -96,6 +96,7 @@ export const He = {
         addProductsLable: `הוסיפו מוצרים לסל הקניות`,
         SelectAnOption: 'בחר אפשרות',
         addToCart: `הוספה לסל`,
+        addToCartMe: `הוסף לסל`,
         product1: 'סלומון ברוטב טריאקי',
         products: 'מוצרים',
         scoop: 'סקופ',
