@@ -874,7 +874,7 @@ function ShabbatMenu(props) {
                                                 </div>
 
                                                 <div className='d-flex align-items-center my-3 ' >
-                                                    <h1 className=' ' style={{ fontWeight: '600' }}>{language == "he" ? category.hebrewName : category.name}</h1>
+                                                    <h1 className='font-weight-bold'>{language == "he" ? category.hebrewName : category.name}</h1>
 
 
                                                 </div>
