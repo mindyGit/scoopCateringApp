@@ -92,50 +92,7 @@ function ShabbatMenu(props) {
     function scrollTopFunc() {
         window.scrollTo(0, 0)
     }
-    function scrollDetect() {
-        var lastScroll = 0;
-        let top = $(".fixed-content").css("top")
-        window.onscroll = function () {
-            // alert($(".fixed-content").css("top"))
-            let currentScroll = document.documentElement.scrollTop || document.body.scrollTop; // Get Current Scroll Value
-            let fixedContentHeightRight = $(".fixed-content").height();
-            let fixedContentHeightLeft = $(".fixed-categoriesContent").height();
-            console.log("currentScroll:: ", currentScroll);
-            if (currentScroll > 0 && lastScroll <= currentScroll) {
-                lastScroll = currentScroll;
-                console.log("Scrolling DWON");
-                if (currentScroll > fixedContentHeightRight - 720 + 112 + 30) {
-                    $(".fixed-content").css("top", currentScroll - fixedContentHeightRight + 550);
-                    $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft - 50);
 
-                }
-            } else {
-
-                lastScroll = currentScroll;
-                console.log("Scrolling UP");
-                // console.log($(".fixed-content").css("top"));
-                if (currentScroll - fixedContentHeightRight + 700 > 0)
-                    $(".fixed-content").css("top", currentScroll - fixedContentHeightRight + 700);
-
-
-
-                if (currentScroll == 99) {
-                    $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft + 46);
-                }
-                else
-
-                    if (currentScroll > 99) {
-                        $(".fixed-categoriesContent").css("top", currentScroll - fixedContentHeightLeft - 50);
-
-                    }
-
-
-            }
-        };
-    }
-
-
-    //scrollDetect();
 
     function set_user() {
         debugger
@@ -244,6 +201,7 @@ function ShabbatMenu(props) {
 
 
     function searchProduct(searchWord_) {
+        scrollTopFunc()
         // let searchWord_ = e.target.value
 
         setSearchWord(searchWord_)
@@ -676,7 +634,8 @@ function ShabbatMenu(props) {
                                                                 }}
                                                             >
                                                                 <span
-                                                                    class="plus "
+                                                                    class="plus"
+
                                                                     onClick={() =>
                                                                         changeAmount(product._id, "plus")
                                                                     }
@@ -686,10 +645,11 @@ function ShabbatMenu(props) {
                                                                 <input
                                                                     type="text"
                                                                     value="1"
-                                                                    className=" text-black bg-white pt-0 pb-0  ml-1 mt-2 input_number fontNumber gold-border"
+                                                                    className=" text-black bg-white pt-0 pb-0   mt-2 input_number fontNumber gold-border"
                                                                 />
                                                                 <span
                                                                     class="minus"
+
                                                                     onClick={() =>
                                                                         changeAmount(product._id, "minus")
                                                                     }
@@ -739,14 +699,20 @@ function ShabbatMenu(props) {
                     <StickyBox offsetTop={100} offsetBottom={10}>
                         <div className=' mx-3   px-0' >
                             <div className=' h-100' >
-                                <select class="text-center w-100  mb-3 form-select rounded-0 border-0 form-select-x-sm ltr m-auto   font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
-                                    fontSize: '15px'
-                                }}>
+                                <div >
+                                    <select class="text-center w-100  mb-3 form-select rounded-0 border-0 border-dark form-select-x-sm ltr m-auto   font-weight-bold border-bottom amountOption_select" aria-label=".form-select-sm example" style={{
 
-                                    <option value="1">{i18.t('shabatMenu')}</option>
-                                    <option value="2">{i18.t('passover')}</option>
-                                </select>
-                                <div class="mb-3 d-flex row justify-content-center" style={{ fontSize: '16px' }}>
+                                        width: '160px !important',
+                                        paddingLeft: '10px !important'
+
+                                    }}>
+
+                                        <option value="1">{i18.t('shabatMenu')}</option>
+                                        <option value="2">{i18.t('passover')}</option>
+                                    </select>
+                                </div>
+
+                                <div class="mb-3 d-flex row justify-content-center" style={{ fontSize: '15px' }}>
                                     <div className='col-9 p-0 '>
                                         <input placeholder={i18.t('searchPlaceholder')} class=" inputOf_Search bg-transparent border-0 w-100 " onInput={(e) => { searchProduct(e.target.value) }} onKeyPress={(e) => searchProduct(e.target.value)} />
 

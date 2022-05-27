@@ -28,6 +28,29 @@
     url('../src/data/fonts/webfont_files/ploni-medium-aaa.woff') format('woff');
 }
 
+@media (min-width: 376px) and (max-width: 819px) {
+  #root {
+    font-size: 0.7 * 16px !important;
+  }
+
+  .minus,
+  .plus {
+
+
+    height: 2.1rem !important;
+    width: 20px !important;
+    font-size: 28px !important;
+
+    color: #C59950 !important;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    text-align: center;
+  }
+}
 
 .font-weight-bold_ {
   font-weight: 600 !important;
@@ -1085,6 +1108,8 @@ button.outSvgSize:hover {
   background-position: left 0.4rem center !important;
 
 }
+
+
 
 .zoomBOut {
   /* width: 42%;  */
