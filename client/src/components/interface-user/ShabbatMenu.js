@@ -499,8 +499,8 @@ function ShabbatMenu(props) {
                     data-spy="scroll"
                     data-target="#navbar-example2"
                     data-offset="0"
-                    id="xxl"
-                    className="swithDir mx-0  w-100 pageContent overflow-auto pb-3 sidColumn scrollable-content"
+                    style={language == 'he' ? { direction: 'rtl' } : { direction: 'ltr' }}
+                    className=" mx-0  w-100 pageContent overflow-auto pb-3 sidColumn scrollable-content"
                 >
                     <div className="shabatMenu px-2">
                         {categories &&
@@ -689,7 +689,8 @@ function ShabbatMenu(props) {
                         </h4>
                     </div>
                 </div>
-            )}
+            )
+            }
 
 
 
